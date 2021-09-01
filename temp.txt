@@ -1,0 +1,26 @@
+            const nowPlaying = new Discord.MessageEmbed()
+            .setColor('#00ff00')
+            .setTitle('Executed: "' + message.content + '"')
+            .setDescription(`Now Playing: "${video.title}"`)
+            .setFooter('200 OK')
+
+                const finishedPlaying = new Discord.MessageEmbed()
+                .setColor('#00ff00')
+                .setTitle(`Finished Playing: "${video.title}"`)
+                .setDescription('You can use the "%leave" to disconnect the bot or use the "%play <URL/keyWords>" to play another song.')
+                .setFooter('200 OK')
+
+
+                with link
+
+                const finishedPlaying = new Discord.MessageEmbed()
+                .setColor('#00ff00')
+                .setTitle('Finished playing: "' + args + '"')
+                .setDescription('You can use the "%leave" to disconnect the bot or use the "%play <URL/keyWords>" to play another song.')
+                .setFooter('200 OK')
+
+            const nowPlaying = new Discord.MessageEmbed()
+            .setColor('#00ff00')
+            .setTitle('Now Playing!')
+            .setDescription('Now playing: "' + args + '"')
+            .setFooter('200 OK')

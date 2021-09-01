@@ -1,0 +1,66 @@
+--------RETURN CODES--------
+1xx - Informational response
+2xx - Success
+3xx - Redirection
+4xx - Client errors
+5xx - Server errors
+
+100 CONTINUE - The server has received the request and the client should proceed to send the rest
+
+300 MULTIPLE_CHOICES - Indicates multiple options for the resource from which the client may choose.
+303 SEE_OTHER 
+
+200 OK - Standard response for successful requests.
+201 CREATED - The request has been fulfilled.
+202 ACCEPTED - The request has been accepted for processing, but the processing has not been completed.
+204 NO_CONTENT - The server successfully processed the request, and is not returning any content.
+226 IM_USED
+
+400 BAD_REQUEST - The server cannot or will not process the request due to an apparent client error.
+403 FORBIDDEN - The request contained valid data and was understood by the server, but the server is refusing action.
+404 NOT_FOUND - The requested resource could not be found but may be available in the future.
+405 METHODS_NOT_ALLOWED - A request method is not supported for the requested resource.
+408 REQUEST_TIMEOUT - The server timed out waiting for the request. The client did not produce a request within the time that the server was prepared to wait. The client MAY repeat the request without modifications at any later time.
+410 GONE - Indicates that the resource requested is no longer available and will not be available again.
+415 UNSUPPORTED_MEDIA_TYPE - The request entity has a media type which the server or resource does not support.
+424 FAILED_DEPENDENCY - The request failed because it depended on another request and that request failed.
+425 TOO_EARLY - Indicates that the server is unwilling to risk processing a request that might be replayed.
+429 TOO_MANY_REQUESTS - The user has sent too many requests in a given amount of time.
+449 RETRY_WITH - The server cannot honour the request because the user has not provided the required information.
+451 UNAVAILABLE_FOR_LEGAL_REASONS - A server operator has received a legal demand to deny access to a resource or to a set of resources that includes the requested resource.
+
+500 INTERNAL_SERVER_ERROR - A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.
+501 NOT_IMPLEMENTED - The server either does not recognize the request method, or it lacks the ability to fulfil the request. Usually this implies future availability.
+503 SERVICE_UNAVAILABLE - The server cannot handle the request (because it is overloaded or down for maintenance). Generally, this is a temporary state.
+506 VARIANT_ALSO_NEGOTIATES - Transparent content negotiation for the request results in a circular reference.
+508 LOOP_DETECTED - The server detected an infinite loop while processing the request
+
+--------ROLE IDS--------
+"Owner": 697914535863910561
+"Head Administrator": 869050343739244596
+"Administrator": 642107004076163103
+"Head Bot": 868865850717913119
+"Moderator": 631943246095974400
+"Head Staff": 869052533031718912
+"Staff": 802349057112670278
+"Bots": 798556730459422730
+"BotP R3": 869995421794193518
+"BotP R2": 
+"BotP R1": 
+"BotP R0": 
+
+--------HEX COLOR CODES--------
+Ban/Kick (Red): #ff0000
+User Leave (Dark red): #8b0000
+Success (Green): #00ff00
+User Join (Dark Green): #006400
+Info (Blue): #0000ff
+Error (Purple): #8b0000
+Mute (Yellow): #ffff00
+Warning (Dark Yellow): #8b8000
+Critical (Neon Pink): #ff10f0
+Main color: #7cc0c0 / 
+
+1 2 3 4 5 6 7 8 9 0  a  b  c  d  e  f
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+
