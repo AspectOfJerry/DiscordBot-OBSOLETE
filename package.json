@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
+    "discord-button-pages": "^1.1.9",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.4.0",
