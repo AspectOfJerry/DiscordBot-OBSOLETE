@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'commands',
-    description: 'Usage: "%commands"',
+    name: 'list',
+    description: 'Usage: "%list"',
     execute(message, args, cmd, client, Discord){
         const commands = new Discord.MessageEmbed()
         .setColor('#0000ff')
