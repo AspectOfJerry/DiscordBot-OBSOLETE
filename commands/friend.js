@@ -85,12 +85,13 @@ module.exports = {
                         }
                     }
                     else{
-                        const invalidTarget = new Discord.MessageEmbed()
+                        const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setTitle('Error: "' + message.content + '"')
+                        .setTitle('Error')
                         .setDescription('The targeted member is invalid!')
-
-                        message.channel.send(invalidTarget)
+                        .setFooter(`message.content = ${message.content}`)
+                        
+                        message.channel.send(targetError)
                     }
                 }
             }

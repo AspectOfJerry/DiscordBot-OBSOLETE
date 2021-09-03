@@ -4,13 +4,15 @@ module.exports = {
     cooldown: 5,
     description: 'Usage: "%party <@user>"',
     execute(message, args, cmd, client, Discord){
+        message.channel.reply('This feature will be add on the next release!'); return
         if(message.member.user.id === '611633988515266562'){
             const target = message.mentions.users.first();
 
             const requireArgs0 = new Discord.MessageEmbed()
-            .setColor('#ff0000')
-            .setTitle('Error: "' + message.content + '"')
-            .setDescription("Invalid command! You must __add__ or __remove__ a user! Correct usage: %party <invite/kick> <@user>.")
+                .setColor('#ff0000')
+                .setTitle('Error: "' + message.content + '"')
+                .setDescription("Invalid command! You must __add__ or __remove__ a user! Correct usage: %party <invite/kick> <@user>.")
+                .setFooter(`message.content = ${message.content}`)
         
             if(!args[0]) return message.channel.send(requireArgs0) //Checks if args[0] is not present
         
@@ -19,28 +21,32 @@ module.exports = {
 
                 if(!args[1]){   //Checks if args[1] is not present
                     const requireArgs1 = new Discord.MessageEmbed()
-                    .setColor('#00ff00')
-                    .setTitle('Error: "' + message.content + '"')
-                    .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
+                        .setColor('#00ff00')
+                        .setTitle('Error: "' + message.content + '"')
+                        .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
+                        .setFooter(`message.content = ${message.content}`)
 
                     message.channel.send(requireArgs1)
                 }
                 else{
                     if(target){ //Checks if the target is valid (true)
                         const invite = new Discord.MessageEmbed()
-                        .setColor('#00ff00')
-                        .setTitle('Party invite')
-                        .setDescription(`<@${message.member.user.id}> invited <@${memberTarget.user.id}> to the party! They have 60 seconds to accept.`)
+                            .setColor('#00ff00')
+                            .setTitle('Party invite')
+                            .setDescription(`<@${message.member.user.id}> invited <@${memberTarget.user.id}> to the party! They have 60 seconds to accept.`)
+                            .setFooter(`message.content = ${message.content}`)
 
+                        message.channel.send(invite)
                         //INVITED
                     }
                     else{   //If the target is invalid (false)
-                        const invalidTarget = new Discord.MessageEmbed()
-                        .setColor('#ff0000')
-                        .setTitle('Error: "' + message.content + '"')
-                        .setDescription('The targeted member is invalid!')
-    
-                        message.channel.send(invalidTarget)
+                        const targetError = new Discord.MessageEmbed()
+                            .setColor('#ff0000')
+                            .setTitle('Error')
+                            .setDescription('The targeted member is invalid!')
+                            .setFooter(`message.content = ${message.content}`)
+                        
+                        message.channel.send(targetError)
                     }
                 }
             }
@@ -48,26 +54,28 @@ module.exports = {
                 const memberTarget = message.guild.members.cache.get(target.id);
                 if(!args[1]){   //Checks if args[1] is not present
                     const requireArgs1 = new Discord.MessageEmbed()
-                    .setColor('#00ff00')
-                    .setTitle('Error: "' + message.content + '"')
-                    .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
+                        .setColor('#00ff00')
+                        .setTitle('Error')
+                        .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
+                        .setFooter(`message.content = ${message.content}`)
 
                     message.channel.send(requireArgs1)
                 }
                 else{   //If args[1] is present
                     if(target){ //Checks if the target is valid
                         const kick = new Discord.MessageEmbed()
-                        .setColor('#00ff00')
-                        .setTitle('Party kick')
-                        .setDescription(`<@${message.member.user.id}> removed <@${memberTarget.user.id} from the party>`)
+                            .setColor('#00ff00')
+                            .setTitle('Party kick')
+                            .setDescription(`<@${message.member.user.id}> removed <@${memberTarget.user.id} from the party>`)
 
                         //INVITED
                     }
                     else{   //If the target is invalid
                         const invalidTarget = new Discord.MessageEmbed()
-                        .setColor('#ff0000')
-                        .setTitle('Error: "' + message.content + '"')
-                        .setDescription('The targeted member is invalid!')
+                            .setColor('#ff0000')
+                            .setTitle('Error: "' + message.content + '"')
+                            .setDescription('The targeted member is invalid!')
+                            .setFooter(`message.content = ${message.content}`)
     
                         message.channel.send(invalidTarget)
                     }
@@ -80,10 +88,12 @@ module.exports = {
         }
         else{
             const notImplementedForAll = new Discord.MessageEmbed()
-            .setColor('#ff0000')
-            .setTitle('Error 501')
-            .setDescription('The "%party <invite/kick> <@user>" command is currently **only** available to the server __owner__!')
-            .setTitle('501 NOT_IMPLEMENTED')
+                .setColor('#ff0000')
+                .setTitle('Error 501')
+                .setDescription('The "%party <invite/kick> <@user>" command is currently **only** available to the server __owner__!')
+                .setTitle('501 NOT_IMPLEMENTED')
+
+            message.channel.send(notImplementedForAll)
         }
     }
 }

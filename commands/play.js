@@ -11,14 +11,14 @@ module.exports = {
     description: 'Usage: "%play <URL/keyWords>"',
     async execute(message,args, cmd, client, Discord){
         const antiRickRoll = new Discord.MessageEmbed()
-        .setColor('#ff0000')
-        .setTitle('[Rick Roll Detection Module]')
-        .setDescription('Failed to execute command! Action blocked')
-        .addFields(
-            { name: 'Reason: ', value: 'Rick Roll attempted', inline: true },
-            { name: 'Action: ', value: message.content, inline: true },
-        )
-        .setFooter(`An action was blocked by the [Rick Roll Detection Module].`)
+            .setColor('#ff0000')
+            .setTitle('[Rick Roll Detection Module]')
+            .setDescription('Failed to execute command! Unauthorized Action.')
+            .addFields(
+                { name: 'Reason: ', value: 'Rick Roll attempted', inline: true },
+                { name: 'Action: ', value: message.content, inline: true },
+            )
+            .setFooter(`An action was blocked by the [Rick Roll Detection Module].`)
 
         //Checking for the voicechannel and permissions.
         const voice_channel = message.member.voice.channel;

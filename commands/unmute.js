@@ -14,98 +14,109 @@ module.exports = {
                 let memberTarget = message.guild.members.cache.get(target.id);
     
                 const userUnmutedBy = new Discord.MessageEmbed()
-                .setColor('#00ff00')
-                .setTitle('User unmute: "' + message.content + '"')
-                .setDescription(`<@${memberTarget.user.id}> was **unmuted** by <@${message.member.user.id}>!`)
-                .setFooter('200 OK')
+                    .setColor('#00ff00')
+                    .setTitle('User unmute: "' + message.content + '"')
+                    .setDescription(`<@${memberTarget.user.id}> was **unmuted** by <@${message.member.user.id}>!`)
+                    .setFooter('200 OK')
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
-                .setColor('#800080')
-                .setTitle('Error 403: "' + message.content + '"')
-                .setDescription('Could **not** perform the __command__! The **target** __has__ an **equal** or **higher** role __than__ the **sender**.')
-                .setFooter('403 FORBIDDEN_')
+                    .setColor('#ff0000')
+                    .setTitle('Permissions error')
+                    .setDescription(`<@${memberTarget.user.id}> __has__ an **equal** or **higher** role __than__ <@${message.member.user.id}>.`)
+                    .setFooter(`message.content = ${message.content}`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
-                .setColor('#800080')
-                .setTitle('Error 403: "' + message.content + '"')
-                .setDescription('Could **not** perform the __command__! The **target** is **immune** to this command')
-                .setFooter('403 FORBIDDEN')
+                    .setColor('#ff0000')
+                    .setTitle('Permissions error')
+                    .setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
+                    .setFooter(`message.content = ${message.content}`)
 
                 const userNotMuted = new Discord.MessageEmbed()
-                .setColor('#800080')
-                .setTitle('Error: "' + message.content + '"')
-                .setDescription('Could **not** perform the __command__! The **target** is **not** __muted__!')
+                    .setColor('#800080')
+                    .setTitle('Error: "' + message.content + '"')
+                    .setDescription('Could **not** perform the __command__! The **target** is **not** __muted__!')
 
-                if(!memberTarget.roles.cache.find(role => role.name === 'Muted')){
-                    message.channel.send(userNotMuted);
+                if(message.member == memberTarget){
+                    const cannotUseOnSelf = new Discord.MessageEmbed()
+                        .setColor('#800080')
+                        .setTitle('Error')
+                        .setDescription('You **cannot** use this __command__ on **yourself**!')
+                        .setFooter(`message.content = ${message.content}`)
+
+                    message.channel.send(cannotUseOnSelf)
                 }
                 else{
-                    if(message.member.roles.cache.has('802349057112670278')){   //Checks if the message sender has the "Staff" role
-                        if(memberTarget.roles.cache.has('798556730459422730')){     //Checks if the target has the "Bots" roles
-                            message.channel.send(targetImmune403);
-                        }
-                        else if(memberTarget.roles.cache.has('802349057112670278')){   //Checks if the target has the "Staff" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else if(memberTarget.roles.cache.has('631943246095974400')){    //Checks if the target has the "Moderator" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else if(memberTarget.roles.cache.has('642107004076163103')){    //Checks if the target has the "Administrator" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else if(memberTarget.roles.cache.has('697914535863910561')){    //Checks if the target has the "Owner" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else{
-                            memberTarget.roles.remove(muteRole.id);
-                            message.channel.send(userUnmutedBy)
-                            message.guild.channels.cache.get(userUnmutedBy)
-                        }
-                    }
-                    else if(message.member.roles.cache.has('631943246095974400')){  //Checks if the target has the "Moderator" role
-                        if(memberTarget.roles.cache.has('798556730459422730')){     //Checks if the target has the "Bots" roles
-                            message.channel.send(targetImmune403);
-                        }
-                        else if(memberTarget.roles.cache.has('631943246095974400')){    //Checks if the target has the "Moderator" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else if(memberTarget.roles.cache.has('642107004076163103')){    //Checks if the target has the "Administrator" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else if(memberTarget.roles.cache.has('697914535863910561')){    //Checks if the target has the "Owner" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else{
-                            memberTarget.roles.remove(muteRole.id);
-                            message.channel.send(userUnmutedBy)
-                            message.guild.channels.cache.get(userUnmutedBy)
-                        }
+                    if(!memberTarget.roles.cache.find(role => role.name === 'Muted')){
+                        message.channel.send(userNotMuted);
                     }
                     else{
-                        memberTarget.roles.remove(muteRole.id);
-                        message.channel.send(userUnmutedBy)
-                        message.guild.channels.cache.get(userUnmutedBy)
+                        if(message.member.roles.cache.has('802349057112670278')){   //Checks if the message sender has the "Staff" role
+                            if(memberTarget.roles.cache.has('798556730459422730')){     //Checks if the target has the "Bots" roles
+                                message.channel.send(targetImmune403);
+                            }
+                            else if(memberTarget.roles.cache.has('802349057112670278')){   //Checks if the target has the "Staff" role
+                                message.channel.send(targetHigherThanSender403);
+                            }
+                            else if(memberTarget.roles.cache.has('631943246095974400')){    //Checks if the target has the "Moderator" role
+                                message.channel.send(targetHigherThanSender403);
+                            }
+                            else if(memberTarget.roles.cache.has('642107004076163103')){    //Checks if the target has the "Administrator" role
+                                message.channel.send(targetHigherThanSender403);
+                            }
+                            else if(memberTarget.roles.cache.has('697914535863910561')){    //Checks if the target has the "Owner" role
+                                message.channel.send(targetHigherThanSender403);
+                            }
+                            else{
+                                memberTarget.roles.remove(muteRole.id);
+                                message.channel.send(userUnmutedBy)
+                                message.guild.channels.cache.get(userUnmutedBy)
+                            }
+                        }
+                        else if(message.member.roles.cache.has('631943246095974400')){  //Checks if the target has the "Moderator" role
+                            if(memberTarget.roles.cache.has('798556730459422730')){     //Checks if the target has the "Bots" roles
+                                message.channel.send(targetImmune403);
+                            }
+                            else if(memberTarget.roles.cache.has('631943246095974400')){    //Checks if the target has the "Moderator" role
+                                message.channel.send(targetHigherThanSender403);
+                            }
+                            else if(memberTarget.roles.cache.has('642107004076163103')){    //Checks if the target has the "Administrator" role
+                                message.channel.send(targetHigherThanSender403);
+                            }
+                            else if(memberTarget.roles.cache.has('697914535863910561')){    //Checks if the target has the "Owner" role
+                                message.channel.send(targetHigherThanSender403);
+                            }
+                            else{
+                                memberTarget.roles.remove(muteRole.id);
+                                message.channel.send(userUnmutedBy)
+                                message.guild.channels.cache.get(userUnmutedBy)
+                            }
+                        }
+                        else{
+                            memberTarget.roles.remove(muteRole.id);
+                            message.channel.send(userUnmutedBy)
+                            message.guild.channels.cache.get(userUnmutedBy)
+                        }
                     }
                 }
             }
             else{
                 const targetError = new Discord.MessageEmbed()
-                .setColor('#800080')
-                .setTitle('Error 449: "' + message.content + '"')
-                .setDescription('Invalid command! You **must** __mention__ a member. Correct usage: %kick <@user>.')
-                .setFooter('449 RETRY_WITH')
-
+                    .setColor('#ff0000')
+                    .setTitle('Error')
+                    .setDescription('The targeted member is invalid!')
+                    .setFooter(`message.content = ${message.content}`)
+                
                 message.channel.send(targetError)
             }
         }
         else{
-            const permissionsTooLow = new Discord.MessageEmbed()
-            .setColor('#800080')
-            .setTitle('Error 403: "' + message.content + '"')
-            .setDescription("I'm sorry but you do **not** have the __permissions__ to **perform** this __command__. Please contact the server administrators if you believe that this is an error.")
-            .setFooter('403 FORBIDDEN')
+            const permissionsError = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setTitle('Permissions error')
+                .setDescription("I'm sorry but you do **not** have the __permissions__ to **perform** this __command__. Please contact the server administrators if you believe that this is an error.")
+                .setFooter(`message.content = ${message.content}`)
 
-            message.channel.send(permissionsTooLow)
+            message.channel.send(permissionsError)
         }
     }
 }

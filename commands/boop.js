@@ -15,12 +15,13 @@ module.exports = {
             message.channel.send(boop);
         }
         else{
-            const userNotFound = new Discord.MessageEmbed()
-            .setColor('#800080')
-            .setDescription('You must mention a valid user to "Boop!"')
-            .setFooter('Usage: "%boop <@user>"')
-
-            message.channel.send(userNotFound)
+            const targetError = new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('Error')
+            .setDescription('The targeted member is invalid!')
+            .setFooter(`message.content = ${message.content}`)
+            
+            message.channel.send(targetError)
         }
     }
 }

@@ -1,9 +1,9 @@
 module.exports = {
     name: 'lockdown',
-    aliases: ['lock'],
+    aliases: ['lock', 'lock-down', 'lock_down'],
     cooldown: 15,
     description: 'Usage: "%lockdown"',
     execute(message, args, cmd, client, Discord){
-        message.channel.send('This feature is not coded yet!')
+        message.channel.reply('This feature will be add on the next release!'); return
     }
 }

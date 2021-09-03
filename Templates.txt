@@ -1,0 +1,43 @@
+//When permission are incorrect:
+
+const permissionsError = new Discord.MessageEmbed()
+.setColor('#ff0000')
+.setTitle('Permissions error')
+.setDescription("I'm sorry but you do **not** have the __permissions__ to **perform** this __command__. Please contact the server administrators if you believe that this is an error.")
+    .setFooter(`message.content = ${message.content}`)
+
+message.channel.send(permissionsError)
+
+//When the target is immune
+
+const targetImmune403 = new Discord.MessageEmbed()
+.setColor('#ff0000')
+.setTitle('Permissions error')
+.setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
+    .setFooter(`message.content = ${message.content}`)
+
+//When the target is higher than the sender
+
+const targetHigherThanSender403 = new Discord.MessageEmbed()
+.setColor('#ff0000')
+.setTitle('Permissions error')
+.setDescription(`<@${memberTarget.user.id}> __has__ an **equal** or **higher** role __than__ <@${message.member.user.id}>.`)
+    .setFooter(`message.content = ${message.content}`)
+
+//Cannot use the command on yourself
+
+const cannotUseOnSelf = new Discord.MessageEmbed()
+.setColor('#800080')
+.setTitle('Error')
+.setDescription('You **cannot** use this __command__ on **yourself**!')
+    .setFooter(`message.content = ${message.content}`)
+
+//When the target is not found
+
+const targetError = new Discord.MessageEmbed()
+.setColor('#ff0000')
+.setTitle('Error')
+.setDescription('The targeted member is invalid!')
+.setFooter(`message.content = ${message.content}`)
+
+message.channel.send(targetError)

@@ -11,28 +11,28 @@ module.exports = {
 
                 const userBannedBy = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setTitle('User ban: "' + message.content + '"')
+                .setTitle('User ban')
                 .setDescription(`<@${memberTarget.user.id}> was **banned** from the __guild__ by <@${message.member.user.id}>!`)
-                .setFooter('200 OK')
+                .setFooter(`To unban a member, go to "Server Settings" > "Bans".\nmessage.content = ${message.content}`)
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
-                .setColor('#800080')
-                .setTitle('Error 403: "' + message.content + '"')
-                .setDescription('Could **not** perform the __command__! The **target** __has__ an **equal** or **higher** role __than__ the **sender**.')
-                .setFooter('403 FORBIDDEN')
+                .setColor('#ff0000')
+                .setTitle('Permissions error')
+                .setDescription(`<@${memberTarget.user.id}> __has__ an **equal** or **higher** role __than__ <@${message.member.user.id}>.`)
+                .setFooter(`message.content = ${message.content}`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
-                .setColor('#800080')
-                .setTitle('Error 403: "' + message.content + '"')
-                .setDescription('Could **not** perform the __command__! The **target** is **immune** to this command')
-                .setFooter('403 FORBIDDEN')
+                .setColor('#ff0000')
+                .setTitle('Permissions error')
+                .setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
+                .setFooter(`message.content = ${message.content}`)
                 
                 if(memberTarget == message.member){     //Checks if the targeted member is equal to the sender
                     const cannotUseOnSelf = new Discord.MessageEmbed()
                     .setColor('#800080')
-                    .setTitle('Error 403: "' + message.content + '"')
+                    .setTitle('Error')
                     .setDescription('You **cannot** use this __command__ on **yourself**!')
-                    .setFooter('403 FORBIDDEN')
+                    .setFooter(`message.content = ${message.content}`)
 
                     message.channel.send(cannotUseOnSelf);
                 }
@@ -66,22 +66,22 @@ module.exports = {
             }
             else{
                 const targetError = new Discord.MessageEmbed()
-                .setColor('#800080')
-                .setTitle('Error 449: "' + message.content + '"')
-                .setDescription('Invalid command! You **must** __mention__ a member. Correct usage: %ban <@user>.')
-                .setFooter('449 RETRY_WITH')
-
+                .setColor('#ff0000')
+                .setTitle('Error')
+                .setDescription('The targeted member is invalid!')
+                .setFooter(`message.content = ${message.content}`)
+                
                 message.channel.send(targetError)
             }
         }
         else{   //If the sender does not have the role "Administrator" or higher
-            const permissionsTooLow = new Discord.MessageEmbed()
-            .setColor('#800080')
-            .setTitle('Error 403: "' + message.content + '"')
+            const permissionsError = new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('Permissions error')
             .setDescription("I'm sorry but you do **not** have the __permissions__ to **perform** this __command__. Please contact the server administrators if you believe that this is an error.")
-            .setFooter('403 FORBIDDEN')
+            .setFooter(`message.content = ${message.content}`)
 
-            message.channel.send(permissionsTooLow)
+            message.channel.send(permissionsError)
         }
     }
 }

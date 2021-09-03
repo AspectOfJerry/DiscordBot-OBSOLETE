@@ -4,6 +4,6 @@ module.exports = {
     description: "Usage: %testenable",
     execute(message, args, cmd, client, Discord){
   
-      //message.channel.send('There is currently nothing to test!');
+      message.channel.reply('There is currently nothing to test!');
     }
 }

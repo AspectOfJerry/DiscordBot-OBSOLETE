@@ -9,19 +9,19 @@ module.exports = {
         const voiceChannel = message.member.voice.channel;
 
         const requireUserBeInChannel = new Discord.MessageEmbed()
-        .setColor('#800080')
-        .setTitle('Error 400: "' + message.content + '"')
-        .setDescription('Could **not** perform the __command__! You must **be** in a __voice channel__ to use this command!')
-        .setFooter('400 BAD_REQUEST')
+            .setColor('#800080')
+            .setTitle('Error')
+            .setDescription('Could **not** perform the __command__! You must **be** in a __voice channel__ to use this command!')
+            .setFooter('Join a voice channel and then, perform the command!')
 
         if(!voiceChannel) return message.channel.send(requireUserBeInChannel)
         await voiceChannel.leave();
 
         const leave = new Discord.MessageEmbed()
-        .setColor('#00ff00')
-        .setTitle('Executed: "' + message.content + '"')
-        .setDescription('Successfully left the channel!')
-        .setFooter('200 OK')
+            .setColor('#00ff00')
+            .setTitle('Disconnected from voice channel')
+            .setDescription('Successfully left the channel!')
+            .setFooter(`message.content = ${message.content}`)
         
         message.channel.send(leave)
     }

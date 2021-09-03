@@ -1,8 +1,8 @@
 module.exports = {
-    name: 'alt_f4',
-    aliases: ['altf4'],
+    name: 'altf4',
+    aliases: ['alt-f4', 'alt_f4'],
     cooldown: 10,
-    description: 'Usage: "%alt_f4"',
+    description: 'Usage: "%altf4"',
     execute(message, args, cmd, client, Discord){
         if(message.member.roles.cache.has('869709691679289354')){ //BotP R1
             const alt_f4 = new Discord.MessageEmbed()
@@ -22,11 +22,13 @@ module.exports = {
             .then(() => process.exit(0));
         }
         else{
-            const permissionError = new Discord.MessageEmbed()
+            const permissionsError = new Discord.MessageEmbed()
             .setColor('#ff0000')
+            .setTitle('Permissions error')
             .setDescription("I'm sorry but you do **not** have the __permissions__ to **perform** this __command__. Please contact the server administrators if you believe that this is an error.")
+            .setFooter(`message.content = ${message.content}`)
 
-            message.channel.send(permissionError)
+            message.channel.send(permissionsError)
         }
     }
 }

@@ -14,13 +14,31 @@ module.exports = {
         .then(message => {
           message = message.first()
             if(message.content.toUpperCase() == 'ROCK'){
-                message.channel.send('Paper!');
+                const rock = new Discord.MessageEmbed()
+                    .setColor('#00ff00')
+                    .setTitle('You loose!')
+                    .setDescription("Bot's choice: Paper!")
+                    .setFooter(`Input: "${message}".`)
+
+                message.channel.send(rock)
             }
             else if(message.content.toUpperCase() == 'PAPER'){
-                message.channel.send('Scissors!');
+                const paper = new Discord.MessageEmbed()
+                    .setColor('#00ff00')
+                    .setTitle('You loose!')
+                    .setDescription("Bot's choice: Scissors!")
+                    .setFooter(`Input: "${message}".`)
+
+                message.channel.send(paper)
             }
             else if(message.content.toUpperCase() == 'SCISSORS'){
-                message.channel.send('Rock!');
+                const scissors = new Discord.MessageEmbed()
+                    .setColor('#00ff00')
+                    .setTitle('You loose!')
+                    .setDescription("Bot's choice: Rock!")
+                    .setFooter(`Input: "${message}".`)
+
+                message.channel.send(scissors)
             }
         })
         .catch(collected => {

@@ -42,13 +42,13 @@ module.exports = (Discord, client, message) => {
     try{
         command.execute(message, args, cmd, client, Discord);
     } catch (err){
-        const error500 = new Discord.MessageEmbed()
+        const unknownError = new Discord.MessageEmbed()
         .setColor('#800080')
-        .setTitle('Unknown Error')
-        .setDescription('An error occurred while extecuting the command. No further informations.')
-        .setFooter('500 INTERNAL_SERVER_ERROR, console.log(err);')
+        .setTitle('Unexpected error')
+        .setDescription('An unknown error occurred while extecuting the command. No further information.')
+        .setFooter(`message.content: "${message.content}"\nconsole.log(err);`)
 
-        message.reply(error500);
+        message.reply(unknownError);
         console.log(err);
     }
 }
