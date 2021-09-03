@@ -10,5 +10,5 @@ Versions of the project that are currently being supported with security updates
 
 ## Reporting a Vulnerability
 
-To report a vulneravility, message Jerry#3756 on Discord or join the Discord server (LINK_HERE)
+To report a vulnerability, message Jerry#3756 on Discord or join the Discord server (LINK_HERE)
 If you are in the Discord Server, go in #vulnerability and mention the Bot Team.
