@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 5,
     description: 'Usage: "%party <@user>"',
     execute(message, args, cmd, client, Discord){
-        message.channel.reply('This feature will be add on the next release!'); return
+        message.reply('This feature will be add on the next release!'); return
         if(message.member.user.id === '611633988515266562'){
             const target = message.mentions.users.first();
 

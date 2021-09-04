@@ -14,7 +14,7 @@ module.exports = {
             .setTitle('Error: "' + message.content + '"')
             .setDescription("Invalid command! You must __add__ or __remove__ a user! Correct usage: %friend <add/remove> <@user>.")
 
-            if(!args[0]) return message.channel.reply(requireArgs0);
+            if(!args[0]) return message.reply(requireArgs0);
 
             if(args[0] == "add"){
                 const memberTarget = message.guild.members.cache.get(target.id);

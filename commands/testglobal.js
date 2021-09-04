@@ -4,6 +4,6 @@ module.exports = {
     description: "Usage: %testglobal",
     execute(message, args, cmd, client, Discord){
       
-      message.channel.reply('There is currently nothing to test!');
+      message.reply('There is currently nothing to test!');
     }
 }
