@@ -4,6 +4,6 @@ module.exports = {
     cooldown: 15,
     description: 'Usage: "%lockdown"',
     execute(message, args, cmd, client, Discord){
-        message.channel.reply('This feature will be add on the next release!'); return
+        message.reply('This feature will be add on the next release!'); return
     }
 }

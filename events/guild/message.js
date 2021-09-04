@@ -20,7 +20,7 @@ module.exports = (Discord, client, message) => {
         .setDescription('An unknown error occurred while extecuting the command. No further information.')
         .setFooter(`message.content: "${message.content}"\nconsole.log(err);`)
 
-        message.channel.reply(unknownError);
+        message.reply(unknownError);
         console.log(err);
     }
 }
