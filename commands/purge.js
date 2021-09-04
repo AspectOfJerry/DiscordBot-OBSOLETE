@@ -13,7 +13,7 @@ module.exports = {
                 .setDescription("Invalid command! You must enter a value! Correct usage: %purge <value>.")
                 .setFooter(`message.content = ${message.content}`)
 
-            if(!args[0]) return message.reply(requireArgs0);
+            if(!args[0]) return message.channel.reply(requireArgs0);
 
 
             const Args0IsNaN = new Discord.MessageEmbed()
@@ -22,7 +22,7 @@ module.exports = {
                 .setDescription("Invalid usage! The value must be a whole number between 1 and 25! Correct usage: %purge <value>.")
                 .setFooter(`message.content = ${message.content}`)
 
-            if(isNaN(args[0])) return message.reply(Args0IsNaN);
+            if(isNaN(args[0])) return message.channel.reply(Args0IsNaN);
 
 
             const requireArgs0is1to25 = new Discord.MessageEmbed()
