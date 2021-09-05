@@ -5,7 +5,7 @@ module.exports = {
     description: 'Usage: "%purge <value>"',
     async execute(message, args, cmd, client, Discord){
         
-        if(message.member.roles.cache.has('869995421794193518')){ //BotP R3
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){ //BotP R3
 
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#800080')
@@ -52,7 +52,7 @@ module.exports = {
                     .setDescription(`<@${message.member.user.id}> purged ` + args[0] + ` messages in ${message.channel}`)
                     .setFooter(`message.content = ${message.content}`)
 
-                message.guild.channels.cache.get('874419074535415848').send(userPurgedMessages)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userPurgedMessages)
         });
         }else{
                 const permissionsError = new Discord.MessageEmbed()

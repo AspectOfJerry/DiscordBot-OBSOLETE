@@ -6,6 +6,7 @@ module.exports = {
     description: 'Usage: "%unmute <@user>"',
     execute(message, args, cmd, client, Discord){
 
+        message.channel.send('This feature is temporarily down'); return;
         if(message.member.roles.cache.has('869995421794193518')){
             const target = message.mentions.users.first();
             if(target){
@@ -15,9 +16,9 @@ module.exports = {
     
                 const userUnmutedBy = new Discord.MessageEmbed()
                     .setColor('#00ff00')
-                    .setTitle('User unmute: "' + message.content + '"')
+                    .setTitle('User unmute')
                     .setDescription(`<@${memberTarget.user.id}> was **unmuted** by <@${message.member.user.id}>!`)
-                    .setFooter('200 OK')
+                    .setFooter(`To mute a member, execute "%mute <@user> (<duration>)".\nmessage.content = ${message.content}`)
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
@@ -33,8 +34,9 @@ module.exports = {
 
                 const userNotMuted = new Discord.MessageEmbed()
                     .setColor('#800080')
-                    .setTitle('Error: "' + message.content + '"')
+                    .setTitle('Error')
                     .setDescription('Could **not** perform the __command__! The **target** is **not** __muted__!')
+                    .setFooter(`message.content = ${message.content}`)
 
                 if(message.member == memberTarget){
                     const cannotUseOnSelf = new Discord.MessageEmbed()

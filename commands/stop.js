@@ -40,7 +40,7 @@ module.exports = {
             .setDescription(`Exiting process with code 0`)
             .setFooter('.then(() => process.exit(0));')
 
-        if(message.member.roles.cache.has('869995421794193518')){   //Checks if the sender has the role "BotP R3"
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){   //Checks if the sender has the role "BotPL3"
             let filter = m => m.author.id === message.author.id
 
             message.channel.send(requireConfirm);

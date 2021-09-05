@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 10,
     description: 'Usage: "%altf4"',
     execute(message, args, cmd, client, Discord){
-        if(message.member.roles.cache.has('869709691679289354')){ //BotP R1
+        if(message.member.roles.cache.find(role => role.name === 'BotPL1')){ //BotPL1
             const alt_f4 = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Terminating Process')

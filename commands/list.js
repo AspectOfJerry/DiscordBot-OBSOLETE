@@ -4,8 +4,7 @@ module.exports = {
     execute(message, args, cmd, client, Discord){
         const commands = new Discord.MessageEmbed()
             .setColor('#0000ff')
-            .setTitle('Executed: "' + message.content + '"')
-            .setDescription('__Usable Commands: 13__')
+            .setTitle('Command list')
             .addFields(
                 {name: '%ban <@user>, Require "BotP R1"', value: 'Use: Bans a member from the guild. <@user> must be a mention. *Command is fully fault tolerant.*'},
                 {name: '%beep', value: 'Use: Returns "Boop!". . *Command is fully fault tolerant.*'},
@@ -27,6 +26,7 @@ module.exports = {
                 {name: '%testglobal (<...>)', value: 'Use: Command to initiate a code that is currently being tested. *Experimental, warnings, errors and non-zero exit codes can occur.*'},
                 {name: '%unmute <@user>', value: 'Use: Unmutes a muted user. *Command is fully fault tolerant.*'}
             )
+            .setFooter(`message.content = ${message.content}`)
 
         message.channel.send(commands);
     }

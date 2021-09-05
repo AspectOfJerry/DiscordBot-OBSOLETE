@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 10,
     description: "Usage: %kick <@user>",
     execute(message, args, cmd, client, Discord){
-        if(message.member.roles.cache.has('869995231049818143')){   //RoleID for "BotP R2"
+        if(message.member.roles.cache.find(role => role.name === 'BotPL2')){   //RoleID for "BotPL2"
 
             const target = message.mentions.users.first();
 
@@ -13,7 +13,7 @@ module.exports = {
 
                 const userKickedBy = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setTitle('User kick: "' + message.content + '"')
+                    .setTitle('User kick')
                     .setDescription(`<@${memberTarget.user.id}> was **kicked** from the __guild__ by <@${message.member.user.id}>!`)
                     .setFooter(`message.content = ${message.content}`)
 
@@ -40,48 +40,62 @@ module.exports = {
                     message.channel.send(cannotUseOnSelf);
                 }
                 else{
-                    if(message.member.roles.cache.has('631943246095974400')){   //Checks if the sender has the "Moderator" role
-                        if(memberTarget.roles.cache.has('798556730459422730')){ //Checks if the target has the "Bots" roles
+                    if(message.member.roles.cache.find(role => role.name === 'BotPL0')){   //Checks if the sender has the "BotPL0" role
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){ //Checks if the target has the "Bots" roles
                             message.channel.send(targetImmune403);
                         }
-                        else if(memberTarget.roles.cache.has('631943246095974400')){    //Checks if the target has the "Moderator" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else if(memberTarget.roles.cache.has('642107004076163103')){    //Checks if the target has the "Administrator" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else if(memberTarget.roles.cache.has('697914535863910561')){    //Checks if the target has the "Owner" role
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){    //Checks if the target has the "Moderator" role
                             message.channel.send(targetHigherThanSender403);
                         }
                         else{
                             memberTarget.kick().catch(console.error);   //Kick the targeted member
                             message.channel.send(userKickedBy)
-                            message.guild.channels.cache.get('874419074535415848').send(userKickedBy)
-                            message.guild.channels.cache.get('857850833982193665').send(userKickedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                         }
                     }
-                    else if(message.member.roles.cache.has('642107004076163103')){  //Checks if the sender has the "Administrator" role
-                        if(memberTarget.roles.cache.has('798556730459422730')){ //Checks if the target has the "Bots" roles
+                    else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){  //Checks if the sender has the "BotPL1" role
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){ //Checks if the target has the "Bots" roles
                             message.channel.send(targetImmune403);
                         }
-                        else if(memberTarget.roles.cache.has('642107004076163103')){    //Chechks if the target has the "Administrator" role
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){    //Chechks if the target has the "BotPL2" role
                             message.channel.send(targetHigherThanSender403);
                         }
-                        else if(memberTarget.roles.cache.has('697914535863910561')){    //Chechks if the target has the "Owner" role
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){    //Chechks if the target has the "BotPL1" role
                             message.channel.send(targetHigherThanSender403);
                         }
                         else{
                             memberTarget.kick().catch(console.error);   //Kick the targeted member
                             message.channel.send(userKickedBy)
-                            message.guild.channels.cache.get('874419074535415848').send(userKickedBy)
-                            message.guild.channels.cache.get('857850833982193665').send(userKickedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                        }
+                    }
+                    else if(message.member.roles.find(role => role.name === 'BotPL2')){
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){
+                            message.channel.send(targetImmune403)
+                        }
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){
+                            message.channel.send(targetHigherThanSender403)
+                        }
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){
+                            message.channel.send(targetHigherThanSender403)
+                        }
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){
+                            message.channel.send(targetHigherThanSender403)
+                        }
+                        else{
+                            memberTarget.kick().catch(console.error);   //Kick the targeted member
+                            message.channel.send(userKickedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                         }
                     }
                     else{
                         memberTarget.kick().catch(console.error);   //Kick the targeted member
                         message.channel.send(userKickedBy)
-                        message.guild.channels.cache.get('874419074535415848').send(userKickedBy)
-                        message.guild.channels.cache.get('857850833982193665').send(userKickedBy)
+                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
+                        message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                     }
                 }
             }

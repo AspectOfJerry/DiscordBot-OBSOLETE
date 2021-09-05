@@ -22,7 +22,7 @@ module.exports = {
                 if(!args[1]){   //Checks if args[1] is not present
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
-                        .setTitle('Error: "' + message.content + '"')
+                        .setTitle('Error')
                         .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
                         .setFooter(`message.content = ${message.content}`)
 

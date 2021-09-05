@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 10,
     description: 'Usage: "%birthday <@user>"',
     execute(message, args, cmd, client, Discord){
-        if(message.member.roles.cache.has('869995421794193518')){ //BotP R3
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){ //BotPL3
             const target = message.mentions.users.first();
             if(target){
             const memberTarget = message.guild.members.cache.get(target.id);
@@ -17,7 +17,7 @@ module.exports = {
             .setFooter('We wish them a happy birthday!')
     
             memberTarget.roles.add(birthdayRole.id);
-            message.guild.channels.cache.get('854475028027801640').send(birthday)
+            message.guild.channels.name.cache.find(role => role.name === 'Friend').send(birthday)
             message.guild.channels.cache.get('857978482374344734').send(birthday)
             message.guild.channels.cache.get('857982855644446730').send(birthday)
             message.guild.channels.cache.get('858100435768049684').send(birthday)

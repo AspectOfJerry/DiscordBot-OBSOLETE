@@ -3,7 +3,7 @@ module.exports = {
     cooldown: 10,
     description: "Usage: %ban <@user>",
     execute(message, args, cmd, client, Discord){
-        if(message.member.roles.cache.has('869709691679289354')){   //RoleID for "BotP R1"
+        if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //RoleID for "BotP R1"
             const target = message.mentions.users.first();
 
             if(target){     //Checks if the target is present
@@ -13,7 +13,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('User ban')
                 .setDescription(`<@${memberTarget.user.id}> was **banned** from the __guild__ by <@${message.member.user.id}>!`)
-                .setFooter(`To unban a member, go to "Server Settings" > "Bans".\nmessage.content = ${message.content}`)
+                .setFooter(`To unban a member, go to "Server Settings" > "Bans" > Click on the user > "Revoke Ban".\nmessage.content = ${message.content}`)
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
@@ -37,30 +37,45 @@ module.exports = {
                     message.channel.send(cannotUseOnSelf);
                 }
                 else{
-                    if(message.member.roles.cache.has('642107004076163103')){   //Checks if the sender has the "Administrator" role
-                        if(memberTarget.roles.cache.has(targetImmune403)){     //Checks if the target has the "Bots" roles
-                            message.channel.send('Could not perform the command (403)! The targeted member is immune to this command.');
+                    if(message.member.roles.cache.find(role => role.name === 'BotPL0')){   //Checks if the sender has the "BotPL0" role
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){     //Checks if the target has the "Bots" roles
+                            message.channel.send(targetImmune403);
                         }
-                        else if(memberTarget.roles.cache.has('642107004076163103')){     //Checks if the target has the "Administrator" role
-                            message.channel.send(targetHigherThanSender403)
-                        }
-                        else if(memberTarget.roles.cache.has('697914535863910561')){    //Checks if the target has the "Owner" role
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){     //Checks if the target has the "BotPL0" role
                             message.channel.send(targetHigherThanSender403)
                         }
                         else{
                             memberTarget.ban().catch(console.error);    //Ban the targeted member
 
                             message.channel.send(userBannedBy)
-                            message.guild.channels.cache.get('874419074535415848').send(userBannedBy)
-                            message.guild.channels.cache.get('857850833982193665').send(userBannedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
+                        }
+                    }
+                    else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){
+                            message.channel.send(targetImmune403)
+                        }
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){
+                            message.channel.send(targetHigherThanSender403)
+                        }
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){
+                            message.channel.send(targetHigherThanSender403)
+                        }
+                        else{
+                            memberTarget.ban().catch(console.error);    //Ban the targeted member
+
+                            message.channel.send(userBannedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
                         }
                     }
                     else{
                         memberTarget.ban().catch(console.error);    //Ban the targeted member
 
                         message.channel.send(userBannedBy)
-                        message.guild.channels.cache.get('874419074535415848').send(userBannedBy)
-                        message.guild.channels.cache.get('857850833982193665').send(userBannedBy)
+                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
+                        message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
                     }
                 }
             }

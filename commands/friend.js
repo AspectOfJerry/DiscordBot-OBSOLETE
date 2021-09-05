@@ -10,9 +10,10 @@ module.exports = {
             let friendRole = message.guild.roles.cache.find(role => role.name === 'Friend');
 
             const requireArgs0 = new Discord.MessageEmbed()
-            .setColor('#ff0000')
-            .setTitle('Error: "' + message.content + '"')
-            .setDescription("Invalid command! You must __add__ or __remove__ a user! Correct usage: %friend <add/remove> <@user>.")
+                .setColor('#ff0000')
+                .setTitle('Error')
+                .setDescription("Invalid command! You must __add__ or __remove__ a user! Correct usage: %friend <add/remove> <@user>.")
+                .setFooter(`message.content = ${message.content}`)
 
             if(!args[0]) return message.reply(requireArgs0);
 
@@ -20,15 +21,16 @@ module.exports = {
                 const memberTarget = message.guild.members.cache.get(target.id);
                 if(!args[1]){
                     const requireArgs1 = new Discord.MessageEmbed()
-                    .setColor('#00ff00')
-                    .setTitle('Error: "' + message.content + '"')
-                    .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
+                        .setColor('#00ff00')
+                        .setTitle('Error')
+                        .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
+                        .setFooter(`message.content = ${message.content}`)
 
                     message.channel.send(requireArgs1)
                 }
                 else{
                     if(target){
-                        if(memberTarget.roles.cache.has('877984769793744896')){
+                        if(memberTarget.roles.cache.find(role => role.name === 'Friends')){
                             const alreadyFriends = new Discord.MessageEmbed()
                             .setColor('#ff0000')
                             .setDescription(`You are already friends with <@${memberTarget.user.id}>`)
