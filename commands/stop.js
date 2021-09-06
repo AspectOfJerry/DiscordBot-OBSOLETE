@@ -8,7 +8,7 @@ module.exports = {
         const requireConfirm = new Discord.MessageEmbed()
             .setColor('#ff10f0')
             .setTitle('Do you **really** want to __terminate__ the process?')
-            .setDescription(`**Please read:**\nExecuting "%stop", "%terminate", "%shutdown" or "%shut_down" will terminate/exit the bot's program and thus, making the bot **unusable** until a bot operator __manually__ restarts it. Use is command **only** if __needed__! If the command is **executed** with __no__ valid __reason__, __consequences__ will apply. The **only** way to __restart__ the bot is via the terminal/command prompt which is __only__ accesible by the bot's __operators__.\n**Do you** __understand__ and __agree__? You have 30 seconds: "yes/no".`)
+            .setDescription(`**Please read**\nThis command **exits** the bot's program rendering the bot **unusable** until a bot **operator** manually restarts it via the terminal. Use the command **only** if **needed**! Executing the command **without** reason will result in a **demotion**.\nDo you understand and agree? You have 30 seconds: "yes/no".`)
             .setFooter('Request pending [30s]')
 
         const requireDoubleConfirm = new Discord.MessageEmbed()
@@ -90,7 +90,7 @@ module.exports = {
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Permissions error')
-                .setDescription("I'm sorry but you do **not** have the __permissions__ to **perform** this __command__. Please contact the server administrators if you believe that this is an error.")
+                .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
                 .setFooter(`message.content = ${message.content}`)
 
             message.channel.send(permissionsError)

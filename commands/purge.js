@@ -54,12 +54,12 @@ module.exports = {
 
                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userPurgedMessages)
         });
-        }else{
-                const permissionsError = new Discord.MessageEmbed()
-                    .setColor('#ff0000')
-                    .setTitle('Permissions error')
-                    .setDescription("I'm sorry but you do **not** have the __permissions__ to **perform** this __command__. Please contact the server administrators if you believe that this is an error.")
-                    .setFooter(`message.content = ${message.content}`)
+        } else{
+            const permissionsError = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setTitle('Permissions error')
+                .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
+                .setFooter(`message.content = ${message.content}`)
 
             message.channel.send(permissionsError)
         }
