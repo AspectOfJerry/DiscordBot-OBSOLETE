@@ -14,13 +14,13 @@ module.exports = {
                 const userKickedBy = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('User kick')
-                    .setDescription(`<@${memberTarget.user.id}> was **kicked** from the __guild__ by <@${message.member.user.id}>!`)
+                    .setDescription(`<@${memberTarget.user.id}> was **kicked** from the guild by <@${message.member.user.id}>!`)
                     .setFooter(`message.content = ${message.content}`)
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Permissions error')
-                    .setDescription(`<@${memberTarget.user.id}> __has__ an **equal** or **higher** role __than__ <@${message.member.user.id}>.`)
+                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
                     .setFooter(`message.content = ${message.content}`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
@@ -34,7 +34,7 @@ module.exports = {
                     const cannotUseOnSelf = new Discord.MessageEmbed()
                         .setColor('#800080')
                         .setTitle('Error')
-                        .setDescription('You **cannot** use this __command__ on **yourself**!')
+                        .setDescription('You **cannot** use this command on **yourself**!')
                         .setFooter(`message.content = ${message.content}`)
 
                     message.channel.send(cannotUseOnSelf);
@@ -92,7 +92,7 @@ module.exports = {
                         }
                     }
                     else{
-                        memberTarget.kick().catch(console.error);   //Kick the targeted member
+                        memberTarget.kick().catch(console.error);   //Kick the targeted
                         message.channel.send(userKickedBy)
                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                         message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
@@ -104,7 +104,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid!')
-                    .setFooter(`message.content = ${message.content}`)
+                    .setFooter(`message.content = ${message.content}\n%kick <args[0]>\n              ^`)
                 
                 message.channel.send(targetError)
             }

@@ -23,7 +23,7 @@ const targetImmune403 = new Discord.MessageEmbed()
 const targetHigherThanSender403 = new Discord.MessageEmbed()
     .setColor('#ff0000')
     .setTitle('Permissions error')
-    .setDescription(`<@${memberTarget.user.id}> __has__ an **equal** or **higher** role __than__ <@${message.member.user.id}>.`)
+    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
     .setFooter(`message.content = ${message.content}`)
 
 //Cannot use the command on yourself
@@ -31,7 +31,7 @@ const targetHigherThanSender403 = new Discord.MessageEmbed()
 const cannotUseOnSelf = new Discord.MessageEmbed()
     .setColor('#800080')
     .setTitle('Error')
-    .setDescription('You **cannot** use this __command__ on **yourself**!')
+    .setDescription('You **cannot** use this command on **yourself**!')
     .setFooter(`message.content = ${message.content}`)
 
 //When the target is not found
@@ -43,3 +43,9 @@ const targetError = new Discord.MessageEmbed()
     .setFooter(`message.content = ${message.content}`)
 
 message.channel.send(targetError)
+
+//
+
+.setFooter(`TIPS\nMESSAGE.CONTENT\nERROR\nERROR_LOCATION`)
+
+//

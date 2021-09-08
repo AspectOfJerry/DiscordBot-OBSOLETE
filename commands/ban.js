@@ -10,29 +10,29 @@ module.exports = {
                 const memberTarget = message.guild.members.cache.get(target.id);
 
                 const userBannedBy = new Discord.MessageEmbed()
-                .setColor('#ff0000')
-                .setTitle('User ban')
-                .setDescription(`<@${memberTarget.user.id}> was **banned** from the __guild__ by <@${message.member.user.id}>!`)
-                .setFooter(`To unban a member, go to "Server Settings" > "Bans" > Click on the user > "Revoke Ban".\nmessage.content = ${message.content}`)
+                    .setColor('#ff0000')
+                    .setTitle('User ban')
+                    .setDescription(`<@${memberTarget.user.id}> was **banned** from the guild by <@${message.member.user.id}>!`)
+                    .setFooter(`To unban a member, go to "Server Settings" > "Bans" > Click on the user > "Revoke Ban".\nmessage.content = ${message.content}`)
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
-                .setColor('#ff0000')
-                .setTitle('Permissions error')
-                .setDescription(`<@${memberTarget.user.id}> __has__ an **equal** or **higher** role __than__ <@${message.member.user.id}>.`)
-                .setFooter(`message.content = ${message.content}`)
+                    .setColor('#ff0000')
+                    .setTitle('Permissions error')
+                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
+                    .setFooter(`message.content = ${message.content}`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
-                .setColor('#ff0000')
-                .setTitle('Permissions error')
-                .setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
-                .setFooter(`message.content = ${message.content}`)
+                    .setColor('#ff0000')
+                    .setTitle('Permissions error')
+                    .setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
+                    .setFooter(`message.content = ${message.content}`)
                 
                 if(memberTarget == message.member){     //Checks if the targeted member is equal to the sender
                     const cannotUseOnSelf = new Discord.MessageEmbed()
-                    .setColor('#800080')
-                    .setTitle('Error')
-                    .setDescription('You **cannot** use this __command__ on **yourself**!')
-                    .setFooter(`message.content = ${message.content}`)
+                        .setColor('#800080')
+                        .setTitle('Error')
+                        .setDescription('You **cannot** use this command on **yourself**!')
+                        .setFooter(`message.content = ${message.content}`)
 
                     message.channel.send(cannotUseOnSelf);
                 }

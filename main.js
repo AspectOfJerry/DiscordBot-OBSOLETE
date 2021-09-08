@@ -23,8 +23,8 @@ client.on('guildMemberAdd', guildMember =>{
     .setDescription(`<@${guildMember.user.id}> joined the server!`)
     .setFooter('Welcome!')
 
-    guildMember.guild.channels.cache.get('874419074535415848').send(userJoinMessage)
-    guildMember.guild.channels.cache.get('857850833982193665').send(userJoinMessage)
+    guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userJoinMessage)
+    guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userJoinMessage)
 });
 
 client.on('guildMemberRemove', guildMember =>{
@@ -34,10 +34,8 @@ client.on('guildMemberRemove', guildMember =>{
     .setDescription(`<@${guildMember.user.id}> left the server!`)
     .setFooter('Goodbye!')
 
-    guildMember.guild.channels.cache.get('874419074535415848').send(userLeaveMessage)
-    guildMember.guild.channels.cache.get('857850833982193665').send(userLeaveMessage)
+    guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userLeaveMessage)
+    guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userLeaveMessage)
 });
-    //client.user.setActivity('Visual Studio Code', { type: 'PLAYING'}).catch(console.error)
-    //client.user.setActivity().catch(console.error)
 
 client.login(process.env.DISCORD_TOKEN);

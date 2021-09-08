@@ -13,6 +13,7 @@ DiscordBot
    ├─ v1
    │  ├─ v1.0.0-pre (Final few edits)
    │  ├─ v1.0.0-release (Release of v1)
+   │  ├─ v1.1.0 (Embed improvements)
    │  ├─ v1.2.5 (party.js)
    │  ├─ v1.5.0 (lockdown.js)
    │  ├─ v1.7.0 (status)
@@ -29,6 +30,10 @@ DiscordBot
 
 Formatted text for Discord
 
+Repository: https://github.com/AspectOfJerry/DiscordBot
+
+Releases:
+
 __**DiscordBot**__
 └─ __Versions__
        ├─ **v0**
@@ -42,6 +47,7 @@ __**DiscordBot**__
        ├─** v1**
         │   ├─ **v1.0.0-pre** (Final few edits)
         │   ├─ **v1.0.0-release** (Release of v1)
+        │   ├─ **v1.1.0** (Embed improvements)
         │   ├─ **v1.2.5** (party.js)
         │   ├─ **v1.5.0** (lockdown.js)
         │   ├─ **v1.7.0** (status)

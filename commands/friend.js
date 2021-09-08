@@ -7,13 +7,13 @@ module.exports = {
         if(message.member.user.id === '611633988515266562'){
             const target = message.mentions.users.first();
 
-            let friendRole = message.guild.roles.cache.find(role => role.name === 'Friend');
+            let friendRole = message.guild.roles.cache.get('877984769793744896');
 
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Error')
-                .setDescription("Invalid command! You must __add__ or __remove__ a user! Correct usage: %friend <add/remove> <@user>.")
-                .setFooter(`message.content = ${message.content}`)
+                .setDescription("Invalid command! You must **add** or **remove** a user! Correct usage: %friend <add/remove> <@user>.")
+                .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^`)
 
             if(!args[0]) return message.reply(requireArgs0);
 
@@ -24,33 +24,34 @@ module.exports = {
                         .setColor('#00ff00')
                         .setTitle('Error')
                         .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
-                        .setFooter(`message.content = ${message.content}`)
+                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^`)
 
                     message.channel.send(requireArgs1)
                 }
                 else{
                     if(target){
-                        if(memberTarget.roles.cache.find(role => role.name === 'Friends')){
+                        if(memberTarget.roles.cache.has('877984769793744896')){
                             const alreadyFriends = new Discord.MessageEmbed()
-                            .setColor('#ff0000')
-                            .setDescription(`You are already friends with <@${memberTarget.user.id}>`)
+                                .setColor('#ff0000')
+                                .setDescription(`You are already friends with <@${memberTarget.user.id}>`)
     
                             message.channel.send(alreadyFriends)
                         }
                         else{
-                            memberTarget.roles.add(friendRole.id)
+                            memberTarget.roles.add(friendRole.id).catch(console.error)
                             const addedFriend = new Discord.MessageEmbed()
-                            .setColor('#00ff00')
-                            .setDescription(`You are now friends with <@${memberTarget.user.id}>!`)
+                                .setColor('#00ff00')
+                                .setDescription(`You are now friends with <@${memberTarget.user.id}>!`)
     
                             message.channel.send(addedFriend)
                         }
                     }
                     else{
                         const invalidTarget = new Discord.MessageEmbed()
-                        .setColor('#ff0000')
-                        .setTitle('Error: "' + message.content + '"')
-                        .setDescription('The targeted member is invalid!')
+                            .setColor('#ff0000')
+                            .setTitle('Error')
+                            .setDescription('The targeted member is invalid!')
+                            .setFooter(`message.content = ${message.content}`)
 
                         message.channel.send(invalidTarget)
                     }
@@ -60,15 +61,16 @@ module.exports = {
                 const memberTarget = message.guild.members.cache.get(target.id);
                 if(!args[1]){
                     const requireArgs1 = new Discord.MessageEmbed()
-                    .setColor('#00ff00')
-                    .setTitle('Error: "' + message.content + '"')
-                    .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
+                        .setColor('#00ff00')
+                        .setTitle('Error')
+                        .setDescription("Invalid command! You must mention a user!")
+                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^`)
 
                     message.channel.send(requireArgs1)
                 }
                 else{
                     if(target){
-                        if(!memberTarget.roles.cache.has('877984769793744896')){
+                        if(!memberTarget.roles.cache.get('877984769793744896')){
                             const notFriends = new Discord.MessageEmbed()
 
                             .setColor('#ff0000')
@@ -77,7 +79,7 @@ module.exports = {
                             message.channel.send(notFriends)
                         }
                         else{
-                            memberTarget.roles.remove(friendRole.id)
+                            memberTarget.roles.remove(friendRole.id).catch(console.error)
 
                             const removedFriend = new Discord.MessageEmbed()
                             .setColor('#00ff00')
@@ -101,7 +103,7 @@ module.exports = {
                 const requireAddOrRemove = new Discord.MessageEmbed()
                 .setColor('#00ff00')
                 .setTitle('Error: "' + message.content + '"')
-                .setDescription("Invalid command! You must __add__ or __remove__ a user! Correct usage: %friend <add/remove> <@user>.")
+                .setDescription("Invalid command! You must **add** or **remove** a user! Correct usage: %friend <add/remove> <@user>.")
 
                 message.channel.send(requireAddOrRemove)
             }
@@ -110,7 +112,7 @@ module.exports = {
             const notImplementedForAll = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Error 501')
-            .setDescription('The "%friend <add/remove> <@user>" command is currently **only** available to the server __owner__!')
+            .setDescription('The "%friend <add/remove> <@user>" command is currently **only** available to the server **owner**!')
             .setFooter('501 NOT_IMPLEMENTED')
 
             message.channel.send(notImplementedForAll)

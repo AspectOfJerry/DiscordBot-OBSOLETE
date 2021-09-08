@@ -23,7 +23,7 @@ module.exports = {
                     .setColor('#ffff00')
                     .setTitle('User mute')
                     .setDescription(`<@${memberTarget.user.id}> was muted for ` + args[1] + ` by <@${message.member.user.id}>`)
-                    .setFooter(`message.content = ${message.content}`)
+                    .setFooter(`To unmute a member, execute "%unmute <@user>".\nmessage.content = ${message.content}`)
                 
                 const userUnmutedFromTimedMuteBy = new Discord.MessageEmbed()
                     .setColor('#00ff00')
@@ -34,7 +34,7 @@ module.exports = {
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Permissions error')
-                    .setDescription(`<@${memberTarget.user.id}> __has__ an **equal** or **higher** role __than__ <@${message.member.user.id}>.`)
+                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
                     .setFooter(`message.content = ${message.content}`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
@@ -47,7 +47,7 @@ module.exports = {
                     const cannotUseOnSelf = new Discord.MessageEmbed()
                         .setColor('#800080')
                         .setTitle('Error')
-                        .setDescription('You **cannot** use this __command__ on **yourself**!')
+                        .setDescription('You **cannot** use this command on **yourself**!')
                         .setFooter(`message.content = ${message.content}`)
 
                     message.channel.send(cannotUseOnSelf)
@@ -178,7 +178,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid!')
-                    .setFooter(`message.content = ${message.content}`)
+                    .setFooter(`message.content = ${message.content}\n%mute <args[0]> (<args[1]>)\n                 ^`)
                 
                 message.channel.send(targetError)
             }

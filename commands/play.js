@@ -14,10 +14,8 @@ module.exports = {
             .setColor('#ff0000')
             .setTitle('[Rick Roll Detection Module]')
             .setDescription('Failed to execute command! Unauthorized Action.')
-            .addFields(
-                { name: 'Reason: ', value: 'Rick Roll attempted', inline: true },
-                { name: 'Action: ', value: message.content, inline: true },
-            )
+            .addField('Reason: ', 'Rick Roll', true)
+            .addField('Action: ', `${message.content}`, true)
             .setFooter(`An action was blocked by the [Rick Roll Detection Module].`)
 
         //Checking for the voicechannel and permissions.

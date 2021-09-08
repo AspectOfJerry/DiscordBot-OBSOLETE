@@ -6,8 +6,7 @@ module.exports = {
     description: 'Usage: "%unmute <@user>"',
     execute(message, args, cmd, client, Discord){
 
-        message.channel.send('This feature is temporarily down'); return;
-        if(message.member.roles.cache.has('869995421794193518')){
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){
             const target = message.mentions.users.first();
             if(target){
                 let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
@@ -23,7 +22,7 @@ module.exports = {
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Permissions error')
-                    .setDescription(`<@${memberTarget.user.id}> __has__ an **equal** or **higher** role __than__ <@${message.member.user.id}>.`)
+                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
                     .setFooter(`message.content = ${message.content}`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
@@ -35,15 +34,15 @@ module.exports = {
                 const userNotMuted = new Discord.MessageEmbed()
                     .setColor('#800080')
                     .setTitle('Error')
-                    .setDescription('Could **not** perform the __command__! The **target** is **not** __muted__!')
+                    .setDescription('Could **not** perform the command! The **target** is **not** muted!')
                     .setFooter(`message.content = ${message.content}`)
 
                 if(message.member == memberTarget){
                     const cannotUseOnSelf = new Discord.MessageEmbed()
                         .setColor('#800080')
                         .setTitle('Error')
-                        .setDescription('You **cannot** use this __command__ on **yourself**!')
-                        .setFooter(`message.content = ${message.content}`)
+                        .setDescription('You **cannot** use this command on **yourself**!')
+                        .setFooter(`message.content = ${message.content}\n%unmute <args[0]>\n                      ^`)
 
                     message.channel.send(cannotUseOnSelf)
                 }
@@ -52,51 +51,80 @@ module.exports = {
                         message.channel.send(userNotMuted);
                     }
                     else{
-                        if(message.member.roles.cache.has('802349057112670278')){   //Checks if the message sender has the "Staff" role
-                            if(memberTarget.roles.cache.has('798556730459422730')){     //Checks if the target has the "Bots" roles
+                        if(message.member.roles.cache.find(role => role.name === 'BotPL0')){   //Checks if the message sender has the "BotPL0" role
+                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')){     //Checks if the target has the "Bots" roles
                                 message.channel.send(targetImmune403);
                             }
-                            else if(memberTarget.roles.cache.has('802349057112670278')){   //Checks if the target has the "Staff" role
-                                message.channel.send(targetHigherThanSender403);
-                            }
-                            else if(memberTarget.roles.cache.has('631943246095974400')){    //Checks if the target has the "Moderator" role
-                                message.channel.send(targetHigherThanSender403);
-                            }
-                            else if(memberTarget.roles.cache.has('642107004076163103')){    //Checks if the target has the "Administrator" role
-                                message.channel.send(targetHigherThanSender403);
-                            }
-                            else if(memberTarget.roles.cache.has('697914535863910561')){    //Checks if the target has the "Owner" role
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){   //Checks if the target has the "BotPL0" role
                                 message.channel.send(targetHigherThanSender403);
                             }
                             else{
                                 memberTarget.roles.remove(muteRole.id);
                                 message.channel.send(userUnmutedBy)
-                                message.guild.channels.cache.get(userUnmutedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                             }
                         }
-                        else if(message.member.roles.cache.has('631943246095974400')){  //Checks if the target has the "Moderator" role
-                            if(memberTarget.roles.cache.has('798556730459422730')){     //Checks if the target has the "Bots" roles
+                        else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){  //Checks if the sender has the "BotPL1" role
+                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')){     //Checks if the target has the "Bots" roles
                                 message.channel.send(targetImmune403);
                             }
-                            else if(memberTarget.roles.cache.has('631943246095974400')){    //Checks if the target has the "Moderator" role
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){    //Checks if the target has the "BotPL0" role
                                 message.channel.send(targetHigherThanSender403);
                             }
-                            else if(memberTarget.roles.cache.has('642107004076163103')){    //Checks if the target has the "Administrator" role
-                                message.channel.send(targetHigherThanSender403);
-                            }
-                            else if(memberTarget.roles.cache.has('697914535863910561')){    //Checks if the target has the "Owner" role
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){    //Checks if the target has the "BotPL1" role
                                 message.channel.send(targetHigherThanSender403);
                             }
                             else{
                                 memberTarget.roles.remove(muteRole.id);
                                 message.channel.send(userUnmutedBy)
-                                message.guild.channels.cache.get(userUnmutedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                            }
+                        }
+                        else if(message.member.roles.cache.find(role => role.name === 'BotPL2')){
+                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')){
+                                message.channel.send(targetImmune403)
+                            }
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotsPL0')){
+                                message.channel.send(targetHigherThanSender403)
+                            }
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){
+                                message.channel.send(targetHigherThanSender403)
+                            }
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){
+                                message.channel.send(targetHigherThanSender403)
+                            }
+                            else{
+                                memberTarget.roles.remove(muteRole.id);
+                                message.channel.send(userUnmutedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                            }
+                        }
+                        else if(message.member.roles.cache.find(role => role.name === 'BotPL3')){
+                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')){
+                                message.channel.send(targetImmune403)
+                            }
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){
+                                message.channel.send(targetHigherThanSender403)
+                            }
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){
+                                message.channel.send(targetHigherThanSender403)
+                            }
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){
+                                message.channel.send(targetHigherThanSender403)
+                            }
+                            else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')){
+                                message.channel.send(targetHigherThanSender403)
+                            }
+                            else{
+                                memberTarget.roles.remove(muteRole.id);
+                                message.channel.send(userUnmutedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                             }
                         }
                         else{
                             memberTarget.roles.remove(muteRole.id);
                             message.channel.send(userUnmutedBy)
-                            message.guild.channels.cache.get(userUnmutedBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                         }
                     }
                 }
@@ -106,7 +134,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid!')
-                    .setFooter(`message.content = ${message.content}`)
+                    .setFooter(`message.content = ${message.content}\n%unmute <args[0]>\n                      ^`)
                 
                 message.channel.send(targetError)
             }
