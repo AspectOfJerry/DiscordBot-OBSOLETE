@@ -16,7 +16,7 @@ module.exports = {
             .setDescription('Failed to execute command! Unauthorized Action.')
             .addField('Reason: ', 'Rick Roll', true)
             .addField('Action: ', `${message.content}`, true)
-            .setFooter(`An action was blocked by the [Rick Roll Detection Module].`)
+            .setFooter(`An action was blocked by the [Rick Roll Detection Module].\n%play <args[0]>\n^`)
 
         //Checking for the voicechannel and permissions.
         const voice_channel = message.member.voice.channel;

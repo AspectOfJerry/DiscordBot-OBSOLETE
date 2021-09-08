@@ -7,7 +7,7 @@ module.exports = {
       const methods = new Discord.MessageEmbed()
         .setColor('#00ff00')
         .setTitle('.setTitle')
-        .setURL('https://discord.gg')
+        .setURL('https://discord.com')
         .setAuthor(`${message.member}`, '')
         .setDescription('.setDescription')
         .setThumbnail('')

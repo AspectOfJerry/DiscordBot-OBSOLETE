@@ -11,7 +11,7 @@ module.exports = {
                 .setColor('#800080')
                 .setTitle('Error')
                 .setDescription("Invalid command! You must enter a value! Correct usage: %purge <value>.")
-                .setFooter(`message.content = ${message.content}`)
+                .setFooter(`message.content = ${message.content}\n%purge <args[0]>\n                  ^`)
 
             if(!args[0]) return message.reply(requireArgs0);
 
@@ -20,7 +20,7 @@ module.exports = {
                 .setColor('#800080')
                 .setTitle('Error')
                 .setDescription("Invalid usage! The value must be a whole number between 1 and 25! Correct usage: %purge <value>.")
-                .setFooter(`message.content = ${message.content}`)
+                .setFooter(`message.content = ${message.content}\n%purge <args[0]>\n                  ^`)
 
             if(isNaN(args[0])) return message.reply(Args0IsNaN);
 
@@ -29,7 +29,7 @@ module.exports = {
                 .setColor('#800080')
                 .setTitle('Error')
                 .setDescription("Invalid usage! You can only delete 1 to 25 messages at once! Correct usage: %purge <value>.")
-                .setFooter(`message.content = ${message.content}`)
+                .setFooter(`message.content = ${message.content}\n%purge <args[0]>\n                  ^`)
 
             if(args[0] > 25) return message.reply(requireArgs0is1to25);
 
@@ -38,7 +38,7 @@ module.exports = {
                 .setColor('#800080')
                 .setTitle('Error')
                 .setDescription("Invalid command! You must delete at least one message! Correct usage: %purge <value>.")
-                .setFooter(`message.content = ${message.content}`)
+                .setFooter(`message.content = ${message.content}\n%purge <args[0]>\n                  ^`)
 
             if(args[0] < 1) return message.reply(requireArgsGreaterThan1);
 

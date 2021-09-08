@@ -7,13 +7,13 @@ module.exports = {
 
         const requireConfirm = new Discord.MessageEmbed()
             .setColor('#ff10f0')
-            .setTitle('Do you **really** want to __terminate__ the process?')
-            .setDescription(`**Please read**\nThis command **exits** the bot's program rendering the bot **unusable** until a bot **operator** manually restarts it via the terminal. Use the command **only** if **needed**! Executing the command **without** reason will result in a **demotion**.\nDo you understand and agree? You have 30 seconds: "yes/no".`)
+            .setTitle('Do you **really** want to terminate the process?')
+            .setDescription(`**Important!**\nThis command **exits** the bot's program rendering the bot **unusable** until a bot **operator** manually restarts it via the terminal. Use the command **only** if **needed**! Executing the command **without** reason will result in a **demotion**.\nDo you understand and agree? You have 30 seconds: "yes/no".`)
             .setFooter('Request pending [30s]')
 
         const requireDoubleConfirm = new Discord.MessageEmbed()
             .setColor('#ff10f0')
-            .setTitle('Last confirmation. Do you **really** want to __terminate__ the process?')
+            .setTitle('Last confirmation. Do you **really** want to terminate the process?')
             .setDescription(`Double confirmation required! You have 3 seconds: "yes/no". This is the last step, make a wise decision.`)
             .setFooter('Request pending [3s]')
 
@@ -25,14 +25,14 @@ module.exports = {
 
         const requestTimeout = new Discord.MessageEmbed()
             .setColor('#800080')
-            .setTitle('Aborted request due to timeout')
-            .setDescription("Timeout")
+            .setTitle('Timeout')
+            .setDescription("Request timeout")
             .setFooter('408 REQUEST_TIMEOUT')
 
         const terminatingProcess = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Terminating Process')
-            .setDescription(`<@${message.member.user.id}> **requested** a bot __shutdown__. **Process will be killed after the next message!**`)
+            .setDescription(`<@${message.member.user.id}> requested a bot **shutdown**. **Process will be killed after the next message!**`)
             .setFooter('Next:\nmessage.channel.send(processExit)\n.then(() => process.exit(0));')
 
         const processExit = new Discord.MessageEmbed()

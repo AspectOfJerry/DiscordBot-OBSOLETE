@@ -42,7 +42,7 @@ module.exports = {
                         .setColor('#800080')
                         .setTitle('Error')
                         .setDescription('You **cannot** use this command on **yourself**!')
-                        .setFooter(`message.content = ${message.content}\n%unmute <args[0]>\n                      ^`)
+                        .setFooter(`message.content = ${message.content}`)
 
                     message.channel.send(cannotUseOnSelf)
                 }

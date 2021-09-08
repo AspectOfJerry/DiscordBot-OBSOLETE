@@ -84,7 +84,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Error')
                 .setDescription('The targeted member is invalid!')
-                .setFooter(`message.content = ${message.content}`)
+                .setFooter(`message.content = ${message.content}\n%ban <@user>\n^`)
                 
                 message.channel.send(targetError)
             }
