@@ -4,7 +4,7 @@ module.exports = {
     description: 'Usage: "%ping"',
     execute(message, args, cmd, client, Discord){
         const ping = new Discord.MessageEmbed()
-            .setColor('#7cc0c0')
+            .setColor('#7dc8cd')
             .setDescription('pong')
         
         message.channel.send(ping);

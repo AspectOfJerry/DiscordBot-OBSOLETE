@@ -3,6 +3,7 @@ const { MessageAttachment } = require("discord.js");
 module.exports = {
     name: 'unmute',
     cooldown: 10,
+    aliases: ['un-mute', 'un_mute'],
     description: 'Usage: "%unmute <@user>"',
     execute(message, args, cmd, client, Discord){
 
