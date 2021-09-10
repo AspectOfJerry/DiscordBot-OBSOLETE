@@ -146,17 +146,17 @@ All/////////////////////////////////////////////////////////////////////////////
 0 to 499////////////////////////////////////////////////////////////////////////////////////////////////////
 0 to 499////////////////////////////////////////////////////////////////////////////////////////////////////
 
--ERROR_SUCCESS
--0 (0x0)
--The operation completed successfully.
+ERROR_SUCCESS
+0 (0x0)
+The operation completed successfully.
 
--ERROR_INVALID_FUNCTION
--1 (0x1)
--Incorrect function.
+ERROR_INVALID_FUNCTION
+1 (0x1)
+Incorrect function.
 
--ERROR_FILE_NOT_FOUND
--2 (0x2)
--The system cannot find the file specified.
+ERROR_FILE_NOT_FOUND
+2 (0x2)
+The system cannot find the file specified.
 
 ERROR_PATH_NOT_FOUND
 3 (0x3)
@@ -166,9 +166,9 @@ ERROR_TOO_MANY_OPEN_FILES
 4 (0x4)
 The system cannot open the file.
 
--ERROR_ACCESS_DENIED
--5 (0x5)
--Access is denied.
+ERROR_ACCESS_DENIED
+5 (0x5)
+Access is denied.
 
 ERROR_INVALID_HANDLE
 6 (0x6)
@@ -198,9 +198,9 @@ ERROR_INVALID_ACCESS
 12 (0xC)
 The access code is invalid.
 
--ERROR_INVALID_DATA
--13 (0xD)
--The data is invalid.
+ERROR_INVALID_DATA
+13 (0xD)
+The data is invalid.
 
 ERROR_OUTOFMEMORY
 14 (0xE)
@@ -234,9 +234,9 @@ ERROR_NOT_READY
 21 (0x15)
 The device is not ready.
 
--ERROR_BAD_COMMAND
--22 (0x16)
--The device does not recognize the command.
+ERROR_BAD_COMMAND
+22 (0x16)
+The device does not recognize the command.
 
 ERROR_CRC
 23 (0x17)
@@ -3777,9 +3777,9 @@ ERROR_REQUIRES_INTERACTIVE_WINDOWSTATION
 1459 (0x5B3)
 This operation requires an interactive window station.
 
---ERROR_TIMEOUT
---1460 (0x5B4)
---This operation returned because the timeout period expired.
+-ERROR_TIMEOUT
+-1460 (0x5B4)
+-This operation returned because the timeout period expired.
 
 ERROR_INVALID_MONITOR_HANDLE
 1461 (0x5B5)
