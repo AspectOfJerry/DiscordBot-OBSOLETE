@@ -121,6 +121,27 @@ ERROR_CANT_TERMINATE_SELF
 Indicates that a thread attempted to terminate itself by default (called NtTerminateThread with NULL) and it was the last thread in the current process.
 
 
+ERROR_INTERNAL_ERROR
+1359 (0x54F)
+An internal error occurred.
+
+ERROR_NO_SUCH_MEMBER
+1387 (0x56B)
+A member could not be added to or removed from the local group because the member does not exist.
+
+-ERROR_TIMEOUT
+-1460 (0x5B4)
+-This operation returned because the timeout period expired.
+
+ERROR_INVALID_PRIORITY
+1800 (0x708)
+The specified priority is invalid.
+
+ERROR_CANT_RESOLVE_FILENAME
+1921 (0x781)
+The name of the file cannot be resolved by the system.
+
+
 
 All////////////////////////////////////////////////////////////////////////////////////////////////////
 All////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3780,9 +3801,9 @@ ERROR_REQUIRES_INTERACTIVE_WINDOWSTATION
 1459 (0x5B3)
 This operation requires an interactive window station.
 
---ERROR_TIMEOUT
---1460 (0x5B4)
---This operation returned because the timeout period expired.
+-ERROR_TIMEOUT
+-1460 (0x5B4)
+-This operation returned because the timeout period expired.
 
 ERROR_INVALID_MONITOR_HANDLE
 1461 (0x5B5)
