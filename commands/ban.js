@@ -82,9 +82,9 @@ module.exports = {
             else{
                 const targetError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setTitle('Error')
+                .setTitle('Error 0x56B(1387)')
                 .setDescription('The targeted member is invalid!')
-                .setFooter(`message.content = ${message.content}\n%ban <@user>\n^`)
+                .setFooter(`message.content = ${message.content}\n%ban <@user>\n^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
                 
                 message.channel.send(targetError)
             }
@@ -92,9 +92,9 @@ module.exports = {
         else{   //If the sender does not have the role "Administrator" or higher
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setTitle('Permissions error')
+                .setTitle('Permissions error 0x5(5)')
                 .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
-                .setFooter(`message.content = ${message.content}`)
+                .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
 
             message.channel.send(permissionsError)
         }

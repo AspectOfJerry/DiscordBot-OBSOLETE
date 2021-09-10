@@ -59,6 +59,7 @@ module.exports = {
             .addField(`**%birthday**`, `__Syntax:__ "%birthday <@user>"\n__Aliases:__ 'bday'\n__Use:__ Assigns a role to the targeted member and sends some messages.`, false)
             .addField(`**%mute**`, `__Syntax:__ "%mute <@user> (<duration>)"\n__Aliases:__ 'tempmute', 'temp-mute', 'temp_mute'\n__Use:__ Mutes the targeted member. Duration is optional.`, false)
             .addField(`**%purge**`, `__Syntax:__ "%purge <amount>"\n__Aliases:__ 'clear', 'delete'\n__Use:__ Purges the selected amount of messages.`, false)
+            .addField(`**%reload**`, `__Syntax:__ "%reload"\n__Aliases:__ 'update', 'rel'\n__Use:__ Reloads some of the bot's feature`, false)
             .addField(`**%stop**`, `__Syntax:__ "%stop"\n__Aliases:__ 'terminate', 'shutdown', 'shut-down', 'shut_down'\n__Use:__ Stops the bot (Exit with code 0).`, false)
             .addField(`**%unmute**`, `__Syntax:__ "%unmute <@user>"\n__Aliases:__ 'un-mute', 'un_mute'\n__Use:__ Unmutes the targeted member`, false)
 
