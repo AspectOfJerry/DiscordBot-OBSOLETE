@@ -17,15 +17,15 @@ module.exports = {
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setTitle('Permissions error')
+                    .setTitle('Permissions error 0x5(5)')
                     .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
-                    .setFooter(`message.content = ${message.content}`)
+                    .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setTitle('Permissions error')
+                    .setTitle('Permissions error 0x5(5)')
                     .setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
-                    .setFooter(`message.content = ${message.content}`)
+                    .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
                 
                 if(memberTarget == message.member){     //Checks if the targeted member is equal to the sender
                     const cannotUseOnSelf = new Discord.MessageEmbed()
@@ -84,7 +84,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Error 0x56B(1387)')
                 .setDescription('The targeted member is invalid!')
-                .setFooter(`message.content = ${message.content}\n%ban <@user>\n^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
+                .setFooter(`message.content = ${message.content}\n%ban <args[0]>\n              ^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
                 
                 message.channel.send(targetError)
             }

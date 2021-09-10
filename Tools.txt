@@ -1,11 +1,6 @@
 │ ├ └ ─ 
 
 --------RETURN CODES--------
-1xx - Informational response
-2xx - Success
-3xx - Redirection
-4xx - Client errors
-5xx - Server errors
 
 100 CONTINUE - The server has received the request and the client should proceed to send the rest
 
@@ -120,7 +115,9 @@ ERROR_CANT_TERMINATE_SELF
 555 (0x22B)
 Indicates that a thread attempted to terminate itself by default (called NtTerminateThread with NULL) and it was the last thread in the current process.
 
-
+ERROR_PROCESS_IS_PROTECTED
+1293 (0x50D)
+Either the target process, or the target thread's containing process, is a protected process.
 
 All////////////////////////////////////////////////////////////////////////////////////////////////////
 All////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1230,13 +1227,13 @@ ERROR_PROFILING_AT_LIMIT
 553 (0x229)
 The number of active profiling objects is at the maximum and no more may be started.
 
--ERROR_CANT_WAIT
--554 (0x22A)
--Used to indicate that an operation cannot continue without blocking for I/O.
+ERROR_CANT_WAIT
+554 (0x22A)
+Used to indicate that an operation cannot continue without blocking for I/O.
 
--ERROR_CANT_TERMINATE_SELF
--555 (0x22B)
--Indicates that a thread attempted to terminate itself by default (called NtTerminateThread with NULL) and it was the last thread in the current process.
+ERROR_CANT_TERMINATE_SELF
+555 (0x22B)
+Indicates that a thread attempted to terminate itself by default (called NtTerminateThread with NULL) and it was the last thread in the current process.
 
 ERROR_UNEXPECTED_MM_CREATE_ERR
 556 (0x22C)

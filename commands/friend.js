@@ -103,7 +103,7 @@ module.exports = {
                 const requireAddOrRemove = new Discord.MessageEmbed()
                 .setColor('#00ff00')
                 .setTitle('Error')
-                .setDescription("Invalid command! You must **add** or **remove** a user! Correct usage: %friend <add/remove> <@user>.")
+                .setDescription("Invalid command! You must **add** or **remove** a user!")
                 .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^`)
 
                 message.channel.send(requireAddOrRemove)

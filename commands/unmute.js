@@ -22,15 +22,15 @@ module.exports = {
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setTitle('Permissions error')
+                    .setTitle('Permissions error 0x5(5)')
                     .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
-                    .setFooter(`message.content = ${message.content}`)
+                    .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setTitle('Permissions error')
+                    .setTitle('Permissions error 0x5(5)')
                     .setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
-                    .setFooter(`message.content = ${message.content}`)
+                    .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
 
                 const userNotMuted = new Discord.MessageEmbed()
                     .setColor('#800080')
