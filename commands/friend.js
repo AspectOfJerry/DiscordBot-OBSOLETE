@@ -91,9 +91,9 @@ module.exports = {
                     else{
                         const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setTitle('Error')
+                        .setTitle('Error 0x56B(1387)')
                         .setDescription('The targeted member is invalid!')
-                        .setFooter(`message.content = ${message.content}`)
+                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
                         
                         message.channel.send(targetError)
                     }
@@ -103,7 +103,7 @@ module.exports = {
                 const requireAddOrRemove = new Discord.MessageEmbed()
                 .setColor('#00ff00')
                 .setTitle('Error')
-                .setDescription("Invalid command! You must **add** or **remove** a user! Correct usage: %friend <add/remove> <@user>.")
+                .setDescription("Invalid command! You must **add** or **remove** a user!")
                 .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^`)
 
                 message.channel.send(requireAddOrRemove)

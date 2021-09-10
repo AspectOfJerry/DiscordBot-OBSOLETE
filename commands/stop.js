@@ -37,7 +37,7 @@ module.exports = {
 
         const processExit = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setDescription(`Exiting process with code 0`)
+            .setDescription(`Exiting process with code 0(0x0)`)
             .setFooter('.then(() => process.exit(0));')
 
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')){   //Checks if the sender has the role "BotPL3"
@@ -89,9 +89,9 @@ module.exports = {
         else{
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setTitle('Permissions error')
+                .setTitle('Permissions error 0x5(5)')
                 .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
-                .setFooter(`message.content = ${message.content}`)
+                .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
 
             message.channel.send(permissionsError)
         }

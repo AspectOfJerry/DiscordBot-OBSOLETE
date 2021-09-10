@@ -5,17 +5,28 @@ module.exports = {
     description: 'Usage: "%reload"',
     execute(message, args, cmd, client, Discord){
 
-    //Set the client user's activity
-    //client.user.setActivity('Minecraft', { type: 'STREAMING', url: "https://www.twitch.tv/jioyww"}).catch(console.error);
-    //client.user.setActivity('for "%"', { type: 'WATCHING' });
-    client.user.setActivity();
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){
+            //Set the client user's activity
+            client.user.setActivity('Minecraft', { type: 'STREAMING', url: "https://www.twitch.tv/jioyww"}).catch(console.error);
+            //client.user.setActivity('for "%"', { type: 'WATCHING' });
+            //client.user.setActivity();
 
-    const reloadedBot = new Discord.MessageEmbed()
-        .setColor('#00ff00')
-        .setTitle('Reload')
-        .setDescription(`Reloaded the bot.`)
-        .setFooter(`message.content = ${message.content}`)
+            const reloadedBot = new Discord.MessageEmbed()
+                .setColor('#00ff00')
+                .setTitle('Reload')
+                .setDescription(`Reloaded the bot.`)
+                .setFooter(`message.content = ${message.content}`)
 
-    message.channel.send(reloadedBot)
+            message.channel.send(reloadedBot)
+        }
+        else{
+            const permissionsError = new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('Permissions error 0x5(5)')
+            .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
+            .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
+
+        message.channel.send(permissionsError)
+        }
     }
 }
