@@ -121,6 +121,83 @@ ERROR_CANT_TERMINATE_SELF
 Indicates that a thread attempted to terminate itself by default (called NtTerminateThread with NULL) and it was the last thread in the current process.
 
 
+ERROR_END_OF_MEDIA
+1100 (0x44C)
+The physical end of the tape has been reached.
+
+ERROR_INTERNAL_ERROR
+1359 (0x54F)
+An internal error occurred.
+
+ERROR_NO_SUCH_MEMBER
+1387 (0x56B)
+A member could not be added to or removed from the local group because the member does not exist.
+
+ERROR_BEGINNING_OF_MEDIA
+1102 (0x44E)
+The beginning of the tape or a partition was encountered.
+
+ERROR_SHUTDOWN_IN_PROGRESS
+1115 (0x45B)
+A system shutdown is in progress.
+
+ERROR_POSSIBLE_DEADLOCK
+1131 (0x46B)
+A potential deadlock condition has been detected.
+
+ERROR_NOT_FOUND
+1168 (0x490)
+Element not found.
+
+ERROR_NO_MATCH
+1169 (0x491)
+There was no match for the specified key in the index.
+
+ERROR_REQUEST_ABORTED
+1235 (0x4D3)
+The request was aborted.
+
+ERROR_RETRY
+1237 (0x4D5)
+The operation could not be completed. A retry should be performed.
+
+ERROR_CONTINUE
+1246 (0x4DE)
+Continue with work in progress.
+
+ERROR_TIMEOUT
+1460 (0x5B4)
+This operation returned because the timeout period expired.
+
+ERROR_INCORRECT_SIZE
+1462 (0x5B6)
+Incorrect size argument.
+
+ERROR_INVALID_PRIORITY
+1800 (0x708)
+The specified priority is invalid.
+
+ERROR_CANT_RESOLVE_FILENAME
+1921 (0x781)
+The name of the file cannot be resolved by the system.
+
+ERROR_INVALID_COMMAND_LINE
+1639 (0x667)
+Invalid command line argument. Consult the Windows Installer SDK for detailed command line help.
+
+ERROR_INVALID_TIME
+1901 (0x76D)
+The specified time is invalid.
+
+ERROR_SUCCESS_REBOOT_REQUIRED
+3010 (0xBC2)
+The requested operation is successful. Changes will not be effective until the system is rebooted.
+
+ERROR_SUCCESS_RESTART_REQUIRED
+3011 (0xBC3)
+The requested operation is successful. Changes will not be effective until the service is restarted.
+
+
 
 All////////////////////////////////////////////////////////////////////////////////////////////////////
 All////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -149,17 +226,17 @@ All/////////////////////////////////////////////////////////////////////////////
 0 to 499////////////////////////////////////////////////////////////////////////////////////////////////////
 0 to 499////////////////////////////////////////////////////////////////////////////////////////////////////
 
--ERROR_SUCCESS
--0 (0x0)
--The operation completed successfully.
+ERROR_SUCCESS
+0 (0x0)
+The operation completed successfully.
 
--ERROR_INVALID_FUNCTION
--1 (0x1)
--Incorrect function.
+ERROR_INVALID_FUNCTION
+1 (0x1)
+Incorrect function.
 
--ERROR_FILE_NOT_FOUND
--2 (0x2)
--The system cannot find the file specified.
+ERROR_FILE_NOT_FOUND
+2 (0x2)
+The system cannot find the file specified.
 
 ERROR_PATH_NOT_FOUND
 3 (0x3)
@@ -169,9 +246,9 @@ ERROR_TOO_MANY_OPEN_FILES
 4 (0x4)
 The system cannot open the file.
 
--ERROR_ACCESS_DENIED
--5 (0x5)
--Access is denied.
+ERROR_ACCESS_DENIED
+5 (0x5)
+Access is denied.
 
 ERROR_INVALID_HANDLE
 6 (0x6)
@@ -201,9 +278,9 @@ ERROR_INVALID_ACCESS
 12 (0xC)
 The access code is invalid.
 
--ERROR_INVALID_DATA
--13 (0xD)
--The data is invalid.
+ERROR_INVALID_DATA
+13 (0xD)
+The data is invalid.
 
 ERROR_OUTOFMEMORY
 14 (0xE)
@@ -237,9 +314,9 @@ ERROR_NOT_READY
 21 (0x15)
 The device is not ready.
 
--ERROR_BAD_COMMAND
--22 (0x16)
--The device does not recognize the command.
+ERROR_BAD_COMMAND
+22 (0x16)
+The device does not recognize the command.
 
 ERROR_CRC
 23 (0x17)
@@ -3780,9 +3857,9 @@ ERROR_REQUIRES_INTERACTIVE_WINDOWSTATION
 1459 (0x5B3)
 This operation requires an interactive window station.
 
---ERROR_TIMEOUT
---1460 (0x5B4)
---This operation returned because the timeout period expired.
+-ERROR_TIMEOUT
+-1460 (0x5B4)
+-This operation returned because the timeout period expired.
 
 ERROR_INVALID_MONITOR_HANDLE
 1461 (0x5B5)
