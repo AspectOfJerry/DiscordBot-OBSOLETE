@@ -66,7 +66,67 @@ Main color: #7dc8cd /
 0 1 2 3 4 5 6 7 8 9 a  b  c  d  e  f
 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
 
-////System Error Codes////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
+Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
+Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
+Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
+Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ERROR_SUCCESS
+0 (0x0)
+The operation completed successfully.
+
+ERROR_INVALID_FUNCTION
+1 (0x1)
+Incorrect function.
+
+ERROR_FILE_NOT_FOUND
+2 (0x2)
+The system cannot find the file specified.
+
+ERROR_ACCESS_DENIED
+5 (0x5)
+Access is denied.
+
+ERROR_INVALID_DATA
+13 (0xD)
+The data is invalid.
+
+ERROR_BAD_COMMAND
+22 (0x16)
+The device does not recognize the command.
+
+ERROR_BUSY
+170 (0xAA)
+The requested resource is in use.
+
+ERROR_CANT_WAIT
+554 (0x22A)
+Used to indicate that an operation cannot continue without blocking for I/O.
+
+ERROR_CANT_TERMINATE_SELF
+555 (0x22B)
+Indicates that a thread attempted to terminate itself by default (called NtTerminateThread with NULL) and it was the last thread in the current process.
+
+
+
+All////////////////////////////////////////////////////////////////////////////////////////////////////
+All////////////////////////////////////////////////////////////////////////////////////////////////////
+All////////////////////////////////////////////////////////////////////////////////////////////////////
+All////////////////////////////////////////////////////////////////////////////////////////////////////
+All////////////////////////////////////////////////////////////////////////////////////////////////////
 
 0 to 499////////////////////////////////////////////////////////////////////////////////////////////////////
 0 to 499////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,9 +149,9 @@ Main color: #7dc8cd /
 0 to 499////////////////////////////////////////////////////////////////////////////////////////////////////
 0 to 499////////////////////////////////////////////////////////////////////////////////////////////////////
 
---ERROR_SUCCESS
---0 (0x0)
---The operation completed successfully.
+-ERROR_SUCCESS
+-0 (0x0)
+-The operation completed successfully.
 
 -ERROR_INVALID_FUNCTION
 -1 (0x1)
@@ -109,25 +169,25 @@ ERROR_TOO_MANY_OPEN_FILES
 4 (0x4)
 The system cannot open the file.
 
---ERROR_ACCESS_DENIED
---5 (0x5)
---Access is denied.
+-ERROR_ACCESS_DENIED
+-5 (0x5)
+-Access is denied.
 
 ERROR_INVALID_HANDLE
 6 (0x6)
 The handle is invalid.
 
--ERROR_ARENA_TRASHED
--7 (0x7)
--The storage control blocks were destroyed.
+ERROR_ARENA_TRASHED
+7 (0x7)
+The storage control blocks were destroyed.
 
 ERROR_NOT_ENOUGH_MEMORY
 8 (0x8)
 Not enough memory resources are available to process this command.
 
--ERROR_INVALID_BLOCK
--9 (0x9)
--The storage control block address is invalid.
+ERROR_INVALID_BLOCK
+9 (0x9)
+The storage control block address is invalid.
 
 ERROR_BAD_ENVIRONMENT
 10 (0xA)
@@ -137,13 +197,13 @@ ERROR_BAD_FORMAT
 11 (0xB)
 An attempt was made to load a program with an incorrect format.
 
--ERROR_INVALID_ACCESS
--12 (0xC)
--The access code is invalid.
+ERROR_INVALID_ACCESS
+12 (0xC)
+The access code is invalid.
 
---ERROR_INVALID_DATA
---13 (0xD)
---The data is invalid.
+-ERROR_INVALID_DATA
+-13 (0xD)
+-The data is invalid.
 
 ERROR_OUTOFMEMORY
 14 (0xE)
@@ -173,21 +233,21 @@ ERROR_BAD_UNIT
 20 (0x14)
 The system cannot find the device specified.
 
--ERROR_NOT_READY
--21 (0x15)
--The device is not ready.
+ERROR_NOT_READY
+21 (0x15)
+The device is not ready.
 
---ERROR_BAD_COMMAND
---22 (0x16)
---The device does not recognize the command.
+-ERROR_BAD_COMMAND
+-22 (0x16)
+-The device does not recognize the command.
 
 ERROR_CRC
 23 (0x17)
 Data error (cyclic redundancy check).
 
---ERROR_BAD_LENGTH
---24 (0x18)
---The program issued a command but the command length is incorrect.
+ERROR_BAD_LENGTH
+24 (0x18)
+The program issued a command but the command length is incorrect.
 
 ERROR_SEEK
 25 (0x19)
@@ -941,9 +1001,9 @@ ERROR_DISK_RESOURCES_EXHAUSTED
 314 (0x13A)
 The physical resources of this disk have been exhausted.
 
---ERROR_INVALID_TOKEN
---315 (0x13B)
---The token representing the data is invalid.
+ERROR_INVALID_TOKEN
+315 (0x13B)
+The token representing the data is invalid.
 
 ERROR_DEVICE_FEATURE_NOT_SUPPORTED
 316 (0x13C)
@@ -1033,13 +1093,13 @@ ERROR_FAIL_NOACTION_REBOOT
 350 (0x15E)
 No action was taken as a system reboot is required.
 
--ERROR_FAIL_SHUTDOWN
--351 (0x15F)
--The shutdown operation failed.
+ERROR_FAIL_SHUTDOWN
+351 (0x15F)
+The shutdown operation failed.
 
--ERROR_FAIL_RESTART
--352 (0x160)
--The restart operation failed.
+ERROR_FAIL_RESTART
+352 (0x160)
+The restart operation failed.
 
 ERROR_MAX_SESSIONS_REACHED
 353 (0x161)
@@ -1061,9 +1121,9 @@ ERROR_PROCESS_MODE_NOT_BACKGROUND
 403 (0x193)
 The process is not in background processing mode.
 
--ERROR_INVALID_ADDRESS
--487 (0x1E7)
--Attempt to access invalid address.
+ERROR_INVALID_ADDRESS
+487 (0x1E7)
+Attempt to access invalid address.
 
 500 to 999////////////////////////////////////////////////////////////////////////////////////////////////////
 500 to 999////////////////////////////////////////////////////////////////////////////////////////////////////

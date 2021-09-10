@@ -13,7 +13,7 @@ module.exports = {
 
             const processExit = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setDescription(`Exiting process with code 0`)
+            .setDescription(`Exiting process with code 0(0x0)`)
             .setFooter('.then(() => process.exit(0));')
 
             message.channel.send(terminatingProcess)

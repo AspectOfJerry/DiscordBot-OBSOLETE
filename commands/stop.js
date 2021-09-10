@@ -37,7 +37,7 @@ module.exports = {
 
         const processExit = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setDescription(`Exiting process with code 0`)
+            .setDescription(`Exiting process with code 0(0x0)`)
             .setFooter('.then(() => process.exit(0));')
 
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')){   //Checks if the sender has the role "BotPL3"

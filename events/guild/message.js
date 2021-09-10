@@ -17,7 +17,7 @@ module.exports = (Discord, client, message) => {
         const unknownError = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('Unexpected error')
-        .setDescription('An unknown error occurred while extecuting the command. No further information.')
+        .setDescription('An unknown error occurred while extecuting the command. No further information.\nPossible error codes: 0x1(1), 0x5(5), 0x16(22), 0xAA(170), 0xD(13), ')
         .setFooter(`message.content = ${message.content}\nconsole.log(err);`)
 
         message.reply(unknownError);
