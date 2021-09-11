@@ -27,7 +27,7 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('Error')
                         .setDescription('You must provide a reason.')
-                        .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n^`)
+                        .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                                       ^`)
 
                     message.channel.send(requireArgs1)
                 }
@@ -37,7 +37,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error 0x56B(1387)')
                     .setDescription('The targeted member is invalid!')
-                    .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
+                    .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
 
                 message.channel.send(targetError)
             }
@@ -47,7 +47,7 @@ module.exports = {
                 .setColor('#00ff00')
                 .setTitle('Error')
                 .setDescription("Invalid command! You must mention a user!")
-                .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n^`)
+                .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^`)
 
             message.channel.send(requireArgs0)
         }
