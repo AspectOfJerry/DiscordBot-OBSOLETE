@@ -23,7 +23,7 @@ module.exports = {
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setTitle('Error')
-                        .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
+                        .setDescription("Invalid command! You must mention a user!")
                         .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^`)
 
                     message.channel.send(requireArgs1)
