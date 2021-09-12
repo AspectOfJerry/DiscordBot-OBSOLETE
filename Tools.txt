@@ -41,6 +41,10 @@
 "Head Staff": 869052533031718912
 "Staff": 802349057112670278
 "Bots": 798556730459422730
+"Bot Team":
+"</> Contributor":
+"</> Developer":
+"</> Developer+":
 "BotP R3": 869995421794193518
 "BotP R2": 
 "BotP R1": 
@@ -119,9 +123,15 @@ ERROR_PROCESS_IS_PROTECTED
 1293 (0x50D)
 Either the target process, or the target thread's containing process, is a protected process.
 
+ERROR_NO_SUCH_ALIAS
+1376 (0x560)
+The specified local group does not exist.
+
 ERROR_NO_SUCH_MEMBER
 1387 (0x56B)
 A member could not be added to or removed from the local group because the member does not exist.
+
+
 
 All////////////////////////////////////////////////////////////////////////////////////////////////////
 All////////////////////////////////////////////////////////////////////////////////////////////////////

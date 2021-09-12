@@ -27,8 +27,8 @@ module.exports = {
             .addField(`**%pong**`, `__Syntax:__ "%pong"\n__Aliases:__ None\n__Use:__ Returns "ping"`, false)
             .addField(`**%purge**`, `__Syntax:__ "%purge <amount>"\n__Aliases:__ 'clear', 'delete'\n__Use:__ Purges the selected amount of messages.`, false)
             .addField(`**%reload**`, `__Syntax:__ "%reload"\n__Aliases:__ 'update', 'rel'\n__Use:__ Reloads some of the bot's feature`, false)
+            .addField(`%report`, `__Syntax:__ "%report <@user>"\n__Aliases:__ 'wdr', 'wdreport', 'watchdogreport', 'chatreport', 'flag'\n__Use:__ Report someone for doing something. This command pings staff members. Do not use without reason.`, false)
             .addField(`**%stop**`, `__Syntax:__ "%stop"\n__Aliases:__ 'terminate', 'shutdown', 'shut-down', 'shut_down'\n__Use:__ Stops the bot (Exit with code 0).`, false)
-            .addField(`**%temp**`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Temporary command, do not use.`, false)
             .addField(`**%test**`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
             .addField(`**%testfalse**`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
             .addField(`**%testtrue**`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
@@ -47,7 +47,7 @@ module.exports = {
             .addField(`**%ping**`, `__Syntax:__ "%ping"\n__Aliases:__ None\n__Use:__ Returns "pong"`, false)
             .addField(`**%play**`, `__Syntax:__ "%play <URL/KeyWords>"\n__Aliases:__ None\n__Use:__ Plays the searched video (sound only)\n__For your safety__, the bot is able to block most Rick Rolls.`, false)
             .addField(`**%pong**`, `__Syntax:__ "%pong"\n__Aliases:__ None\n__Use:__ Returns "ping"`, false)
-            .addField(`**%temp**`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Temporary command, do not use.`, false)
+            .addField(`%report`, `__Syntax:__ "%report <@user>"\n__Aliases:__ 'wdr', 'wdreport', 'watchdogreport', 'chatreport', 'flag'\n__Use:__ Report someone for doing something. This command pings staff members. Do not use without reason.`, false)
             .addField(`**%test**`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
             .addField(`**%testfalse**`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
             .addField(`**%testtrue**`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
@@ -81,7 +81,6 @@ module.exports = {
             .addField(`**%friend**`, `__Syntax:__ "%friend <add/remove> <@user>"\n__Aliases:__ 'f'\n__Use:__ Adds the 'Friends' role to the targeted member.`, false)
             .addField(`**%party**`, `__Syntax:__ This feature is planned for the next release!\n__Aliases:__ This feature is planned for the next release!\n__Use:__ This feature is planned for the next release!`, false)
 
-
         const floodWarning = new Discord.MessageEmbed()
             .setColor('#ffff00')
             .setTitle('Flood warning')
@@ -109,23 +108,23 @@ module.exports = {
         })
         .then(message => {
           message = message.first()
-            if(message.content.toUpperCase() == 'ALL'){
+            if(message.content.toUpperCase() == 'ALL'){ //If 'message.content' to upper case is equal to "ADD"
                 message.channel.send(floodWarning)
                 .then(() => message.channel.send(all));
             }
-            else if(message.content.toUpperCase() == 'NOREQ'){
+            else if(message.content.toUpperCase() == 'NOREQ'){  //If 'message.content' to upper case is equal to "NOREQ"
                 message.channel.send(noReq)
             }
-            else if(message.content.toUpperCase() == 'REQBOTPL3'){
+            else if(message.content.toUpperCase() == 'REQBOTPL3'){  //If 'message.content' to upper case is equal to "REQBOTPL3"
                 message.channel.send(reqBotPL3)
             }
-            else if(message.content.toUpperCase() == 'REQBOTPL2'){
+            else if(message.content.toUpperCase() == 'REQBOTPL2'){  //If 'message.content' to upper case is equal to "REQBOTPL2"
                 message.channel.send(reqBotPL2)
             }
-            else if(message.content.toUpperCase() == 'REQBOTPL1'){
+            else if(message.content.toUpperCase() == 'REQBOTPL1'){  //If 'message.content' to upper case is equal to "REQBOTPL1"
                 message.channel.send(reqBotPL1)
             }
-            else if(message.content.toUpperCase() == 'REQBOTPL0'){
+            else if(message.content.toUpperCase() == 'REQBOTPL0'){  //If 'message.content' to upper case is equal to "REQBOTPL0"
                 message.channel.send(reqBotPL0)
             }
         })
@@ -134,7 +133,7 @@ module.exports = {
                 .setColor('#800080')
                 .setTitle('Error 0x5B4 (1460)')
                 .setDescription('Command timeout!')
-                .setFooter('ERROR_TIMEOUT')
+                .setFooter('1460(0x5B4) ERROR_TIMEOUT')
 
             message.channel.send(timeout)
         });

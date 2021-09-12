@@ -6,9 +6,9 @@ module.exports = {
     execute(message, args, cmd, client, Discord){
 
         const ms = require(`ms`)
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){   //RoleID for "BotPL3"
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){    //If 'message.member' has the role 'BotPL3'
             const target = message.mentions.users.first();
-            if(target){
+            if(target){ //If 'target' is valid
                 let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
     
                 let memberTarget = message.guild.members.cache.get(target.id);
@@ -53,79 +53,79 @@ module.exports = {
                     message.channel.send(cannotUseOnSelf)
                 }
                 else{
-                    if(message.member.roles.cache.find(role => role.name === 'BotPL0')){   //Checks if the message sender has the "BotPL0" role
-                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){     //Checks if the target has the "Bots" roles
+                    if(message.member.roles.cache.find(role => role.name === 'BotPL0')){    //If 'message.member' has the role 'BotPL0'
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
                             message.channel.send(targetImmune403);
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){   //Checks if the target has the "BotPl0" role
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
                             message.channel.send(targetHigherThanSender403);
                         }
-                        else{   //Does the mute procedure to the targeted member
-                            if(!args[1]){   //Checks if the command does not have a first argument
-                                memberTarget.roles.add(muteRole.id);
+                        else{
+                            if(!args[1]){   //If 'args[1]' is not present
+                                memberTarget.roles.add(muteRole.id);    //Give 'muteRole' to 'memberTarget'
                                 message.channel.send(userMutedBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
                                 return;
-                            }   //If the command contains a first argument
-                            memberTarget.roles.add(muteRole.id);
-                            message.channel.send(userMutedForBy)
-                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
-            
-                            setTimeout(function () {
-                                memberTarget.roles.remove(muteRole.id);
-                                message.channel.send(userUnmutedFromTimedMuteBy)
-                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy)
-                            }, ms(args[1]));
-                        }
-                    }   //If the message sender does not have the "BotPl0" role
-                    else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){  //Checks if the message sender has the "BotPL1" role
-                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){     //Checks if the target has the "Bots" roles
-                            message.channel.send(targetImmune403);
-                        }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){   //Checks if the target has the "Moderator" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){    //Checks if the target has the "Administrator" role
-                            message.channel.send(targetHigherThanSender403);
-                        }
-                        else{   //Does the mute procedure to the targeted member
-                            if(!args[1]){   //Checks if the command does not have a first argument
-                                memberTarget.roles.add(muteRole.id);
-                                message.channel.send(userMutedBy)
-                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
-                                return;
-                            }   //If the command contains a first argument
-                            memberTarget.roles.add(muteRole.id);
+                            }   //If 'args[1]' is present
+                            memberTarget.roles.add(muteRole.id);    //Give 'muteRole' to 'memberTarget'   
                             message.channel.send(userMutedForBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy)
             
                             setTimeout(function () {
-                                memberTarget.roles.remove(muteRole.id);
+                                memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
+                                message.channel.send(userUnmutedFromTimedMuteBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy)
+                            }, ms(args[1]));
+                        }
+                    }
+                    else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //If 'message.member' has the role 'BotPL1'
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
+                            message.channel.send(targetImmune403);
+                        }
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
+                            message.channel.send(targetHigherThanSender403);
+                        }
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){ //If 'memberTarget' has the role 'BotPL1'
+                            message.channel.send(targetHigherThanSender403);
+                        }
+                        else{
+                            if(!args[1]){   //If 'args[1]' is not present
+                                memberTarget.roles.add(muteRole.id);    //Give 'muteRole' to 'memberTarget'
+                                message.channel.send(userMutedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
+                                return;
+                            }   //If 'args[1]' is present
+                            memberTarget.roles.add(muteRole.id);    //Give 'muteRole' to 'memberTarget'
+                            message.channel.send(userMutedForBy)
+                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy)
+            
+                            setTimeout(function () {
+                                memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
                                 message.channel.send(userUnmutedFromTimedMuteBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy)
                             }, ms(args[1]));
                         }
                     }   //If the message sender does not have the "BotPL1" role
-                    else if(message.member.roles.cache.find(role => role.name === 'BotPL2')){  //Checks if the message sender has the "BotPL2" role
-                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){     //Checks if the target has the "Bots" roles
+                    else if(message.member.roles.cache.find(role => role.name === 'BotPL2')){   //If 'message.member' has the role 'BotPL2'
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
                             message.channel.send(targetImmune403);
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
                             message.channel.send(targetHigherThanSender403);
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){ //If 'memberTarget' has the role 'BotPL1'
                             message.channel.send(targetHigherThanSender403);
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){ //If 'memberTarget' has the role 'BotPl2'
                             message.channel.send(targetHigherThanSender403)
                         }
-                        else{   //Does the mute command to the targeted member
-                            if(!args[1]){   //Checks if the command does not have a first argument
+                        else{
+                            if(!args[1]){   //If 'args[1]' is not present
                                 memberTarget.roles.add(muteRole.id);
                                 message.channel.send(userMutedBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
                                 return;
-                            }   //If the command contains a first argument
+                            }   //If 'args[1]' is present
                             memberTarget.roles.add(muteRole.id);
                             message.channel.send(userMutedForBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy)
@@ -137,36 +137,36 @@ module.exports = {
                             }, ms(args[1]));
                         }
                     }
-                    else if(message.member.roles.cache.find(role => role.name === 'BotPL3')){
-                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){
+                    else if(message.member.roles.cache.find(role => role.name === 'BotPL3')){   //if 'message.member' has the role 'BotPL3'
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
                             message.channel.send(targetImmune403)
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
                             message.channel.send(targetHigherThanSender403)
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){ //If 'memberTarget' has the role 'BotPL1'
                             message.channel.send(targetHigherThanSender403)
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){ //If 'memberTarget' has the role 'BotPL2'
                             message.channel.send(targetHigherThanSender403)
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')){ //If 'memberTarget' has the role 'BotPL3'
                             message.channel.send(targetHigherThanSender403)
                         }
                     }
-                    else{   //Does the mute command to the targeted member
-                        if(!args[1]){   //Checks if the command does not have a first argument
-                            memberTarget.roles.add(muteRole.id);
+                    else{
+                        if(!args[1]){   //If 'args[1]' is not present
+                            memberTarget.roles.add(muteRole.id);    //Give 'muteRole' to 'memberTarget'
                             message.channel.send(userMutedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
                             return;
-                        }   //If the command contains a first argument
-                        memberTarget.roles.add(muteRole.id);
+                        }   //If 'args[1]' is present
+                        memberTarget.roles.add(muteRole.id);    //Give 'muteRole' to 'memberTarget'
                         message.channel.send(userMutedForBy)
                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy)
         
                         setTimeout(function () {
-                            memberTarget.roles.remove(muteRole.id);
+                            memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
                             message.channel.send(userUnmutedFromTimedMuteBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy)
                         }, ms(args[1]));

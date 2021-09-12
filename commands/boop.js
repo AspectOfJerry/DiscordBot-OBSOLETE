@@ -5,7 +5,7 @@ module.exports = {
     execute(message, args, cmd, client, Discord){
         const target = message.mentions.users.first();
 
-        if(target){
+        if(target){ //If 'target' is valid
             const memberTarget = message.guild.members.cache.get(target.id);
 
             const boop = new Discord.MessageEmbed()

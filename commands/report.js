@@ -1,16 +1,15 @@
-const { MessageAttachment } = require("discord.js");
-
 module.exports = {
     name: 'report',
+    aliases: ['wdr', 'wdreport', 'watchdogreport', 'chatreport', 'flag'],
     cooldown: 10,
     description: 'Usage: "%report <@user>"',
     execute(message, args, cmd, client, Discord){
         const target = message.mentions.users.first();
         
-        if(args[0]){
-            if(target){
+        if(args[0]){    //If 'args[0]' is present
+            if(target){ //if 'target' is valid
                 const memberTarget = message.guild.members.cache.get(target.id);
-                if(args[1]){
+                if(args[1]){    //If 'args[1]' is present
                     const report =  new Discord.MessageEmbed()
                         .setColor('00ff00')
                         .setTitle('Report submitted')

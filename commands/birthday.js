@@ -4,31 +4,32 @@ module.exports = {
     cooldown: 10,
     description: 'Usage: "%birthday <@user>"',
     execute(message, args, cmd, client, Discord){
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){ //BotPL3
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){    //If 'message.member' has the role 'BotPL3'
             const target = message.mentions.users.first();
-            if(target){
-            const memberTarget = message.guild.members.cache.get(target.id);
-            let birthdayRole = message.guild.roles.cache.get('876456209895534653');
-    
-            const birthday = new Discord.MessageEmbed()
-            .setColor('#E91E63')
-            .setTitle('Birthday!')
-            .setDescription (`Happy birthday <@${memberTarget.user.id}>!`)
-            .setFooter('We wish them a happy birthday!')
-    
-            memberTarget.roles.add(birthdayRole.id);
-            message.guild.channels.name.cache.find(role => role.name === 'Friend').send(birthday)
-            message.guild.channels.cache.get('857978482374344734').send(birthday)
-            message.guild.channels.cache.get('857982855644446730').send(birthday)
-            message.guild.channels.cache.get('858100435768049684').send(birthday)
-            message.guild.channels.cache.get('812701440576454676').send(birthday)                
+            if(target){ //If 'target' is valid
+                const memberTarget = message.guild.members.cache.get(target.id);
+                let birthdayRole = message.guild.roles.cache.get('876456209895534653');
+        
+                const birthday = new Discord.MessageEmbed()
+                    .setColor('#E91E63')
+                    .setTitle('Birthday!')
+                    .setDescription (`Happy birthday <@${memberTarget.user.id}>!`)
+                    .setFooter('We wish them a happy birthday!')
+        
+                memberTarget.roles.add(birthdayRole.id);    //Give the 'birthdayRole' to 'memberTarget'
+                message.guild.channels.name.cache.find(role => role.name === 'Friend').send(birthday)
+
+                message.guild.channels.cache.find(channel => channel.name.includes('general')).send(birthday)
+                message.guild.channels.cache.find(channel => channel.name.includes('bot-commands')).send(birthday)
+                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(birthday)
+                message.guild.channels.cache.find(channel => channel.name.includes('new')).send(birthday)              
             }
             else{
                 const targetError = new Discord.MessageEmbed()
-                .setColor('#ff0000')
-                .setTitle('Error 0x56B(1387)')
-                .setDescription('The targeted member is invalid!')
-                .setFooter(`message.content = ${message.content}\n%birthday <args[0]>\n                       ^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
+                    .setColor('#ff0000')
+                    .setTitle('Error 0x56B(1387)')
+                    .setDescription('The targeted member is invalid!')
+                    .setFooter(`message.content = ${message.content}\n%birthday <args[0]>\n                       ^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
 
                 message.channel.send(targetError)
             }

@@ -13,7 +13,7 @@ module.exports = {
         })
         .then(message => {
           message = message.first()
-            if(message.content.toUpperCase() == 'ROCK'){
+            if(message.content.toUpperCase() == 'ROCK'){    //If 'message.content' to upper case is equal to "ROCK"
                 const rock = new Discord.MessageEmbed()
                     .setColor('#00ff00')
                     .setTitle('You loose!')
@@ -22,7 +22,7 @@ module.exports = {
 
                 message.channel.send(rock)
             }
-            else if(message.content.toUpperCase() == 'PAPER'){
+            else if(message.content.toUpperCase() == 'PAPER'){  //If 'message.content' to upper case is equal to "PAPER"
                 const paper = new Discord.MessageEmbed()
                     .setColor('#00ff00')
                     .setTitle('You loose!')
@@ -31,7 +31,7 @@ module.exports = {
 
                 message.channel.send(paper)
             }
-            else if(message.content.toUpperCase() == 'SCISSORS'){
+            else if(message.content.toUpperCase() == 'SCISSORS'){   //If 'message.content' to upper case is equal to "SCISSORS"
                 const scissors = new Discord.MessageEmbed()
                     .setColor('#00ff00')
                     .setTitle('You loose!')
@@ -42,7 +42,13 @@ module.exports = {
             }
         })
         .catch(collected => {
-            message.channel.send('Timeout (408)')
+            const timeout = new Discord.MessageEmbed()
+                .setColor('#800080')
+                .setTitle('Error 0x5B4 (1460)')
+                .setDescription('Command timeout!')
+                .setFooter('1460(0x5B4) ERROR_TIMEOUT')
+
+            message.channel.send(timeout)
         });
     }
 }

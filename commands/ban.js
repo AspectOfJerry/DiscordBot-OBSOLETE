@@ -3,10 +3,10 @@ module.exports = {
     cooldown: 10,
     description: "Usage: %ban <@user>",
     execute(message, args, cmd, client, Discord){
-        if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //RoleID for "BotP R1"
+        if(message.member.roles.cache.find(role => role.name === 'BotPL1')){    //If 'message.member' has the role 'BotPL1'
             const target = message.mentions.users.first();
 
-            if(target){     //Checks if the target is present
+            if(target){     //If 'target' is valid
                 const memberTarget = message.guild.members.cache.get(target.id);
 
                 const userBannedBy = new Discord.MessageEmbed()
@@ -27,7 +27,7 @@ module.exports = {
                     .setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
                     .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
                 
-                if(memberTarget == message.member){     //Checks if the targeted member is equal to the sender
+                if(memberTarget == message.member){ //If 'memberTarget' is equal to 'message.member'
                     const cannotUseOnSelf = new Discord.MessageEmbed()
                         .setColor('#800080')
                         .setTitle('Error')
@@ -37,33 +37,33 @@ module.exports = {
                     message.channel.send(cannotUseOnSelf);
                 }
                 else{
-                    if(message.member.roles.cache.find(role => role.name === 'BotPL0')){   //Checks if the sender has the "BotPL0" role
-                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){     //Checks if the target has the "Bots" roles
+                    if(message.member.roles.cache.find(role => role.name === 'BotPL0')){    //If 'message.member' has the role 'BotPL0'
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
                             message.channel.send(targetImmune403);
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){     //Checks if the target has the "BotPL0" role
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
                             message.channel.send(targetHigherThanSender403)
                         }
                         else{
-                            memberTarget.ban().catch(console.error);    //Ban the targeted member
+                            memberTarget.ban().catch(console.error);    //Ban 'memberTarget'
 
                             message.channel.send(userBannedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
                         }
                     }
-                    else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){
-                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){
+                    else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //If 'message.member' has the role 'BotPL1'
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
                             message.channel.send(targetImmune403)
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
                             message.channel.send(targetHigherThanSender403)
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){ //If 'memberTarget' has the role 'BotPL1'
                             message.channel.send(targetHigherThanSender403)
                         }
                         else{
-                            memberTarget.ban().catch(console.error);    //Ban the targeted member
+                            memberTarget.ban().catch(console.error);    //Ban 'memberTarget'
 
                             message.channel.send(userBannedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
@@ -71,7 +71,7 @@ module.exports = {
                         }
                     }
                     else{
-                        memberTarget.ban().catch(console.error);    //Ban the targeted member
+                        memberTarget.ban().catch(console.error);    //Ban 'memberTarget'
 
                         message.channel.send(userBannedBy)
                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
@@ -89,7 +89,7 @@ module.exports = {
                 message.channel.send(targetError)
             }
         }
-        else{   //If the sender does not have the role "Administrator" or higher
+        else{   //If 'message.member' does not have the role 'BotPL1'
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Permissions error 0x5(5)')

@@ -4,11 +4,11 @@ module.exports = {
     cooldown: 10,
     description: "Usage: %kick <@user>",
     execute(message, args, cmd, client, Discord){
-        if(message.member.roles.cache.find(role => role.name === 'BotPL2')){   //RoleID for "BotPL2"
+        if(message.member.roles.cache.find(role => role.name === 'BotPL2')){    //If 'message.member' has the role 'BotPL2'
 
             const target = message.mentions.users.first();
 
-            if(target){ //Checks if the target is present
+            if(target){ //If 'target' is valid
                 const memberTarget = message.guild.members.cache.get(target.id);
 
                 const userKickedBy = new Discord.MessageEmbed()
@@ -29,7 +29,7 @@ module.exports = {
                     .setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
                     .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
 
-                if(memberTarget == message.member){ //Checks if the targeted member is equal to the sender
+                if(memberTarget == message.member){ //If 'memberTarget' is equal to 'message.member'
 
                     const cannotUseOnSelf = new Discord.MessageEmbed()
                         .setColor('#800080')
@@ -40,59 +40,59 @@ module.exports = {
                     message.channel.send(cannotUseOnSelf);
                 }
                 else{
-                    if(message.member.roles.cache.find(role => role.name === 'BotPL0')){   //Checks if the sender has the "BotPL0" role
-                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){ //Checks if the target has the "Bots" roles
+                    if(message.member.roles.cache.find(role => role.name === 'BotPL0')){    //If 'message.member' has the role 'BotPL0'
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
                             message.channel.send(targetImmune403);
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){    //Checks if the target has the "Moderator" role
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget, has the role 'BotPL0'
                             message.channel.send(targetHigherThanSender403);
                         }
                         else{
-                            memberTarget.kick().catch(console.error);   //Kick the targeted member
+                            memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
                             message.channel.send(userKickedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                         }
                     }
-                    else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){  //Checks if the sender has the "BotPL1" role
-                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){ //Checks if the target has the "Bots" roles
+                    else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //If 'message.member' has the role 'BotPL1'
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
                             message.channel.send(targetImmune403);
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){    //Chechks if the target has the "BotPL2" role
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
                             message.channel.send(targetHigherThanSender403);
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){    //Chechks if the target has the "BotPL1" role
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){ //If 'memberTarget' has the role 'BotPL1'
                             message.channel.send(targetHigherThanSender403);
                         }
                         else{
-                            memberTarget.kick().catch(console.error);   //Kick the targeted member
+                            memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
                             message.channel.send(userKickedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                         }
                     }
-                    else if(message.member.roles.find(role => role.name === 'BotPL2')){
-                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){
+                    else if(message.member.roles.find(role => role.name === 'BotPL2')){ //If 'message.member' has the role 'BotPL2'
+                        if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
                             message.channel.send(targetImmune403)
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
                             message.channel.send(targetHigherThanSender403)
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){ //If 'memberTarget' has the role 'BotPL1'
                             message.channel.send(targetHigherThanSender403)
                         }
-                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){
+                        else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){ //If 'memberTarget' has the role 'BotPL2'
                             message.channel.send(targetHigherThanSender403)
                         }
                         else{
-                            memberTarget.kick().catch(console.error);   //Kick the targeted member
+                            memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
                             message.channel.send(userKickedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                         }
                     }
                     else{
-                        memberTarget.kick().catch(console.error);   //Kick the targeted
+                        memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
                         message.channel.send(userKickedBy)
                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                         message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
@@ -109,7 +109,7 @@ module.exports = {
                 message.channel.send(targetError)
             }
         }
-        else{   //If the sender does not have the role "Administrator" or higher
+        else{   //If 'message.member' does not have the 'BotPL2'
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Permissions error 0x5(5)')

@@ -14,7 +14,7 @@ module.exports = {
             .setDescription('Could **not** execute the command! You must be in a **voice** channel to use this command!')
             .setFooter('Join a voice channel and then, perform the command again!')
 
-        if(!voiceChannel) return message.channel.send(requireUserBeInChannel)
+        if(!voiceChannel) return message.channel.send(requireUserBeInChannel)   //If 'voiceChannel' is invalid
         await voiceChannel.leave();
 
         const leave = new Discord.MessageEmbed()

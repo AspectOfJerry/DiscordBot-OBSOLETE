@@ -40,7 +40,13 @@ module.exports = {
             .setDescription(`Exiting process with code 0(0x0)`)
             .setFooter('.then(() => process.exit(0));')
 
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){   //Checks if the sender has the role "BotPL3"
+        const status = new Discord.MessageEmbed()
+            .setColor('ff0000')
+            .setTitle('Bot shutdown 0x0(0)')
+            .setDescription('A user stopped the bot')
+            .setFooter('0(0x0) ERROR_SUCCESS')
+
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){    //If 'message.member' has the role 'BotPL3'
             let filter = m => m.author.id === message.author.id
 
             message.channel.send(requireConfirm);
@@ -52,7 +58,7 @@ module.exports = {
             })
             .then(message => {
               message = message.first()
-                if(message.content.toUpperCase() == 'YES'){
+                if(message.content.toUpperCase() == 'YES'){ //If 'message.content' to upper case is equal to "YES"
                     let filter = m => m.author.id === message.author.id
 
                     message.channel.send(requireDoubleConfirm)
@@ -64,13 +70,14 @@ module.exports = {
                     })
                     .then(message => {
                       message = message.first()
-                        if(message.content.toUpperCase() == 'YES'){
+                        if(message.content.toUpperCase() == 'YES'){ //If 'message.content' to upper case is equal to "YES"
                             message.channel.send(terminatingProcess)
-                            client.user.setActivity('.then(() => process.exit(0));', { type: 'PLAYING' })
+                            message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
+                            client.user.setActivity('process.exit(0);', { type: 'PLAYING' })
                             message.channel.send(processExit)
                             .then(() => process.exit(0));
                         }
-                        else if(message.content.toUpperCase() == 'NO'){
+                        else if(message.content.toUpperCase() == 'NO'){ //If 'message.content' to upper case is equal to "NO"
                             message.channel.send(requestAborted);
                         }
                     })
@@ -78,7 +85,7 @@ module.exports = {
                         message.channel.send(requestTimeout)
                     });
                 }
-                else if(message.content.toUpperCase() == 'NO'){
+                else if(message.content.toUpperCase() == 'NO'){ //If 'message.content' to upper case is equal to "NO"
                     message.channel.send(requestAborted);
                 }
             })

@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 3,
     description: 'Usage: "%friend <add/remove> <@user>"',
     execute(message, args, cmd, client, Discord){
-        if(message.member.user.id === '611633988515266562'){
+        if(message.member.user.id === '611633988515266562'){    //If 'message.member' has the 'user.id' of "@Jerry#3756"
             const target = message.mentions.users.first();
 
             let friendRole = message.guild.roles.cache.get('877984769793744896');
@@ -15,11 +15,11 @@ module.exports = {
                 .setDescription("Invalid command! You must **add** or **remove** a user! Correct usage: %friend <add/remove> <@user>.")
                 .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^`)
 
-            if(!args[0]) return message.reply(requireArgs0);
+            if(!args[0]) return message.reply(requireArgs0);    //If 'args[0]' is not present
 
-            if(args[0] == "add"){
+            if(args[0].toUpperCase() == "ADD"){   //If 'args[0]' to upper case is equal to "ADD"
                 const memberTarget = message.guild.members.cache.get(target.id);
-                if(!args[1]){
+                if(!args[1]){   //If 'args[1]' is not present
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setTitle('Error')
@@ -29,16 +29,16 @@ module.exports = {
                     message.channel.send(requireArgs1)
                 }
                 else{
-                    if(target){
-                        if(memberTarget.roles.cache.has('877984769793744896')){
+                    if(target){ //If 'target' is valid
+                        if(memberTarget.roles.cache.has('877984769793744896')){ //If 'memberTarget' has the role 'Friends'
                             const alreadyFriends = new Discord.MessageEmbed()
                                 .setColor('#ff0000')
                                 .setDescription(`You are already friends with <@${memberTarget.user.id}>`)
     
                             message.channel.send(alreadyFriends)
                         }
-                        else{
-                            memberTarget.roles.add(friendRole.id).catch(console.error)
+                        else{   //If 'memberTarget' does not have the role 'Friends'
+                            memberTarget.roles.add(friendRole.id).catch(console.error)  //Give memberTarget the role 'Friends'
                             const addedFriend = new Discord.MessageEmbed()
                                 .setColor('#00ff00')
                                 .setDescription(`You are now friends with <@${memberTarget.user.id}>!`)
@@ -56,10 +56,10 @@ module.exports = {
                         message.channel.send(invalidTarget)
                     }
                 }
-            }
-            else if(args[0] == "remove"){
+            }   //If args[0] to upper case is not equal to "ADD"
+            else if(args[0].toUpperCase() == "REMOVE"){ //If args[0] to upper case is equal to "REMOVE"
                 const memberTarget = message.guild.members.cache.get(target.id);
-                if(!args[1]){
+                if(!args[1]){   //If args[1] is not present
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setTitle('Error')
@@ -69,8 +69,8 @@ module.exports = {
                     message.channel.send(requireArgs1)
                 }
                 else{
-                    if(target){
-                        if(!memberTarget.roles.cache.get('877984769793744896')){
+                    if(target){ //If target is valid
+                        if(!memberTarget.roles.cache.get('877984769793744896')){    //If memberTarget does not have the 'Friends' role
                             const notFriends = new Discord.MessageEmbed()
 
                             .setColor('#ff0000')
@@ -99,7 +99,7 @@ module.exports = {
                     }
                 }
             }
-            else{
+            else{   //If args[0] to upper case does not contain "ADD" nor "REMOVE"
                 const requireAddOrRemove = new Discord.MessageEmbed()
                 .setColor('#00ff00')
                 .setTitle('Error')
@@ -108,7 +108,7 @@ module.exports = {
 
                 message.channel.send(requireAddOrRemove)
             }
-        }
+        }   //If message.member does not has the user.id of @Jerry#3756
         else{
             const notImplementedForAll = new Discord.MessageEmbed()
             .setColor('#ff0000')
