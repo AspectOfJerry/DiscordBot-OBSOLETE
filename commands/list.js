@@ -13,7 +13,6 @@ module.exports = {
             .addField(`**%beep**`, `__Syntax:__ "%beep"\n__Aliases:__ None\n__Use:__ Returns "Boop!"`, false)
             .addField(`**%birthday**`, `__Syntax:__ "%birthday <@user>"\n__Aliases:__ 'bday'\n__Use:__ Assigns a role to the targeted member and sends some messages.`, false)
             .addField(`**%boop**`, `__Syntax:__ "%boop <@user>"\n__Aliases:__ None\n__Use:__ Returns "Boop! @memberTarget"`, false)
-            .addField(`**%embedmethods**`, `__Syntax:__ "%embedmethods"\n__Aliases:__ None\n__Use:__ Test command, do not use.`, false)
             .addField(`**%friend**`, `__Syntax:__ "%friend <add/remove> <@user>"\n__Aliases:__ 'f'\n__Use:__ Add a role to the targeted member.`, false)
             .addField(`**%rps**`, `__Syntax:__ "%rps"\n__Aliases:__ 'rockpaperscissors', 'rock_paper_scissors'\n__Use:__ Unwinnable game.`, false)
             .addField(`**%kick**`, `__Syntax:__ "%kick <@user>"\n__Aliases:__ Maybe None\n__Use__ Kicks the targeted memebr.`, false)
@@ -40,7 +39,6 @@ module.exports = {
             .setTitle("Commands that require no permissions (noReq)")
             .addField(`**%beep**`, `__Syntax:__ "%beep"\n__Aliases:__ None\n__Use:__ Returns "Boop!"`, false)
             .addField(`**%boop**`, `__Syntax:__ "%boop <@user>"\n__Aliases:__ None\n__Use:__ Returns "Boop! @memberTarget"`, false)
-            .addField(`**%embedmethods**`, `__Syntax:__ "%embedmethods"\n__Aliases:__ None\n__Use:__ Test feature, do not use.`, false)
             .addField(`**%rps**`, `__Syntax:__ "%rps"\n__Aliases:__ 'rockpaperscissors', 'rock_paper_scissors'\n__Use:__ Unwinnable game.`, false)
             .addField(`**%leave**`, `__Syntax:__ "%leave"\n__Aliases:__ 'dc', 'disconnect'\n__Use:__ Disconnects the bot from the channel it is in`, false)
             .addField(`**%list**`, `__Syntax:__ "%list"\n__Aliases:__ 'commands', 'commandhelp', 'commandshelp'\n__Use:__ `, false)
@@ -129,13 +127,12 @@ module.exports = {
             }
         })
         .catch(collected => {
-            const timeout = new Discord.MessageEmbed()
-                .setColor('#800080')
-                .setTitle('Error 0x5B4 (1460)')
-                .setDescription('Command timeout!')
-                .setFooter('1460(0x5B4) ERROR_TIMEOUT')
+            const requestTimeout = new Discord.MessageEmbed()
+            .setColor('#800080')
+            .setTitle('Timeout 0x5B4(1460)')
+            .setDescription("Request timeout")
 
-            message.channel.send(timeout)
+            message.channel.send(requestTimeout)
         });
     }
 }

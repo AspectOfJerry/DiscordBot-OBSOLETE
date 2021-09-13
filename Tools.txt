@@ -13,13 +13,8 @@
 204 NO_CONTENT - The server successfully processed the request, and is not returning any content.
 226 IM_USED
 
-400 BAD_REQUEST - The server cannot or will not process the request due to an apparent client error.
-403 FORBIDDEN - The request contained valid data and was understood by the server, but the server is refusing action.
+
 404 NOT_FOUND - The requested resource could not be found but may be available in the future.
-405 METHODS_NOT_ALLOWED - A request method is not supported for the requested resource.
-408 REQUEST_TIMEOUT - The server timed out waiting for the request. The client did not produce a request within the time that the server was prepared to wait. The client MAY repeat the request without modifications at any later time.
-410 GONE - Indicates that the resource requested is no longer available and will not be available again.
-415 UNSUPPORTED_MEDIA_TYPE - The request entity has a media type which the server or resource does not support.
 424 FAILED_DEPENDENCY - The request failed because it depended on another request and that request failed.
 425 TOO_EARLY - Indicates that the server is unwilling to risk processing a request that might be replayed.
 429 TOO_MANY_REQUESTS - The user has sent too many requests in a given amount of time.
@@ -76,11 +71,6 @@ System Error Codes//////////////////////////////////////////////////////////////
 System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
 System Error Codes////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
-Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
-Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
-Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
-Most Used////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ERROR_SUCCESS
@@ -107,6 +97,10 @@ ERROR_BAD_COMMAND
 22 (0x16)
 The device does not recognize the command.
 
+ERROR_NOT_SUPPORTED
+50 (0x32)
+The request is not supported.
+
 ERROR_BUSY
 170 (0xAA)
 The requested resource is in use.
@@ -119,6 +113,10 @@ ERROR_CANT_TERMINATE_SELF
 555 (0x22B)
 Indicates that a thread attempted to terminate itself by default (called NtTerminateThread with NULL) and it was the last thread in the current process.
 
+ERROR_CIRCULAR_DEPENDENCY
+1059 (0x423)
+Circular service dependency was specified.
+
 ERROR_PROCESS_IS_PROTECTED
 1293 (0x50D)
 Either the target process, or the target thread's containing process, is a protected process.
@@ -130,6 +128,10 @@ The specified local group does not exist.
 ERROR_NO_SUCH_MEMBER
 1387 (0x56B)
 A member could not be added to or removed from the local group because the member does not exist.
+
+ERROR_TIMEOUT
+1460 (0x5B4)
+This operation returned because the timeout period expired.
 
 
 
@@ -692,9 +694,9 @@ ERROR_LOCK_FAILED
 167 (0xA7)
 Unable to lock a region of a file.
 
--ERROR_BUSY
--170 (0xAA)
--The requested resource is in use.
+ERROR_BUSY
+170 (0xAA)
+The requested resource is in use.
 
 ERROR_DEVICE_SUPPORT_IN_PROGRESS
 171 (0xAB)
@@ -3791,9 +3793,9 @@ ERROR_REQUIRES_INTERACTIVE_WINDOWSTATION
 1459 (0x5B3)
 This operation requires an interactive window station.
 
--ERROR_TIMEOUT
--1460 (0x5B4)
--This operation returned because the timeout period expired.
+ERROR_TIMEOUT
+1460 (0x5B4)
+This operation returned because the timeout period expired.
 
 ERROR_INVALID_MONITOR_HANDLE
 1461 (0x5B5)

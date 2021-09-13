@@ -35,13 +35,13 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Permissions error 0x5(5)')
                     .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
-                    .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
+                    .setFooter(`message.content = ${message.content}`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Permissions error 0x5(5)')
                     .setDescription(`<@${memberTarget.user.id}> is **immune** to this command!`)
-                    .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
+                    .setFooter(`message.content = ${message.content}`)
                 
                 if(message.member == memberTarget){
                     const cannotUseOnSelf = new Discord.MessageEmbed()
@@ -188,7 +188,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Permissions error 0x5(5)')
                 .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
-                .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
+                .setFooter(`message.content = ${message.content}`)
 
             message.channel.send(permissionsError)
         }

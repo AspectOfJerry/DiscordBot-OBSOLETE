@@ -25,9 +25,8 @@ module.exports = {
 
         const requestTimeout = new Discord.MessageEmbed()
             .setColor('#800080')
-            .setTitle('Timeout')
+            .setTitle('Timeout 0x5B4(1460)')
             .setDescription("Request timeout")
-            .setFooter('408 REQUEST_TIMEOUT')
 
         const terminatingProcess = new Discord.MessageEmbed()
             .setColor('#ff0000')
@@ -44,7 +43,6 @@ module.exports = {
             .setColor('ff0000')
             .setTitle('Bot shutdown 0x0(0)')
             .setDescription('A user stopped the bot')
-            .setFooter('0(0x0) ERROR_SUCCESS')
 
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')){    //If 'message.member' has the role 'BotPL3'
             let filter = m => m.author.id === message.author.id
@@ -98,7 +96,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Permissions error 0x5(5)')
                 .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
-                .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
+                .setFooter(`message.content = ${message.content}`)
 
             message.channel.send(permissionsError)
         }

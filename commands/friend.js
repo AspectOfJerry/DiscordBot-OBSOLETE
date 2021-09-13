@@ -93,7 +93,7 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('Error 0x56B(1387)')
                         .setDescription('The targeted member is invalid!')
-                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
+                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^`)
                         
                         message.channel.send(targetError)
                     }
@@ -112,9 +112,8 @@ module.exports = {
         else{
             const notImplementedForAll = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setTitle('Error 501')
+            .setTitle('Error')
             .setDescription('The "%friend <add/remove> <@user>" command is currently **only** available to the server **owner**!')
-            .setFooter('501 NOT_IMPLEMENTED')
 
             message.channel.send(notImplementedForAll)
         }        

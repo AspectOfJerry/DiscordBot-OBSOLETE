@@ -15,7 +15,7 @@ module.exports = {
                         .setTitle('Report submitted')
                         .setDescription(`<@${message.member.user.id}> reported <@${memberTarget}>`)
                         .addField(`Report:`, `${message.content}`, false)
-                        .setFooter('Thanks for reporting. Your report will be viewed as soon as possible\nDo not report for no reason since it pings staff members.') 
+                        .setFooter('Your report will be viewed as soon as possible\nDo not report for no reason since it pings staff members.') 
 
                     message.channel.send(report)
                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@697914535863910561>, <@642107004076163103>`)
@@ -36,7 +36,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error 0x56B(1387)')
                     .setDescription('The targeted member is invalid!')
-                    .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
+                    .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^`)
 
                 message.channel.send(targetError)
             }

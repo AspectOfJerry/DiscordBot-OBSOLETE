@@ -42,13 +42,12 @@ module.exports = {
             }
         })
         .catch(collected => {
-            const timeout = new Discord.MessageEmbed()
-                .setColor('#800080')
-                .setTitle('Error 0x5B4 (1460)')
-                .setDescription('Command timeout!')
-                .setFooter('1460(0x5B4) ERROR_TIMEOUT')
+            const requestTimeout = new Discord.MessageEmbed()
+            .setColor('#800080')
+            .setTitle('Timeout 0x5B4(1460)')
+            .setDescription("Request timeout")
 
-            message.channel.send(timeout)
+            message.channel.send(requestTimeout)
         });
     }
 }
