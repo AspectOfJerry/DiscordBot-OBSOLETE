@@ -7,14 +7,14 @@ module.exports = {
 
         const requireConfirm = new Discord.MessageEmbed()
             .setColor('#ff10f0')
-            .setTitle('Do you **really** want to terminate the process?')
-            .setDescription(`**Important!**\nThis command **exits** the bot's program rendering the bot **unusable** until a bot **operator** manually restarts it via the terminal. Use the command **only** if **needed**! Executing the command **without** reason will result in a **demotion**.\nDo you understand and agree? You have 30 seconds: "yes/no".`)
+            .setTitle('Do you **really** want to stop the process?')
+            .setDescription(`**Important!**\nThis command **exits** the bot's program rendering the bot **unusable** until a bot **operator** manually restarts it via the terminal.\nUse the command **only** if **needed**! Executing the command **without** reason will result in a **demotion**.\nDo you understand and agree? You have 30 seconds: "yes/no".`)
             .setFooter('Request pending [30s]')
 
         const requireDoubleConfirm = new Discord.MessageEmbed()
             .setColor('#ff10f0')
-            .setTitle('Last confirmation. Do you **really** want to terminate the process?')
-            .setDescription(`Double confirmation required! You have 3 seconds: "yes/no". This is the last step, make a wise decision.`)
+            .setTitle('Double confirm')
+            .setDescription(`Do you **really** want to stop the process? You have 3 seconds: "yes/no". This is the last step, make a wise decision.`)
             .setFooter('Request pending [3s]')
 
         const requestAborted = new Discord.MessageEmbed()
@@ -31,8 +31,8 @@ module.exports = {
         const terminatingProcess = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Terminating Process')
-            .setDescription(`<@${message.member.user.id}> requested a bot **shutdown**. **Process will be killed after the next message!**`)
-            .setFooter('Next:\nmessage.channel.send(processExit)\n.then(() => process.exit(0));')
+            .setDescription(`<@${message.member.user.id}> requested a bot shutdown. **Process will be killed after the next message!**`)
+            .setFooter('message.channel.send(processExit)\n.then(() => process.exit(0));')
 
         const processExit = new Discord.MessageEmbed()
             .setColor('#ff0000')
@@ -43,6 +43,7 @@ module.exports = {
             .setColor('ff0000')
             .setTitle('Bot shutdown 0x0(0)')
             .setDescription('A user stopped the bot')
+            .setFooter(`To restart the bot, go in the terminal and type in: "node ."`)
 
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')){    //If 'message.member' has the role 'BotPL3'
             let filter = m => m.author.id === message.author.id
@@ -70,6 +71,7 @@ module.exports = {
                       message = message.first()
                         if(message.content.toUpperCase() == 'YES'){ //If 'message.content' to upper case is equal to "YES"
                             message.channel.send(terminatingProcess)
+                            message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@871382141886406707>`)
                             message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
                             client.user.setActivity('process.exit(0);', { type: 'PLAYING' })
                             message.channel.send(processExit)
