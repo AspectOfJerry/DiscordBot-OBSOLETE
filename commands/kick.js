@@ -71,7 +71,7 @@ module.exports = {
                             message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                         }
                     }
-                    else if(message.member.roles.find(role => role.name === 'BotPL2')){ //If 'message.member' has the role 'BotPL2'
+                    else if(message.member.roles.cache.find(role => role.name === 'BotPL2')){ //If 'message.member' has the role 'BotPL2'
                         if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
                             message.channel.send(targetImmune403)
                         }
