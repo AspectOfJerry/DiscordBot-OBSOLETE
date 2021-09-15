@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'testrue',
+    name: 'test1',
     cooldown: 10,
-    description: "Usage: %testtrue",
+    description: "Usage: %test1",
     execute(message, args, cmd, client, Discord){
       message.reply('There is currently nothing to test!');
     }
