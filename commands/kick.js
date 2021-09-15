@@ -14,13 +14,13 @@ module.exports = {
                 const userKickedBy = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('User kick')
-                    .setDescription(`<@${memberTarget.user.id}> was **kicked** from the guild by <@${message.member.user.id}>!`)
+                    .setDescription(`<@${memberTarget.user.id}> was **kicked** from the guild by <@${message.member.user.id}>.`)
                     .setFooter(`message.content = ${message.content}`)
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Permissions error 0x5(5)')
-                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
+                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>!`)
                     .setFooter(`message.content = ${message.content}`)
 
                 const targetImmune403 = new Discord.MessageEmbed()

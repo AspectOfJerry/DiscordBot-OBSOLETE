@@ -21,7 +21,7 @@ const targetImmune403 = new Discord.MessageEmbed()
 const targetHigherThanSender403 = new Discord.MessageEmbed()
     .setColor('#ff0000')
     .setTitle('Permissions error 0x5(5)')
-    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
+    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>!`)
     .setFooter(`message.content = ${message.content}`)
 
 //Cannot use the command on yourself

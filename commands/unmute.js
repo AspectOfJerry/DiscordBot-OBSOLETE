@@ -15,13 +15,13 @@ module.exports = {
                 const userUnmutedBy = new Discord.MessageEmbed()
                     .setColor('#00ff00')
                     .setTitle('User unmute')
-                    .setDescription(`<@${memberTarget.user.id}> was **unmuted** by <@${message.member.user.id}>!`)
+                    .setDescription(`<@${memberTarget.user.id}> was **unmuted** by <@${message.member.user.id}>.`)
                     .setFooter(`To mute a member, execute "%mute <@user> (<duration>)".\nmessage.content = ${message.content}`)
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Permissions error 0x5(5)')
-                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
+                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>!`)
                     .setFooter(`message.content = ${message.content}`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
@@ -33,7 +33,7 @@ module.exports = {
                 const userNotMuted = new Discord.MessageEmbed()
                     .setColor('#800080')
                     .setTitle('Error')
-                    .setDescription('Could **not** perform the command! The **target** is **not** muted!')
+                    .setDescription(`<@${memberTarget.user.id}> is **not** muted!`)
                     .setFooter(`message.content = ${message.content}`)
 
                 if(message.member == memberTarget){ //If 'message.member' is equal to 'memberTarget'

@@ -12,13 +12,13 @@ module.exports = {
                 const userBannedBy = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('User ban')
-                    .setDescription(`<@${memberTarget.user.id}> was **banned** from the guild by <@${message.member.user.id}>!`)
+                    .setDescription(`<@${memberTarget.user.id}> was **banned** from the guild by <@${message.member.user.id}>.`)
                     .setFooter(`To unban a member, go to "Server Settings" > "Bans" > Click on the user > "Revoke Ban".\nmessage.content = ${message.content}`)
 
                 const targetHigherThanSender403 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Permissions error 0x5(5)')
-                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>.`)
+                    .setDescription(`<@${memberTarget.user.id}> has an **equal** or **higher** role than <@${message.member.user.id}>!`)
                     .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
 
                 const targetImmune403 = new Discord.MessageEmbed()
