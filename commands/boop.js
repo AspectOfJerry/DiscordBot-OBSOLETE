@@ -19,7 +19,7 @@ module.exports = {
             .setColor('#ff0000')
             .setTitle('Error 0x56B(1387)')
             .setDescription('The targeted member is invalid!')
-            .setFooter(`message.content = ${message.content}\n%boop <args[0]>\n                 ^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
+            .setFooter(`message.content = ${message.content}\n%boop <args[0]>\n                 ^targetError`)
             
             message.channel.send(targetError)
         }

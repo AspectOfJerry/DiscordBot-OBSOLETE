@@ -6,7 +6,16 @@ module.exports = {
     execute(message, args, cmd, client, Discord){
         const target = message.mentions.users.first();
         
-        if(args[0]){    //If 'args[0]' is present
+        if(!args[0]){    //If 'args[0]' is present
+            const requireArgs0 = new Discord.MessageEmbed()
+                .setColor('#00ff00')
+                .setTitle('Error')
+                .setDescription("Invalid command! You must mention a user!")
+                .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^targetError`)
+
+            message.channel.send(requireArgs0)
+        }
+        else{
             if(target){ //if 'target' is valid
                 const memberTarget = message.guild.members.cache.get(target.id);
                 if(args[1]){    //If 'args[1]' is present
@@ -26,7 +35,7 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('Error')
                         .setDescription('You must provide a reason.')
-                        .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                                       ^`)
+                        .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                                       ^requireArgs1`)
 
                     message.channel.send(requireArgs1)
                 }
@@ -36,19 +45,10 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error 0x56B(1387)')
                     .setDescription('The targeted member is invalid!')
-                    .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^`)
+                    .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^targetError`)
 
                 message.channel.send(targetError)
             }
-        }
-        else{
-            const requireArgs0 = new Discord.MessageEmbed()
-                .setColor('#00ff00')
-                .setTitle('Error')
-                .setDescription("Invalid command! You must mention a user!")
-                .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^`)
-
-            message.channel.send(requireArgs0)
         }
     }
 }
