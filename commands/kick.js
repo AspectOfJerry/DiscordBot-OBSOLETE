@@ -45,13 +45,13 @@ module.exports = {
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                             } catch(error){
-                                const error = new Discord.MessageEmbed()
+                                const errorKick = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setTitle('Error')
                                     .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                     .setFooter(`message.content = ${message.content}`)
     
-                                message.channel.send(error)
+                                message.channel.send(errorKick)
                             }
                         }
                     } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //If 'message.member' has the role 'BotPL1'
@@ -69,13 +69,13 @@ module.exports = {
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                             } catch(error){
-                                const error = new Discord.MessageEmbed()
+                                const errorKick = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setTitle('Error')
                                     .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                     .setFooter(`message.content = ${message.content}`)
     
-                                message.channel.send(error)
+                                message.channel.send(errorKick)
                             }
                         }
                     } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')){ //If 'message.member' has the role 'BotPL2'
@@ -95,13 +95,13 @@ module.exports = {
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                             } catch(error){
-                                const error = new Discord.MessageEmbed()
+                                const errorKick = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setTitle('Error')
                                     .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                     .setFooter(`message.content = ${message.content}`)
     
-                                message.channel.send(error)
+                                message.channel.send(errorKick)
                             }
                         }
                     } else{
@@ -112,13 +112,13 @@ module.exports = {
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                         } catch(error){
-                            const error = new Discord.MessageEmbed()
+                            const errorKick = new Discord.MessageEmbed()
                                 .setColor('#ff0000')
                                 .setTitle('Error')
                                 .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                 .setFooter(`message.content = ${message.content}`)
 
-                            message.channel.send(error)
+                            message.channel.send(errorKick)
                         }
                     }
                 }

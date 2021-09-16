@@ -76,13 +76,13 @@ module.exports = {
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy)
                                     }, ms(args[1]));
                                 } catch(error){
-                                    const error = new Discord.MessageEmbed()
+                                    const errorMute = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                         .setFooter(`message.content = ${message.content}`)
     
-                                    message.channel.send(error)
+                                    message.channel.send(errorMute)
                                 }
                             }
                         } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //If 'message.member' has the role 'BotPL1'
@@ -110,13 +110,13 @@ module.exports = {
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy)
                                     }, ms(args[1]));
                                 } catch(error){
-                                    const error = new Discord.MessageEmbed()
+                                    const errorMute = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                         .setFooter(`message.content = ${message.content}`)
     
-                                    message.channel.send(error)
+                                    message.channel.send(errorMute)
                                 }
                             }
                         }   //If the message sender does not have the "BotPL1" role
@@ -148,13 +148,13 @@ module.exports = {
                                     }, ms(args[1]));
                                 }
                                 catch(error){
-                                    const error = new Discord.MessageEmbed()
+                                    const errorMute = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                         .setFooter(`message.content = ${message.content}`)
     
-                                    message.channel.send(error)
+                                    message.channel.send(errorMute)
                                 }
                             }
                         } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')){   //if 'message.member' has the role 'BotPL3'
@@ -186,13 +186,13 @@ module.exports = {
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy)
                                     }, ms(args[1]));
                                 } catch(error){
-                                    const error = new Discord.MessageEmbed()
+                                    const errorMute = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                         .setFooter(`message.content = ${message.content}`)
     
-                                    message.channel.send(error)
+                                    message.channel.send(errorMute)
                                 }
                             }
                         } else{
@@ -213,13 +213,13 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy)
                                 }, ms(args[1]));
                             } catch(error){
-                                const error = new Discord.MessageEmbed()
+                                const errorMute = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setTitle('Error')
                                     .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                     .setFooter(`message.content = ${message.content}`)
 
-                                message.channel.send(error)
+                                message.channel.send(errorMute)
                             }
                         }
                     }

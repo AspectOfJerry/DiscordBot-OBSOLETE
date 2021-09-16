@@ -45,13 +45,13 @@ module.exports = {
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
                             } catch(error){
-                                const error = new Discord.MessageEmbed()
+                                const errorBan = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setTitle('Error')
                                     .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
                                     .setFooter(`message.content = ${message.content}`)
 
-                                message.channel.send(error)
+                                message.channel.send(errorBan)
                             }
                         }
                     } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //If 'message.member' has the role 'BotPL1'
@@ -69,14 +69,14 @@ module.exports = {
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
                             }catch(error){
-                                const error = new Discord.MessageEmbed()
+                                const errorBan = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setTitle('Error')
                                     .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
                                     .setFooter(`message.content = ${message.content}`)
 
-                                message.channel.send(error)
-                            }message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
+                                message.channel.send(errorBan)
+                            }
                         }
                     } else{
                         try{
@@ -86,14 +86,14 @@ module.exports = {
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
                         } catch(error){
-                            const error = new Discord.MessageEmbed()
+                            const errorBan = new Discord.MessageEmbed()
                                 .setColor('#ff0000')
                                 .setTitle('Error')
                                 .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
                                 .setFooter(`message.content = ${message.content}`)
 
-                            message.channel.send(error)
-                        }message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
+                            message.channel.send(errorBan)
+                        }
                     }
                 }
             } else{
