@@ -11,7 +11,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Error')
                 .setDescription("Invalid command! You must **add** or **remove** a user! Correct usage: %friend <add/remove> <@user>.")
-                .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^`)
+                .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^requireArgs0`)
 
             if(!args[0]) return message.reply(requireArgs0);    //If 'args[0]' is not present
 
@@ -22,7 +22,7 @@ module.exports = {
                         .setColor('#00ff00')
                         .setTitle('Error')
                         .setDescription("Invalid command! You must mention a user!")
-                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^`)
+                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^requireArgs1`)
 
                     message.channel.send(requireArgs1)
                 } else{
@@ -58,7 +58,7 @@ module.exports = {
                         .setColor('#00ff00')
                         .setTitle('Error')
                         .setDescription("Invalid command! You must mention a user!")
-                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^`)
+                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^requireArgs1`)
 
                     message.channel.send(requireArgs1)
                 } else{
@@ -83,7 +83,7 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('Error 0x56B(1387)')
                         .setDescription('The targeted member is invalid!')
-                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^`)
+                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^targetError`)
                         
                         message.channel.send(targetError)
                     }
@@ -93,7 +93,7 @@ module.exports = {
                 .setColor('#00ff00')
                 .setTitle('Error')
                 .setDescription("Invalid command! You must **add** or **remove** a user!")
-                .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^`)
+                .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^requireAddOrRemove`)
 
                 message.channel.send(requireAddOrRemove)
             }

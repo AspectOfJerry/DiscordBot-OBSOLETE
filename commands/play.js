@@ -6,10 +6,10 @@ const queue = new Map();
 
 module.exports = {
     name: 'play',
-    aliases: ['skip', 'leave'],
+    aliases: ['skip', 'leave', 'join'],
     cooldown: 5,
     description: 'Usage: "%play <URL/keyWords>"',
-    async execute(message,args, cmd, client, Discord){
+    async execute(message, args, cmd, client, Discord){
         const antiRickRoll = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('[Rick Roll Detection Module]')
@@ -30,7 +30,12 @@ module.exports = {
 
         //If the user has used the play command
         if (cmd === 'play'){
-            if (!args.length) return message.channel.send('🟣 You need to enter the second argument! Correct usage: "%play <URL/keyWords>".');
+            const requireArgs0 = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setTitle('Error')
+                .setDescription('You need to enter a YouTube link!')
+                .setFooter(`message.content = ${message.content}\n%play <args[0]>\n               ^requireArgs0`)
+            if (!args.length) return message.channel.send(requireArgs0);
             let song = {};
 
             //If the first argument is a link. Set the song object to have two keys. Title and URl.
@@ -63,7 +68,12 @@ module.exports = {
                     if(video.title.includes('Never Gonna Give You Up')) return message.channel.send(antiRickRoll);
                     if(video.title.includes('NEVER GONNA GIVE YOU UP')) return message.channel.send(antiRickRoll);
                 } else {
-                     message.channel.send('🔴 There was an error while searching for the video.');
+                    const errorSearching = new Discord.MessageEmbed()
+                        .setColor('#ff0000')
+                        .setTitle('Error')
+                        .setDescription('There was an error while searching for the video.')
+
+                    message.channel.send(errorSearching);
                 }
             }
 
@@ -85,25 +95,35 @@ module.exports = {
                 try {
                     const connection = await voice_channel.join();
                     queue_constructor.connection = connection;
-                    video_player(message.guild, queue_constructor.songs[0]);
+                    video_player(message.guild, queue_constructor.songs[0], Discord);
                 } catch (err) {
                     queue.delete(message.guild.id);
-                    message.channel.send('🔴 There was an error while connecting.');
+                    const conenctionError = new Discord.MessageEmbed()
+                        .setColor('#ff0000')
+                        .setTitle('Error')
+                        .setDescription('There was an error while connecting.')
+
+                    message.channel.send(conenctionError);
                     throw err;
                 }
             } else{
                 server_queue.songs.push(song);
-                return message.channel.send(`🟢 Added: "**${song.title}**" to queue!`);
+                const addedToQueue = new Discord.MessageEmbed()
+                    .setColor('#00ff00')
+                    .setTitle('Added song to queue')
+                    .setDescription(`Added "${song.title}" to the server queue!`)
+
+                return message.channel.send(addedToQueue);
             }
         }
 
-        else if(cmd === 'skip') skip_song(message, server_queue);
-        else if(cmd === 'leave') stop_song(message, server_queue);
+        else if(cmd === 'skip') skip_song(message, server_queue, Discord);
+        else if(cmd === 'leave') stop_song(message, server_queue, voice_channel, Discord);
+        else if(cmd === 'join') join(message, voice_channel, Discord);
     }
-    
 }
 
-const video_player = async (guild, song) => {
+const video_player = async (guild, song, Discord) => {
     const song_queue = queue.get(guild.id);
 
     //If no song is left in the server queue. Leave the voice channel and delete the key and value pair from the global queue.
@@ -118,19 +138,85 @@ const video_player = async (guild, song) => {
         song_queue.songs.shift();
         video_player(guild, song_queue.songs[0]);
     });
-    await song_queue.text_channel.send(`🟢 Now playing: "**${song.title}**"`)
+    const playing = new Discord.MessageEmbed()
+        .setColor('#00ff00')
+        .setTitle('Playing!')
+        .setDescription(`Now playing: **${song.title}**`)
+        .setFooter(song.url)
+        .setURL(song.url)
+
+    await song_queue.text_channel.send(playing)
 }
 
-const skip_song = (message, server_queue) => {
-    if (!message.member.voice.channel) return message.channel.send(`🟣 You need to be in a voice channel to execute this command!`);
+const skip_song = (message, server_queue, Discord) => {
+    if (!message.member.voice.channel){
+        const requireUseBeInVC = new Discord.MessageEmbed()
+            .setColor('ff0000')
+            .setTitle('Error')
+            .setDescription('You need to be in a voice channel to execute this command!')
+            .setFooter(`Join a voice channel!\nmessage.content = ${message.content}`)
+
+        return message.channel.send(requireUseBeInVC);
+    } 
     if(!server_queue){
-        return message.channel.send(`🟣 There are no songs in queue`);
+        const queueEmpty = new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('Error')
+            .setDescription(`Add a song to play!\nmessage.content = ${message.content}`)
+
+        return message.channel.send(queueEmpty);
     }
     server_queue.connection.dispatcher.end();
 }
 
-const stop_song = (message, server_queue) => {
-    if (!message.member.voice.channel) return message.channel.send(`🟣 You need to be in a voice channel to execute this command!`);
-    server_queue.songs = [];
-    server_queue.connection.dispatcher.end();
+const stop_song = (message, server_queue, voice_channel, Discord) => {
+    const requireUseBeInVC = new Discord.MessageEmbed()
+        .setColor('ff0000')
+        .setTitle('Error')
+        .setDescription('You need to be in a voice channel to execute this command!')
+        .setFooter(`Join a voice channel!\nmessage.content = ${message.content}`)
+
+    if (!message.member.voice.channel) return message.channel.send(requireUseBeInVC);
+    try{
+    
+        queue.delete(message.guild.id);
+
+        voice_channel.leave();
+        const leave = new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('Leave')
+            .setDescription('Left the voice channel!')
+
+        message.channel.send(leave)
+    }
+    catch{
+        voice_channel.leave();
+        const leaveError = new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('Error Catch')
+            .setDescription('An error occured while disconnecting. No further informations.')
+            .setFooter('An error was catched at line 187')
+
+        message.channel.send(leaveError)
+    }
+}
+
+const join = (message, voice_channel, Discord) => {
+    try{
+        voice_channel.join()
+        const join = new Discord.MessageEmbed()
+            .setColor('#00ff00')
+            .setTitle('Join')
+            .setDescription('Joined the voice channel!')
+
+        message.channel.send(join)
+    }
+    catch(error){
+        const conenctionError = new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('Error')
+            .setDescription('There was an error while connecting.')
+
+        message.channel.send(conenctionError);
+    }
 }

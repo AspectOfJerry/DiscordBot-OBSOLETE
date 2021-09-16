@@ -81,7 +81,7 @@ module.exports = {
                     } else{
                         try{
                             memberTarget.ban().catch(console.error);    //Ban 'memberTarget'
-
+    
                             message.channel.send(userBannedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
@@ -101,7 +101,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Error 0x56B(1387)')
                 .setDescription('The targeted member is invalid!')
-                .setFooter(`message.content = ${message.content}\n%ban <args[0]>\n              ^`)
+                .setFooter(`message.content = ${message.content}\n%ban <args[0]>\n              ^targetError`)
                 
                 message.channel.send(targetError)
             }
