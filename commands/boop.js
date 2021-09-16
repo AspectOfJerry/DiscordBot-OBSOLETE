@@ -4,17 +4,14 @@ module.exports = {
     description: 'Usage: "%boop <@user>"',
     execute(message, args, cmd, client, Discord){
         const target = message.mentions.users.first();
-
         if(target){ //If 'target' is valid
             const memberTarget = message.guild.members.cache.get(target.id);
-
             const boop = new Discord.MessageEmbed()
             .setColor('#ff55ff')
             .setDescription(`Boop! <@${memberTarget.user.id}>`)
             
             message.channel.send(boop);
-        }
-        else{
+        } else{
             const targetError = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Error 0x56B(1387)')

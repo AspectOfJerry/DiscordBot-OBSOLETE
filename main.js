@@ -15,8 +15,8 @@ client.events = new Discord.Collection();
 
 client.on('guildMemberAdd', guildMember =>{
     let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Members');
-
     guildMember.roles.add(welcomeRole).catch(console.error);
+    
     const userJoinMessage = new Discord.MessageEmbed()
     .setColor('#006400')
     .setTitle('User join')

@@ -3,7 +3,6 @@ module.exports = {
     aliases: ['commands', 'commandhelp', 'commandshelp'],
     description: 'Usage: "%list"',
     execute(message, args, cmd, client, Discord){
-        
         const all = new Discord.MessageEmbed()
             .setColor('#0000ff')
             .setTitle("List of all the commands (all)")
@@ -32,7 +31,6 @@ module.exports = {
             .addField(`%testtrue`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
             .addField(`%unmute`, `__Syntax:__ "%unmute <@user>"\n__Aliases:__ 'un-mute', 'un_mute'\n__Use:__ Unmutes the targeted member`, false)
             .addField(`%youtube`, `__Syntax:__ ""\n__Aliases:__ 'yt', 'ytb', 'itube', 'hetube', 'shetube', 'ittube', 'wetube', 'theytube'\n__Use:__ Sends the link of <@611633988515266562>'s YouTube channel`, false)
-
         const noReq = new Discord.MessageEmbed()
             .setColor('#0000ff')
             .setTitle("Commands that require no permissions (noReq)")
@@ -49,7 +47,6 @@ module.exports = {
             .addField(`%testfalse`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
             .addField(`%testtrue`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
             .addField(`%youtube`, `__Syntax:__ ""\n__Aliases:__ 'yt', 'ytb', 'itube', 'hetube', 'shetube', 'ittube', 'wetube', 'theytube'\n__Use:__ Sends the link of <@611633988515266562>'s YouTube channel`, false)
-
         const reqBotPL3 = new Discord.MessageEmbed()
             .setColor('#0000ff')
             .setTitle("Commands that require 'BotPL3' (reqBotPL3)")
@@ -59,29 +56,24 @@ module.exports = {
             .addField(`%reload`, `__Syntax:__ "%reload"\n__Aliases:__ 'update', 'rel'\n__Use:__ Reloads some of the bot's feature`, false)
             .addField(`%stop`, `__Syntax:__ "%stop"\n__Aliases:__ 'altf4', 'alt-f4', 'arlt_f4', 'terminate', 'shutdown', 'shut-down', 'shut_down'\n__Use:__ Stops the bot (Exit with code 0).`, false)
             .addField(`%unmute`, `__Syntax:__ "%unmute <@user>"\n__Aliases:__ 'un-mute', 'un_mute'\n__Use:__ Unmutes the targeted member`, false)
-
         const reqBotPL2 = new Discord.MessageEmbed()
             .setColor('#0000ff')
             .setTitle("Commands that require 'BotPL2' (reqBotPL2)")
             .addField(`%kick`, `__Syntax:__ "%kick <@user>"\n__Aliases:__ Maybe None\n__Use:__ Kicks the targeted memebr.`, false)
-
         const reqBotPL1 = new Discord.MessageEmbed()
             .setColor('#0000ff')
             .setTitle("Commands that require 'BotPL1' (reqBotPL1)")
             .addField(`%ban`, `__Syntax:__ "%ban <@user>"\n__Aliases:__ None\n__Use:__ Bans the targeted member.`, false)
-
         const reqBotPL0 = new Discord.MessageEmbed()
             .setColor('#0000ff')
             .setTitle("Commands tha require 'BotPL0' (reqBotPL0)")
             .setDescription(`There are currently no commands dedicated to 'BotPL0'\nThe following commands are dedicated to the server owner.`)
             .addField(`%friend`, `__Syntax:__ "%friend <add/remove> <@user>"\n__Aliases:__ 'f'\n__Use:__ Adds the 'Friends' role to the targeted member.`, false)
             .addField(`%party`, `__Syntax:__ This feature is planned for the next release!\n__Aliases:__ This feature is planned for the next release!\n__Use:__ This feature is planned for the next release!`, false)
-
         const floodWarning = new Discord.MessageEmbed()
             .setColor('#ffff00')
             .setTitle('Flood warning')
             .setDescription('The next messages will flood the chat.')
-
 
         let filter = m => m.author.id === message.author.id
         const query = new Discord.MessageEmbed()
@@ -107,20 +99,15 @@ module.exports = {
             if(message.content.toUpperCase() == 'ALL'){ //If 'message.content' to upper case is equal to "ADD"
                 message.channel.send(floodWarning)
                 .then(() => message.channel.send(all));
-            }
-            else if(message.content.toUpperCase() == 'NOREQ'){  //If 'message.content' to upper case is equal to "NOREQ"
+            } else if(message.content.toUpperCase() == 'NOREQ'){  //If 'message.content' to upper case is equal to "NOREQ"
                 message.channel.send(noReq)
-            }
-            else if(message.content.toUpperCase() == 'REQBOTPL3'){  //If 'message.content' to upper case is equal to "REQBOTPL3"
+            } else if(message.content.toUpperCase() == 'REQBOTPL3'){  //If 'message.content' to upper case is equal to "REQBOTPL3"
                 message.channel.send(reqBotPL3)
-            }
-            else if(message.content.toUpperCase() == 'REQBOTPL2'){  //If 'message.content' to upper case is equal to "REQBOTPL2"
+            } else if(message.content.toUpperCase() == 'REQBOTPL2'){  //If 'message.content' to upper case is equal to "REQBOTPL2"
                 message.channel.send(reqBotPL2)
-            }
-            else if(message.content.toUpperCase() == 'REQBOTPL1'){  //If 'message.content' to upper case is equal to "REQBOTPL1"
+            } else if(message.content.toUpperCase() == 'REQBOTPL1'){  //If 'message.content' to upper case is equal to "REQBOTPL1"
                 message.channel.send(reqBotPL1)
-            }
-            else if(message.content.toUpperCase() == 'REQBOTPL0'){  //If 'message.content' to upper case is equal to "REQBOTPL0"
+            } else if(message.content.toUpperCase() == 'REQBOTPL0'){  //If 'message.content' to upper case is equal to "REQBOTPL0"
                 message.channel.send(reqBotPL0)
             }
         })

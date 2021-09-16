@@ -7,21 +7,19 @@ module.exports = {
     description: 'Usage: "%leave <URL/keyWords>"',
     async execute(message, args, cmd, client, Discord) {
         const voiceChannel = message.member.voice.channel;
-
         const requireUserBeInChannel = new Discord.MessageEmbed()
             .setColor('#800080')
             .setTitle('Error')
             .setDescription('Could **not** execute the command! You must be in a **voice** channel to use this command!')
             .setFooter('Join a voice channel and then, perform the command again!')
-
-        if(!voiceChannel) return message.channel.send(requireUserBeInChannel)   //If 'voiceChannel' is invalid
-        await voiceChannel.leave();
-
         const leave = new Discord.MessageEmbed()
             .setColor('#00ff00')
             .setTitle('Disconnected')
             .setDescription('Successfully left the channel!')
             .setFooter(`message.content = ${message.content}`)
+
+        if(!voiceChannel) return message.channel.send(requireUserBeInChannel)   //If 'voiceChannel' is invalid
+        await voiceChannel.leave();
         
         message.channel.send(leave)
     }

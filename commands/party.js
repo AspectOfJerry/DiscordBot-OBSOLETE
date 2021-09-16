@@ -7,7 +7,6 @@ module.exports = {
         message.reply('This feature is planned for the next release!'); return
         if(message.member.user.id === '611633988515266562'){
             const target = message.mentions.users.first();
-
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Error: "' + message.content + '"')

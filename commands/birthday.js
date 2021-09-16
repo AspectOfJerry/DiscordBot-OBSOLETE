@@ -9,7 +9,6 @@ module.exports = {
             if(target){ //If 'target' is valid
                 const memberTarget = message.guild.members.cache.get(target.id);
                 let birthdayRole = message.guild.roles.cache.get('876456209895534653');
-        
                 const birthday = new Discord.MessageEmbed()
                     .setColor('#E91E63')
                     .setTitle('Birthday!')
@@ -17,14 +16,12 @@ module.exports = {
                     .setFooter('We wish them a happy birthday!')
         
                 memberTarget.roles.add(birthdayRole.id);    //Give the 'birthdayRole' to 'memberTarget'
-                message.guild.channels.name.cache.find(role => role.name === 'Friend').send(birthday)
 
                 message.guild.channels.cache.find(channel => channel.name.includes('general')).send(birthday)
                 message.guild.channels.cache.find(channel => channel.name.includes('bot-commands')).send(birthday)
                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(birthday)
                 message.guild.channels.cache.find(channel => channel.name.includes('new')).send(birthday)              
-            }
-            else{
+            } else{
                 const targetError = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Error 0x56B(1387)')
@@ -33,8 +30,7 @@ module.exports = {
 
                 message.channel.send(targetError)
             }
-        }
-        else{
+        } else{
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Permissions error 0x5(5)')
