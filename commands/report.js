@@ -5,7 +5,6 @@ module.exports = {
     description: 'Usage: "%report <@user>"',
     execute(message, args, cmd, client, Discord){
         const target = message.mentions.users.first();
-        
         if(!args[0]){    //If 'args[0]' is present
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#00ff00')
@@ -14,8 +13,7 @@ module.exports = {
                 .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^targetError`)
 
             message.channel.send(requireArgs0)
-        }
-        else{
+        } else{
             if(target){ //if 'target' is valid
                 const memberTarget = message.guild.members.cache.get(target.id);
                 if(args[1]){    //If 'args[1]' is present
@@ -29,8 +27,7 @@ module.exports = {
                     message.channel.send(report)
                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@697914535863910561>, <@642107004076163103>`)
                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(report)
-                }
-                else{
+                } else{
                     const requireArgs1 =  new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Error')
@@ -39,8 +36,7 @@ module.exports = {
 
                     message.channel.send(requireArgs1)
                 }
-            }
-            else{
+            } else{
                 const targetError = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Error 0x56B(1387)')

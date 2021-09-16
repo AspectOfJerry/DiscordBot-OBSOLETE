@@ -18,8 +18,7 @@ module.exports = {
                 .setFooter(`message.content = ${message.content}`)
 
             message.channel.send(reloadedBot)
-        }
-        else{
+        } else{
             const permissionsError = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Permissions error 0x5(5)')

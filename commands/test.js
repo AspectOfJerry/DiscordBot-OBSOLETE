@@ -20,13 +20,5 @@ module.exports = {
         .setFooter('.setFooter')
 
       message.channel.send(methods)
-
-
-
-
-      const executedLog = new Discord.MessageEmbed()
-        .setColor('#00ff00')
-        .setDescription(`<@${message.member.user.id}> executed ${message.content}`)
-      message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(executedLog)
     }
 }

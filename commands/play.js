@@ -17,40 +17,47 @@ module.exports = {
             .addField('Reason: ', 'Rick Roll', true)
             .addField('Action: ', `${message.content}`, true)
             .setFooter(`An action was blocked by the [Rick Roll Detection Module].\n%play <args[0]>\n               ^`)
+        const permissionsError = new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('Permissions error 0x5(5)')
+            .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
+            .setFooter(`message.content = ${message.content}`)
+        const requireUseBeInVC = new Discord.MessageEmbed()
+            .setColor('ff0000')
+            .setTitle('Error')
+            .setDescription('You need to be in a voice channel to execute this command!')
+            .setFooter(`Join a voice channel!\nmessage.content = ${message.content}`)
 
         //Checking for the voicechannel and permissions.
         const voice_channel = message.member.voice.channel;
-        if (!voice_channel) return message.channel.send(`🟣 You need to be in a voice channel to execute this command!`);
+        if(!voice_channel) return message.channel.send(requireUseBeInVC);
         const permissions = voice_channel.permissionsFor(message.client.user);
-        if (!permissions.has('CONNECT')) return message.channel.send(`🔴 You dont have the correct permissions to execute this command.`);
-        if (!permissions.has('SPEAK')) return message.channel.send(`🔴 You dont have the correct permissions to execute this command.`);
+        if(!permissions.has('CONNECT')) return message.channel.send(permissionsError);
+        if(!permissions.has('SPEAK')) return message.channel.send(permissionsError);
 
-        //This is our server queue. We are getting this server queue from the global queue.
         const server_queue = queue.get(message.guild.id);
 
-        //If the user has used the play command
-        if (cmd === 'play'){
+        if(cmd === 'play'){    //If 'cmd' equals to "play"
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Error')
                 .setDescription('You need to enter a YouTube link!')
                 .setFooter(`message.content = ${message.content}\n%play <args[0]>\n               ^requireArgs0`)
-            if (!args.length) return message.channel.send(requireArgs0);
+            if(!args.length) return message.channel.send(requireArgs0);
             let song = {};
 
             //If the first argument is a link. Set the song object to have two keys. Title and URl.
-            if (ytdl.validateURL(args[0])) {
+            if(ytdl.validateURL(args[0])) {
                 const song_info = await ytdl.getInfo(args[0]);
                 song = { title: song_info.videoDetails.title, url: song_info.videoDetails.video_url }
-            } else {
+            } else{
                 //If there was no link, we use keywords to search for a video. Set the song object to have two keys. Title and URl.                
                 const video_finder = async (query) =>{
                     const video_result = await ytSearch(query);
                     return (video_result.videos.length > 1) ? video_result.videos[0] : null;
                 }
                 const video = await video_finder(args.join(' '))
-                
-                if (video){
+                if(video){
                     song = { title: video.title, url: video.url }
                     if(video.title.includes('rick')) return message.channel.send(antiRickRoll);
                     if(video.title.includes('Rick')) return message.channel.send(antiRickRoll);
@@ -67,7 +74,7 @@ module.exports = {
                     if(video.title.includes('never gonna give you up')) return message.channel.send(antiRickRoll);
                     if(video.title.includes('Never Gonna Give You Up')) return message.channel.send(antiRickRoll);
                     if(video.title.includes('NEVER GONNA GIVE YOU UP')) return message.channel.send(antiRickRoll);
-                } else {
+                } else{
                     const errorSearching = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Error')
@@ -76,10 +83,8 @@ module.exports = {
                     message.channel.send(errorSearching);
                 }
             }
-
             //If the server queue does not exist (which doesn't for the first video queued) then create a constructor to be added to our global queue.
-            if (!server_queue){
-
+            if(!server_queue){
                 const queue_constructor = {
                     voice_channel: voice_channel,
                     text_channel: message.channel,
@@ -87,16 +92,14 @@ module.exports = {
                     songs: []
                 }
                 
-                //Add our key and value pair into the global queue. We then use this to get our server queue.
                 queue.set(message.guild.id, queue_constructor);
                 queue_constructor.songs.push(song);
     
-                //Establish a connection and play the song with the vide_player function.
-                try {
+                try{
                     const connection = await voice_channel.join();
                     queue_constructor.connection = connection;
                     video_player(message.guild, queue_constructor.songs[0], Discord);
-                } catch (err) {
+                } catch(error) {
                     queue.delete(message.guild.id);
                     const conenctionError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
@@ -104,7 +107,7 @@ module.exports = {
                         .setDescription('There was an error while connecting.')
 
                     message.channel.send(conenctionError);
-                    throw err;
+                    throw error;
                 }
             } else{
                 server_queue.songs.push(song);
@@ -116,7 +119,6 @@ module.exports = {
                 return message.channel.send(addedToQueue);
             }
         }
-
         else if(cmd === 'skip') skip_song(message, server_queue, Discord);
         else if(cmd === 'leave') stop_song(message, server_queue, voice_channel, Discord);
         else if(cmd === 'join') join(message, voice_channel, Discord);
@@ -125,9 +127,7 @@ module.exports = {
 
 const video_player = async (guild, song, Discord) => {
     const song_queue = queue.get(guild.id);
-
-    //If no song is left in the server queue. Leave the voice channel and delete the key and value pair from the global queue.
-    if (!song) {
+    if(!song) {
         song_queue.voice_channel.leave();
         queue.delete(guild.id);
         return;
@@ -149,7 +149,7 @@ const video_player = async (guild, song, Discord) => {
 }
 
 const skip_song = (message, server_queue, Discord) => {
-    if (!message.member.voice.channel){
+    if(!message.member.voice.channel){
         const requireUseBeInVC = new Discord.MessageEmbed()
             .setColor('ff0000')
             .setTitle('Error')
@@ -157,8 +157,7 @@ const skip_song = (message, server_queue, Discord) => {
             .setFooter(`Join a voice channel!\nmessage.content = ${message.content}`)
 
         return message.channel.send(requireUseBeInVC);
-    } 
-    if(!server_queue){
+    } if(!server_queue){
         const queueEmpty = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Error')
@@ -176,9 +175,8 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
         .setDescription('You need to be in a voice channel to execute this command!')
         .setFooter(`Join a voice channel!\nmessage.content = ${message.content}`)
 
-    if (!message.member.voice.channel) return message.channel.send(requireUseBeInVC);
+    if(!message.member.voice.channel) return message.channel.send(requireUseBeInVC);
     try{
-    
         queue.delete(message.guild.id);
 
         voice_channel.leave();
@@ -188,8 +186,7 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
             .setDescription('Left the voice channel!')
 
         message.channel.send(leave)
-    }
-    catch{
+    } catch{
         voice_channel.leave();
         const leaveError = new Discord.MessageEmbed()
             .setColor('#ff0000')
@@ -210,8 +207,7 @@ const join = (message, voice_channel, Discord) => {
             .setDescription('Joined the voice channel!')
 
         message.channel.send(join)
-    }
-    catch(error){
+    } catch(error){
         const conenctionError = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Error')
