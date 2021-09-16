@@ -58,9 +58,21 @@ module.exports = {
                                 message.channel.send(targetHigherThanSender403);
                             }
                             else{
-                                memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                                message.channel.send(userUnmutedBy)
-                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                                try{
+                                    memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
+                                    
+                                    message.channel.send(userUnmutedBy)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                                }
+                                catch(error){
+                                    const error = new Discord.MessageEmbed()
+                                        .setColor('#ff0000')
+                                        .setTitle('Error')
+                                        .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
+                                        .setFooter(`message.content = ${message.content}`)
+    
+                                    message.channel.send(error)
+                                }
                             }
                         }
                         else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //If 'message.member' has the role 'BotPL1'
@@ -74,9 +86,21 @@ module.exports = {
                                 message.channel.send(targetHigherThanSender403);
                             }
                             else{
-                                memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                                message.channel.send(userUnmutedBy)
-                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                                try{
+                                    memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
+                                    
+                                    message.channel.send(userUnmutedBy)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                                }
+                                catch(error){
+                                    const error = new Discord.MessageEmbed()
+                                        .setColor('#ff0000')
+                                        .setTitle('Error')
+                                        .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
+                                        .setFooter(`message.content = ${message.content}`)
+    
+                                    message.channel.send(error)
+                                }
                             }
                         }
                         else if(message.member.roles.cache.find(role => role.name === 'BotPL2')){   //If 'message.member' has the role 'BotPL2'
@@ -93,9 +117,21 @@ module.exports = {
                                 message.channel.send(targetHigherThanSender403)
                             }
                             else{
-                                memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                                message.channel.send(userUnmutedBy)
-                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                                try{
+                                    memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
+                                    
+                                    message.channel.send(userUnmutedBy)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                                }
+                                catch(error){
+                                    const error = new Discord.MessageEmbed()
+                                        .setColor('#ff0000')
+                                        .setTitle('Error')
+                                        .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
+                                        .setFooter(`message.content = ${message.content}`)
+    
+                                    message.channel.send(error)
+                                }
                             }
                         }
                         else if(message.member.roles.cache.find(role => role.name === 'BotPL3')){   //If 'message.member' has the role 'BotPL3'
@@ -115,15 +151,39 @@ module.exports = {
                                 message.channel.send(targetHigherThanSender403)
                             }
                             else{
-                                memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                                message.channel.send(userUnmutedBy)
-                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                                try{
+                                    memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
+                                    
+                                    message.channel.send(userUnmutedBy)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                                }
+                                catch(error){
+                                    const error = new Discord.MessageEmbed()
+                                        .setColor('#ff0000')
+                                        .setTitle('Error')
+                                        .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
+                                        .setFooter(`message.content = ${message.content}`)
+    
+                                    message.channel.send(error)
+                                }
                             }
                         }
                         else{
-                            memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                            message.channel.send(userUnmutedBy)
-                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                            try{
+                                memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
+                                
+                                message.channel.send(userUnmutedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
+                            }
+                            catch(error){
+                                const error = new Discord.MessageEmbed()
+                                    .setColor('#ff0000')
+                                    .setTitle('Error')
+                                    .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
+                                    .setFooter(`message.content = ${message.content}`)
+
+                                message.channel.send(error)
+                            }
                         }
                     }
                 }

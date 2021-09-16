@@ -48,10 +48,22 @@ module.exports = {
                             message.channel.send(targetHigherThanSender403);
                         }
                         else{
-                            memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
-                            message.channel.send(userKickedBy)
-                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
-                            message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                            try{
+                                memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
+
+                                message.channel.send(userKickedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                            }
+                            catch(error){
+                                const error = new Discord.MessageEmbed()
+                                    .setColor('#ff0000')
+                                    .setTitle('Error')
+                                    .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
+                                    .setFooter(`message.content = ${message.content}`)
+    
+                                message.channel.send(error)
+                            }
                         }
                     }
                     else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //If 'message.member' has the role 'BotPL1'
@@ -65,10 +77,22 @@ module.exports = {
                             message.channel.send(targetHigherThanSender403);
                         }
                         else{
-                            memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
-                            message.channel.send(userKickedBy)
-                            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
-                            message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                            try{
+                                memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
+
+                                message.channel.send(userKickedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                            }
+                            catch(error){
+                                const error = new Discord.MessageEmbed()
+                                    .setColor('#ff0000')
+                                    .setTitle('Error')
+                                    .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
+                                    .setFooter(`message.content = ${message.content}`)
+    
+                                message.channel.send(error)
+                            }
                         }
                     }
                     else if(message.member.roles.cache.find(role => role.name === 'BotPL2')){ //If 'message.member' has the role 'BotPL2'
@@ -85,17 +109,41 @@ module.exports = {
                             message.channel.send(targetHigherThanSender403)
                         }
                         else{
+                            try{
+                                memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
+
+                                message.channel.send(userKickedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
+                                message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                            }
+                            catch(error){
+                                const error = new Discord.MessageEmbed()
+                                    .setColor('#ff0000')
+                                    .setTitle('Error')
+                                    .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
+                                    .setFooter(`message.content = ${message.content}`)
+    
+                                message.channel.send(error)
+                            }
+                        }
+                    }
+                    else{
+                        try{
                             memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
+
                             message.channel.send(userKickedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                             message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                         }
-                    }
-                    else{
-                        memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
-                        message.channel.send(userKickedBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                        catch(error){
+                            const error = new Discord.MessageEmbed()
+                                .setColor('#ff0000')
+                                .setTitle('Error')
+                                .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
+                                .setFooter(`message.content = ${message.content}`)
+
+                            message.channel.send(error)
+                        }
                     }
                 }
             }
