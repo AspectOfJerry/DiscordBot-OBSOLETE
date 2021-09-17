@@ -41,7 +41,7 @@ module.exports = {
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Error')
-                .setDescription('You need to enter a YouTube link!')
+                .setDescription('You need to enter a YouTube link ot key words!')
                 .setFooter(`message.content = ${message.content}\n%play <args[0]>\n               ^requireArgs0`)
             if(!args.length) return message.channel.send(requireArgs0);
             let song = {};
@@ -103,8 +103,9 @@ module.exports = {
                     queue.delete(message.guild.id);
                     const conenctionError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setTitle('Error')
-                        .setDescription('There was an error while connecting.')
+                        .setTitle('Error Catch')
+                        .setDescription('There was an error while connecting')
+                        .setFooter('An error was caught at line 102')
 
                     message.channel.send(conenctionError);
                     throw error;
@@ -114,7 +115,9 @@ module.exports = {
                 const addedToQueue = new Discord.MessageEmbed()
                     .setColor('#00ff00')
                     .setTitle('Added song to queue')
-                    .setDescription(`Added "${song.title}" to the server queue!`)
+                    .setDescription(`Added **${song.title}** to the server queue!`)
+                    .setFooter(song.url)
+                    .setURL(song.url)
 
                 return message.channel.send(addedToQueue);
             }
@@ -161,7 +164,8 @@ const skip_song = (message, server_queue, Discord) => {
         const queueEmpty = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Error')
-            .setDescription(`Add a song to play!\nmessage.content = ${message.content}`)
+            .setDescription('The queue is empty!')
+            .setFooter(`Add a song to play!\nmessage.content = ${message.content}`)
 
         return message.channel.send(queueEmpty);
     }
@@ -192,7 +196,7 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
             .setColor('#ff0000')
             .setTitle('Error Catch')
             .setDescription('An error occured while disconnecting. No further informations.')
-            .setFooter('An error was catched at line 187')
+            .setFooter('An error was caught at line 193')
 
         message.channel.send(leaveError)
     }
@@ -210,8 +214,9 @@ const join = (message, voice_channel, Discord) => {
     } catch(error){
         const conenctionError = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setTitle('Error')
+            .setTitle('Error Catch')
             .setDescription('There was an error while connecting.')
+            .setFooter('An error was caught at line 214')
 
         message.channel.send(conenctionError);
     }

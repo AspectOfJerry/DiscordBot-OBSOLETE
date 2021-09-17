@@ -10,7 +10,7 @@ module.exports = {
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Error')
-                .setDescription("Invalid command! You must **add** or **remove** a user! Correct usage: %friend <add/remove> <@user>.")
+                .setDescription("You must **add** or **remove** a user")
                 .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^requireArgs0`)
 
             if(!args[0]) return message.reply(requireArgs0);    //If 'args[0]' is not present
@@ -21,7 +21,7 @@ module.exports = {
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setTitle('Error')
-                        .setDescription("Invalid command! You must mention a user!")
+                        .setDescription("You must mention a user")
                         .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^requireArgs1`)
 
                     message.channel.send(requireArgs1)
@@ -42,13 +42,13 @@ module.exports = {
                             message.channel.send(addedFriend)
                         }
                     } else{
-                        const invalidTarget = new Discord.MessageEmbed()
+                        const targetError = new Discord.MessageEmbed()
                             .setColor('#ff0000')
                             .setTitle('Error')
-                            .setDescription('The targeted member is invalid!')
-                            .setFooter(`message.content = ${message.content}`)
+                            .setDescription('The targeted member is invalid')
+                            .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^targetErro`)
 
-                        message.channel.send(invalidTarget)
+                        message.channel.send(targetError)
                     }
                 }
             } else if(args[0].toUpperCase() == "REMOVE"){ //If args[0] to upper case is equal to "REMOVE"
@@ -57,7 +57,7 @@ module.exports = {
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setTitle('Error')
-                        .setDescription("Invalid command! You must mention a user!")
+                        .setDescription("You must mention a user")
                         .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^requireArgs1`)
 
                     message.channel.send(requireArgs1)
@@ -81,7 +81,7 @@ module.exports = {
                     } else{
                         const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setTitle('Error 0x56B(1387)')
+                        .setTitle('Error')
                         .setDescription('The targeted member is invalid!')
                         .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^targetError`)
                         
@@ -92,7 +92,7 @@ module.exports = {
                 const requireAddOrRemove = new Discord.MessageEmbed()
                 .setColor('#00ff00')
                 .setTitle('Error')
-                .setDescription("Invalid command! You must **add** or **remove** a user!")
+                .setDescription("You must **add** or **remove** a user!")
                 .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^requireAddOrRemove`)
 
                 message.channel.send(requireAddOrRemove)
@@ -101,7 +101,7 @@ module.exports = {
             const notImplementedForAll = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Error')
-            .setDescription('The "%friend <add/remove> <@user>" command is currently **only** available to the server **owner**!')
+            .setDescription('The %friend command is currently only available to the server owner!')
 
             message.channel.send(notImplementedForAll)
         }        

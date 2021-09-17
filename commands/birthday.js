@@ -6,6 +6,15 @@ module.exports = {
     execute(message, args, cmd, client, Discord){
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')){    //If 'message.member' has the role 'BotPL3'
             const target = message.mentions.users.first();
+            if(!args[0]){
+                const requireArgs0 = new Discord.MessageEmbed()
+                    .setColor('#ff0000')
+                    .setTitle('Error')
+                    .setDescription('You must mention a member')
+                    .setFooter(`message.content = ${message.content}\n%birthday <args[0]>\n                       ^requireArgs0`)
+
+                message.channel.send(requireArgs0)
+            }
             if(target){ //If 'target' is valid
                 const memberTarget = message.guild.members.cache.get(target.id);
                 let birthdayRole = message.guild.roles.cache.get('876456209895534653');
@@ -24,18 +33,18 @@ module.exports = {
             } else{
                 const targetError = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setTitle('Error 0x56B(1387)')
+                    .setTitle('Error')
                     .setDescription('The targeted member is invalid!')
-                    .setFooter(`message.content = ${message.content}\n%birthday <args[0]>\n                       ^\n1387(0x56B) ERROR_NO_SUCH_MEMBER`)
+                    .setFooter(`message.content = ${message.content}\n%birthday <args[0]>\n                       ^targetError`)
 
                 message.channel.send(targetError)
             }
         } else{
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setTitle('Permissions error 0x5(5)')
-                .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
-                .setFooter(`message.content = ${message.content}\n5(0x5) ERROR_ACCESS_DENIED`)
+                .setTitle('Permissions error')
+                .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
+                .setFooter(`message.content = ${message.content}`)
             
             message.channel.send(permissionsError)
         }

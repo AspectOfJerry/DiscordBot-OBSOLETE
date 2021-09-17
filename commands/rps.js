@@ -43,7 +43,7 @@ module.exports = {
         .catch(collected => {
             const requestTimeout = new Discord.MessageEmbed()
             .setColor('#800080')
-            .setTitle('Timeout 0x5B4(1460)')
+            .setTitle('Timeout')
             .setDescription("Request timeout")
 
             message.channel.send(requestTimeout)

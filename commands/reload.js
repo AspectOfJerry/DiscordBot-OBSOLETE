@@ -21,8 +21,8 @@ module.exports = {
         } else{
             const permissionsError = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setTitle('Permissions error 0x5(5)')
-            .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
+            .setTitle('Permissions erro')
+            .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
             .setFooter(`message.content = ${message.content}`)
 
         message.channel.send(permissionsError)

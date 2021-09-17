@@ -9,8 +9,8 @@ module.exports = {
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#00ff00')
                 .setTitle('Error')
-                .setDescription("Invalid command! You must mention a user!")
-                .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^targetError`)
+                .setDescription('You must mention a member!')
+                .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^requireArgs0`)
 
             message.channel.send(requireArgs0)
         } else{
@@ -31,7 +31,7 @@ module.exports = {
                     const requireArgs1 =  new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Error')
-                        .setDescription('You must provide a reason.')
+                        .setDescription('You must provide a reason')
                         .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                                       ^requireArgs1`)
 
                     message.channel.send(requireArgs1)
@@ -39,7 +39,7 @@ module.exports = {
             } else{
                 const targetError = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setTitle('Error 0x56B(1387)')
+                    .setTitle('Error')
                     .setDescription('The targeted member is invalid!')
                     .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^targetError`)
 
