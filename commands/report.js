@@ -20,7 +20,7 @@ module.exports = {
                     const report =  new Discord.MessageEmbed()
                         .setColor('00ff00')
                         .setTitle('Report submitted')
-                        .setDescription(`<@${message.member.user.id}> reported <@${memberTarget}>`)
+                        .setDescription(`<@${message.member.user.id}> reported <@${memberTarget.user.id}>`)
                         .addField(`Report:`, `${message.content}`, false)
                         .setFooter('Thanks for your report. We understand your concerns and it will be reviewed as soon as possible.\nDo not report for no reason since it pings staff members.') 
 
