@@ -25,7 +25,7 @@ module.exports = {
                         .setFooter('Thanks for your report. We understand your concerns and it will be reviewed as soon as possible.\nDo not report for no reason since it pings staff members.') 
 
                     message.channel.send(report)
-                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@697914535863910561>, <@642107004076163103>`)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@&697914535863910561>, <@&642107004076163103>`)
                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(report)
                 } else{
                     const requireArgs1 =  new Discord.MessageEmbed()
