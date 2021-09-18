@@ -7,7 +7,7 @@ module.exports = {
 
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')){
             //Set the client user's activity
-            client.user.setActivity('Something', { type: 'STREAMING', url: "https://www.twitch.tv/jioyww"}).catch(console.error);
+            client.user.setActivity('Something', { type: 'STREAMING', url: "https://www.twitch.tv/jiooy"}).catch(console.error);
             //client.user.setActivity('for "%"', { type: 'WATCHING' });
             //client.user.setActivity();
 
