@@ -5,7 +5,12 @@ module.exports = {
     execute(message, args, cmd, client, Discord){
         let filter = m => m.author.id === message.author.id
 
-        message.channel.send('You have 10 seconds to choose between: rock/paper/scissors');
+        const choose = new Discord.MessageEmbed()
+            .setColor('#00ff00')
+            .setTitle('Rock, Paper, Scissors')
+            .setDescription('Reply "rock", "paper", or "scissors"')
+            .setFooter('[10s]')
+        message.channel.send(choose);
 
         message.channel.awaitMessages(filter, {
           max: 1,

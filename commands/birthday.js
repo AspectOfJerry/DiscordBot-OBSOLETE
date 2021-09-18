@@ -14,30 +14,31 @@ module.exports = {
                     .setFooter(`message.content = ${message.content}\n%birthday <args[0]>\n                       ^requireArgs0`)
 
                 message.channel.send(requireArgs0)
-            }
-            if(target){ //If 'target' is valid
-                const memberTarget = message.guild.members.cache.get(target.id);
-                let birthdayRole = message.guild.roles.cache.get('876456209895534653');
-                const birthday = new Discord.MessageEmbed()
-                    .setColor('#E91E63')
-                    .setTitle('Birthday!')
-                    .setDescription (`Happy birthday <@${memberTarget.user.id}>!`)
-                    .setFooter('We wish them a happy birthday!')
-        
-                memberTarget.roles.add(birthdayRole.id);    //Give the 'birthdayRole' to 'memberTarget'
-
-                message.guild.channels.cache.find(channel => channel.name.includes('general')).send(birthday)
-                message.guild.channels.cache.find(channel => channel.name.includes('bot-commands')).send(birthday)
-                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(birthday)
-                message.guild.channels.cache.find(channel => channel.name.includes('new')).send(birthday)              
             } else{
-                const targetError = new Discord.MessageEmbed()
-                    .setColor('#ff0000')
-                    .setTitle('Error')
-                    .setDescription('The targeted member is invalid!')
-                    .setFooter(`message.content = ${message.content}\n%birthday <args[0]>\n                       ^targetError`)
-
-                message.channel.send(targetError)
+                if(target){ //If 'target' is valid
+                    const memberTarget = message.guild.members.cache.get(target.id);
+                    let birthdayRole = message.guild.roles.cache.get('876456209895534653');
+                    const birthday = new Discord.MessageEmbed()
+                        .setColor('#E91E63')
+                        .setTitle('Birthday!')
+                        .setDescription (`Happy birthday <@${memberTarget.user.id}>!`)
+                        .setFooter('We wish them a happy birthday!')
+            
+                    memberTarget.roles.add(birthdayRole.id);    //Give the 'birthdayRole' to 'memberTarget'
+    
+                    message.guild.channels.cache.find(channel => channel.name.includes('general')).send(birthday)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-commands')).send(birthday)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(birthday)
+                    message.guild.channels.cache.find(channel => channel.name.includes('new')).send(birthday)              
+                } else{
+                    const targetError = new Discord.MessageEmbed()
+                        .setColor('#ff0000')
+                        .setTitle('Error')
+                        .setDescription('The targeted member is invalid!')
+                        .setFooter(`message.content = ${message.content}\n%birthday <args[0]>\n                       ^targetError`)
+    
+                    message.channel.send(targetError)
+                }
             }
         } else{
             const permissionsError = new Discord.MessageEmbed()
