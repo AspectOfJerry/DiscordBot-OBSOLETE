@@ -11,7 +11,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error')
                     .setDescription('You must mention a member to unmute!')
-                    .setFooter(`message.content = ${message.content}\n%unmute <args[0]>\n                     ^requireArgs0`)
+                    .setFooter(`%unmute <args[0]>\n                     ^requireArgs0`)
 
                 message.channel.send(requireArgs0)
             } else{
@@ -22,28 +22,24 @@ module.exports = {
                         .setColor('#00ff00')
                         .setTitle('User unmute')
                         .setDescription(`<@${memberTarget.user.id}> was unmuted by <@${message.member.user.id}>`)
-                        .setFooter(`To mute a member, execute "%mute <@user> (<duration>)"\nmessage.content = ${message.content}`)
+                        .setFooter(`To mute a member, execute "%mute <@user> (<duration>)"`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
-                        .setFooter(`message.content = ${message.content}`)
                     const targetImmune403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
-                        .setFooter(`message.content = ${message.content}`)
                     const userNotMuted = new Discord.MessageEmbed()
                         .setColor('#800080')
                         .setTitle('Error')
                         .setDescription(`<@${memberTarget.user.id}> is not muted!`)
-                        .setFooter(`message.content = ${message.content}`)
                     if(message.member == memberTarget){ //If 'message.member' is equal to 'memberTarget'
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#800080')
                             .setTitle('Error')
                             .setDescription('You cannot use this command on yourself!')
-                            .setFooter(`message.content = ${message.content}`)
     
                         message.channel.send(cannotUseOnSelf)
                     } else{
@@ -139,9 +135,9 @@ module.exports = {
                                     } catch(error){
                                         const errorUnmute = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
-                                            .setTitle('Error')
+                                            .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`message.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 135\nmessage.content = ${message.content}`)
         
                                         message.channel.send(errorUnmute)
                                     }
@@ -157,7 +153,7 @@ module.exports = {
                                         .setColor('#ff0000')
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`message.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 151\nmessage.content = ${message.content}`)
     
                                     message.channel.send(errorUnmute)
                                 }
@@ -169,7 +165,7 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('Error')
                         .setDescription('The targeted member is invalid!')
-                        .setFooter(`message.content = ${message.content}\n%unmute <args[0]>\n                      ^targetError`)
+                        .setFooter(`%unmute <args[0]>\n                      ^targetError`)
                     
                     message.channel.send(targetError)
                 }
@@ -179,7 +175,6 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
-                .setFooter(`message.content = ${message.content}`)
 
             message.channel.send(permissionsError)
         }
