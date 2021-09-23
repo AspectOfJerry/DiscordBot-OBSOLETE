@@ -10,6 +10,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error')
                     .setDescription('You must mention a member')
+                    .setFooter(`message.content = ${message.content}\n%ban <args[0]>\n              ^requireArgs0`)
 
                 message.channel.send(requireArgs0)
             } else{
@@ -19,20 +20,24 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('User ban')
                         .setDescription(`<@${memberTarget.user.id}> was banned from the guild by <@${message.member.user.id}>`)
+                        .setFooter(`To unban a member, go to "Server Settings" > "Bans" > "Revoke Ban"\nmessage.content = ${message.content}`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
+                        .setFooter(`message.content = ${message.content}`)
                     const targetImmune403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
+                        .setFooter(`message.content = ${message.content}`)
                 
                     if(memberTarget == message.member){ //If 'memberTarget' is equal to 'message.member'
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#800080')
                             .setTitle('Error')
                             .setDescription('You cannot use this command on yourself!')
+                            .setFooter(`message.content = ${message.content}`)
     
                         message.channel.send(cannotUseOnSelf);
                     } else{
@@ -53,7 +58,7 @@ module.exports = {
                                         .setColor('#ff0000')
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 51`)
+                                        .setFooter(`An error was caught at line 56\nmessage.content = ${message.content}`)
     
                                     message.channel.send(errorBan)
                                 }
@@ -77,7 +82,7 @@ module.exports = {
                                         .setColor('#ff0000')
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 75`)
+                                        .setFooter(`An error was caught at line 80\nmessage.content = ${message.content}`)
     
                                     message.channel.send(errorBan)
                                 }
@@ -94,7 +99,7 @@ module.exports = {
                                     .setColor('#ff0000')
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                    .setFooter(`An error was caught at line 92`)
+                                    .setFooter(`An error was caught at line 97\nmessage.content = ${message.content}`)
     
                                 message.channel.send(errorBan)
                             }
@@ -105,6 +110,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid')
+                    .setFooter(`message.content = ${message.content}\n%ban <args[0]>\n              ^targetError`)
                     
                     message.channel.send(targetError)
                 }
@@ -114,6 +120,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
+                .setFooter(`message.content = ${message.content}`)
 
             message.channel.send(permissionsError)
         }

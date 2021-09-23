@@ -9,6 +9,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Error')
                 .setDescription('You must mention a member')
+                .setFooter(`message.content = ${message.content}\n%boop <args[0]>\n                 ^requireArgs0`)
 
              message.channel.send(requireArgs0)
         } else{
@@ -24,6 +25,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid')
+                    .setFooter(`message.content = ${message.content}\n%boop <args[0]>\n                 ^targetError`)
                     
                 message.channel.send(targetError)
             }
