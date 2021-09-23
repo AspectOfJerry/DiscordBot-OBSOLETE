@@ -68,7 +68,7 @@ module.exports = {
             .addField(`%ban`, `__Syntax:__ "%ban <@user>"\n__Aliases:__ None\n__Use:__ Bans the targeted member.`, false)
         const reqBotPL0 = new Discord.MessageEmbed()
             .setColor('#0000ff')
-            .setTitle("Commands tha require 'BotPL0' (reqBotPL0)")
+            .setTitle("Commands that require 'BotPL0' (reqBotPL0)")
             .setDescription(`There are currently no commands dedicated to 'BotPL0'\nThe following commands are dedicated to the server owner.`)
             .addField(`%friend`, `__Syntax:__ "%friend <add/remove> <@user>"\n__Aliases:__ 'f'\n__Use:__ Adds the 'Friends' role to the targeted member.`, false)
             .addField(`%party`, `__Syntax:__ This feature is planned for the next release!\n__Aliases:__ This feature is planned for the next release!\n__Use:__ This feature is planned for the next release!`, false)
