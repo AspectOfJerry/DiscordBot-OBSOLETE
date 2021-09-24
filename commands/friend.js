@@ -46,7 +46,7 @@ module.exports = {
                             .setColor('#ff0000')
                             .setTitle('Error')
                             .setDescription('The targeted member is invalid')
-                            .setFooter(`%friend <args[0]> <args[1]>\n                                       ^targetErro`)
+                            .setFooter(`%friend <args[0]> <args[1]>\n                                       ^targetError`)
 
                         message.channel.send(targetError)
                     }

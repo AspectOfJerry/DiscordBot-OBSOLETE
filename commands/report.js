@@ -22,7 +22,7 @@ module.exports = {
                         .setTitle('Report submitted')
                         .setDescription(`<@${message.member.user.id}> reported <@${memberTarget.user.id}>`)
                         .addField(`Message:`, `${message.content}`, false)
-                        .setFooter('Thanks for your report. We understand your concerns and it will be reviewed as soon as possible.\nDo not report for no reason since it pings staff members.') 
+                        .setFooter('Thanks for your report. We understand your concerns and it will be reviewed as soon as possible.\nDo not report for nothing since it pings staff members.') 
 
                     message.channel.send(report)
                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@&697914535863910561>, <@&642107004076163103>`)
