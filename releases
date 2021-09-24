@@ -7,26 +7,24 @@ DiscordBot
    │  ├─ v0.3.0 (Moderation commands)
    │  ├─ v0.5.0-alpha (Handlers)
    │  ├─ v0.5.5 (Entertainment commands)
-   │  ├─ v0.9.0 (Last few commands)
-   │  └─ v0.9.5-beta (Fixing remaining issues)
+   │  ├─ v0.9.0 (Overall review)
+   │  └─ v0.9.5-beta (Monitoring and fixing remaining issues)
    │
    ├─ v1
    │  ├─ v1.0.0-pre (Final few edits)
    │  ├─ v1.0.0-release (Release of v1)
    │  ├─ v1.1.0 (Embed improvements)
-   │  ├─ v1.2.5 (party.js)
-   │  ├─ v1.5.0 (lockdown.js)
-   │  ├─ v1.7.0 (status)
-   │  ├─ v1.8.5 (Maybe new commands)
-   │  └─ v1.9.5-beta (Fixing remaining issues)
+   │  ├─ v1.2.0 (status.js)
+   │  ├─ v1.2.5 (stats.js)
+   │  ├─ v1.7.0 (lockdown.js)
+   │  ├─ v1.8.5 (Overall review)
+   │  └─ v1.9.5-beta (Monitoring and fixing remaining issues)
    │
    └─ v2
       ├─ v2.0.0-pre (Final few edits)
       ├─ v2.0.0-release (Release of v2)
-      ├─ v2.1.0 (stats.js)
-      ├─ v2.7.5 (Maybe new commands)
-      ├─ v0.9.0 (Take a look at everything)
-      └─ v0.9.5-beta (Fixing remaining issues)
+      ├─ v2.1.0 (party.js)
+
 
 Formatted text for Discord
 
@@ -41,23 +39,20 @@ __**DiscordBot**__
         │   ├─ **v0.3.0** (Moderation commands)
         │   ├─ **v0.5.0-alpha** (Handlers)
         │   ├─ **v0.5.5** (Entertainment commands)
-        │   ├─** v0.9.0** (Last few commands)
-        │   └─ **v0.9.5-beta** (Fixing remaining issues)
+        │   ├─** v0.9.0** (Overall review)
+        │   └─ **v0.9.5-beta** (Monitoring and fixing remaining issues)
         │
        ├─** v1**
         │   ├─ **v1.0.0-pre** (Final few edits)
         │   ├─ **v1.0.0-release** (Release of v1)
         │   ├─ **v1.1.0** (Embed improvements)
-        │   ├─ **v1.2.5** (party.js)
-        │   ├─ **v1.5.0** (lockdown.js)
-        │   ├─ **v1.7.0** (status)
-        │   ├─ **v1.8.5** (Maybe new commands)
-        │   └─ **v1.9.5-beta** (Fixing remaining issues)
+        │   ├─ **v1.2.0** (status.js)
+        │   ├─ **v1.2.5** (stats.js)
+        │   ├─ **v1.7.0** (lockdown.js)
+        │   ├─ **v1.8.5** (Overall review)
+        │   └─ **v1.9.5-beta** (Monitoring and fixing remaining issues)
         │
        └─ **v2**
               ├─ **v2.0.0-pre** (Final few edits)
               ├─ **v2.0.0-release** (Release of v2)
-              ├─ **v2.1.0** (stats.js)
-              ├─ **v2.7.5** (Maybe new commands)
-              ├─ **v0.9.0** (Take a look at everything)
-              └─ **v0.9.5-beta** (Fixing remaining issues)
+              ├─ **v2.1.0** (party.js)

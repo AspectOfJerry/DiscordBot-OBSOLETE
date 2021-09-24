@@ -11,7 +11,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Error')
                 .setDescription("You must **add** or **remove** a user")
-                .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^requireArgs0`)
+                .setFooter(`%friend <args[0]> <args[1]>\n                  ^requireArgs0`)
 
             if(!args[0]) return message.reply(requireArgs0);    //If 'args[0]' is not present
 
@@ -22,7 +22,7 @@ module.exports = {
                         .setColor('#00ff00')
                         .setTitle('Error')
                         .setDescription("You must mention a user")
-                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^requireArgs1`)
+                        .setFooter(`%friend <args[0]> <args[1]>\n                                       ^requireArgs1`)
 
                     message.channel.send(requireArgs1)
                 } else{
@@ -46,7 +46,7 @@ module.exports = {
                             .setColor('#ff0000')
                             .setTitle('Error')
                             .setDescription('The targeted member is invalid')
-                            .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^targetErro`)
+                            .setFooter(`%friend <args[0]> <args[1]>\n                                       ^targetErro`)
 
                         message.channel.send(targetError)
                     }
@@ -58,7 +58,7 @@ module.exports = {
                         .setColor('#00ff00')
                         .setTitle('Error')
                         .setDescription("You must mention a user")
-                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^requireArgs1`)
+                        .setFooter(`%friend <args[0]> <args[1]>\n                                       ^requireArgs1`)
 
                     message.channel.send(requireArgs1)
                 } else{
@@ -83,7 +83,7 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('Error')
                         .setDescription('The targeted member is invalid!')
-                        .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                                       ^targetError`)
+                        .setFooter(`%friend <args[0]> <args[1]>\n                                       ^targetError`)
                         
                         message.channel.send(targetError)
                     }
@@ -93,7 +93,7 @@ module.exports = {
                 .setColor('#00ff00')
                 .setTitle('Error')
                 .setDescription("You must **add** or **remove** a user!")
-                .setFooter(`message.content = ${message.content}\n%friend <args[0]> <args[1]>\n                  ^requireAddOrRemove`)
+                .setFooter(`%friend <args[0]> <args[1]>\n                  ^requireAddOrRemove`)
 
                 message.channel.send(requireAddOrRemove)
             }
@@ -101,7 +101,7 @@ module.exports = {
             const notImplementedForAll = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Error')
-            .setDescription('The %friend command is currently only available to the server owner!')
+            .setDescription('The %friend command is only available to the server owner!')
 
             message.channel.send(notImplementedForAll)
         }        

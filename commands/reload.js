@@ -15,7 +15,6 @@ module.exports = {
                 .setColor('#00ff00')
                 .setTitle('Reload')
                 .setDescription(`Reloaded the bot.`)
-                .setFooter(`message.content = ${message.content}`)
 
             message.channel.send(reloadedBot)
         } else{
@@ -23,7 +22,6 @@ module.exports = {
             .setColor('#ff0000')
             .setTitle('Permissions erro')
             .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
-            .setFooter(`message.content = ${message.content}`)
 
         message.channel.send(permissionsError)
         }

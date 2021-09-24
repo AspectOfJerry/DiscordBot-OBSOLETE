@@ -62,7 +62,7 @@ module.exports = {
                                             .setColor('#ff0000')
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to unmute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 64\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 60\nmessage.content = ${message.content}`)
         
                                         message.channel.send(errorUnmute)
                                     }
@@ -85,7 +85,7 @@ module.exports = {
                                             .setColor('#ff0000')
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 87\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 83\nmessage.content = ${message.content}`)
         
                                         message.channel.send(errorUnmute)
                                     }
@@ -110,7 +110,7 @@ module.exports = {
                                             .setColor('#ff0000')
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 112\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 108\nmessage.content = ${message.content}`)
         
                                         message.channel.send(errorUnmute)
                                     }

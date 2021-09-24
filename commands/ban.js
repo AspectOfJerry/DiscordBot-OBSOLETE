@@ -20,7 +20,7 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('User ban')
                         .setDescription(`<@${memberTarget.user.id}> was banned from the guild by <@${message.member.user.id}>`)
-                        .setFooter(`To unban a member, go to "Server Settings" > "Bans" > "Revoke Ban"`)
+                        .setFooter(`To unban a member, go to "Server Settings" > "Bans" > "Revoke Ban".`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Permissions error')

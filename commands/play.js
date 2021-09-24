@@ -19,14 +19,12 @@ module.exports = {
             .setFooter(`An action was blocked by the [Rick Roll Detection Module].\n%play <args[0]>\n               ^`)
         const permissionsError = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setTitle('Permissions error 0x5(5)')
-            .setDescription("I'm sorry but you do **not** have the **permissions** to perform this command. Please contact the server administrators if you believe that this is an error.")
-            .setFooter(`message.content = ${message.content}`)
+            .setTitle('Permissions error')
+            .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
         const requireUseBeInVC = new Discord.MessageEmbed()
             .setColor('ff0000')
             .setTitle('Error')
             .setDescription('You need to be in a voice channel to execute this command!')
-            .setFooter(`Join a voice channel!\nmessage.content = ${message.content}`)
 
         //Checking for the voicechannel and permissions.
         const voice_channel = message.member.voice.channel;
@@ -42,7 +40,7 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Error')
                 .setDescription('You need to enter a YouTube link ot key words!')
-                .setFooter(`message.content = ${message.content}\n%play <args[0]>\n               ^requireArgs0`)
+                .setFooter(`%play <args[0]>\n               ^requireArgs0`)
             if(!args.length) return message.channel.send(requireArgs0);
             let song = {};
 
@@ -105,7 +103,7 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('Error Catch')
                         .setDescription('There was an error while connecting')
-                        .setFooter('An error was caught at line 102')
+                        .setFooter(`An error was caught at line 100\nmessage.content = ${message.content}`)
 
                     message.channel.send(conenctionError);
                     throw error;
@@ -157,7 +155,7 @@ const skip_song = (message, server_queue, Discord) => {
             .setColor('ff0000')
             .setTitle('Error')
             .setDescription('You need to be in a voice channel to execute this command!')
-            .setFooter(`Join a voice channel!\nmessage.content = ${message.content}`)
+            .setFooter(`Join a voice channel!`)
 
         return message.channel.send(requireUseBeInVC);
     } if(!server_queue){
@@ -165,7 +163,7 @@ const skip_song = (message, server_queue, Discord) => {
             .setColor('#ff0000')
             .setTitle('Error')
             .setDescription('The queue is empty!')
-            .setFooter(`Add a song to play!\nmessage.content = ${message.content}`)
+            .setFooter(`Add a song to play!`)
 
         return message.channel.send(queueEmpty);
     }
@@ -177,7 +175,7 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
         .setColor('ff0000')
         .setTitle('Error')
         .setDescription('You need to be in a voice channel to execute this command!')
-        .setFooter(`Join a voice channel!\nmessage.content = ${message.content}`)
+        .setFooter(`Join a voice channel!`)
 
     if(!message.member.voice.channel) return message.channel.send(requireUseBeInVC);
     try{
@@ -196,7 +194,7 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
             .setColor('#ff0000')
             .setTitle('Error Catch')
             .setDescription('An error occured while disconnecting. No further informations.')
-            .setFooter('An error was caught at line 193')
+            .setFooter(`An error was caught at line 191\nmessage.content = ${message.content}`)
 
         message.channel.send(leaveError)
     }
@@ -216,7 +214,7 @@ const join = (message, voice_channel, Discord) => {
             .setColor('#ff0000')
             .setTitle('Error Catch')
             .setDescription('There was an error while connecting.')
-            .setFooter('An error was caught at line 214')
+            .setFooter(`An error was caught at line 212\nmessage.content = ${message.content}`)
 
         message.channel.send(conenctionError);
     }

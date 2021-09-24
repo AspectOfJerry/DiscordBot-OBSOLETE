@@ -10,7 +10,7 @@ module.exports = {
                 .setColor('#00ff00')
                 .setTitle('Error')
                 .setDescription('You must mention a member!')
-                .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^requireArgs0`)
+                .setFooter(`%report <args[0]> <args[1]>\n                   ^requireArgs0`)
 
             message.channel.send(requireArgs0)
         } else{
@@ -21,7 +21,7 @@ module.exports = {
                         .setColor('00ff00')
                         .setTitle('Report submitted')
                         .setDescription(`<@${message.member.user.id}> reported <@${memberTarget.user.id}>`)
-                        .addField(`Report:`, `${message.content}`, false)
+                        .addField(`Message:`, `${message.content}`, false)
                         .setFooter('Thanks for your report. We understand your concerns and it will be reviewed as soon as possible.\nDo not report for no reason since it pings staff members.') 
 
                     message.channel.send(report)
@@ -32,7 +32,7 @@ module.exports = {
                         .setColor('#ff0000')
                         .setTitle('Error')
                         .setDescription('You must provide a reason')
-                        .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                                       ^requireArgs1`)
+                        .setFooter(`%report <args[0]> <args[1]>\n                                       ^requireArgs1`)
 
                     message.channel.send(requireArgs1)
                 }
@@ -41,7 +41,7 @@ module.exports = {
                     .setColor('#ff0000')
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid!')
-                    .setFooter(`message.content = ${message.content}\n%report <args[0]> <args[1]>\n                   ^targetError`)
+                    .setFooter(`%report <args[0]> <args[1]>\n                   ^targetError`)
 
                 message.channel.send(targetError)
             }

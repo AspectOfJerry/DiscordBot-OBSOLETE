@@ -9,22 +9,22 @@ module.exports = {
                 .setColor('#800080')
                 .setTitle('Error')
                 .setDescription("You must enter a value!")
-                .setFooter(`message.content = ${message.content}\n%purge <args[0]>\n                  ^requireArgs0`)
+                .setFooter(`%purge <args[0]>\n                  ^requireArgs0`)
             const Args0IsNaN = new Discord.MessageEmbed()
                 .setColor('#800080')
                 .setTitle('Error')
                 .setDescription("The value must be a whole number between 1 and 25!")
-                .setFooter(`message.content = ${message.content}\n%purge <args[0]>\n                  ^Args0IsNaN`)
+                .setFooter(`%purge <args[0]>\n                  ^Args0IsNaN`)
             const requireArgs0Is1To25 = new Discord.MessageEmbed()
                 .setColor('#800080')
                 .setTitle('Error')
                 .setDescription("You can only delete 1 to 25 messages at once")
-                .setFooter(`message.content = ${message.content}\n%purge <args[0]>\n                  ^requireArgs0Is1To25`)
+                .setFooter(`%purge <args[0]>\n                  ^requireArgs0Is1To25`)
             const requireArgsGreater = new Discord.MessageEmbed()
                 .setColor('#800080')
                 .setTitle('Error')
                 .setDescription("You must delete at least one message!")
-                .setFooter(`message.content = ${message.content}\n%purge <args[0]>\n                  ^requireArgsGreater`)
+                .setFooter(`%purge <args[0]>\n                  ^requireArgsGreater`)
 
             if(!args[0]) return message.reply(requireArgs0);
             if(isNaN(args[0])) return message.reply(Args0IsNaN);
@@ -48,7 +48,6 @@ module.exports = {
                     .setColor('#00ff00')
                     .setTitle('User Purged Messages')
                     .setDescription(`<@${message.member.user.id}> purged ` + args[0] + ` messages in ${message.channel}`)
-                    .setFooter(`message.content = ${message.content}`)
     
                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userPurgedMessages)
         });
@@ -57,7 +56,6 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
-                .setFooter(`message.content = ${message.content}`)
 
             message.channel.send(permissionsError)
         }
