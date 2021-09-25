@@ -8,10 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AspectOfJerry/DiscordBot.git"
+    "url": "git+https://github.com/AspectOfJerry/DiscordBot.git"
   },
   "author": "Jerry",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AspectOfJerry/DiscordBot/issues"
+  },
+  "homepage": "https://github.com/AspectOfJerry/DiscordBot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
     "discord-button-pages": "^1.1.9",
