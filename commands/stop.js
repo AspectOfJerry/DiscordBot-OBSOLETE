@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['altf4', 'alt-f4', 'arlt_f4', 'terminate', 'shutdown', 'shut-down', 'shut_down'],
     cooldown: 256,
     description: 'Usage: "%stop"',
-    execute(message, args, cmd, client, Discord){
+    execute(message, args, cmd, client, Discord) {
         const requireConfirm = new Discord.MessageEmbed()
             .setColor('#ff10f0')
             .setTitle('Do you **really** want to stop the process?')
@@ -40,54 +40,54 @@ module.exports = {
             .addField(`message.content =`, `${message.content}`, true)
             .setFooter(`[Operators only]\nTo restart the bot, go in the terminal and type in "node main.js" or "node .".`)
 
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){    //If 'message.member' has the role 'BotPL3'
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //If 'message.member' has the role 'BotPL3'
             let filter = m => m.author.id === message.author.id
 
             message.channel.send(requireConfirm);
 
             message.channel.awaitMessages(filter, {
-              max: 1,
-              time: 30000,
-              errors: ['time']
+                max: 1,
+                time: 30000,
+                errors: ['time']
             })
-            .then(message => {
-              message = message.first()
-                if(message.content.toUpperCase() == 'YES'){ //If 'message.content' to upper case is equal to "YES"
-                    let filter = m => m.author.id === message.author.id
+                .then(message => {
+                    message = message.first()
+                    if(message.content.toUpperCase() == 'YES') { //If 'message.content' to upper case is equal to "YES"
+                        let filter = m => m.author.id === message.author.id
 
-                    message.channel.send(requireDoubleConfirm)
+                        message.channel.send(requireDoubleConfirm)
 
-                    message.channel.awaitMessages(filter, {
-                      max: 1,
-                      time: 3000,
-                      errors: ['time']
-                    })
-                    .then(message => {
-                      message = message.first()
-                        if(message.content.toUpperCase() == 'YES'){ //If 'message.content' to upper case is equal to "YES"
-                            message.channel.send(terminatingProcess)
-                            message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@871382141886406707>`)
-                            message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
-                            message.guild.channels.cache.find(channel => channel.name.includes('bot-logs')).send(status)
-                            message.guild.channels.cache.find(channel => channel.name.includes('bot-team')).send(status)
-                            client.user.setActivity('process.exit(0);', { type: 'PLAYING' })
-                            message.channel.send(processExit)
-                            .then(() => process.exit(0));
-                        } else if(message.content.toUpperCase() == 'NO'){ //If 'message.content' to upper case is equal to "NO"
-                            message.channel.send(requestAborted);
-                        }
-                    })
-                    .catch(collected => {
-                        message.channel.send(requestTimeout)
-                    });
-                } else if(message.content.toUpperCase() == 'NO'){ //If 'message.content' to upper case is equal to "NO"
-                    message.channel.send(requestAborted);
-                }
-            })
-            .catch(collected => {
-                message.channel.send(requestTimeout)
-            });
-        } else{
+                        message.channel.awaitMessages(filter, {
+                            max: 1,
+                            time: 3000,
+                            errors: ['time']
+                        })
+                            .then(message => {
+                                message = message.first()
+                                if(message.content.toUpperCase() == 'YES') { //If 'message.content' to upper case is equal to "YES"
+                                    message.channel.send(terminatingProcess)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@871382141886406707>`)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-logs')).send(status)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-team')).send(status)
+                                    client.user.setActivity('process.exit(0);', {type: 'PLAYING'})
+                                    message.channel.send(processExit)
+                                        .then(() => process.exit(0));
+                                } else if(message.content.toUpperCase() == 'NO') { //If 'message.content' to upper case is equal to "NO"
+                                    message.channel.send(requestAborted);
+                                }
+                            })
+                            .catch(collected => {
+                                message.channel.send(requestTimeout)
+                            });
+                    } else if(message.content.toUpperCase() == 'NO') { //If 'message.content' to upper case is equal to "NO"
+                        message.channel.send(requestAborted);
+                    }
+                })
+                .catch(collected => {
+                    message.channel.send(requestTimeout)
+                });
+        } else {
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Permissions error')

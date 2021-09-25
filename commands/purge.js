@@ -3,8 +3,8 @@ module.exports = {
     aliases: ['clear', 'delete', 'del', 'erase'],
     cooldown: 5,
     description: 'Usage: "%purge <value>"',
-    async execute(message, args, cmd, client, Discord){
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){ //BotP R3
+    async execute(message, args, cmd, client, Discord) {
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#800080')
                 .setTitle('Error')
@@ -31,10 +31,10 @@ module.exports = {
             if(args[0] > 25) return message.reply(requireArgs0Is1To25);
             if(args[0] < 1) return message.reply(requireArgsGreater);
 
-            await message.channel.messages.fetch({limit: args[0]}).then(messages =>{
-                try{
+            await message.channel.messages.fetch({limit: args[0]}).then(messages => {
+                try {
                     message.channel.bulkDelete(messages).catch(console.error);
-                } catch(error){
+                } catch(error) {
                     const errorMute = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Error Catch')
@@ -43,15 +43,15 @@ module.exports = {
 
                     message.channel.send(errorMute)
                 }
-                
+
                 const userPurgedMessages = new Discord.MessageEmbed()
                     .setColor('#00ff00')
                     .setTitle('User Purged Messages')
                     .setDescription(`<@${message.member.user.id}> purged ` + args[0] + ` messages in ${message.channel}`)
-    
+
                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userPurgedMessages)
-        });
-        } else{
+            });
+        } else {
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Permissions error')

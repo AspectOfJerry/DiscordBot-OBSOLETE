@@ -3,22 +3,22 @@ module.exports = {
     aliases: ['p'],
     cooldown: 5,
     description: 'Usage: "%party <@user>"',
-    execute(message, args, cmd, client, Discord){
+    execute(message, args, cmd, client, Discord) {
         message.reply('This feature is planned for the next release!'); return
-        if(message.member.user.id === '611633988515266562'){
+        if(message.member.user.id === '611633988515266562') {
             const target = message.mentions.users.first();
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Error: "' + message.content + '"')
                 .setDescription("Invalid command! You must __add__ or __remove__ a user! Correct usage: %party <invite/kick> <@user>.")
                 .setFooter(`message.content = ${message.content}`)
-        
+
             if(!args[0]) return message.channel.send(requireArgs0) //Checks if args[0] is not present
-        
-            if(args[0] == "invite"){    //Checks if args[0] contains "invite"
+
+            if(args[0] == "invite") {    //Checks if args[0] contains "invite"
                 const memberTarget = message.guild.members.cache.get(target.id);
 
-                if(!args[1]){   //Checks if args[1] is not present
+                if(!args[1]) {   //Checks if args[1] is not present
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setTitle('Error')
@@ -27,8 +27,8 @@ module.exports = {
 
                     message.channel.send(requireArgs1)
                 }
-                else{
-                    if(target){ //Checks if the target is valid (true)
+                else {
+                    if(target) { //Checks if the target is valid (true)
                         const invite = new Discord.MessageEmbed()
                             .setColor('#00ff00')
                             .setTitle('Party invite')
@@ -38,20 +38,20 @@ module.exports = {
                         message.channel.send(invite)
                         //INVITED
                     }
-                    else{   //If the target is invalid (false)
+                    else {   //If the target is invalid (false)
                         const targetError = new Discord.MessageEmbed()
                             .setColor('#ff0000')
                             .setTitle('Error')
                             .setDescription('The targeted member is invalid!')
                             .setFooter(`message.content = ${message.content}`)
-                        
+
                         message.channel.send(targetError)
                     }
                 }
             }
-            else if(args[0] == "kick"){ //Checks if args[0] contains "kick"
+            else if(args[0] == "kick") { //Checks if args[0] contains "kick"
                 const memberTarget = message.guild.members.cache.get(target.id);
-                if(!args[1]){   //Checks if args[1] is not present
+                if(!args[1]) {   //Checks if args[1] is not present
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setTitle('Error')
@@ -60,8 +60,8 @@ module.exports = {
 
                     message.channel.send(requireArgs1)
                 }
-                else{   //If args[1] is present
-                    if(target){ //Checks if the target is valid
+                else {   //If args[1] is present
+                    if(target) { //Checks if the target is valid
                         const kick = new Discord.MessageEmbed()
                             .setColor('#00ff00')
                             .setTitle('Party kick')
@@ -69,23 +69,23 @@ module.exports = {
 
                         //INVITED
                     }
-                    else{   //If the target is invalid
+                    else {   //If the target is invalid
                         const invalidTarget = new Discord.MessageEmbed()
                             .setColor('#ff0000')
                             .setTitle('Error: "' + message.content + '"')
                             .setDescription('The targeted member is invalid!')
                             .setFooter(`message.content = ${message.content}`)
-    
+
                         message.channel.send(invalidTarget)
                     }
                 }
             }
-            else{
+            else {
                 const memberTarget = message.guild.members.cache.get(target.id);
 
             }
         }
-        else{
+        else {
             const notImplementedForAll = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Error 501')

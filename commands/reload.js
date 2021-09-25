@@ -3,11 +3,11 @@ module.exports = {
     aliases: ['update', 'rel'],
     cooldown: 10,
     description: 'Usage: "%reload"',
-    execute(message, args, cmd, client, Discord){
+    execute(message, args, cmd, client, Discord) {
 
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
             //Set the client user's activity
-            client.user.setActivity('Something', { type: 'STREAMING', url: "https://www.twitch.tv/jiooy"}).catch(console.error);
+            client.user.setActivity('Something', {type: 'STREAMING', url: "https://www.twitch.tv/jiooy"}).catch(console.error);
             //client.user.setActivity('for "%"', { type: 'WATCHING' });
             //client.user.setActivity();
 
@@ -17,13 +17,13 @@ module.exports = {
                 .setDescription(`Reloaded the bot.`)
 
             message.channel.send(reloadedBot)
-        } else{
+        } else {
             const permissionsError = new Discord.MessageEmbed()
-            .setColor('#ff0000')
-            .setTitle('Permissions erro')
-            .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
+                .setColor('#ff0000')
+                .setTitle('Permissions erro')
+                .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-        message.channel.send(permissionsError)
+            message.channel.send(permissionsError)
         }
     }
 }

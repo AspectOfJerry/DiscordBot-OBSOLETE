@@ -2,7 +2,7 @@ module.exports = {
     name: 'list',
     aliases: ['commands', 'commandhelp', 'commandshelp'],
     description: 'Usage: "%list"',
-    execute(message, args, cmd, client, Discord){
+    execute(message, args, cmd, client, Discord) {
         const all = new Discord.MessageEmbed()
             .setColor('#0000ff')
             .setTitle("List of all the commands (all)")
@@ -88,34 +88,34 @@ module.exports = {
 
         message.channel.send(query);
         message.channel.awaitMessages(filter, {
-          max: 1,
-          time: 25000,
-          errors: ['time']
+            max: 1,
+            time: 25000,
+            errors: ['time']
         })
-        .then(message => {
-          message = message.first()
-            if(message.content.toUpperCase() == 'ALL'){ //If 'message.content' to upper case is equal to "ADD"
-                message.channel.send(floodWarning)
-                .then(() => message.channel.send(all));
-            } else if(message.content.toUpperCase() == 'NOREQ'){  //If 'message.content' to upper case is equal to "NOREQ"
-                message.channel.send(noReq)
-            } else if(message.content.toUpperCase() == 'REQBOTPL3'){  //If 'message.content' to upper case is equal to "REQBOTPL3"
-                message.channel.send(reqBotPL3)
-            } else if(message.content.toUpperCase() == 'REQBOTPL2'){  //If 'message.content' to upper case is equal to "REQBOTPL2"
-                message.channel.send(reqBotPL2)
-            } else if(message.content.toUpperCase() == 'REQBOTPL1'){  //If 'message.content' to upper case is equal to "REQBOTPL1"
-                message.channel.send(reqBotPL1)
-            } else if(message.content.toUpperCase() == 'REQBOTPL0'){  //If 'message.content' to upper case is equal to "REQBOTPL0"
-                message.channel.send(reqBotPL0)
-            }
-        })
-        .catch(collected => {
-            const requestTimeout = new Discord.MessageEmbed()
-            .setColor('#800080')
-            .setTitle('Timeout')
-            .setDescription("Request timeout")
+            .then(message => {
+                message = message.first()
+                if(message.content.toUpperCase() == 'ALL') { //If 'message.content' to upper case is equal to "ADD"
+                    message.channel.send(floodWarning)
+                        .then(() => message.channel.send(all));
+                } else if(message.content.toUpperCase() == 'NOREQ') {  //If 'message.content' to upper case is equal to "NOREQ"
+                    message.channel.send(noReq)
+                } else if(message.content.toUpperCase() == 'REQBOTPL3') {  //If 'message.content' to upper case is equal to "REQBOTPL3"
+                    message.channel.send(reqBotPL3)
+                } else if(message.content.toUpperCase() == 'REQBOTPL2') {  //If 'message.content' to upper case is equal to "REQBOTPL2"
+                    message.channel.send(reqBotPL2)
+                } else if(message.content.toUpperCase() == 'REQBOTPL1') {  //If 'message.content' to upper case is equal to "REQBOTPL1"
+                    message.channel.send(reqBotPL1)
+                } else if(message.content.toUpperCase() == 'REQBOTPL0') {  //If 'message.content' to upper case is equal to "REQBOTPL0"
+                    message.channel.send(reqBotPL0)
+                }
+            })
+            .catch(collected => {
+                const requestTimeout = new Discord.MessageEmbed()
+                    .setColor('#800080')
+                    .setTitle('Timeout')
+                    .setDescription("Request timeout")
 
-            message.channel.send(requestTimeout)
-        });
+                message.channel.send(requestTimeout)
+            });
     }
 }

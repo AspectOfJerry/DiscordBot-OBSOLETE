@@ -9,14 +9,14 @@ module.exports = (Discord, client, message) => {
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
 
-    try{
+    try {
         command.execute(message, args, cmd, client, Discord);
-    } catch (err){
+    } catch(err) {
         const unknownError = new Discord.MessageEmbed()
-        .setColor('#800080')
-        .setTitle('Unexpected error')
-        .setDescription('An unknown error occurred, no further information. 0x16 (22)')
-        .setFooter(`message.content = ${message.content}\nconsole.log(err);`)
+            .setColor('#800080')
+            .setTitle('Unexpected error')
+            .setDescription('An unknown error occurred, no further information. 0x16 (22)')
+            .setFooter(`message.content = ${message.content}\nconsole.log(err);`)
 
         message.reply(unknownError);
         console.log(err);

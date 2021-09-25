@@ -3,10 +3,10 @@ module.exports = {
     cooldown: 10,
     aliases: ['un-mute', 'un_mute'],
     description: 'Usage: "%unmute <@user>"',
-    execute(message, args, cmd, client, Discord){
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')){    //If 'message.member' has the role 'BotPL3'
+    execute(message, args, cmd, client, Discord) {
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //If 'message.member' has the role 'BotPL3'
             const target = message.mentions.users.first();
-            if(!args[0]){
+            if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Error')
@@ -14,8 +14,8 @@ module.exports = {
                     .setFooter(`%unmute <args[0]>\n                     ^requireArgs0`)
 
                 message.channel.send(requireArgs0)
-            } else{
-                if(target){ //If 'target' is valid
+            } else {
+                if(target) { //If 'target' is valid
                     let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
                     let memberTarget = message.guild.members.cache.get(target.id);
                     const userUnmutedBy = new Discord.MessageEmbed()
@@ -35,142 +35,142 @@ module.exports = {
                         .setColor('#800080')
                         .setTitle('Error')
                         .setDescription(`<@${memberTarget.user.id}> is not muted!`)
-                    if(message.member == memberTarget){ //If 'message.member' is equal to 'memberTarget'
+                    if(message.member == memberTarget) { //If 'message.member' is equal to 'memberTarget'
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#800080')
                             .setTitle('Error')
                             .setDescription('You cannot use this command on yourself!')
-    
+
                         message.channel.send(cannotUseOnSelf)
-                    } else{
-                        if(!memberTarget.roles.cache.find(role => role.name === 'Muted')){
+                    } else {
+                        if(!memberTarget.roles.cache.find(role => role.name === 'Muted')) {
                             message.channel.send(userNotMuted)
-                        } else{
-                            if(message.member.roles.cache.find(role => role.name === 'BotPL0')){    //If 'message.member' has the role 'BotPL0'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
+                        } else {
+                            if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {    //If 'message.member' has the role 'BotPL0'
+                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
                                     message.channel.send(targetHigherThanSender403);
-                                } else{
-                                    try{
+                                } else {
+                                    try {
                                         memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                                        
+
                                         message.channel.send(userUnmutedBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
-                                    } catch(error){
+                                    } catch(error) {
                                         const errorUnmute = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to unmute <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 60\nmessage.content = ${message.content}`)
-        
+
                                         message.channel.send(errorUnmute)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')){   //If 'message.member' has the role 'BotPL1'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {   //If 'message.member' has the role 'BotPL1'
+                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){ //If 'memberTarget' has the role 'BotPL1'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
                                     message.channel.send(targetHigherThanSender403);
-                                } else{
-                                    try{
+                                } else {
+                                    try {
                                         memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                                        
+
                                         message.channel.send(userUnmutedBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
-                                    } catch(error){
+                                    } catch(error) {
                                         const errorUnmute = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 83\nmessage.content = ${message.content}`)
-        
+
                                         message.channel.send(errorUnmute)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')){   //If 'message.member' has the role 'BotPL2'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {   //If 'message.member' has the role 'BotPL2'
+                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
                                     message.channel.send(targetImmune403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotsPL0')){    //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotsPL0')) {    //If 'memberTarget' has the role 'BotPL0'
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){ //If 'memberTarget' has the role 'BotPL1'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){ //If 'memberTarget' has the role 'BotPL2'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) { //If 'memberTarget' has the role 'BotPL2'
                                     message.channel.send(targetHigherThanSender403)
-                                } else{
-                                    try{
+                                } else {
+                                    try {
                                         memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                                        
+
                                         message.channel.send(userUnmutedBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
-                                    } catch(error){
+                                    } catch(error) {
                                         const errorUnmute = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 108\nmessage.content = ${message.content}`)
-        
+
                                         message.channel.send(errorUnmute)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')){   //If 'message.member' has the role 'BotPL3'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')){    //If 'memberTarget' has the role 'Bots'
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //If 'message.member' has the role 'BotPL3'
+                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
                                     message.channel.send(targetImmune403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')){ //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')){ //If 'memberTarget' has the role 'BotPL1'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')){ //If 'memberTarget' has the role 'BotPL2'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) { //If 'memberTarget' has the role 'BotPL2'
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')){ //If 'memberTarget' has the role 'BotPL3'
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')) { //If 'memberTarget' has the role 'BotPL3'
                                     message.channel.send(targetHigherThanSender403)
-                                } else{
-                                    try{
+                                } else {
+                                    try {
                                         memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                                        
+
                                         message.channel.send(userUnmutedBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
-                                    } catch(error){
+                                    } catch(error) {
                                         const errorUnmute = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 135\nmessage.content = ${message.content}`)
-        
+
                                         message.channel.send(errorUnmute)
                                     }
                                 }
-                            } else{
-                                try{
+                            } else {
+                                try {
                                     memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
-                                    
+
                                     message.channel.send(userUnmutedBy)
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
-                                } catch(error){
+                                } catch(error) {
                                     const errorUnmute = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 151\nmessage.content = ${message.content}`)
-    
+
                                     message.channel.send(errorUnmute)
                                 }
                             }
                         }
                     }
-                } else{
+                } else {
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Error')
                         .setDescription('The targeted member is invalid!')
                         .setFooter(`%unmute <args[0]>\n                      ^targetError`)
-                    
+
                     message.channel.send(targetError)
                 }
             }
-        } else{
+        } else {
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Permissions error')
