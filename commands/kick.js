@@ -9,6 +9,7 @@ module.exports = {
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('You must mention a member')
                     .setFooter(`%kick <args[0]>\n              ^`)
@@ -19,19 +20,24 @@ module.exports = {
                     const memberTarget = message.guild.members.cache.get(target.id);
                     const userKickedBy = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('User kick')
                         .setDescription(`<@${memberTarget.user.id}> was kicked from the guild by <@${message.member.user.id}>`)
+                        .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
                     const targetImmune403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
                     if(memberTarget == message.member) { //If 'memberTarget' is equal to 'message.member'
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#800080')
+                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                             .setTitle('Error')
                             .setDescription('You cannot use this command on yourself!')
 
@@ -52,9 +58,10 @@ module.exports = {
                                 } catch(error) {
                                     const errorKick = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
+                                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 52\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 58\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorKick)
                                 }
@@ -76,9 +83,10 @@ module.exports = {
                                 } catch(error) {
                                     const errorKick = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
+                                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 76\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 83\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorKick)
                                 }
@@ -102,9 +110,10 @@ module.exports = {
                                 } catch(error) {
                                     const errorKick = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
+                                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 102\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 110\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorKick)
                                 }
@@ -119,9 +128,10 @@ module.exports = {
                             } catch(error) {
                                 const errorKick = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
+                                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                    .setFooter(`An error was caught at line 119\nmessage.content = ${message.content}`)
+                                    .setFooter(`An error was caught at line 128\nmessage.content = ${message.content}`)
 
                                 message.channel.send(errorKick)
                             }
@@ -130,6 +140,7 @@ module.exports = {
                 } else {
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('The targeted member is invalid')
                         .setFooter(`%kick <args[0]>\n              ^`)
@@ -140,6 +151,7 @@ module.exports = {
         } else {   //If 'message.member' does not have the 'BotPL2'
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 

@@ -7,21 +7,25 @@ module.exports = {
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#800080')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("You must enter a value!")
                 .setFooter(`%purge <args[0]>\n                  ^requireArgs0`)
             const Args0IsNaN = new Discord.MessageEmbed()
                 .setColor('#800080')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("The value must be a whole number between 1 and 25!")
                 .setFooter(`%purge <args[0]>\n                  ^Args0IsNaN`)
             const requireArgs0Is1To25 = new Discord.MessageEmbed()
                 .setColor('#800080')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("You can only delete 1 to 25 messages at once")
                 .setFooter(`%purge <args[0]>\n                  ^requireArgs0Is1To25`)
             const requireArgsGreater = new Discord.MessageEmbed()
                 .setColor('#800080')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("You must delete at least one message!")
                 .setFooter(`%purge <args[0]>\n                  ^requireArgsGreater`)
@@ -37,15 +41,16 @@ module.exports = {
                 } catch(error) {
                     const errorMute = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error Catch')
                         .setDescription(`An error occured while trying to purge ${args[0]} messages`)
                         .setFooter(`An error was caught on line 37\nmessage.content = ${message.content}`)
 
                     message.channel.send(errorMute)
                 }
-
                 const userPurgedMessages = new Discord.MessageEmbed()
                     .setColor('#00ff00')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('User Purged Messages')
                     .setDescription(`<@${message.member.user.id}> purged ` + args[0] + ` messages in ${message.channel}`)
 
@@ -54,6 +59,7 @@ module.exports = {
         } else {
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 

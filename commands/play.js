@@ -12,6 +12,7 @@ module.exports = {
     async execute(message, args, cmd, client, Discord) {
         const antiRickRoll = new Discord.MessageEmbed()
             .setColor('#ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('[Rick Roll Detection Module]')
             .setDescription('Failed to execute command! Unauthorized Action.')
             .addField('Reason: ', 'Rick Roll', true)
@@ -19,10 +20,12 @@ module.exports = {
             .setFooter(`An action was blocked by the [Rick Roll Detection Module].\n%play <args[0]>\n               ^`)
         const permissionsError = new Discord.MessageEmbed()
             .setColor('#ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Permissions error')
             .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
         const requireUseBeInVC = new Discord.MessageEmbed()
             .setColor('ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error')
             .setDescription('You need to be in a voice channel to execute this command!')
 
@@ -38,6 +41,7 @@ module.exports = {
         if(cmd === 'play') {    //If 'cmd' equals to "play"
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription('You need to enter a YouTube link ot key words!')
                 .setFooter(`%play <args[0]>\n               ^requireArgs0`)
@@ -75,6 +79,7 @@ module.exports = {
                 } else {
                     const errorSearching = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('There was an error while searching for the video.')
 
@@ -101,6 +106,7 @@ module.exports = {
                     queue.delete(message.guild.id);
                     const conenctionError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error Catch')
                         .setDescription('There was an error while connecting')
                         .setFooter(`An error was caught at line 100\nmessage.content = ${message.content}`)
@@ -112,6 +118,7 @@ module.exports = {
                 server_queue.songs.push(song);
                 const addedToQueue = new Discord.MessageEmbed()
                     .setColor('#00ff00')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Added song to queue')
                     .setDescription(`Added **${song.title}** to the server queue!`)
                     .setFooter(song.url)
@@ -141,6 +148,7 @@ const video_player = async (guild, song, Discord) => {
         });
     const playing = new Discord.MessageEmbed()
         .setColor('#00ff00')
+        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
         .setTitle('Playing!')
         .setDescription(`Now playing: **${song.title}**`)
         .setFooter(song.url)
@@ -153,6 +161,7 @@ const skip_song = (message, server_queue, Discord) => {
     if(!message.member.voice.channel) {
         const requireUseBeInVC = new Discord.MessageEmbed()
             .setColor('ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error')
             .setDescription('You need to be in a voice channel to execute this command!')
             .setFooter(`Join a voice channel!`)
@@ -161,6 +170,7 @@ const skip_song = (message, server_queue, Discord) => {
     } if(!server_queue) {
         const queueEmpty = new Discord.MessageEmbed()
             .setColor('#ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error')
             .setDescription('The queue is empty!')
             .setFooter(`Add a song to play!`)
@@ -173,6 +183,7 @@ const skip_song = (message, server_queue, Discord) => {
 const stop_song = (message, server_queue, voice_channel, Discord) => {
     const requireUseBeInVC = new Discord.MessageEmbed()
         .setColor('ff0000')
+        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
         .setTitle('Error')
         .setDescription('You need to be in a voice channel to execute this command!')
         .setFooter(`Join a voice channel!`)
@@ -184,6 +195,7 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
         voice_channel.leave();
         const leave = new Discord.MessageEmbed()
             .setColor('#ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Leave')
             .setDescription('Left the voice channel!')
 
@@ -192,6 +204,7 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
         voice_channel.leave();
         const leaveError = new Discord.MessageEmbed()
             .setColor('#ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error Catch')
             .setDescription('An error occured while disconnecting. No further informations.')
             .setFooter(`An error was caught at line 191\nmessage.content = ${message.content}`)
@@ -205,6 +218,7 @@ const join = (message, voice_channel, Discord) => {
         voice_channel.join()
         const join = new Discord.MessageEmbed()
             .setColor('#00ff00')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Join')
             .setDescription('Joined the voice channel!')
 
@@ -212,6 +226,7 @@ const join = (message, voice_channel, Discord) => {
     } catch(error) {
         const conenctionError = new Discord.MessageEmbed()
             .setColor('#ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error Catch')
             .setDescription('There was an error while connecting.')
             .setFooter(`An error was caught at line 212\nmessage.content = ${message.content}`)

@@ -7,6 +7,7 @@ module.exports = {
 
         const choose = new Discord.MessageEmbed()
             .setColor('#00ff00')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Rock, Paper, Scissors')
             .setDescription('Reply "rock", "paper", or "scissors"')
             .setFooter('[10s]')
@@ -22,6 +23,7 @@ module.exports = {
                 if(message.content.toUpperCase() == 'ROCK') {    //If 'message.content' to upper case is equal to "ROCK"
                     const rock = new Discord.MessageEmbed()
                         .setColor('#00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('You loose!')
                         .setDescription("Bot's choice: Paper!")
                         .setFooter(`Input: "${message}".`)
@@ -30,6 +32,7 @@ module.exports = {
                 } else if(message.content.toUpperCase() == 'PAPER') {  //If 'message.content' to upper case is equal to "PAPER"
                     const paper = new Discord.MessageEmbed()
                         .setColor('#00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('You loose!')
                         .setDescription("Bot's choice: Scissors!")
                         .setFooter(`Input: "${message}".`)
@@ -38,6 +41,7 @@ module.exports = {
                 } else if(message.content.toUpperCase() == 'SCISSORS') {   //If 'message.content' to upper case is equal to "SCISSORS"
                     const scissors = new Discord.MessageEmbed()
                         .setColor('#00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('You loose!')
                         .setDescription("Bot's choice: Rock!")
                         .setFooter(`Input: "${message}".`)
@@ -48,6 +52,7 @@ module.exports = {
             .catch(collected => {
                 const requestTimeout = new Discord.MessageEmbed()
                     .setColor('#800080')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Timeout')
                     .setDescription("Request timeout")
 

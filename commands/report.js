@@ -8,6 +8,7 @@ module.exports = {
         if(!args[0]) {    //If 'args[0]' is present
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#00ff00')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription('You must mention a member!')
                 .setFooter(`%report <args[0]> <args[1]>\n                   ^requireArgs0`)
@@ -19,9 +20,11 @@ module.exports = {
                 if(args[1]) {    //If 'args[1]' is present
                     const report = new Discord.MessageEmbed()
                         .setColor('00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Report submitted')
                         .setDescription(`<@${message.member.user.id}> reported <@${memberTarget.user.id}>`)
                         .addField(`Message:`, `${message.content}`, false)
+                        .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
                         .setFooter('Thanks for your report. We understand your concerns and it will be reviewed as soon as possible.\nDo not report for nothing since it pings staff members.')
 
                     message.channel.send(report)
@@ -30,6 +33,7 @@ module.exports = {
                 } else {
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('You must provide a reason')
                         .setFooter(`%report <args[0]> <args[1]>\n                                       ^requireArgs1`)
@@ -39,6 +43,7 @@ module.exports = {
             } else {
                 const targetError = new Discord.MessageEmbed()
                     .setColor('#ff0000')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid!')
                     .setFooter(`%report <args[0]> <args[1]>\n                   ^targetError`)

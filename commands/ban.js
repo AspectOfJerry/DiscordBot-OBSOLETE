@@ -8,6 +8,7 @@ module.exports = {
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('You must mention a member')
                     .setFooter(`%ban <args[0]>\n              ^requireArgs0`)
@@ -18,21 +19,26 @@ module.exports = {
                     const memberTarget = message.guild.members.cache.get(target.id);
                     const userBannedBy = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('User ban')
                         .setDescription(`<@${memberTarget.user.id}> was banned from the guild by <@${message.member.user.id}>`)
+                        .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
                         .setFooter(`To unban a member, go to "Server Settings" > "Bans" > "Revoke Ban".`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
                     const targetImmune403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
 
                     if(memberTarget == message.member) { //If 'memberTarget' is equal to 'message.member'
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#800080')
+                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                             .setTitle('Error')
                             .setDescription('You cannot use this command on yourself!')
 
@@ -53,9 +59,10 @@ module.exports = {
                                 } catch(error) { //Catch
                                     const errorBan = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
+                                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 53\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 59\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorBan)
                                 }
@@ -77,9 +84,10 @@ module.exports = {
                                 } catch(error) {
                                     const errorBan = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
+                                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 77\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 84\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorBan)
                                 }
@@ -94,9 +102,10 @@ module.exports = {
                             } catch(error) {
                                 const errorBan = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
+                                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                    .setFooter(`An error was caught at line 94\nmessage.content = ${message.content}`)
+                                    .setFooter(`An error was caught at line 102\nmessage.content = ${message.content}`)
 
                                 message.channel.send(errorBan)
                             }
@@ -105,6 +114,7 @@ module.exports = {
                 } else {
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('The targeted member is invalid')
                         .setFooter(`%ban <args[0]>\n              ^targetError`)
@@ -115,6 +125,7 @@ module.exports = {
         } else {   //If 'message.member' does not have the role 'BotPL1'
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 

@@ -21,6 +21,7 @@ client.on('guildMemberAdd', guildMember => {
         .setColor('#006400')
         .setTitle('User join')
         .setDescription(`<@${guildMember.user.id}> joined the server!`)
+        .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
         .setFooter('Welcome!')
 
     guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userJoinMessage)
@@ -32,6 +33,7 @@ client.on('guildMemberRemove', guildMember => {
         .setColor('#8b0000')
         .setTitle('User leave')
         .setDescription(`<@${guildMember.user.id}> left the server!`)
+        .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
         .setFooter('Goodbye!')
 
     guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userLeaveMessage)

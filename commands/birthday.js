@@ -9,6 +9,7 @@ module.exports = {
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('You must mention a member')
                     .setFooter(`%birthday <args[0]>\n                       ^requireArgs0`)
@@ -20,6 +21,7 @@ module.exports = {
                     let birthdayRole = message.guild.roles.cache.get('876456209895534653');
                     const birthday = new Discord.MessageEmbed()
                         .setColor('#E91E63')
+                        .setThumbnail(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Birthday!')
                         .setDescription(`Happy birthday <@${memberTarget.user.id}>!`)
                         .setFooter('We wish them a happy birthday!')
@@ -33,6 +35,7 @@ module.exports = {
                 } else {
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('The targeted member is invalid!')
                         .setFooter(`%birthday <args[0]>\n                       ^targetError`)
@@ -43,6 +46,7 @@ module.exports = {
         } else {
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 

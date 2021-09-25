@@ -13,6 +13,7 @@ module.exports = {
 
             const reloadedBot = new Discord.MessageEmbed()
                 .setColor('#00ff00')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Reload')
                 .setDescription(`Reloaded the bot.`)
 
@@ -20,7 +21,8 @@ module.exports = {
         } else {
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setTitle('Permissions erro')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
             message.channel.send(permissionsError)

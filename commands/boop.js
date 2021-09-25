@@ -7,6 +7,7 @@ module.exports = {
         if(!args[0]) {
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription('You must mention a member')
                 .setFooter(`%boop <args[0]>\n                 ^requireArgs0`)
@@ -17,12 +18,14 @@ module.exports = {
                 const memberTarget = message.guild.members.cache.get(target.id);
                 const boop = new Discord.MessageEmbed()
                     .setColor('#ff55ff')
+                    .setThumbnail(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 16})}`)
                     .setDescription(`Boop! <@${memberTarget.user.id}>`)
 
                 message.channel.send(boop);
             } else {
                 const targetError = new Discord.MessageEmbed()
                     .setColor('#ff0000')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid')
                     .setFooter(`%boop <args[0]>\n                 ^targetError`)
