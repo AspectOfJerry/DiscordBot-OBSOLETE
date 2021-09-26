@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AspectOfJerry/DiscordBot.git"
+    "url": "git+https://github.com/AspectOfJerry/JohannaBot.git"
   },
   "author": "Jerry",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AspectOfJerry/DiscordBot/issues"
+    "url": "https://github.com/AspectOfJerry/JohannaBot/issues"
   },
-  "homepage": "https://github.com/AspectOfJerry/DiscordBot#readme",
+  "homepage": "https://github.com/AspectOfJerry/JohannaBot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
     "discord-button-pages": "^1.1.9",
