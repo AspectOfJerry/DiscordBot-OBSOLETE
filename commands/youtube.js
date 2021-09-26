@@ -1,6 +1,6 @@
 module.exports = {
     name: 'youtube',
-    aliases: ['yt', 'ytb', 'itube', 'hetube', 'shetube', 'ittube', 'wetube', 'theytube'],
+    aliases: ['yt', 'ytb', 'itube', 'hetube', 'hetubes', 'shetube', 'shetubes', 'ittube', 'ittubes', 'wetube', 'theytube'],
     cooldown: 15,
     description: 'Usage: "%youtube"',
     execute(message, args, cmd, client, Discord) {

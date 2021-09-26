@@ -30,7 +30,7 @@ module.exports = {
             .addField(`%stop`, `__Syntax:__ "%stop"\n__Aliases:__ 'altf4', 'alt-f4', 'arlt_f4', 'terminate', 'shutdown', 'shut-down', 'shut_down'\n__Use:__ Stops the bot (Exit with code 0).`, false)
             .addField(`%test`, `__Syntax:__ Variable\n__Aliases:__ Variable\n__Use:__ Test command, do not use.`, false)
             .addField(`%unmute`, `__Syntax:__ "%unmute <@user>"\n__Aliases:__ 'un-mute', 'un_mute'\n__Use:__ Unmutes the targeted member`, false)
-            .addField(`%youtube`, `__Syntax:__ ""\n__Aliases:__ 'yt', 'ytb', 'itube', 'hetube', 'shetube', 'ittube', 'wetube', 'theytube'\n__Use:__ Sends the link of <@611633988515266562>'s YouTube channel`, false)
+            .addField(`%youtube`, `__Syntax:__ ""\n__Aliases:__ 'yt', 'ytb', 'itube', 'hetube', 'hetubes', 'shetube', 'shetubes', 'ittube', 'ittubes', 'wetube', 'theytube'\n__Use:__ Sends the link of <@611633988515266562>'s YouTube channel`, false)
         const noReq = new Discord.MessageEmbed()
             .setColor('#0000ff')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
