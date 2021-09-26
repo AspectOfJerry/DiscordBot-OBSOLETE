@@ -1,8 +1,8 @@
 Channel IDs
 
-1. 
-2. 
-3. 
+1. Welcome: 890067108287873094
+2. General: 890069074745393162
+3. bot-commands: 890069875295420496
 
 Role IDs
 
