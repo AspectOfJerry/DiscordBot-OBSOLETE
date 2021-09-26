@@ -1,3 +1,3 @@
 module.exports = (client, Discord, message, args) => {
-    console.log('DiscordBot is online!');
+    console.log('JohannaBot/DiscordBot is online!');
 }
