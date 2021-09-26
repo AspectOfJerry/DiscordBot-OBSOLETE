@@ -13,31 +13,31 @@ client.events = new Discord.Collection();
 
 
 
-// client.on('guildMemberAdd', guildMember => {
-//     let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Members');
-//     guildMember.roles.add(welcomeRole).catch(console.error);
+client.on('guildMemberAdd', guildMember => {
+    let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Members');
+    guildMember.roles.add(welcomeRole).catch(console.error);
 
-//     const userJoinMessage = new Discord.MessageEmbed()
-//         .setColor('#006400')
-//         .setTitle('User join')
-//         .setDescription(`<@${guildMember.user.id}> joined the server!`)
-//         .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
-//         .setFooter('Welcome!')
+    const userJoinMessage = new Discord.MessageEmbed()
+        .setColor('#006400')
+        .setTitle('User join')
+        .setDescription(`<@${guildMember.user.id}> joined the server!`)
+        .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
+        .setFooter('Welcome!')
 
-//     guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userJoinMessage)
-//     guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userJoinMessage)
-// });
+    guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userJoinMessage)
+    guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userJoinMessage)
+});
 
-// client.on('guildMemberRemove', guildMember => {
-//     const userLeaveMessage = new Discord.MessageEmbed()
-//         .setColor('#8b0000')
-//         .setTitle('User leave')
-//         .setDescription(`<@${guildMember.user.id}> left the server!`)
-//         .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
-//         .setFooter('Goodbye!')
+client.on('guildMemberRemove', guildMember => {
+    const userLeaveMessage = new Discord.MessageEmbed()
+        .setColor('#8b0000')
+        .setTitle('User leave')
+        .setDescription(`<@${guildMember.user.id}> left the server!`)
+        .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
+        .setFooter('Goodbye!')
 
-//     guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userLeaveMessage)
-//     guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userLeaveMessage)
-// });
+    guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userLeaveMessage)
+    guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userLeaveMessage)
+});
 
 client.login(process.env.DISCORD_TOKEN);
