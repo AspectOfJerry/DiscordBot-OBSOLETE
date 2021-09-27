@@ -1,10 +1,9 @@
 module.exports = {
     name: 'kick',
-    aliases: ['cassetoi', 'casse_toi', 'casse-toi'],
     cooldown: 10,
     description: "Usage: %kick <@user>",
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {    //If 'message.member' has the role 'BotPL2'
+        if(message.member.roles.cache.has('890076942164983808')) {    //If 'message.member' has the role 'moderator goldfish'
             const target = message.mentions.users.first();
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
@@ -12,11 +11,10 @@ module.exports = {
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('You must mention a member')
-                    .setFooter(`%kick <args[0]>\n              ^`)
 
                 message.channel.send(requireArgs0)
             } else {
-                if(target) { //If 'target' is valid
+                if(target) {    //If 'target' is valid
                     const memberTarget = message.guild.members.cache.get(target.id);
                     const userKickedBy = new Discord.MessageEmbed()
                         .setColor('#ff0000')
@@ -43,77 +41,74 @@ module.exports = {
 
                         message.channel.send(cannotUseOnSelf);
                     } else {
-                        if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {    //If 'message.member' has the role 'BotPL0'
-                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                        if(message.member.roles.cache.has('890075267517784116')) {    //If 'message.member' has the role 'overlord goldfish'
+                            if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has a role that includes "bot"
                                 message.channel.send(targetImmune403);
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget, has the role 'BotPL0'
+                            } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget, has the role 'overlord goldfish'
                                 message.channel.send(targetHigherThanSender403);
                             } else {
                                 try {
                                     memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
 
                                     message.channel.send(userKickedBy)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                                    message.guild.channels.cache.get('890067108287873094').send(userKickedBy)
                                 } catch(error) {
                                     const errorKick = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 58\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 55:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorKick)
                                 }
                             }
-                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {   //If 'message.member' has the role 'BotPL1'
-                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                        } else if(message.member.roles.cache.has('890076599926521916')) {   //If 'message.member' has the role 'admin goldfish'
+                            if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has the role 'Bots'
                                 message.channel.send(targetImmune403);
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                            } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'overlord goldfish'
                                 message.channel.send(targetHigherThanSender403);
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
+                            } else if(memberTarget.roles.cache.has('890076599926521916')) { //If 'memberTarget' has the role 'admin goldfish'
                                 message.channel.send(targetHigherThanSender403);
                             } else {
                                 try {
                                     memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
 
                                     message.channel.send(userKickedBy)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                                    message.guild.channels.cache.get('890067108287873094').send(userKickedBy)
                                 } catch(error) {
                                     const errorKick = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 83\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 79:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorKick)
                                 }
                             }
-                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) { //If 'message.member' has the role 'BotPL2'
-                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                        } else if(message.member.roles.cache.has('890076942164983808')) { //If 'message.member' has the role 'BotPL2'
+                            if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has a role that includes "bot"
                                 message.channel.send(targetImmune403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                            } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'overlord goldfish'
                                 message.channel.send(targetHigherThanSender403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
+                            } else if(memberTarget.roles.cache.has('890076599926521916')) { //If 'memberTarget' has the role 'admin goldfish'
                                 message.channel.send(targetHigherThanSender403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) { //If 'memberTarget' has the role 'BotPL2'
+                            } else if(memberTarget.roles.cache.has('890076942164983808')) { //If 'memberTarget' has the role 'moderator goldfish'
                                 message.channel.send(targetHigherThanSender403)
                             } else {
                                 try {
                                     memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
 
                                     message.channel.send(userKickedBy)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                                    message.guild.channels.cache.get('890067108287873094').send(userKickedBy)
                                 } catch(error) {
                                     const errorKick = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 110\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 105:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorKick)
                                 }
@@ -123,15 +118,14 @@ module.exports = {
                                 memberTarget.kick().catch(console.error);   //Kick 'memberTarget'
 
                                 message.channel.send(userKickedBy)
-                                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
-                                message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
+                                message.guild.channels.cache.get('890067108287873094').send(userKickedBy)
                             } catch(error) {
                                 const errorKick = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                    .setFooter(`An error was caught at line 128\nmessage.content = ${message.content}`)
+                                    .setFooter(`An error was caught at line 122:31\nmessage.content = ${message.content}`)
 
                                 message.channel.send(errorKick)
                             }
@@ -143,7 +137,6 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('The targeted member is invalid')
-                        .setFooter(`%kick <args[0]>\n              ^`)
 
                     message.channel.send(targetError)
                 }

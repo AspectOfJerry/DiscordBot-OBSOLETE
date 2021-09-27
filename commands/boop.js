@@ -10,7 +10,6 @@ module.exports = {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription('You must mention a member')
-                .setFooter(`%boop <args[0]>\n                 ^requireArgs0`)
 
             message.channel.send(requireArgs0)
         } else {
@@ -28,7 +27,6 @@ module.exports = {
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid')
-                    .setFooter(`%boop <args[0]>\n                 ^targetError`)
 
                 message.channel.send(targetError)
             }

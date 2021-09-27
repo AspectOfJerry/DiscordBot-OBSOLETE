@@ -3,7 +3,7 @@ module.exports = {
     cooldown: 10,
     description: "Usage: %ban <@user>",
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.get('890076942164983808')) {    //If 'message.member' has the role 'moderator'
+        if(message.member.roles.cache.get('890076942164983808')) {    //If 'message.member' has the role 'moderator goldfish'
             const target = message.mentions.users.first();
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
@@ -14,7 +14,7 @@ module.exports = {
 
                 message.channel.send(requireArgs0)
             } else {
-                if(target) {     //If 'target' is valid
+                if(target) {    //If 'target' is valid
                     const memberTarget = message.guild.members.cache.get(target.id);
                     const userBannedBy = new Discord.MessageEmbed()
                         .setColor('#ff0000')
@@ -60,7 +60,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 57\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 57:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorBan)
                                 }
@@ -84,7 +84,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 81\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 81:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorBan)
                                 }
@@ -110,7 +110,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 107\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 107:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorBan)
                                 }
@@ -127,7 +127,7 @@ module.exports = {
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                    .setFooter(`An error was caught at line 124\nmessage.content = ${message.content}`)
+                                    .setFooter(`An error was caught at line 124:31\nmessage.content = ${message.content}`)
 
                                 message.channel.send(errorBan)
                             }

@@ -5,7 +5,7 @@ module.exports = {
     description: 'Usage: "%mute <@user> (<duration s/m/y>)"',
     execute(message, args, cmd, client, Discord) {
         const ms = require(`ms`)
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //If 'message.member' has the role 'BotPL3'
+        if(message.member.roles.cache.has('890077443090706473')) {    //If 'message.member' has the role 'helper goldfish'
             const target = message.mentions.users.first();
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
@@ -13,12 +13,11 @@ module.exports = {
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('You must mention a member')
-                    .setFooter(`%mute <args[0]> (<args[1]>)\n                 ^requireArgs0`)
 
                 message.channel.send(requireArgs0)
             } else {
                 if(target) { //If 'target' is valid
-                    let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
+                    let muteRole = message.guild.roles.cache.has('MUTED_ROLE_ID');
                     let memberTarget = message.guild.members.cache.get(target.id);
                     const userMutedBy = new Discord.MessageEmbed()
                         .setColor('#ffff00')
@@ -66,13 +65,13 @@ module.exports = {
 
                         message.channel.send(cannotUseOnSelf)
                     } else {
-                        if(memberTarget.roles.cache.find(role => role.name == 'Muted')) {    //If 'memberTarget' has the role 'Muted'
+                        if(memberTarget.roles.cache.has('MUTED_ROLE_ID')) {    //If 'memberTarget' has the role 'Muted'
                             message.channel.send(targetAlreadyMuted)
                         } else {
-                            if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {    //If 'message.member' has the role 'BotPL0'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                            if(message.member.roles.cache.has('890075267517784116')) {    //If 'message.member' has the role 'BotPL0'
+                                if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has the role 'Bots'
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'BotPL0'
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -97,17 +96,17 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 94\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 93:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorMute)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {   //If 'message.member' has the role 'BotPL1'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                            } else if(message.member.roles.cache.has('890076599926521916')) {   //If 'message.member' has the role 'BotPL1'
+                                if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has the role 'Bots'
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'BotPL0'
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
+                                } else if(memberTarget.roles.cache.has('890076599926521916')) { //If 'memberTarget' has the role 'BotPL1'
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -132,20 +131,20 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught on line 129\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught on line 128:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorMute)
                                     }
                                 }
                             }   //If the message sender does not have the "BotPL1" role
-                            else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {   //If 'message.member' has the role 'BotPL2'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                            else if(message.member.roles.cache.has('890076942164983808')) {   //If 'message.member' has the role 'BotPL2'
+                                if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has the role 'Bots'
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'BotPL0'
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
+                                } else if(memberTarget.roles.cache.has('890076599926521916')) { //If 'memberTarget' has the role 'BotPL1'
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) { //If 'memberTarget' has the role 'BotPl2'
+                                } else if(memberTarget.roles.cache.has('890076942164983808')) { //If 'memberTarget' has the role 'BotPl2'
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
@@ -170,21 +169,21 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught on line 167\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught on line 166:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorMute)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //if 'message.member' has the role 'BotPL3'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
-                                    message.channel.send(targetImmune403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                            } else if(message.member.roles.cache.has('890077443090706473')) {   //if 'message.member' has the role 'BotPL3'
+                                if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has the role 'Bots'
+                                    message.channel.send(targetImmune403);
+                                } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'BotPL0'
+                                    message.channel.send(targetHigherThanSender403);
+                                } else if(memberTarget.roles.cache.has('890076599926521916')) { //If 'memberTarget' has the role 'BotPL1'
+                                    message.channel.send(targetHigherThanSender403);
+                                } else if(memberTarget.roles.cache.has('890076942164983808')) { //If 'memberTarget' has the role 'BotPl2'
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
-                                    message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) { //If 'memberTarget' has the role 'BotPL2'
-                                    message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')) { //If 'memberTarget' has the role 'BotPL3'
+                                } else if(memberTarget.roles.cache.has('890077443090706473')) { //If 'memberTarget' has the role 'BotPL3'
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
@@ -209,7 +208,7 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught on line 206\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught on line 205:35\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorMute)
                                     }
@@ -237,7 +236,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught on line 234\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught on line 233:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorMute)
                                 }
@@ -250,7 +249,6 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('The targeted member is invalid')
-                        .setFooter(`%mute <args[0]> (<args[1]>)\n                 ^`)
 
                     message.channel.send(targetError)
                 }

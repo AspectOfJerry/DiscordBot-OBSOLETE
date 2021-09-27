@@ -1,8 +1,51 @@
-Channel IDs
+Channel Name            Channel ID
 
-1. Welcome: 890067108287873094
-2. General: 890069074745393162
-3. bot-commands: 890069875295420496
+welcome                 890067108287873094
 
-Role IDs
+info                    890066669186191411
+annoucements            890066866138120243
+rules                   890075062319865898
+twitch-yt-updates       890069155166957589
+suggestions             890320312430891028
 
+hangout                 890068418923999244
+general                 890069074745393162
+art                     890069087747731576
+flex                    890069105300881460
+media                   890069382032678932
+vent                    892120688167616562
+ez                      891578364949839893
+
+utility                 890070033575862303
+bot-commands            890069875295420496
+music                   890070084020748318
+
+voice chat              890070896130281513
+no-mic                  890070972856680488
+goldfish vc             890071045762060308
+music goldfish vc       890071713411366953
+i am depresses          891529981451198524
+
+rooms                   891771269685592104
+waiting room            892004164777967647
+jioy room of death      890071190213910598
+Will's basement room    890310268754739272
+Ek's spicy room         891762615569748018
+
+
+
+Role Name               Role ID
+
+overlord goldfish       890075267517784116
+admin goldfish          890076599926521916
+moderator goldfish      890076942164983808
+helper goldfish         890077443090706473
+bedwars master          891760883305422898
+staff                   890077893739311154
+cool                    891662119160938527
+twitch staff            890078028326109225
+trusted                 890078033862615061
+DJ                      891601564253454346
+goldfish                890065114865238018
+bots                    890075775540281384
+Server Booster          891538271140737034
