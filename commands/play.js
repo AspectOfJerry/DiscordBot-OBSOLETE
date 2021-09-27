@@ -109,7 +109,7 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error Catch')
                         .setDescription('There was an error while connecting')
-                        .setFooter(`An error was caught at line 100\nmessage.content = ${message.content}`)
+                        .setFooter(`An error was caught at line 105:19\nmessage.content = ${message.content}`)
 
                     message.channel.send(conenctionError);
                     throw error;
@@ -207,7 +207,7 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error Catch')
             .setDescription('An error occured while disconnecting. No further informations.')
-            .setFooter(`An error was caught at line 191\nmessage.content = ${message.content}`)
+            .setFooter(`An error was caught at line 203:7\nmessage.content = ${message.content}`)
 
         message.channel.send(leaveError)
     }
@@ -229,7 +229,7 @@ const join = (message, voice_channel, Discord) => {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error Catch')
             .setDescription('There was an error while connecting.')
-            .setFooter(`An error was caught at line 212\nmessage.content = ${message.content}`)
+            .setFooter(`An error was caught at line 226:7\nmessage.content = ${message.content}`)
 
         message.channel.send(conenctionError);
     }

@@ -61,7 +61,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 58\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 58:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorKick)
                                 }
@@ -86,7 +86,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 83\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 83:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorKick)
                                 }
@@ -113,7 +113,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 110\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 110:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorKick)
                                 }
@@ -131,7 +131,7 @@ module.exports = {
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                    .setFooter(`An error was caught at line 128\nmessage.content = ${message.content}`)
+                                    .setFooter(`An error was caught at line 128:31\nmessage.content = ${message.content}`)
 
                                 message.channel.send(errorKick)
                             }

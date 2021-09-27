@@ -62,7 +62,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 59\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 59:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorBan)
                                 }
@@ -87,7 +87,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 84\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 84:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorBan)
                                 }
@@ -105,7 +105,7 @@ module.exports = {
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                    .setFooter(`An error was caught at line 102\nmessage.content = ${message.content}`)
+                                    .setFooter(`An error was caught at line 102:31\nmessage.content = ${message.content}`)
 
                                 message.channel.send(errorBan)
                             }

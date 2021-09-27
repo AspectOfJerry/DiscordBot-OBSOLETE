@@ -44,7 +44,7 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error Catch')
                         .setDescription(`An error occured while trying to purge ${args[0]} messages`)
-                        .setFooter(`An error was caught on line 37\nmessage.content = ${message.content}`)
+                        .setFooter(`An error was caught on line 41:19\nmessage.content = ${message.content}`)
 
                     message.channel.send(errorMute)
                 }
