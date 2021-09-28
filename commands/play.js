@@ -17,7 +17,7 @@ module.exports = {
             .setDescription('Failed to execute command! Unauthorized Action.')
             .addField('Reason: ', 'Rick Roll', true)
             .addField('Action: ', `${message.content}`, true)
-            .setFooter(`An action was blocked by the [Rick Roll Detection Module].\n%play <args[0]>\n               ^`)
+            .setFooter(`An action was blocked by the [Rick Roll Detection Module].`)
         const permissionsError = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -44,7 +44,7 @@ module.exports = {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription('You need to enter a YouTube link ot key words!')
-                .setFooter(`%play <args[0]>\n               ^requireArgs0`)
+                
             if(!args.length) return message.channel.send(requireArgs0);
             let song = {};
 

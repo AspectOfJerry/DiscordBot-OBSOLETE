@@ -3,7 +3,7 @@ Channel Name            Channel ID
 welcome                 890067108287873094
 
 info                    890066669186191411
-annoucements            890066866138120243
+announcements           890066866138120243
 rules                   890075062319865898
 twitch-yt-updates       890069155166957589
 suggestions             890320312430891028
@@ -24,7 +24,7 @@ voice chat              890070896130281513
 no-mic                  890070972856680488
 goldfish vc             890071045762060308
 music goldfish vc       890071713411366953
-i am depresses          891529981451198524
+i am depressed          891529981451198524
 
 rooms                   891771269685592104
 waiting room            892004164777967647

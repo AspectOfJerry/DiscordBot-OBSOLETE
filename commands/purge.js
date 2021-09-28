@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 5,
     description: 'Usage: "%purge <value>"',
     async execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3
+        if(message.member.roles.cache.has('890077893739311154') { //If 'message.member' has the role 'staff' 
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#800080')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -44,7 +44,7 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error Catch')
                         .setDescription(`An error occured while trying to purge ${args[0]} messages`)
-                        .setFooter(`An error was caught on line 37\nmessage.content = ${message.content}`)
+                        .setFooter(`An error was caught on line 41:19\nmessage.content = ${message.content}`)
 
                     message.channel.send(errorMute)
                 }
