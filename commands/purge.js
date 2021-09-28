@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 5,
     description: 'Usage: "%purge <value>"',
     async execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.has('890077893739311154') { //If 'message.member' has the role 'staff' 
+        if(message.member.roles.cache.has('890077893739311154')) { //If 'message.member' has the role 'staff' 
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#800080')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
