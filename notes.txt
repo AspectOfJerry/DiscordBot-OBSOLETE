@@ -40,12 +40,15 @@ overlord goldfish       890075267517784116
 admin goldfish          890076599926521916
 moderator goldfish      890076942164983808
 helper goldfish         890077443090706473
+cool bot                891689731484680272
+bedwars sweat           891760978717470772
 bedwars master          891760883305422898
-staff                   890077893739311154
 cool                    891662119160938527
+milf                    891662512704081930
 twitch staff            890078028326109225
-trusted                 890078033862615061
 DJ                      891601564253454346
 goldfish                890065114865238018
+sus                     891733299108659240
 bots                    890075775540281384
 Server Booster          891538271140737034
+staff                   890077893739311154
