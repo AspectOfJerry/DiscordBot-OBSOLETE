@@ -47,7 +47,7 @@ module.exports = {
             .addField(`message.content =`, `${message.content}`, true)
             .setFooter(`[Operators only]\nTo restart the bot, go in the terminal and type in "node main.js" or "node .".`)
 
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //If 'message.member' has the role 'BotPL3'
+        if(message.member.roles.cache.has('890077893739311154')) {    //If 'message.member' has the role 'staff'
             let filter = m => m.author.id === message.author.id
 
             message.channel.send(requireConfirm);

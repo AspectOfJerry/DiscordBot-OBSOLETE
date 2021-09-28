@@ -4,7 +4,7 @@ module.exports = {
     aliases: ['un-mute', 'un_mute'],
     description: 'Usage: "%unmute <@user>"',
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //If 'message.member' has the role 'BotPL3'
+        if(message.member.roles.cache.has('890077443090706473')) {    //If 'message.member' has the role 'helper goldfish'
             const target = message.mentions.users.first();
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
@@ -53,10 +53,10 @@ module.exports = {
                         if(!memberTarget.roles.cache.find(role => role.name === 'Muted')) {
                             message.channel.send(userNotMuted)
                         } else {
-                            if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {    //If 'message.member' has the role 'BotPL0'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                            if(message.member.roles.cache.has('890075267517784116')) {    //If 'message.member' has the role 'overlord goldfish'
+                                if(memberTarget.roles.cache.find(role => role.name === 'bot')) {    //If 'memberTarget' has a role that contains "bot"
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'overlord goldfish'
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -75,12 +75,12 @@ module.exports = {
                                         message.channel.send(errorUnmute)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {   //If 'message.member' has the role 'BotPL1'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                            } else if(message.member.roles.cache.has('890076599926521916')) {   //If 'message.member' has the role 'admin goldfish'
+                                if(memberTarget.roles.cache.find(role => role.name === 'bot')) {    //If 'memberTarget' has a role that contains "bot"
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'overlord goldfish'
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
+                                } else if(memberTarget.roles.cache.has('890076599926521916')) { //If 'memberTarget' has the role 'admin goldfish'
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -99,14 +99,14 @@ module.exports = {
                                         message.channel.send(errorUnmute)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {   //If 'message.member' has the role 'BotPL2'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                            } else if(message.member.roles.cache.has('890076942164983808')) {   //If 'message.member' has the role 'moderator goldfish'
+                                if(memberTarget.roles.cache.find(role => role.name === 'bot')) {    //If 'memberTarget' has a role that contains "bot"
                                     message.channel.send(targetImmune403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotsPL0')) {    //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.has('890075267517784116')) {    //If 'memberTarget' has the role 'overlord goldfish'
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
+                                } else if(memberTarget.roles.cache.has('890076599926521916')) { //If 'memberTarget' has the role 'admin goldfish'
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) { //If 'memberTarget' has the role 'BotPL2'
+                                } else if(memberTarget.roles.cache.has('890076942164983808')) { //If 'memberTarget' has the role 'moderator goldfish'
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
@@ -126,9 +126,9 @@ module.exports = {
                                     }
                                 }
                             } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //If 'message.member' has the role 'BotPL3'
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has a role that contains "bot"
                                     message.channel.send(targetImmune403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                                } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'overlord goldfish'
                                     message.channel.send(targetHigherThanSender403)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
                                     message.channel.send(targetHigherThanSender403)
