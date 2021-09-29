@@ -1,6 +1,5 @@
 module.exports = {
     name: 'test',
-    cooldown: 10,
     description: "Usage: %test",
     execute(message, args, cmd, client, Discord) {
         const target = message.mentions.users.first();
@@ -13,5 +12,6 @@ module.exports = {
         message.reply('There is currently nothing to test!');
         //Code
 
+        message.channel.send('haha')
     }
 }

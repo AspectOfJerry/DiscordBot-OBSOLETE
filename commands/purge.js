@@ -1,7 +1,6 @@
 module.exports = {
     name: 'purge',
     aliases: ['clear', 'delete', 'del', 'erase'],
-    cooldown: 5,
     description: 'Usage: "%purge <value>"',
     async execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3

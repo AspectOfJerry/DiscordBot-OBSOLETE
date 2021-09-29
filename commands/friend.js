@@ -1,7 +1,6 @@
 module.exports = {
     name: 'friend',
     aliases: ['f'],
-    cooldown: 3,
     description: 'Usage: "%friend <add/remove> <@user>"',
     execute(message, args, cmd, client, Discord) {
         if(message.member.user.id === '611633988515266562') {    //If 'message.member' has the 'user.id' of "@Jerry#3756"

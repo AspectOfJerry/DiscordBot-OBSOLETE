@@ -1,6 +1,5 @@
 module.exports = {
     name: 'pong',
-    cooldown: 3,
     description: 'Usage: "%pong"',
     execute(message, args, cmd, client, Discord) {
         const pong = new Discord.MessageEmbed()

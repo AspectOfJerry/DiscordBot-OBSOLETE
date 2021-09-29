@@ -1,7 +1,6 @@
 module.exports = {
     name: 'mute',
     aliases: ['tempmute', 'temp-mute', 'temp_mute'],
-    cooldown: 10,
     description: 'Usage: "%mute <@user> (<duration s/m/y>)"',
     execute(message, args, cmd, client, Discord) {
         const ms = require(`ms`)

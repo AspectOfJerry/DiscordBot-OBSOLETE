@@ -1,7 +1,6 @@
 module.exports = {
     name: 'report',
     aliases: ['wdr', 'wdreport', 'watchdogreport', 'chatreport', 'flag'],
-    cooldown: 10,
     description: 'Usage: "%report <@user>"',
     execute(message, args, cmd, client, Discord) {
         const target = message.mentions.users.first();

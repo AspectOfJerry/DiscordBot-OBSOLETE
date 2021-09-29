@@ -1,7 +1,6 @@
 module.exports = {
     name: 'party',
     aliases: ['p'],
-    cooldown: 5,
     description: 'Usage: "%party <@user>"',
     execute(message, args, cmd, client, Discord) {
         message.reply('This feature is planned for the next release!'); return

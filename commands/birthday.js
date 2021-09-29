@@ -1,7 +1,6 @@
 module.exports = {
     name: 'birthday',
     aliases: ['bday'],
-    cooldown: 10,
     description: 'Usage: "%birthday <@user>"',
     execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //If 'message.member' has the role 'BotPL3'
