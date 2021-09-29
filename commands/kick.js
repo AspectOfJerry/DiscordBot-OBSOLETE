@@ -1,6 +1,5 @@
 module.exports = {
     name: 'kick',
-    cooldown: 10,
     description: "Usage: %kick <@user>",
     execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.has('890076942164983808')) {    //If 'message.member' has the role 'moderator goldfish'

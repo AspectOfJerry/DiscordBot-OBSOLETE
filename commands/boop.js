@@ -1,6 +1,5 @@
 module.exports = {
     name: 'boop',
-    cooldown: 5,
     description: 'Usage: "%boop <@user>"',
     execute(message, args, cmd, client, Discord) {
         const target = message.mentions.users.first();

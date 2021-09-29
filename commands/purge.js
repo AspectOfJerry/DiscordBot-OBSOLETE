@@ -1,7 +1,6 @@
 module.exports = {
     name: 'purge',
     aliases: ['clear', 'delete', 'del', 'erase'],
-    cooldown: 5,
     description: 'Usage: "%purge <value>"',
     async execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.has('890077893739311154')) { //If 'message.member' has the role 'staff' 
