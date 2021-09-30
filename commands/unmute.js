@@ -68,7 +68,7 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to unmute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 60\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 65:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorUnmute)
                                     }

@@ -5,11 +5,11 @@ module.exports = {
     description: 'Usage: "%youtube"',
     execute(message, args, cmd, client, Discord) {
         const youtube = new Discord.MessageEmbed()
-            .setColor('#00ff00')
+            .setColor('#ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Youtube channel')
-            .setDescription(`<@611633988515266562>'s Youtube channel: https://www.youtube.com/channel/UCTaDDeM_nubCCb1HDLhlw-A`)
-            .setURL('https://www.youtube.com/channel/UCTaDDeM_nubCCb1HDLhlw-A')
+            .setDescription(`<@872225094787809291>'s Youtube channel: https://www.youtube.com/channel/UCgro81OCGKf9gNVZsPqF6-Q`)
+            .setURL('https://www.youtube.com/channel/UCgro81OCGKf9gNVZsPqF6-Q')
             .setFooter('Subscribe!')
 
         message.channel.send(youtube);
