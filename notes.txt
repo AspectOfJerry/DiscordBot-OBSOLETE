@@ -66,7 +66,7 @@ Statisfy (aka. Hystats)     890081888478322739
 Observer                    890082003263840298
 Tempo                       890671719667343451
 jioy bot                    891689731484680272
-Muted                       undefined
+Muted                       891751120882520083
 bedwars noob                891760643655471114
 modded smp                  undefined
 staff                       890077893739311154

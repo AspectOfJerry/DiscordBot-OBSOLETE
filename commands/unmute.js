@@ -15,7 +15,7 @@ module.exports = {
                 message.channel.send(requireArgs0)
             } else {
                 if(target) { //If 'target' is valid
-                    let muteRole = message.guild.roles.cache.has('');
+                    let muteRole = message.guild.roles.cache.get('891751120882520083');
                     let memberTarget = message.guild.members.cache.get(target.id);
                     const userUnmutedBy = new Discord.MessageEmbed()
                         .setColor('#00ff00')
@@ -48,7 +48,7 @@ module.exports = {
 
                         message.channel.send(cannotUseOnSelf)
                     } else {
-                        if(!memberTarget.roles.cache.find(role => role.name === 'Muted')) {
+                        if(!memberTarget.roles.cache.has('891751120882520083')) {
                             message.channel.send(userNotMuted)
                         } else {
                             if(message.member.roles.cache.has('890075267517784116')) {    //If 'message.member' has the role 'overlord goldfish'
@@ -118,7 +118,7 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 108\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 115:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorUnmute)
                                     }
@@ -146,7 +146,7 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 135\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 143:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorUnmute)
                                     }
@@ -163,7 +163,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 151\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 160:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorUnmute)
                                 }

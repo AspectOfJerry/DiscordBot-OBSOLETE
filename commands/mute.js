@@ -16,7 +16,7 @@ module.exports = {
                 message.channel.send(requireArgs0)
             } else {
                 if(target) { //If 'target' is valid
-                    let muteRole = message.guild.roles.cache.has('MUTE_ROLE_ID');   //Create 'muteRole' and assign it the mute role ID
+                    let muteRole = message.guild.roles.cache.get('891751120882520083');   //Create 'muteRole' and assign it the mute role ID
                     let memberTarget = message.guild.members.cache.get(target.id);
                     const userMutedBy = new Discord.MessageEmbed()
                         .setColor('#ffff00')
@@ -64,7 +64,7 @@ module.exports = {
 
                         message.channel.send(cannotUseOnSelf)
                     } else {
-                        if(memberTarget.roles.cache.has('MUTED_ROLE_ID')) {    //If 'memberTarget' has the role 'Muted'
+                        if(memberTarget.roles.cache.has('891751120882520083')) {    //If 'memberTarget' has the role 'Muted'
                             message.channel.send(targetAlreadyMuted)
                         } else {
                             if(message.member.roles.cache.has('890075267517784116')) {    //If 'message.member' has the role 'overlord goldfish'
@@ -92,7 +92,7 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 90:39\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 89:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorMute)
                                     }
@@ -124,7 +124,7 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught on line 122:39\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught on line 121:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorMute)
                                     }
@@ -159,7 +159,7 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught on line 157:39\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught on line 156:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorMute)
                                     }
@@ -195,7 +195,7 @@ module.exports = {
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught on line 193:39\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught on line 192:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorMute)
                                     }
@@ -220,7 +220,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught on line 218:35\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught on line 217:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorMute)
                                 }
