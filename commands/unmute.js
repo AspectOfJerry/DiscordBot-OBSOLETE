@@ -11,12 +11,11 @@ module.exports = {
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('You must mention a member to unmute!')
-                    .setFooter(`%unmute <args[0]>\n                     ^requireArgs0`)
 
                 message.channel.send(requireArgs0)
             } else {
                 if(target) { //If 'target' is valid
-                    let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
+                    let muteRole = message.guild.roles.cache.has('');
                     let memberTarget = message.guild.members.cache.get(target.id);
                     const userUnmutedBy = new Discord.MessageEmbed()
                         .setColor('#00ff00')
@@ -124,7 +123,7 @@ module.exports = {
                                         message.channel.send(errorUnmute)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //If 'message.member' has the role 'BotPL3'
+                            } else if(message.member.roles.cache.find(role => role.name === '')) {   //If 'message.member' has the role 'BotPL3'
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has a role that contains "bot"
                                     message.channel.send(targetImmune403)
                                 } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'overlord goldfish'

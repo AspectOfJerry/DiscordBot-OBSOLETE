@@ -16,7 +16,7 @@ module.exports = {
                 message.channel.send(requireArgs0)
             } else {
                 if(target) { //If 'target' is valid
-                    let muteRole = message.guild.roles.cache.has('MUTED_ROLE_ID');
+                    let muteRole = message.guild.roles.cache.has('MUTE_ROLE_ID');   //Create 'muteRole' and assign it the mute role ID
                     let memberTarget = message.guild.members.cache.get(target.id);
                     const userMutedBy = new Discord.MessageEmbed()
                         .setColor('#ffff00')
