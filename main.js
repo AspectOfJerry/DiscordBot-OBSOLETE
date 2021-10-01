@@ -24,8 +24,7 @@ client.on('guildMemberAdd', guildMember => {
         .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
         .setFooter('Welcome!')
 
-    guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userJoinMessage)
-    guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userJoinMessage)
+    guildMember.guild.channels.cache.get('890067108287873094').send(userJoinMessage)
 });
 
 client.on('guildMemberRemove', guildMember => {
@@ -36,8 +35,7 @@ client.on('guildMemberRemove', guildMember => {
         .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
         .setFooter('Goodbye!')
 
-    guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userLeaveMessage)
-    guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userLeaveMessage)
+    guildMember.guild.channels.cache.get('890067108287873094').send(userLeaveMessage)
 });
 
 client.login(process.env.DISCORD_TOKEN);

@@ -61,14 +61,13 @@ module.exports = {
                                         memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
 
                                         message.channel.send(userUnmutedBy)
-                                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
                                         const errorUnmute = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to unmute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 65:39\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 64:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorUnmute)
                                     }
@@ -85,7 +84,6 @@ module.exports = {
                                         memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
 
                                         message.channel.send(userUnmutedBy)
-                                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
                                         const errorUnmute = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
@@ -111,14 +109,13 @@ module.exports = {
                                         memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
 
                                         message.channel.send(userUnmutedBy)
-                                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
                                         const errorUnmute = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 115:39\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 112:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorUnmute)
                                     }
@@ -139,14 +136,13 @@ module.exports = {
                                         memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
 
                                         message.channel.send(userUnmutedBy)
-                                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
                                         const errorUnmute = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 143:39\nmessage.content = ${message.content}`)
+                                            .setFooter(`An error was caught at line 139:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorUnmute)
                                     }
@@ -156,14 +152,13 @@ module.exports = {
                                     memberTarget.roles.remove(muteRole.id); //Remove 'muteRole' from 'memberTarget'
 
                                     message.channel.send(userUnmutedBy)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                 } catch(error) {
                                     const errorUnmute = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 160:35\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 155:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorUnmute)
                                 }
