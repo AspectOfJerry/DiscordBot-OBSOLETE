@@ -3,7 +3,7 @@ module.exports = {
     description: 'Usage: "%boop <@user>"',
     execute(message, args, cmd, client, Discord) {
         const target = message.mentions.users.first();
-        if(!args[0]) {
+        if(!args[0]) {  //If 'args[0]' is missing
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -12,7 +12,7 @@ module.exports = {
                 .setFooter(`%boop <args[0]>\n                 ^requireArgs0`)
 
             message.channel.send(requireArgs0)
-        } else {
+        } else {    //if(args[0])
             if(target) { //If 'target' is valid
                 const memberTarget = message.guild.members.cache.get(target.id);
                 const boop = new Discord.MessageEmbed()
@@ -21,7 +21,7 @@ module.exports = {
                     .setDescription(`Boop! <@${memberTarget.user.id}>`)
 
                 message.channel.send(boop);
-            } else {
+            } else {    //if(!target)
                 const targetError = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

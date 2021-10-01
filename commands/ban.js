@@ -4,7 +4,7 @@ module.exports = {
     execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //If 'message.member' has the role 'BotPL1'
             const target = message.mentions.users.first();
-            if(!args[0]) {
+            if(!args[0]) {  //If args[0]' is missing
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -13,7 +13,7 @@ module.exports = {
                     .setFooter(`%ban <args[0]>\n              ^requireArgs0`)
 
                 message.channel.send(requireArgs0)
-            } else {
+            } else {    //if(args[0])
                 if(target) {     //If 'target' is valid
                     const memberTarget = message.guild.members.cache.get(target.id);
                     const userBannedBy = new Discord.MessageEmbed()
@@ -61,7 +61,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 59:35\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 58:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorBan)
                                 }
@@ -86,7 +86,7 @@ module.exports = {
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 84:35\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 83:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorBan)
                                 }
@@ -104,13 +104,13 @@ module.exports = {
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                    .setFooter(`An error was caught at line 102:31\nmessage.content = ${message.content}`)
+                                    .setFooter(`An error was caught at line 101:31\nmessage.content = ${message.content}`)
 
                                 message.channel.send(errorBan)
                             }
                         }
                     }
-                } else {
+                } else {    //if(!target)
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -121,7 +121,7 @@ module.exports = {
                     message.channel.send(targetError)
                 }
             }
-        } else {   //If 'message.member' does not have the role 'BotPL1'
+        } else {   //if(!message.member.roles.cache.find(role => role.name === 'BotPL1'))
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

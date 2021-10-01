@@ -67,7 +67,7 @@ module.exports = {
 
                     message.channel.send(requireArgs1)
                 } else {
-                    if(target) { //If target is valid
+                    if(target) { //If 'target' is valid
                         if(!memberTarget.roles.cache.get('877984769793744896')) {    //If memberTarget does not have the 'Friends' role
                             const notFriends = new Discord.MessageEmbed()
                                 .setColor('#ff0000')
@@ -85,7 +85,7 @@ module.exports = {
 
                             message.channel.send(removedFriend)
                         }
-                    } else {
+                    } else {    //if(!target)
                         const targetError = new Discord.MessageEmbed()
                             .setColor('#ff0000')
                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -96,7 +96,7 @@ module.exports = {
                         message.channel.send(targetError)
                     }
                 }
-            } else {   //If args[0] to upper case does not contain "ADD" nor "REMOVE"
+            } else {
                 const requireAddOrRemove = new Discord.MessageEmbed()
                     .setColor('#00ff00')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -106,7 +106,7 @@ module.exports = {
 
                 message.channel.send(requireAddOrRemove)
             }
-        } else {
+        } else {    //if(!message.member.user.id === '611633988515266562')
             const notImplementedForAll = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

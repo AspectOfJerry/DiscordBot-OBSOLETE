@@ -5,7 +5,7 @@ module.exports = {
     execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //If 'message.member' has the role 'BotPL3'
             const target = message.mentions.users.first();
-            if(!args[0]) {
+            if(!args[0]) {  //If 'args[0]' is not present
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -14,7 +14,7 @@ module.exports = {
                     .setFooter(`%birthday <args[0]>\n                       ^requireArgs0`)
 
                 message.channel.send(requireArgs0)
-            } else {
+            } else {    //if(args[0])
                 if(target) { //If 'target' is valid
                     const memberTarget = message.guild.members.cache.get(target.id);
                     let birthdayRole = message.guild.roles.cache.get('876456209895534653');
@@ -30,8 +30,8 @@ module.exports = {
                     message.guild.channels.cache.find(channel => channel.name.includes('general')).send(birthday)
                     message.guild.channels.cache.find(channel => channel.name.includes('bot-commands')).send(birthday)
                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(birthday)
-                    message.guild.channels.cache.find(channel => channel.name.includes('new')).send(birthday)
-                } else {
+                    message.guild.channels.cache.find(channel => channel.name.includes('news')).send(birthday)
+                } else {    //if(!target)
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -42,7 +42,7 @@ module.exports = {
                     message.channel.send(targetError)
                 }
             }
-        } else {
+        } else {    //if(!message.member.roles.cache.find(role => role.name === 'BotPL3')
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
