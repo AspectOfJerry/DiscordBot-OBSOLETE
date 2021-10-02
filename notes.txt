@@ -1,3 +1,5 @@
+Main color: #7dc8cd
+
 Channel IDs
 
 1. 

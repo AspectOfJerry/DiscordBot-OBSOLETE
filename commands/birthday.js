@@ -19,7 +19,7 @@ module.exports = {
                     const memberTarget = message.guild.members.cache.get(target.id);
                     let birthdayRole = message.guild.roles.cache.get('876456209895534653');
                     const birthday = new Discord.MessageEmbed()
-                        .setColor('#E91E63')
+                        .setColor('#7dc8cd')
                         .setThumbnail(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Birthday!')
                         .setDescription(`Happy birthday <@${memberTarget.user.id}>!`)
