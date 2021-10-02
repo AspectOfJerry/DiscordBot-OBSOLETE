@@ -44,7 +44,7 @@ module.exports = {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription('You need to enter a YouTube link ot key words!')
-                
+
             if(!args.length) return message.channel.send(requireArgs0);
             let song = {};
 

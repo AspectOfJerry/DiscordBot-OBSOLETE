@@ -36,7 +36,14 @@ module.exports = {
 
             await message.channel.messages.fetch({limit: args[0]}).then(messages => {
                 try {
+                    const userPurgedMessages = new Discord.MessageEmbed()
+                        .setColor('#00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                        .setTitle('User Purged Messages')
+                        .setDescription(`<@${message.member.user.id}> purged ` + args[0] + ` messages in ${message.channel}`)
+
                     message.channel.bulkDelete(messages).catch(console.error);
+                    message.channel.send(userPurgedMessages)
                 } catch(error) {
                     const errorMute = new Discord.MessageEmbed()
                         .setColor('#ff0000')
@@ -47,11 +54,6 @@ module.exports = {
 
                     message.channel.send(errorMute)
                 }
-                const userPurgedMessages = new Discord.MessageEmbed()
-                    .setColor('#00ff00')
-                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                    .setTitle('User Purged Messages')
-                    .setDescription(`<@${message.member.user.id}> purged ` + args[0] + ` messages in ${message.channel}`)
             });
         } else {
             const permissionsError = new Discord.MessageEmbed()

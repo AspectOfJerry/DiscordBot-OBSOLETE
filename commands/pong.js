@@ -3,7 +3,7 @@ module.exports = {
     description: 'Usage: "%pong"',
     execute(message, args, cmd, client, Discord) {
         const pong = new Discord.MessageEmbed()
-            .setColor('#7dc8cd')
+            .setColor('#ff5eef')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
             .setDescription('ping')
 

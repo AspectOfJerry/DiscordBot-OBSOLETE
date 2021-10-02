@@ -1,3 +1,5 @@
+Main color HEX: #ff5eef
+
 Channel Name                Channel ID
 
 welcome                     890067108287873094
