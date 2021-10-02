@@ -1,6 +1,6 @@
 module.exports = {
     name: 'ping',
-    description: 'Usage: "%ping"',
+    description: 'Usage: ",ping"',
     execute(message, args, cmd, client, Discord) {
         const ping = new Discord.MessageEmbed()
             .setColor('#ff5eef')

@@ -1,7 +1,7 @@
 module.exports = {
     name: 'unmute',
     aliases: ['un-mute', 'un_mute'],
-    description: 'Usage: "%unmute <@user>"',
+    description: 'Usage: ",unmute <@user>"',
     execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.has('890077443090706473')) {    //If 'message.member' has the role 'helper goldfish'
             const target = message.mentions.users.first();
@@ -23,7 +23,7 @@ module.exports = {
                         .setTitle('User unmute')
                         .setDescription(`<@${memberTarget.user.id}> was unmuted by <@${message.member.user.id}>`)
                         .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
-                        .setFooter(`To mute a member, execute "%mute <@user> (<duration>)"`)
+                        .setFooter(`To mute a member, execute ",mute <@user> (<duration>)"`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

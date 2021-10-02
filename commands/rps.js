@@ -1,7 +1,7 @@
 module.exports = {
     name: 'rps',
     aliases: ['rockpaperscissors', 'rock_paper_scissors'],
-    description: 'Usage: "%rps"',
+    description: 'Usage: ",rps"',
     execute(message, args, cmd, client, Discord) {
         let filter = m => m.author.id === message.author.id
 

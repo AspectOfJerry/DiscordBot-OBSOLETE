@@ -1,6 +1,6 @@
 module.exports = {
     name: 'beep',
-    description: 'Usage: "%beep"',
+    description: 'Usage: ",beep"',
     execute(message, args, cmd, client, Discord) {
         const beep = new Discord.MessageEmbed()
             .setColor('#ff55ff')

@@ -1,6 +1,6 @@
 module.exports = {
     name: 'kick',
-    description: "Usage: %kick <@user>",
+    description: "Usage: ,kick <@user>",
     execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.has('890076942164983808')) {    //If 'message.member' has the role 'moderator goldfish'
             const target = message.mentions.users.first();
