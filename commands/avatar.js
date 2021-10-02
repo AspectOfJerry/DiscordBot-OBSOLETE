@@ -3,8 +3,6 @@ module.exports = {
     aliases: ['av', 'a'],
     description: 'Usage: "%avatar <@user>"',
     execute(message, args, cmd, client, Discord) {
-        const target = message.mentions.users.first();
-        const memberTarget = message.guild.members.cache.get(target.id);
         if(!args[0]) {
             const avatarSelf = new Discord.MessageEmbed()
                 .setColor('#7dc8cd')
@@ -16,6 +14,8 @@ module.exports = {
 
             message.channel.send(avatarSelf)
         } else {
+            const target = message.mentions.users.first();
+            const memberTarget = message.guild.members.cache.get(target.id);
             const avatar = new Discord.MessageEmbed()
                 .setColor('#7dc8cd')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
