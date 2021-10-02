@@ -8,7 +8,7 @@ module.exports = {
     name: 'play',
     aliases: ['skip', 'leave', 'join'],
     cooldown: 5,
-    description: 'Usage: "%play <URL/keyWords>"',
+    description: 'Usage: ",play <URL/keyWords>"',
     async execute(message, args, cmd, client, Discord) {
         const antiRickRoll = new Discord.MessageEmbed()
             .setColor('#ff0000')

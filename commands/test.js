@@ -1,6 +1,6 @@
 module.exports = {
     name: 'test',
-    description: "Usage: %test",
+    description: "Usage: ,test",
     execute(message, args, cmd, client, Discord) {
         const target = message.mentions.users.first();
         const memberTarget = message.guild.members.cache.get(target.id);

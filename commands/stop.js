@@ -1,7 +1,7 @@
 module.exports = {
     name: 'stop',
     aliases: ['altf4', 'alt-f4', 'arlt_f4', 'terminate', 'shutdown', 'shut-down', 'shut_down'],
-    description: 'Usage: "%stop"',
+    description: 'Usage: ",stop"',
     execute(message, args, cmd, client, Discord) {
         const requireConfirm = new Discord.MessageEmbed()
             .setColor('#ff10f0')

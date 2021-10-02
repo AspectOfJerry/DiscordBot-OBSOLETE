@@ -1,7 +1,7 @@
 module.exports = {
     name: 'purge',
     aliases: ['clear', 'delete', 'del', 'erase'],
-    description: 'Usage: "%purge <value>"',
+    description: 'Usage: ",purge <value>"',
     async execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.has('890077893739311154')) { //If 'message.member' has the role 'staff' 
             const requireArgs0 = new Discord.MessageEmbed()
@@ -9,25 +9,21 @@ module.exports = {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("You must enter a value!")
-                .setFooter(`%purge <args[0]>\n                  ^requireArgs0`)
             const Args0IsNaN = new Discord.MessageEmbed()
                 .setColor('#800080')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("The value must be a whole number between 1 and 25!")
-                .setFooter(`%purge <args[0]>\n                  ^Args0IsNaN`)
             const requireArgs0Is1To25 = new Discord.MessageEmbed()
                 .setColor('#800080')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("You can only delete 1 to 25 messages at once")
-                .setFooter(`%purge <args[0]>\n                  ^requireArgs0Is1To25`)
             const requireArgsGreater = new Discord.MessageEmbed()
                 .setColor('#800080')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("You must delete at least one message!")
-                .setFooter(`%purge <args[0]>\n                  ^requireArgsGreater`)
 
             if(!args[0]) return message.reply(requireArgs0);
             if(isNaN(args[0])) return message.reply(Args0IsNaN);

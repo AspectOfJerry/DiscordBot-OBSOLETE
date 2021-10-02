@@ -1,6 +1,6 @@
 module.exports = {
     name: 'boop',
-    description: 'Usage: "%boop <@user>"',
+    description: 'Usage: ",boop <@user>"',
     execute(message, args, cmd, client, Discord) {
         const target = message.mentions.users.first();
         if(!args[0]) {

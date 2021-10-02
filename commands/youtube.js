@@ -2,7 +2,7 @@ module.exports = {
     name: 'youtube',
     aliases: ['yt', 'ytb', 'itube', 'hetube', 'hetubes', 'shetube', 'shetubes', 'ittube', 'ittubes', 'wetube', 'theytube'],
 
-    description: 'Usage: "%youtube"',
+    description: 'Usage: ",youtube"',
     execute(message, args, cmd, client, Discord) {
         const youtube = new Discord.MessageEmbed()
             .setColor('#ff0000')

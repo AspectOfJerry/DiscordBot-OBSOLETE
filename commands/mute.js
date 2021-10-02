@@ -1,7 +1,7 @@
 module.exports = {
     name: 'mute',
     aliases: ['tempmute', 'temp-mute', 'temp_mute'],
-    description: 'Usage: "%mute <@user> (<duration s/m/y>)"',
+    description: 'Usage: ",mute <@user> (<duration s/m/y>)"',
     execute(message, args, cmd, client, Discord) {
         const ms = require(`ms`)
         if(message.member.roles.cache.has('890077443090706473')) {    //If 'message.member' has the role 'helper goldfish'
@@ -24,21 +24,21 @@ module.exports = {
                         .setTitle('User mute')
                         .setDescription(`<@${memberTarget.user.id}> was muted by <@${message.member.user.id}>`)
                         .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
-                        .setFooter(`To unmute a member, execute "%unmute <@user>".`)
+                        .setFooter(`To unmute a member, execute ",unmute <@user>".`)
                     const userMutedForBy = new Discord.MessageEmbed()
                         .setColor('#ffff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('User mute')
                         .setDescription(`<@${memberTarget.user.id}> was muted for ` + args[1] + ` by <@${message.member.user.id}>`)
                         .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
-                        .setFooter(`To unmute a member, execute "%unmute <@user>".`)
+                        .setFooter(`To unmute a member, execute ",unmute <@user>".`)
                     const userUnmutedFromTimedMuteBy = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('User unmuted from timed mute')
                         .setDescription(`<@${memberTarget.user.id}> was unmuted from the ` + args[1] + ` timed mute by <@${message.member.user.id}>`)
                         .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
-                        .setFooter(`To mute a member, execute "%mute <@user> (<duration>)".`)
+                        .setFooter(`To mute a member, execute ",mute <@user> (<duration>)".`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

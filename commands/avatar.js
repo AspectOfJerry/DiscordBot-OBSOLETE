@@ -1,7 +1,7 @@
 module.exports = {
     name: 'avatar',
     aliases: ['av', 'a'],
-    description: 'Usage: "%avatar <@user>"',
+    description: 'Usage: ",avatar <@user>"',
     execute(message, args, cmd, client, Discord) {
         if(!args[0]) {
             const avatarSelf = new Discord.MessageEmbed()
