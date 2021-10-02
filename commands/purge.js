@@ -52,8 +52,6 @@ module.exports = {
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('User Purged Messages')
                     .setDescription(`<@${message.member.user.id}> purged ` + args[0] + ` messages in ${message.channel}`)
-
-                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userPurgedMessages)
             });
         } else {
             const permissionsError = new Discord.MessageEmbed()

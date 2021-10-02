@@ -41,7 +41,7 @@ module.exports = {
                         message.channel.send(cannotUseOnSelf);
                     } else {
                         if(message.member.roles.cache.has('890075267517784116')) {    //If 'message.member' has the role 'overlord goldfish'
-                            if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has a role that includes "bot"
+                            if(memberTarget.roles.cache.has('890075775540281384')) {    //If 'memberTarget' has the role 'bots'
                                 message.channel.send(targetImmune403);
                             } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget, has the role 'overlord goldfish'
                                 message.channel.send(targetHigherThanSender403);
@@ -63,7 +63,7 @@ module.exports = {
                                 }
                             }
                         } else if(message.member.roles.cache.has('890076599926521916')) {   //If 'message.member' has the role 'admin goldfish'
-                            if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has the role 'Bots'
+                            if(memberTarget.roles.cache.has('890075775540281384')) {    //If 'memberTarget' has the role 'bots'
                                 message.channel.send(targetImmune403);
                             } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'overlord goldfish'
                                 message.channel.send(targetHigherThanSender403);
@@ -86,8 +86,8 @@ module.exports = {
                                     message.channel.send(errorKick)
                                 }
                             }
-                        } else if(message.member.roles.cache.has('890076942164983808')) { //If 'message.member' has the role 'BotPL2'
-                            if(memberTarget.roles.cache.find(role => role.name.includes('bot'))) {    //If 'memberTarget' has a role that includes "bot"
+                        } else if(message.member.roles.cache.has('890076942164983808')) { //If 'message.member' has the role 'moderator goldfish'
+                            if(memberTarget.roles.cache.has('890075775540281384')) {    //If 'memberTarget' has the role 'bots'
                                 message.channel.send(targetImmune403)
                             } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'overlord goldfish'
                                 message.channel.send(targetHigherThanSender403)
