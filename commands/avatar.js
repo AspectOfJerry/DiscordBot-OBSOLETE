@@ -18,8 +18,9 @@ module.exports = {
                 .setColor('#ff5eef')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Avatar')
-                .setDescription(`<@${memberTarget.user.id}>'s avatar'`)
-                .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 128})}`)
+                .setDescription(`<@${memberTarget.user.id}>'s avatar`)
+                .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 1024})}`)
+                .setURL(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 2048})}`)
 
             message.channel.send(avatar)
         }
