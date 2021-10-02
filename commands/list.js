@@ -8,7 +8,7 @@ module.exports = {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle("List of all the commands (all)")
             //.addField(`%`, `__Syntax:__ ""\n__Aliases:__ \n__Use:__ `, false)
-            .addField(`%avatar`, `__Syntax:__ "%avatar <@user>"\n__Aliases:__ 'av', 'a'\n__Use:__ Shows the avatar of the targeted member`, false)
+            .addField(`%avatar`, `__Syntax:__ "%avatar (<@user>)"\n__Aliases:__ 'av', 'a'\n__Use:__ Shows the avatar of the targeted member or self`, false)
             .addField(`%ban`, `__Syntax:__ "%ban <@user>"\n__Aliases:__ None\n__Use:__ Bans the targeted member.`, false)
             .addField(`%beep`, `__Syntax:__ "%beep"\n__Aliases:__ None\n__Use:__ Returns "Boop!"`, false)
             .addField(`%boop`, `__Syntax:__ "%boop <@user>"\n__Aliases:__ None\n__Use:__ Returns "Boop! @memberTarget"`, false)
