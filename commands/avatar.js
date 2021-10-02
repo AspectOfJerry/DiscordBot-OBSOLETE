@@ -6,14 +6,15 @@ module.exports = {
         const target = message.mentions.users.first();
         const memberTarget = message.guild.members.cache.get(target.id);
         if(!args[0]) {
-            const requireArgs0 = new Discord.MessageEmbed()
-                .setColor('#ff0000')
+            const avatarSelf = new Discord.MessageEmbed()
+                .setColor('#7dc8cd')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('Error')
-                .setDescription('You must mention a member')
-                .setFooter('%avatar <args[0]>\n                   ^requireArgs0')
+                .setTitle('Avatar')
+                .setDescription(`Your avatar`)
+                .setImage(`${message.author.displayAvatarURL({dynamic: true, size: 1024})}`)
+                .setURL(`${message.author.displayAvatarURL({dynamic: true, size: 2048})}`)
 
-            message.channel.send(requireArgs0)
+            message.channel.send(avatarSelf)
         } else {
             const avatar = new Discord.MessageEmbed()
                 .setColor('#7dc8cd')
