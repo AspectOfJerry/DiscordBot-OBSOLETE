@@ -14,6 +14,7 @@ client.events = new Discord.Collection();
 
 
 client.on('guildMemberAdd', guildMember => {
+    let welcomeRole = guildMember.guild.roles.cache.get('890065114865238018')
     guildMember.roles.add(welcomeRole).catch(console.error);
 
     const userJoinMessage = new Discord.MessageEmbed()
