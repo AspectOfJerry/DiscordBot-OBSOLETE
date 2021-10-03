@@ -46,7 +46,7 @@ module.exports = {
             .addField(`message.content =`, `${message.content}`, true)
             .setFooter(`[Operators only]\nTo restart the bot, go in the terminal and type in "node main.js" or "node .".`)
 
-        if(message.member.roles.cache.has('890077893739311154')) {    //If 'message.member' has the role 'staff'
+        if(message.member.roles.cache.has('890077893739311154') || message.member.user.id === '611633988515266562') {    //If 'message.member' has the role 'staff'
             let filter = m => m.author.id === message.author.id
 
             message.channel.send(requireConfirm);
@@ -72,10 +72,10 @@ module.exports = {
                                 message = message.first()
                                 if(message.content.toUpperCase() == 'YES') { //If 'message.content' to upper case is equal to "YES"
                                     message.channel.send(terminatingProcess)
+                                    message.channel.send(processExit)
                                     message.guild.channels.cache.get('890069875295420496').send(`<@611633988515266562>`)
                                     message.guild.channels.cache.get('890069875295420496').send(status)
                                     client.user.setActivity('process.exit(0);', {type: 'PLAYING'})
-                                    message.channel.send(processExit)
                                         .then(() => process.exit(0));
                                 } else if(message.content.toUpperCase() == 'NO') { //If 'message.content' to upper case is equal to "NO"
                                     message.channel.send(requestAborted);
