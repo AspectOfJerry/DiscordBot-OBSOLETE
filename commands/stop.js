@@ -1,6 +1,6 @@
 module.exports = {
     name: 'stop',
-    aliases: ['altf4', 'alt-f4', 'arlt_f4', 'terminate', 'shutdown', 'shut-down', 'shut_down'],
+    aliases: ['altf4', 'alt-f4', 'alt_f4', 'terminate', 'shutdown', 'shut-down', 'shut_down', 'term', 'fail', 'failsafe', 'fail-safe', 'fail_safe'],
     description: 'Usage: ",stop"',
     execute(message, args, cmd, client, Discord) {
         const requireConfirm = new Discord.MessageEmbed()
@@ -46,7 +46,7 @@ module.exports = {
             .addField(`message.content =`, `${message.content}`, true)
             .setFooter(`[Operators only]\nTo restart the bot, go in the terminal and type in "node main.js" or "node .".`)
 
-        if(message.member.roles.cache.has('890077893739311154') || message.member.user.id === '611633988515266562') {    //If 'message.member' has the role 'staff'
+        if(message.member.roles.cache.has('890077443090706473') || message.member.user.id === '611633988515266562') {    //If 'message.member' has the role 'helper goldfish' or the user id of Jerry#3756
             let filter = m => m.author.id === message.author.id
 
             message.channel.send(requireConfirm);
