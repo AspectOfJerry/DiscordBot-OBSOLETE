@@ -1,6 +1,6 @@
 module.exports = {
     name: 'reload',
-    aliases: ['update', 'rel'],
+    aliases: ['update', 'rel', 'r', 'u', 'rs'],
     description: 'Usage: "%reload"',
     execute(message, args, cmd, client, Discord) {
 
