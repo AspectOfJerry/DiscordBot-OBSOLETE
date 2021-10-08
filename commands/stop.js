@@ -46,7 +46,7 @@ module.exports = {
             .addField(`message.content =`, `${message.content}`, true)
             .setFooter(`[Operators only]\nTo restart the bot, go in the terminal and type in "node main.js" or "node .".`)
 
-        if(message.member.roles.cache.has('890077443090706473') || message.member.user.id === '611633988515266562') {    //If 'message.member' has the role 'helper goldfish' or the user id of Jerry#3756
+        if(message.member.roles.cache.has('890077893739311154') || message.member.user.id === '611633988515266562') {    //If 'message.member' has the role 'staff' or the user id of Jerry#3756
             let filter = m => m.author.id === message.author.id
 
             message.channel.send(requireConfirm);

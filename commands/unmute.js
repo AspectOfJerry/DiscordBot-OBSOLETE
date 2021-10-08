@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['un-mute', 'un_mute'],
     description: 'Usage: ",unmute <@user>"',
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.has('890077443090706473')) {    //If 'message.member' has the role 'helper goldfish'
+        if(message.member.roles.cache.has('890077893739311154')) {    //If 'message.member' has the role 'staff'
             const target = message.mentions.users.first();
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
@@ -120,7 +120,7 @@ module.exports = {
                                         message.channel.send(errorCatch)
                                     }
                                 }
-                            } else if(message.member.roles.cache.has('890077443090706473')) {   //If 'message.member' has the role 'helper goldfish'
+                            } else if(message.member.roles.cache.has('890077893739311154')) {   //If 'message.member' has the role 'staff'
                                 if(memberTarget.roles.cache.has('890075775540281384')) {    //If 'memberTarget' has the role 'bots'
                                     message.channel.send(targetImmune403)
                                 } else if(memberTarget.roles.cache.has('890075267517784116')) { //If 'memberTarget' has the role 'overlord goldfish'
@@ -129,7 +129,7 @@ module.exports = {
                                     message.channel.send(targetHigherThanSender403)
                                 } else if(memberTarget.roles.cache.has('890076942164983808')) { //If 'memberTarget' has the role 'moderator goldfish'
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.has('890077443090706473')) { //If 'memberTarget' has the role 'helper goldfish'
+                                } else if(memberTarget.roles.cache.has('890077893739311154')) { //If 'memberTarget' has the role 'staff'
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
