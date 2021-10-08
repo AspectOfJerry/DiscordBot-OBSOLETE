@@ -54,14 +54,14 @@ module.exports = {
                                     message.channel.send(userBannedBy)
                                     message.guild.channels.cache.get('890067108287873094').send(userBannedBy)
                                 } catch(error) { //Catch
-                                    const errorBan = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 57:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorBan)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         } else if(message.member.roles.cache.has('890076599926521916')) {   //If 'message.member' has the role 'admin goldfish'
@@ -78,14 +78,14 @@ module.exports = {
                                     message.channel.send(userBannedBy)
                                     message.guild.channels.cache.get('890067108287873094').send(userBannedBy)
                                 } catch(error) {
-                                    const errorBan = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 81:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorBan)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         } else if(message.member.roles.cache.has('890076942164983808')) {
@@ -104,14 +104,14 @@ module.exports = {
                                     message.channel.send(userBannedBy)
                                     message.guild.channels.cache.get('890067108287873094').send(userBannedBy)
                                 } catch(error) {
-                                    const errorBan = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 107:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorBan)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         } else {
@@ -121,14 +121,14 @@ module.exports = {
                                 message.channel.send(userBannedBy)
                                 message.guild.channels.cache.get('890067108287873094').send(userBannedBy)
                             } catch(error) {
-                                const errorBan = new Discord.MessageEmbed()
+                                const errorCatch = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
                                     .setFooter(`An error was caught at line 124:31\nmessage.content = ${message.content}`)
 
-                                message.channel.send(errorBan)
+                                message.channel.send(errorCatch)
                             }
                         }
                     }

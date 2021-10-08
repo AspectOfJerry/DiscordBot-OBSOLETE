@@ -62,14 +62,14 @@ module.exports = {
 
                                         message.channel.send(userUnmutedBy)
                                     } catch(error) {
-                                        const errorUnmute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to unmute <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 64:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorUnmute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else if(message.member.roles.cache.has('890076599926521916')) {   //If 'message.member' has the role 'admin goldfish'
@@ -85,14 +85,14 @@ module.exports = {
 
                                         message.channel.send(userUnmutedBy)
                                     } catch(error) {
-                                        const errorUnmute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 83\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorUnmute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else if(message.member.roles.cache.has('890076942164983808')) {   //If 'message.member' has the role 'moderator goldfish'
@@ -110,14 +110,14 @@ module.exports = {
 
                                         message.channel.send(userUnmutedBy)
                                     } catch(error) {
-                                        const errorUnmute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 112:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorUnmute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else if(message.member.roles.cache.has('890077443090706473')) {   //If 'message.member' has the role 'helper goldfish'
@@ -137,14 +137,14 @@ module.exports = {
 
                                         message.channel.send(userUnmutedBy)
                                     } catch(error) {
-                                        const errorUnmute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 139:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorUnmute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else {
@@ -153,14 +153,14 @@ module.exports = {
 
                                     message.channel.send(userUnmutedBy)
                                 } catch(error) {
-                                    const errorUnmute = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 155:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorUnmute)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         }

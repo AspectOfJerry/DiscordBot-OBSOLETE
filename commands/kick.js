@@ -52,14 +52,14 @@ module.exports = {
                                     message.channel.send(userKickedBy)
                                     message.guild.channels.cache.get('890067108287873094').send(userKickedBy)
                                 } catch(error) {
-                                    const errorKick = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 55:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorKick)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         } else if(message.member.roles.cache.has('890076599926521916')) {   //If 'message.member' has the role 'admin goldfish'
@@ -76,14 +76,14 @@ module.exports = {
                                     message.channel.send(userKickedBy)
                                     message.guild.channels.cache.get('890067108287873094').send(userKickedBy)
                                 } catch(error) {
-                                    const errorKick = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 79:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorKick)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         } else if(message.member.roles.cache.has('890076942164983808')) { //If 'message.member' has the role 'moderator goldfish'
@@ -102,14 +102,14 @@ module.exports = {
                                     message.channel.send(userKickedBy)
                                     message.guild.channels.cache.get('890067108287873094').send(userKickedBy)
                                 } catch(error) {
-                                    const errorKick = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 105:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorKick)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         } else {
@@ -119,14 +119,14 @@ module.exports = {
                                 message.channel.send(userKickedBy)
                                 message.guild.channels.cache.get('890067108287873094').send(userKickedBy)
                             } catch(error) {
-                                const errorKick = new Discord.MessageEmbed()
+                                const errorCatch = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                     .setFooter(`An error was caught at line 122:31\nmessage.content = ${message.content}`)
 
-                                message.channel.send(errorKick)
+                                message.channel.send(errorCatch)
                             }
                         }
                     }
