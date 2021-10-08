@@ -1,4 +1,4 @@
-Main color: #7dc8cd
+Main color HEX: #7dc8cd
 
 Channel Databse Name        Channel ID
 
