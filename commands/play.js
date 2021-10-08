@@ -25,7 +25,7 @@ module.exports = {
     //         .setDescription('Failed to execute command! Unauthorized Action.')
     //         .addField('Reason: ', 'Rick Roll', true)
     //         .addField('Action: ', `${message.content}`, true)
-    //         .setFooter(`An action was blocked by the [Rick Roll Detection Module].`)
+    //         .setFooter(`An action was blocked by the [Rick Roll Detection Module]`)
     //     const permissionsError = new Discord.MessageEmbed()
     //         .setColor('#ff0000')
     //         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

@@ -1,6 +1,6 @@
 Main color HEX: #ff5eef
 
-Channel Name                Channel ID
+Channel Database Name       Channel ID
 
 welcome                     890067108287873094
 
@@ -29,14 +29,11 @@ music goldfish vc           890071713411366953
 i am depressed              891529981451198524
 
 rooms                       891771269685592104
-waiting room                892004164777967647
-jioy room of death          890071190213910598
-Will's basement room        890310268754739272
-Ek's spicy room             891762615569748018
+//Roms
 
 
 
-Role Name                   Role ID
+Role Database Name          Role ID
 
 overlord goldfish           890075267517784116
 admin goldfish              890076599926521916
@@ -70,5 +67,4 @@ Tempo                       890671719667343451
 jioy bot                    891689731484680272
 Muted                       891751120882520083
 bedwars noob                891760643655471114
-modded smp                  undefined
 staff                       890077893739311154

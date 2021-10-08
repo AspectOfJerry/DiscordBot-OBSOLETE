@@ -87,14 +87,14 @@ module.exports = {
                                             message.channel.send(userUnmutedFromTimedMuteBy)
                                         }, ms(args[1]));
                                     } catch(error) {
-                                        const errorMute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 89:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorMute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else if(message.member.roles.cache.has('890076599926521916')) {   //If 'message.member' has the role 'admin goldfish'
@@ -119,14 +119,14 @@ module.exports = {
                                             message.channel.send(userUnmutedFromTimedMuteBy)
                                         }, ms(args[1]));
                                     } catch(error) {
-                                        const errorMute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught on line 121:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorMute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             }   //If the message sender does not have the "BotPL1" role
@@ -154,14 +154,14 @@ module.exports = {
                                             message.channel.send(userUnmutedFromTimedMuteBy)
                                         }, ms(args[1]));
                                     } catch(error) {
-                                        const errorMute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught on line 156:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorMute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else if(message.member.roles.cache.has('890077443090706473')) {   //if 'message.member' has the role 'helper goldfish'
@@ -190,14 +190,14 @@ module.exports = {
                                             message.channel.send(userUnmutedFromTimedMuteBy)
                                         }, ms(args[1]));
                                     } catch(error) {
-                                        const errorMute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught on line 192:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorMute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else {
@@ -215,14 +215,14 @@ module.exports = {
                                         message.channel.send(userUnmutedFromTimedMuteBy)
                                     }, ms(args[1]));
                                 } catch(error) {
-                                    const errorMute = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught on line 217:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorMute)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         }
