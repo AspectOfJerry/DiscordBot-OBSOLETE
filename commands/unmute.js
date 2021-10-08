@@ -64,14 +64,14 @@ module.exports = {
                                         message.channel.send(userUnmutedBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
-                                        const errorUnmute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to unmute <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 66:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorUnmute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {   //If 'message.member' has the role 'BotPL1'
@@ -88,14 +88,14 @@ module.exports = {
                                         message.channel.send(userUnmutedBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
-                                        const errorUnmute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 90:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorUnmute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {   //If 'message.member' has the role 'BotPL2'
@@ -114,14 +114,14 @@ module.exports = {
                                         message.channel.send(userUnmutedBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
-                                        const errorUnmute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 116:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorUnmute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //If 'message.member' has the role 'BotPL3'
@@ -142,14 +142,14 @@ module.exports = {
                                         message.channel.send(userUnmutedBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
-                                        const errorUnmute = new Discord.MessageEmbed()
+                                        const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#ff0000')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                             .setFooter(`An error was caught at line 144:39\nmessage.content = ${message.content}`)
 
-                                        message.channel.send(errorUnmute)
+                                        message.channel.send(errorCatch)
                                     }
                                 }
                             } else {
@@ -159,14 +159,14 @@ module.exports = {
                                     message.channel.send(userUnmutedBy)
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                 } catch(error) {
-                                    const errorUnmute = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 161:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorUnmute)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         }

@@ -4,14 +4,12 @@ module.exports = {
     execute(message, args, cmd, client, Discord) {
         const target = message.mentions.users.first();
         if(!args[0]) {  //If 'args[0]' is missing
-            const requireArgs0 = new Discord.MessageEmbed()
+            const boopSelf = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('Error')
-                .setDescription('You must mention a member')
-                .setFooter(`%boop <args[0]>\n                 ^requireArgs0`)
+                .setTitle('Boop!')
 
-            message.channel.send(requireArgs0)
+            message.channel.send(boopSelf)
         } else {    //if(args[0])
             if(target) { //If 'target' is valid
                 const memberTarget = message.guild.members.cache.get(target.id);

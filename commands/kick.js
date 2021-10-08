@@ -1,6 +1,6 @@
 module.exports = {
     name: 'kick',
-    aliases: ['cassetoi', 'casse_toi', 'casse-toi'],
+    aliases: ['cassetoi', 'casse-toi', 'casse_toi', 'wolacassetoi', 'wola-casse-toi', 'wola_casse_toi'],
     description: "Usage: %kick <@user>",
     execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {    //If 'message.member' has the role 'BotPL2'
@@ -55,14 +55,14 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                                     message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                                 } catch(error) {
-                                    const errorKick = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 58:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorKick)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {   //If 'message.member' has the role 'BotPL1'
@@ -80,14 +80,14 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                                     message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                                 } catch(error) {
-                                    const errorKick = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 83:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorKick)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) { //If 'message.member' has the role 'BotPL2'
@@ -107,14 +107,14 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                                     message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                                 } catch(error) {
-                                    const errorKick = new Discord.MessageEmbed()
+                                    const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#ff0000')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                         .setFooter(`An error was caught at line 110:35\nmessage.content = ${message.content}`)
 
-                                    message.channel.send(errorKick)
+                                    message.channel.send(errorCatch)
                                 }
                             }
                         } else {
@@ -125,14 +125,14 @@ module.exports = {
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userKickedBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                             } catch(error) {
-                                const errorKick = new Discord.MessageEmbed()
+                                const errorCatch = new Discord.MessageEmbed()
                                     .setColor('#ff0000')
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
                                     .setFooter(`An error was caught at line 128:31\nmessage.content = ${message.content}`)
 
-                                message.channel.send(errorKick)
+                                message.channel.send(errorCatch)
                             }
                         }
                     }
