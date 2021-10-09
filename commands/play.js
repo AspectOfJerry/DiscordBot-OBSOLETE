@@ -23,7 +23,7 @@ module.exports = {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Permissions error')
             .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
-        const requireUseBeInVC = new Discord.MessageEmbed()
+        const requireUserBeInVC = new Discord.MessageEmbed()
             .setColor('ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error')
@@ -31,7 +31,7 @@ module.exports = {
 
         //Checking for the voicechannel and permissions.
         const voice_channel = message.member.voice.channel;
-        if(!voice_channel) return message.channel.send(requireUseBeInVC);
+        if(!voice_channel) return message.channel.send(requireUserBeInVC);
         const permissions = voice_channel.permissionsFor(message.client.user);
         if(!permissions.has('CONNECT')) return message.channel.send(permissionsError);
         if(!permissions.has('SPEAK')) return message.channel.send(permissionsError);
@@ -159,14 +159,14 @@ const video_player = async (guild, song, Discord) => {
 
 const skip_song = (message, server_queue, Discord) => {
     if(!message.member.voice.channel) {
-        const requireUseBeInVC = new Discord.MessageEmbed()
+        const requireUserBeInVC = new Discord.MessageEmbed()
             .setColor('ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error')
             .setDescription('You need to be in a voice channel to execute this command!')
             .setFooter(`Join a voice channel!`)
 
-        return message.channel.send(requireUseBeInVC);
+        return message.channel.send(requireUserBeInVC);
     } if(!server_queue) {
         const queueEmpty = new Discord.MessageEmbed()
             .setColor('#ff0000')
@@ -181,14 +181,14 @@ const skip_song = (message, server_queue, Discord) => {
 }
 
 const stop_song = (message, server_queue, voice_channel, Discord) => {
-    const requireUseBeInVC = new Discord.MessageEmbed()
+    const requireUserBeInVC = new Discord.MessageEmbed()
         .setColor('ff0000')
         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
         .setTitle('Error')
         .setDescription('You need to be in a voice channel to execute this command!')
         .setFooter(`Join a voice channel!`)
 
-    if(!message.member.voice.channel) return message.channel.send(requireUseBeInVC);
+    if(!message.member.voice.channel) return message.channel.send(requireUserBeInVC);
     try {
         queue.delete(message.guild.id);
 

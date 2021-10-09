@@ -3,95 +3,84 @@ module.exports = {
     aliases: ['p'],
     description: 'Usage: "%party <@user>"',
     execute(message, args, cmd, client, Discord) {
-        message.reply('This feature is planned for the next release!'); return
-        if(message.member.user.id === '611633988515266562') {
-            const target = message.mentions.users.first();
+        let target = message.mentions.users.first();
+        if(!args[0]) {
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setTitle('Error: "' + message.content + '"')
-                .setDescription("Invalid command! You must __add__ or __remove__ a user! Correct usage: %party <invite/kick> <@user>.")
-                .setFooter(`message.content = ${message.content}`)
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                .setTitle('Error')
+                .setDescription('You must mention a member')
+                .setFooter(`%party <args[0]> (<args[...]>)\n^requireArgs0`)
 
-            if(!args[0]) return message.channel.send(requireArgs0) //Checks if args[0] is not present
+            message.channel.send(requireArgs0)
+        } else {
+            let memberTarget = message.guild.members.cache.get(target.id);
+            if(message.member.voice.channel) {
+                if(memberTarget.voice.channel) {
+                    const partyInvite = new Discord.MessageEmbed()
+                        .setColor('#ffff00')
+                        .setTitle('Party invite')
+                        .setDescription(`<@${message.member.user.id}> invited <@${memberTarget.user.id}> to the party! They have 60 seconds to accept`)
+                        .setFooter('Reply "yes" or "no"')
 
-            if(args[0] == "invite") {    //Checks if args[0] contains "invite"
-                const memberTarget = message.guild.members.cache.get(target.id);
+                    let filter = m => m.author.id === memberTarget.user.id
+                    message.channel.send(partyInvite)
+                    message.channel.awaitMessages(filter, {
+                        max: 1,
+                        time: 60000,
+                        errors: ['time']
+                    })
+                        .then(message => {
+                            message = message.first()
+                            if(message.content.toUpperCase() == 'YES') {
+                                const joinedParty = new Discord.MessageEmbed()
+                                    .setColor('#00ff00')
+                                    .setDescription(`<@${memberTarget.user.id}> joined <@${message.member.user.id}>'s party!`)
 
-                if(!args[1]) {   //Checks if args[1] is not present
-                    const requireArgs1 = new Discord.MessageEmbed()
-                        .setColor('#00ff00')
+                                message.channel.send(joinedParty)
+                            } else if(message.content.toUpperCase() == 'NO') {
+                                const declinedPartyInvite = new Discord.MessageEmbed()
+                                    .setColor('#ff0000')
+                                    .setDescription(`<@${memberTarget.user.id}> declined <@${message.member.user.id}>'s party invite!`)
+
+                                message.channel.send(declinedPartyInvite)
+                            } else {
+                                const invalidReply = new Discord.MessageEmbed()
+                                    .setColor('#ff0000')
+                                    .setTitle('Error')
+                                    .setDescription('Invalid reply! You must reply with "yes" or "no".')
+
+                                message.channel.send(invalidReply)
+                            }
+                        })
+                        .catch(collected => {
+                            const requestTimeout = new Discord.MessageEmbed()
+                                .setColor('#800080')
+                                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                                .setTitle('Timeout')
+                                .setDescription("Request timeout")
+
+                            message.channel.send(requestTimeout)
+                        });
+                } else {
+                    const requireTargetBeInVc = new Discord.MessageEmbed()
+                        .setColor('ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
-                        .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
-                        .setFooter(`message.content = ${message.content}`)
+                        .setDescription('The targeted member is not in a voice channel!')
+                        .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
 
-                    message.channel.send(requireArgs1)
+                    message.channel.send(requireTargetBeInVc)
                 }
-                else {
-                    if(target) { //Checks if the target is valid (true)
-                        const invite = new Discord.MessageEmbed()
-                            .setColor('#00ff00')
-                            .setTitle('Party invite')
-                            .setDescription(`<@${message.member.user.id}> invited <@${memberTarget.user.id}> to the party! They have 60 seconds to accept.`)
-                            .setFooter(`message.content = ${message.content}`)
+            } else {
+                const requireUserBeInVC = new Discord.MessageEmbed()
+                    .setColor('ff0000')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                    .setTitle('Error')
+                    .setDescription('You need to be in a voice channel to execute this command!')
 
-                        message.channel.send(invite)
-                        //INVITED
-                    }
-                    else {   //If the target is invalid (false)
-                        const targetError = new Discord.MessageEmbed()
-                            .setColor('#ff0000')
-                            .setTitle('Error')
-                            .setDescription('The targeted member is invalid!')
-                            .setFooter(`message.content = ${message.content}`)
-
-                        message.channel.send(targetError)
-                    }
-                }
+                message.channel.send(requireUserBeInVC)
             }
-            else if(args[0] == "kick") { //Checks if args[0] contains "kick"
-                const memberTarget = message.guild.members.cache.get(target.id);
-                if(!args[1]) {   //Checks if args[1] is not present
-                    const requireArgs1 = new Discord.MessageEmbed()
-                        .setColor('#00ff00')
-                        .setTitle('Error')
-                        .setDescription("Invalid command! You must mention a user! Correct usage: %friend <add/remove> <@user>.")
-                        .setFooter(`message.content = ${message.content}`)
-
-                    message.channel.send(requireArgs1)
-                }
-                else {   //If args[1] is present
-                    if(target) { //Checks if the target is valid
-                        const kick = new Discord.MessageEmbed()
-                            .setColor('#00ff00')
-                            .setTitle('Party kick')
-                            .setDescription(`<@${message.member.user.id}> removed <@${memberTarget.user.id} from the party>`)
-
-                        //INVITED
-                    }
-                    else {   //If the target is invalid
-                        const invalidTarget = new Discord.MessageEmbed()
-                            .setColor('#ff0000')
-                            .setTitle('Error: "' + message.content + '"')
-                            .setDescription('The targeted member is invalid!')
-                            .setFooter(`message.content = ${message.content}`)
-
-                        message.channel.send(invalidTarget)
-                    }
-                }
-            }
-            else {
-                const memberTarget = message.guild.members.cache.get(target.id);
-
-            }
-        }
-        else {
-            const notImplementedForAll = new Discord.MessageEmbed()
-                .setColor('#ff0000')
-                .setTitle('Error 501')
-                .setDescription('The "%party <invite/kick> <@user>" command is currently **only** available to the server __owner__!')
-                .setTitle('501 NOT_IMPLEMENTED')
-
-            message.channel.send(notImplementedForAll)
         }
     }
 }
