@@ -18,8 +18,5 @@ client.on('guildMemberAdd', guildMember => {
     guildMember.roles.add(welcomeRole).catch(console.error);
 });
 
-client.on('guildMemberRemove', guildMember => {
-    guildMember.guild.channels.cache.get('890067108287873094').send(userLeaveMessage)
-});
 
 client.login(process.env.DISCORD_TOKEN);
