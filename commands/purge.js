@@ -38,14 +38,14 @@ module.exports = {
                 try {
                     message.channel.bulkDelete(messages).catch(console.error);
                 } catch(error) {
-                    const errorMute = new Discord.MessageEmbed()
-                        .setColor('#ff0000')
+                    const errorCatch = new Discord.MessageEmbed()
+                        .setColor('#800080')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error Catch')
                         .setDescription(`An error occured while trying to purge ${args[0]} messages`)
-                        .setFooter(`An error was caught on line 41:19\nmessage.content = ${message.content}`)
+                        .setFooter(`An error was caught on line 40:19\nmessage.content = ${message.content}`)
 
-                    message.channel.send(errorMute)
+                    message.channel.send(errorCatch)
                 }
                 const userPurgedMessages = new Discord.MessageEmbed()
                     .setColor('#00ff00')
