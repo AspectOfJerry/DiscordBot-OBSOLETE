@@ -35,7 +35,7 @@ module.exports = {
 
                     if(memberTarget == message.member) { //If 'memberTarget' is equal to 'message.member'
                         const cannotUseOnSelf = new Discord.MessageEmbed()
-                            .setColor('#800080')
+                            .setColor('#ff0000')
                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                             .setTitle('Error')
                             .setDescription('You cannot use this command on yourself!')
@@ -55,7 +55,7 @@ module.exports = {
                                     message.guild.channels.cache.get('890067108287873094').send(userBannedBy)
                                 } catch(error) { //Catch
                                     const errorCatch = new Discord.MessageEmbed()
-                                        .setColor('#ff0000')
+                                        .setColor('#800080')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
@@ -79,7 +79,7 @@ module.exports = {
                                     message.guild.channels.cache.get('890067108287873094').send(userBannedBy)
                                 } catch(error) {
                                     const errorCatch = new Discord.MessageEmbed()
-                                        .setColor('#ff0000')
+                                        .setColor('#800080')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
@@ -105,7 +105,7 @@ module.exports = {
                                     message.guild.channels.cache.get('890067108287873094').send(userBannedBy)
                                 } catch(error) {
                                     const errorCatch = new Discord.MessageEmbed()
-                                        .setColor('#ff0000')
+                                        .setColor('#800080')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
@@ -122,7 +122,7 @@ module.exports = {
                                 message.guild.channels.cache.get('890067108287873094').send(userBannedBy)
                             } catch(error) {
                                 const errorCatch = new Discord.MessageEmbed()
-                                    .setColor('#ff0000')
+                                    .setColor('#800080')
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
