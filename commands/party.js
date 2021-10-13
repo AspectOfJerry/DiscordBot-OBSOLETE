@@ -10,7 +10,7 @@ module.exports = {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription('You must mention a member')
-                .setFooter(`%party <args[0]> (<args[...]>)\n^requireArgs0`)
+                .setFooter(`%party <args[0]>\n                 ^requireArgs0`)
 
             message.channel.send(requireArgs0)
         } else {
