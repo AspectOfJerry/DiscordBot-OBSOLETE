@@ -58,7 +58,7 @@ module.exports = {
 
                     if(message.member == memberTarget) { //If 'message.member' is equal to 'memberTarget'
                         const cannotUseOnSelf = new Discord.MessageEmbed()
-                            .setColor('#800080')
+                            .setColor('#ff0000')
                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                             .setTitle('Error')
                             .setDescription('You cannot use this command on yourself!')
@@ -92,7 +92,7 @@ module.exports = {
                                         }, ms(args[1]));
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
-                                            .setColor('#ff0000')
+                                            .setColor('#800080')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
@@ -127,7 +127,7 @@ module.exports = {
                                         }, ms(args[1]));
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
-                                            .setColor('#ff0000')
+                                            .setColor('#800080')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
@@ -165,7 +165,7 @@ module.exports = {
                                         }, ms(args[1]));
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
-                                            .setColor('#ff0000')
+                                            .setColor('#800080')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
@@ -204,7 +204,7 @@ module.exports = {
                                         }, ms(args[1]));
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
-                                            .setColor('#ff0000')
+                                            .setColor('#800080')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
@@ -232,7 +232,7 @@ module.exports = {
                                     }, ms(args[1]));
                                 } catch(error) {
                                     const errorCatch = new Discord.MessageEmbed()
-                                        .setColor('#ff0000')
+                                        .setColor('#800080')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)

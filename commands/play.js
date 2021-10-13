@@ -105,7 +105,7 @@ module.exports = {
                 } catch(error) {
                     queue.delete(message.guild.id);
                     const conenctionError = new Discord.MessageEmbed()
-                        .setColor('#ff0000')
+                        .setColor('#800080')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error Catch')
                         .setDescription('There was an error while connecting')
@@ -203,7 +203,7 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
     } catch {
         voice_channel.leave();
         const leaveError = new Discord.MessageEmbed()
-            .setColor('#ff0000')
+            .setColor('#800080')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error Catch')
             .setDescription('An error occured while disconnecting. No further informations.')
@@ -225,7 +225,7 @@ const join = (message, voice_channel, Discord) => {
         message.channel.send(join)
     } catch(error) {
         const conenctionError = new Discord.MessageEmbed()
-            .setColor('#ff0000')
+            .setColor('#800080')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error Catch')
             .setDescription('There was an error while connecting.')

@@ -35,7 +35,7 @@ module.exports = {
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
                     if(memberTarget == message.member) { //If 'memberTarget' is equal to 'message.member'
                         const cannotUseOnSelf = new Discord.MessageEmbed()
-                            .setColor('#800080')
+                            .setColor('#ff0000')
                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                             .setTitle('Error')
                             .setDescription('You cannot use this command on yourself!')
@@ -56,7 +56,7 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                                 } catch(error) {
                                     const errorCatch = new Discord.MessageEmbed()
-                                        .setColor('#ff0000')
+                                        .setColor('#800080')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
@@ -81,7 +81,7 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                                 } catch(error) {
                                     const errorCatch = new Discord.MessageEmbed()
-                                        .setColor('#ff0000')
+                                        .setColor('#800080')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
@@ -108,7 +108,7 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                                 } catch(error) {
                                     const errorCatch = new Discord.MessageEmbed()
-                                        .setColor('#ff0000')
+                                        .setColor('#800080')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
@@ -126,7 +126,7 @@ module.exports = {
                                 message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userKickedBy)
                             } catch(error) {
                                 const errorCatch = new Discord.MessageEmbed()
-                                    .setColor('#ff0000')
+                                    .setColor('#800080')
                                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                     .setTitle('Error Catch')
                                     .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)

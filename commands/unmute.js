@@ -65,7 +65,7 @@ module.exports = {
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
-                                            .setColor('#ff0000')
+                                            .setColor('#800080')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to unmute <@${memberTarget.user.id}>`)
@@ -89,7 +89,7 @@ module.exports = {
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
-                                            .setColor('#ff0000')
+                                            .setColor('#800080')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
@@ -115,7 +115,7 @@ module.exports = {
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
-                                            .setColor('#ff0000')
+                                            .setColor('#800080')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
@@ -143,7 +143,7 @@ module.exports = {
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
-                                            .setColor('#ff0000')
+                                            .setColor('#800080')
                                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                             .setTitle('Error Catch')
                                             .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
@@ -160,7 +160,7 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedBy)
                                 } catch(error) {
                                     const errorCatch = new Discord.MessageEmbed()
-                                        .setColor('#ff0000')
+                                        .setColor('#800080')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error')
                                         .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
