@@ -1,5 +1,7 @@
 Main color HEX: #7dc8cd
 
+Guild ID: 631939549332897842
+
 Channel Databse Name        Channel ID
 
 

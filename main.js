@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 
+
 require('dotenv').config();
 
 const client = new Discord.Client();
@@ -7,8 +8,14 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 
-['command_handler', 'event_handler'].forEach(handler => {
+const memberCounter = require('./counters/membercounter');
+
+['command_handler', 'event_handler', 'membercounter'].forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord);
+})
+
+['membercounter'].forEach(counter=>{
+    require(`./counters/${counter}`)(client, Discord, memberCounter)
 })
 
 
