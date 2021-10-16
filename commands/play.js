@@ -133,7 +133,7 @@ module.exports = {
     }
 }
 
-const video_player = async (guild, song, Discord) => {
+const video_player = async (guild, song, Discord, message) => {
     const song_queue = queue.get(guild.id);
     if(!song) {
         song_queue.voice_channel.leave();
@@ -148,7 +148,6 @@ const video_player = async (guild, song, Discord) => {
         });
     const playing = new Discord.MessageEmbed()
         .setColor('#00ff00')
-        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
         .setTitle('Playing!')
         .setDescription(`Now playing: **${song.title}**`)
         .setFooter(song.url)
