@@ -146,14 +146,14 @@ const video_player = async (guild, song, Discord, message) => {
             song_queue.songs.shift();
             video_player(guild, song_queue.songs[0]);
         });
-    const playing = new Discord.MessageEmbed()
-        .setColor('#00ff00')
-        .setTitle('Playing!')
-        .setDescription(`Now playing: **${song.title}**`)
-        .setFooter(song.url)
-        .setURL(song.url)
+    // const playing = new Discord.MessageEmbed()
+    //     .setColor('#00ff00')
+    //     .setTitle('Playing!')
+    //     .setDescription(`Now playing: **${song.title}**`)
+    //     .setFooter(song.url)
+    //     .setURL(song.url)
 
-    await song_queue.text_channel.send(playing)
+    await song_queue.text_channel.send(`Now playing: **${song.title}**`)
 }
 
 const skip_song = (message, server_queue, Discord) => {
