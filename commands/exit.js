@@ -1,5 +1,6 @@
 module.exports = {
     name: 'exit',
+    aliases: ['termial', 'term'],
     description: 'Usage: "%exit"',
     execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3
@@ -19,15 +20,7 @@ module.exports = {
 }
 const exit = (message, args, cmd, client, Discord) => {
     message.channel.delete('Reset terminal')
-    message.guild.channels.create("🧾terminal", {
-        type: "text", //This create a text channel, you can make a voice one too, by changing "text" to "voice"
-        permissionOverwrites: [
-            {
-                id: message.guild.roles.everyone, //To make it be seen by a certain role, user an ID instead
-                deny: ['SEND_MESSAGES'] //Deny permissions
-            },
-        ],
-    })
+    message.guild.channels.create("🧾terminal", "GUILD_TEXT")
         .then(channel => {
             channel.setParent('631939549332897843')
             const terminal = new Discord.MessageEmbed()
