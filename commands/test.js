@@ -8,7 +8,7 @@ module.exports = {
         } catch(error) {
             const noTargetNorMemberTarget = new Discord.MessageEmbed()
                 .setColor('#ffff00')
-                .setDescription('Catch line 8. No `memberTarget`')
+                .setDescription('Catch line 8. `memberTarget` is undefined')
 
             message.channel.send(noTargetNorMemberTarget)
         }

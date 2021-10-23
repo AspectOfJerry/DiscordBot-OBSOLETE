@@ -1,9 +1,23 @@
 module.exports = {
     name: 'purge',
-    aliases: ['clear', 'delete', 'del', 'erase'],
+    aliases: ['cls', 'clear', 'delete', 'del', 'erase'],
     description: 'Usage: "%purge <value>"',
     async execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3
+            if(cmd === 'cls') {
+                if(message.channel.name.includes("terminal")) {
+                    cls(message, args, cmd, client, Discord)
+                    return;
+                } else {
+                    const terminalOnly = new Discord.MessageEmbed()
+                        .setColor('#ff0000')
+                        .setTitle('Error')
+                        .setDescription('You can only use this command in #terminal')
+
+                    message.channel.send(terminalOnly)
+                    return;
+                }
+            }
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -64,5 +78,18 @@ module.exports = {
 
             message.channel.send(permissionsError)
         }
+
     }
+}
+const cls = async (message, args, cmd, client, Discord) => {
+    await message.channel.messages.fetch({limit: 64}).then(messages => {
+        message.channel.bulkDelete(messages).catch(console.error);
+        const terminal = new Discord.MessageEmbed()
+            .setColor('#0c0c0c')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+            .setTitle("Jerry's Bot#0182/>")
+            .setDescription('>_')
+
+        message.channel.send(terminal)
+    })
 }
