@@ -17,8 +17,6 @@ module.exports = {
             .then(data => {
                 mojang_response = data
                 PLAYER_UUID = mojang_response.id
-
-                console.log(PLAYER_UUID)
             })
 
         const contacting = new Discord.MessageEmbed()
@@ -36,14 +34,30 @@ module.exports = {
         fetch(`https://api.hypixel.net/player?key=${API_KEY}&uuid=${PLAYER_UUID}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
-                const responseRead = new Discord.MessageEmbed()
-                    .setColor('#00ff00')
-                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                    .setTitle('Reading response')
-                    .setDescription(`A response has been received from the Hypixel-API`)
+                let status = data.success
+                if(status == true) {
+                    const successTrue = new Discord.MessageEmbed()
+                        .setColor('#00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                        .setTitle('Reading response')
+                        .setDescription(`A response has been received from the Hypixel-API`)
+                        .addField(`Success: `, `${status}`, true)
+                        .setFooter('200')
 
-                message.channel.send(responseRead)
+                    message.channel.send(successTrue)
+                } else if(status == false) {
+                    let cause = data.cause
+                    const successFalse = new Discord.MessageEmbed()
+                        .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                        .setTitle('Reading response')
+                        .setDescription(`A response has been received from the Hypixel-API`)
+                        .addField(`Success: `, `${status}`, true)
+                        .addField(`Cause: `, `${cause}`, true)
+                        .setFooter('400, 403, 404, 422, 429, 503')
+
+                    message.channel.send(successFalse)
+                }
             })
             .catch(console.error())
     }

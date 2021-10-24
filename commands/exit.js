@@ -19,10 +19,12 @@ module.exports = {
     }
 }
 const exit = (message, args, cmd, client, Discord) => {
-    message.channel.delete('Reset terminal')
-    message.guild.channels.create("🧾terminal", "GUILD_TEXT")
+    message.guild.channels.create("📄terminal", "GUILD_TEXT")
         .then(channel => {
             channel.setParent('631939549332897843')
+            setTimeout(() => {channel.setPosition(0)}, 500);
+            setTimeout(() => {message.channel.delete('Reset terminal')}, 1000);
+            setTimeout(() => {channel.setPosition(5)}, 1500);
             const terminal = new Discord.MessageEmbed()
                 .setColor('#0c0c0c')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
