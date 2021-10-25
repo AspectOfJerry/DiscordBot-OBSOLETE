@@ -44,7 +44,6 @@ module.exports = {
                 player = data
                 player_display_name = player.player.displayname
                 player_rank = player.player.newPackageRank
-                console.log(player_display_name)
                 //Code here
             })
             .catch(console.error())
