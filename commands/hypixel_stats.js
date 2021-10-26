@@ -23,6 +23,11 @@ module.exports = {
         let player_achievement_points
         let player_bedwars_experience
         let player_bedwars_level
+        let player_ranks_given
+        let player_bedwars_kills
+        let player_bedwars_deaths
+        let player_bedwars_final_kills
+        let player_bedwars_final_deaths
         const EASY_LEVELS = 4;
         const EASY_LEVELS_XP = 7000;
         const XP_PER_PRESTIGE = 96 * 5000 + EASY_LEVELS_XP;
@@ -61,6 +66,10 @@ module.exports = {
                 player_karma = data.player.karma
                 player_achievement_points = data.player.achievementPoints
                 player_bedwars_experience = data.player.stats.Bedwars.Experience
+                player_bedwars_kills = data.player.stats.Bedwars.kills_bedwars
+                player_bedwars_deaths = data.player.stats.Bedwars.deaths_bedwars
+                //player_ranks_given = data.player.giftingMeta.ranksGiven
+                
 
                 //player_bedwars_level
                 //The following is Plancke's code from his github
@@ -175,6 +184,7 @@ module.exports = {
                             .addField(`Network Level`, `${player_nw_level.toLocaleString()} (${player_nw_experience.toLocaleString()} exp)`, true)
                             .addField(`Karma`, `${player_karma.toLocaleString()}`, true)
                             .addField(`Achievement points`, `${player_achievement_points.toLocaleString()}`, true)
+                            
 
                         message.channel.send(networkStats)
                     }
@@ -184,6 +194,8 @@ module.exports = {
                             .setColor('7dc8cd')
                             .setTitle(`Overall Bedwars stats for ${player_rank} ${player_display_name}`)
                             .addField(`Bedwars Level`, `${player_bedwars_level.toLocaleString()} (${player_bedwars_experience.toLocaleString()} exp)`, true)
+                            .addField(`Bedwars kills`, `${player_bedwars_kills}`, true)
+                            .addField(`Bedwars deaths`, `${player_bedwars_deaths}`, true)
 
                         message.channel.send(overallBedwars)
                     }
