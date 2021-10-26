@@ -1,8 +1,10 @@
 const fetch = require('window-fetch')
 require('dotenv').config();
 const API_KEY = process.env.API_KEY
-sqrt = Math.sqrt
-round = Math.round
+
+
+const {round} = require('mathjs')
+const {sqrt} = require('mathjs')
 
 module.exports = {
     name: 'stats',
@@ -13,11 +15,19 @@ module.exports = {
         const gameMode = args[2]
         let PLAYER_UUID
         let mojang_response
-        let player
         let player_display_name
         let player_nw_level
-        let player_nw_exp
+        let player_nw_experience
         let player_rank
+        let player_karma
+        let player_achievement_points
+        let player_bedwars_experience
+        let player_bedwars_level
+        const EASY_LEVELS = 4;
+        const EASY_LEVELS_XP = 7000;
+        const XP_PER_PRESTIGE = 96 * 5000 + EASY_LEVELS_XP;
+        const LEVELS_PER_PRESTIGE = 100;
+        const HIGHEST_PRESTIGE = 10;
 
         //Fetching
         try {
@@ -44,10 +54,67 @@ module.exports = {
             .then(response => response.json())
             .then(data => {
                 player_display_name = data.player.displayname
-                player_nw_exp = data.player.networkExp
-                player_nw_raw_level = (Math.sqrt(player_nw_exp + 15312.5) - 125 / sqrt(2)) / (25 * Math.sqrt(2))
+                player_nw_experience = data.player.networkExp
+                player_nw_raw_level = (Math.sqrt(player_nw_experience + 15312.5) - 125 / sqrt(2)) / (25 * Math.sqrt(2))
                 player_nw_level = Math.round(player_nw_raw_level, 2)
                 player_rank = playerRank()
+                player_karma = data.player.karma
+                player_achievement_points = data.player.achievementPoints
+                player_bedwars_experience = data.player.stats.Bedwars.Experience
+
+                //player_bedwars_level
+                //The following is Plancke's code from his github
+                player_bedwars_level = getLevelForExp(player_bedwars_experience);
+
+
+                function getExpForLevel(player_bedwars_level) {
+                    if(player_bedwars_level == 0) return 0;
+
+                    var respectedLevel = getLevelRespectingPrestige(player_bedwars_level);
+                    if(respectedLevel > EASY_LEVELS) {
+                        return 5000;
+                    }
+
+                    switch(respectedLevel) {
+                        case 1:
+                            return 500;
+                        case 2:
+                            return 1000;
+                        case 3:
+                            return 2000;
+                        case 4:
+                            return 3500;
+                    }
+                    return 5000;
+                }
+
+                function getLevelRespectingPrestige(player_bedwars_level) {
+                    if(player_bedwars_level > HIGHEST_PRESTIGE * LEVELS_PER_PRESTIGE) {
+                        return player_bedwars_level - HIGHEST_PRESTIGE * LEVELS_PER_PRESTIGE;
+                    }
+                    else {
+                        return player_bedwars_level % LEVELS_PER_PRESTIGE;
+                    }
+                }
+
+                function getLevelForExp(exp) {
+                    var prestiges = Math.floor(exp / XP_PER_PRESTIGE);
+                    var player_bedwars_level = prestiges * LEVELS_PER_PRESTIGE;
+                    var expWithoutPrestiges = exp - (prestiges * XP_PER_PRESTIGE);
+
+                    for(let i = 1; i <= EASY_LEVELS; ++i) {
+                        var expForEasyLevel = getExpForLevel(i);
+                        if(expWithoutPrestiges < expForEasyLevel) {
+                            break;
+                        }
+                        player_bedwars_level++;
+                        expWithoutPrestiges -= expForEasyLevel;
+                    }
+                    //returns players bedwars level, remove the Math.floor if you want the exact bedwars level returned
+                    return Math.round(player_bedwars_level + expWithoutPrestiges / 5000);
+                }
+
+                //player_rank
                 function playerRank() {
                     let player_rank
 
@@ -80,6 +147,11 @@ module.exports = {
                         }
                     }
                     return player_rank
+
+
+
+
+
                 }
             })
             .catch(console.error())
@@ -99,10 +171,21 @@ module.exports = {
                     } else {
                         const networkStats = new Discord.MessageEmbed()
                             .setColor('7dc8cd')
-                            .setTitle(`Network stats for ${player_rank} ${player_display_name}`)
-                            .addField(`Network Level`, `${player_nw_level}`, true)
+                            .setTitle(`Hypixel Network stats for ${player_rank} ${player_display_name}`)
+                            .addField(`Network Level`, `${player_nw_level.toLocaleString()} (${player_nw_experience.toLocaleString()} exp)`, true)
+                            .addField(`Karma`, `${player_karma.toLocaleString()}`, true)
+                            .addField(`Achievement points`, `${player_achievement_points.toLocaleString()}`, true)
 
                         message.channel.send(networkStats)
+                    }
+                } else {
+                    if(args[1] == 'bw' || args[1] == 'bedwars') {
+                        const overallBedwars = new Discord.MessageEmbed()
+                            .setColor('7dc8cd')
+                            .setTitle(`Overall Bedwars stats for ${player_rank} ${player_display_name}`)
+                            .addField(`Bedwars Level`, `${player_bedwars_level.toLocaleString()} (${player_bedwars_experience.toLocaleString()} exp)`, true)
+
+                        message.channel.send(overallBedwars)
                     }
                 }
             }
