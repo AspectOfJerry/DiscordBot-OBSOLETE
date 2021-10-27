@@ -90,25 +90,51 @@ module.exports = {
             .then(response => response.json())
             .then(data => {
                 player_status = playerStatus()
-                player_status_game_type = playerStatusGameType()
-                player_status_game_mode = playerStatusGameMode()
-                player_status_game_map = playerStatusGameMap()
 
                 function playerStatus() {
                     let player_status
-
                     if(data.session.online == true){
                         player_status = "Online"
+                        player_status_game_type = playerStatusGameType()
+                        player_status_game_mode = playerStatusGameMode()
+                        player_status_game_map = playerStatusGameMap()
+
+                        function playerStatusGameType(){
+                            let player_status_game_type
+        
+                            player_status_game_type = data.session.gameType
+
+                            return player_status_game_type
+                        }
+
+                        function playerStatusGameMode(){
+                            let player_status_game_mode
+
+                            player_status_game_mode = data.session.mode
+
+                            return player_status_game_mode
+                        }
+
+                        if(data.session.map){
+                            function playerStatusGameMap(){
+                                let player_status_game_map
+
+                                player_status_game_map = data.session.map
+
+                                return player_status_game_map
+                            }
+                        } else{
+                            player_status_game_map = "N/A"
+                        }
                     } else{
                         player_status = "Offline"
+                        player_status_game_type = "N/A"
+                        player_status_game_mode = "N/A"
+                        player_status_game_map = "N/A"
                     }
                 }
 
-                function playerStatusGameMode(){
-                    let player_status_game_mode
 
-                    
-                }
             })
             .catch(console.error)
 
@@ -274,7 +300,10 @@ module.exports = {
                             .addField(`Karma`, `${player_karma.toLocaleString()}`, true)
                             .addField(`Achievement points`, `${player_achievement_points.toLocaleString()}`, true)
                             .addField(`First login`, `Coming soon`, true)
-                            .addField(`Status`, ``)
+                            .addField(`Status`, `${player_status}`, false)
+                            .addField(`Game type`, `${player_status_game_type}`, true)
+                            .addField(`Game mode`, `${player_status_game_mode}`, true)
+                            .addField(`Game map`, `${player_status_game_map}`, true)
 
 
                         message.channel.send(networkStats)
