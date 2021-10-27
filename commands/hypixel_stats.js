@@ -6,6 +6,7 @@ const API_KEY = process.env.API_KEY
 const {round} = require('mathjs')
 const {sqrt} = require('mathjs')
 const {toFixed} = require('mathjs')
+const {toLocaleString} = require('mathjs')
 
 module.exports = {
     name: 'stats',
@@ -19,6 +20,9 @@ module.exports = {
         let player_rank_color
         let player_bedwars_prestige_color
         let player_first_login_unix
+        let player_first_login_time
+        let player_last_logout_unix
+        let player_last_logout_time
         let player_display_name
         let player_network_level
         let player_network_experience
@@ -28,7 +32,6 @@ module.exports = {
         let player_bedwars_experience
         let player_bedwars_level
         let player_channel
-        let player_first_login_time
         let player_status
         let player_status_game_type
         let player_status_game_mode
@@ -93,21 +96,21 @@ module.exports = {
 
                 function playerStatus() {
                     let player_status
-                    if(data.session.online == true){
+                    if(data.session.online == true) {
                         player_status = "Online"
                         player_status_game_type = playerStatusGameType()
                         player_status_game_mode = playerStatusGameMode()
                         player_status_game_map = playerStatusGameMap()
 
-                        function playerStatusGameType(){
+                        function playerStatusGameType() {
                             let player_status_game_type
-        
+
                             player_status_game_type = data.session.gameType
 
                             return player_status_game_type
                         }
 
-                        function playerStatusGameMode(){
+                        function playerStatusGameMode() {
                             let player_status_game_mode
 
                             player_status_game_mode = data.session.mode
@@ -115,22 +118,26 @@ module.exports = {
                             return player_status_game_mode
                         }
 
-                        if(data.session.map){
-                            function playerStatusGameMap(){
+                        return player_status
+
+                        if(data.session.map) {
+                            function playerStatusGameMap() {
                                 let player_status_game_map
 
                                 player_status_game_map = data.session.map
 
                                 return player_status_game_map
                             }
-                        } else{
+                        } else {
                             player_status_game_map = "N/A"
                         }
-                    } else{
+                    } else {
                         player_status = "Offline"
                         player_status_game_type = "N/A"
                         player_status_game_mode = "N/A"
                         player_status_game_map = "N/A"
+
+                        return player_status
                     }
                 }
 
@@ -147,7 +154,7 @@ module.exports = {
 
                 player_rank = playerRank()
                 player_channel = playerChannel()
-                player_first_login_time = playerFirstLoginTime()
+                //player_first_login_time = playerFirstLoginTime()
                 player_karma = data.player.karma
                 player_achievement_points = data.player.achievementPoints
                 player_bedwars_experience = data.player.stats.Bedwars.Experience
@@ -160,7 +167,7 @@ module.exports = {
                 player_bedwars_overall_final_deaths = data.player.stats.Bedwars.final_deaths_bedwars
                 player_bedwars_overall_final_kill_death_ratio = player_bedwars_overall_final_kills / player_bedwars_overall_final_deaths;
                 player_bedwars_overall_wins = data.player.achievements.bedwars_wins
-                
+
 
                 //player_ranks_given = data.player.giftingMeta.ranksGiven
 
@@ -261,17 +268,17 @@ module.exports = {
                     }
                     return player_rank
                 }
-                
-                function playerChannel(){
+
+                function playerChannel() {
                     let player_channel
 
-                    if(data.player.channel == 'ALL'){
+                    if(data.player.channel == 'ALL') {
                         player_channel = 'All'
-                    } else if(data.player.channel == 'PARTY'){
+                    } else if(data.player.channel == 'PARTY') {
                         player_channel = 'Party'
-                    } else if(data.player.channel == 'GUILD'){
+                    } else if(data.player.channel == 'GUILD') {
                         player_channel = 'Guild'
-                    } else if(data.player.channel == 'SKYBLOCK_COOP'){
+                    } else if(data.player.channel == 'SKYBLOCK_COOP') {
                         player_channel = 'Skyblock Coop'
                     }
                     return player_channel
@@ -295,12 +302,13 @@ module.exports = {
                         const networkStats = new Discord.MessageEmbed()
                             .setColor(`${player_rank_color}`)
                             .setTitle(`Hypixel network stats for ${player_rank}${player_display_name}`)
-                            .setDescription(`**${player_rank}${player_display_name}** first joined on __coming soon__; and is currently Hypixel __Netowrk level ${player_network_level.toFixed(2).toLocaleString()}__.`)
+                            .setDescription(`**${player_rank}${player_display_name}** is __${player_status.toLowerCase()}__. They first joined on __coming soon__; and is currently Hypixel __Netowrk level ${player_network_level.toFixed(2).toLocaleString()}__.`)
                             .addField(`Network Level`, `${player_network_level.toFixed(2).toLocaleString()} (${player_network_experience.toLocaleString()} exp)`, true)
                             .addField(`Karma`, `${player_karma.toLocaleString()}`, true)
                             .addField(`Achievement points`, `${player_achievement_points.toLocaleString()}`, true)
                             .addField(`First login`, `Coming soon`, true)
-                            .addField(`Status`, `${player_status}`, false)
+                            .addField(`Last logout`, `Coming soon`, true)
+                            .addField(`Status`, `${player_status}`, true)
                             .addField(`Game type`, `${player_status_game_type}`, true)
                             .addField(`Game mode`, `${player_status_game_mode}`, true)
                             .addField(`Game map`, `${player_status_game_map}`, true)
