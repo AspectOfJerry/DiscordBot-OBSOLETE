@@ -3,10 +3,10 @@ require('dotenv').config();
 const API_KEY = process.env.API_KEY
 
 
-const {round} = require('mathjs')
-const {sqrt} = require('mathjs')
-const {toFixed} = require('mathjs')
-const {toLocaleString} = require('mathjs')
+const { round } = require('mathjs')
+const { sqrt } = require('mathjs')
+const { toFixed } = require('mathjs')
+const { toLocaleString } = require('mathjs')
 
 module.exports = {
     name: 'stats',
@@ -30,25 +30,15 @@ module.exports = {
         let player_karma
         let player_achievement_points
         let player_bedwars_experience
-        let player_bedwars_level
+
         let player_channel
         let player_status
         let player_status_game_type
         let player_status_game_mode
         let player_status_game_map
+        //player_bedwars
+        let player_bedwars_level
         let player_ranks_given
-        //player_bedwars_eight_one
-        let player_bedwars_eight_one_wins
-        let player_bedwars_eight_one_losses
-        //player_bedwars_eight_two
-        let player_bedwars_eight_two_wins
-        let player_bedwars_eight_two_losses
-        //player_bedwars_four_three
-
-        //player_bedwars_four_four
-
-        //player_bedwars_two_four
-
         //player_bedwars_overall
         let player_bedwars_overall_kills
         let player_bedwars_overall_deaths
@@ -61,7 +51,28 @@ module.exports = {
         let player_bedwars_overall_wins
         let player_bedwars_overall_losses
         let player_bedwars_overall_win_loss_ratio
+        //player_bedwars_eight_one
+        let player_bedwars_eight_one_wins
+        let player_bedwars_eight_one_losses
+        //player_bedwars_eight_two
+        let player_bedwars_eight_two_wins
+        let player_bedwars_eight_two_losses
+        //player_bedwars_four_three
 
+        //player_bedwars_four_four
+
+        //player_bedwars_two_four
+
+
+        //player_skywars
+        let player_skywars_experience
+        let player_skywars_level
+        //player_skywars_overall
+        let player_skywars_overall_kills
+        let player_skywars_overall_deaths
+        let player_skywars_overall_wins
+        let player_skywars_overall_games
+        let player_skywars_overall_winstreak
         const EASY_LEVELS = 4;
         const EASY_LEVELS_XP = 7000;
         const XP_PER_PRESTIGE = 96 * 5000 + EASY_LEVELS_XP;
@@ -77,10 +88,10 @@ module.exports = {
                     mojang_response = data
                     PLAYER_UUID = mojang_response.id
                 })
-        } catch(error) {
+        } catch (error) {
             const errorCatch = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                .setThumbnail(`${message.author.displayAvatarURL({ dynamic: true, size: 32 })}`)
                 .setTitle('Error Catch')
                 .setDescription('An error occured while searching for the player.\nMake sure the player is existing.')
                 .setFooter(`An error was caught at line 29:11\nmessage.content = ${message.content}`)
@@ -96,7 +107,7 @@ module.exports = {
 
                 function playerStatus() {
                     let player_status
-                    if(data.session.online == true) {
+                    if (data.session.online == true) {
                         player_status = "Online"
                         player_status_game_type = playerStatusGameType()
                         player_status_game_mode = playerStatusGameMode()
@@ -120,7 +131,7 @@ module.exports = {
 
                         return player_status
 
-                        if(data.session.map) {
+                        if (data.session.map) {
                             function playerStatusGameMap() {
                                 let player_status_game_map
 
@@ -178,14 +189,14 @@ module.exports = {
 
 
                 function getExpForLevel(player_bedwars_level) {
-                    if(player_bedwars_level == 0) return 0;
+                    if (player_bedwars_level == 0) return 0;
 
                     var respectedLevel = getLevelRespectingPrestige(player_bedwars_level);
-                    if(respectedLevel > EASY_LEVELS) {
+                    if (respectedLevel > EASY_LEVELS) {
                         return 5000;
                     }
 
-                    switch(respectedLevel) {
+                    switch (respectedLevel) {
                         case 1:
                             return 500;
                         case 2:
@@ -199,7 +210,7 @@ module.exports = {
                 }
 
                 function getLevelRespectingPrestige(player_bedwars_level) {
-                    if(player_bedwars_level > HIGHEST_PRESTIGE * LEVELS_PER_PRESTIGE) {
+                    if (player_bedwars_level > HIGHEST_PRESTIGE * LEVELS_PER_PRESTIGE) {
                         return player_bedwars_level - HIGHEST_PRESTIGE * LEVELS_PER_PRESTIGE;
                     }
                     else {
@@ -212,9 +223,9 @@ module.exports = {
                     var player_bedwars_level = prestiges * LEVELS_PER_PRESTIGE;
                     var expWithoutPrestiges = exp - (prestiges * XP_PER_PRESTIGE);
 
-                    for(let i = 1; i <= EASY_LEVELS; ++i) {
+                    for (let i = 1; i <= EASY_LEVELS; ++i) {
                         var expForEasyLevel = getExpForLevel(i);
-                        if(expWithoutPrestiges < expForEasyLevel) {
+                        if (expWithoutPrestiges < expForEasyLevel) {
                             break;
                         }
                         player_bedwars_level++;
@@ -228,38 +239,38 @@ module.exports = {
                 function playerRank() {
                     let player_rank
 
-                    if(data.player.rank) {
-                        if(data.player._id == '516398d00cf273d9c97152c3' || data.player.id == '516398d30cf273d9c97152c4') {
+                    if (data.player.rank) {
+                        if (data.player._id == '516398d00cf273d9c97152c3' || data.player.id == '516398d30cf273d9c97152c4') {
                             player_rank = "[OWNER]"
                             player_rank_color = "#ff5555"
-                        } else if(data.player.rank == 'ADMIN') {
+                        } else if (data.player.rank == 'ADMIN') {
                             player_rank = "[ADMIN]"
                             player_rank_color = "#ff5555"
-                        } else if(data.player.rank == 'GAME_MASTER') {
+                        } else if (data.player.rank == 'GAME_MASTER') {
                             player_rank = "[GM]"
                             player_rank_color = "#00aa00"
-                        } else if(data.player.rank == 'YOUTUBER') {
+                        } else if (data.player.rank == 'YOUTUBER') {
                             player_rank = "[YOUTUBE]"
                             player_rank_color = "#ff5555"
                         }
-                    } else if(data.player.monthlyPackageRank) {
+                    } else if (data.player.monthlyPackageRank) {
                         player_rank = "[MVP++]"
                         player_rank_color = "#ffaa00"
                     }
                     else {
-                        if(!data.player.newPackageRank) {
+                        if (!data.player.newPackageRank) {
                             player_rank = "[NoRank]"
                             player_rank_color = "#aaaaaa"
-                        } else if(data.player.newPackageRank == 'VIP') {
+                        } else if (data.player.newPackageRank == 'VIP') {
                             player_rank = "[VIP]"
                             player_rank_color = "#55ff55"
-                        } else if(data.player.newPackageRank == 'VIP_PLUS') {
+                        } else if (data.player.newPackageRank == 'VIP_PLUS') {
                             player_rank = "[VIP+]"
                             player_rank_color = "#55ff55"
-                        } else if(data.player.newPackageRank == 'MVP') {
+                        } else if (data.player.newPackageRank == 'MVP') {
                             player_rank = "[MVP]"
                             player_rank_color = "#55ffff"
-                        } else if(data.player.newPackageRank == 'MVP_PLUS') {
+                        } else if (data.player.newPackageRank == 'MVP_PLUS') {
                             player_rank = "[MVP+]"
                             player_rank_color = "#55ffff"
                         } else {
@@ -272,13 +283,13 @@ module.exports = {
                 function playerChannel() {
                     let player_channel
 
-                    if(data.player.channel == 'ALL') {
+                    if (data.player.channel == 'ALL') {
                         player_channel = 'All'
-                    } else if(data.player.channel == 'PARTY') {
+                    } else if (data.player.channel == 'PARTY') {
                         player_channel = 'Party'
-                    } else if(data.player.channel == 'GUILD') {
+                    } else if (data.player.channel == 'GUILD') {
                         player_channel = 'Guild'
-                    } else if(data.player.channel == 'SKYBLOCK_COOP') {
+                    } else if (data.player.channel == 'SKYBLOCK_COOP') {
                         player_channel = 'Skyblock Coop'
                     }
                     return player_channel
@@ -286,9 +297,9 @@ module.exports = {
             })
             .catch(console.error())
         setTimeout(() => {
-            if(!args[2]) {
-                if(!args[1]) {
-                    if(!args[0]) {
+            if (!args[2]) {
+                if (!args[1]) {
+                    if (!args[0]) {
                         const statsCommandArguments = new Discord.MessageEmbed()
                             .setColor('7dc8cd')
                             .setTitle('Stats command arguments')
@@ -302,7 +313,7 @@ module.exports = {
                         const networkStats = new Discord.MessageEmbed()
                             .setColor(`${player_rank_color}`)
                             .setTitle(`Hypixel network stats for ${player_rank}${player_display_name}`)
-                            .setDescription(`**${player_rank}${player_display_name}** is __${player_status.toLowerCase()}__. They first joined on __coming soon__; and is currently Hypixel __Netowrk level ${player_network_level.toFixed(2).toLocaleString()}__.`)
+                            .setDescription(`**${player_rank}${player_display_name}** is __${player_status.toLowerCase()}__. They first joined on __coming soon__ and is currently Hypixel __Netowrk level ${player_network_level.toFixed(2).toLocaleString()}__. They are currently __playing ${player_status_game_type}__ in ${player_status_game_mode}. `)
                             .addField(`Network Level`, `${player_network_level.toFixed(2).toLocaleString()} (${player_network_experience.toLocaleString()} exp)`, true)
                             .addField(`Karma`, `${player_karma.toLocaleString()}`, true)
                             .addField(`Achievement points`, `${player_achievement_points.toLocaleString()}`, true)
@@ -312,12 +323,13 @@ module.exports = {
                             .addField(`Game type`, `${player_status_game_type}`, true)
                             .addField(`Game mode`, `${player_status_game_mode}`, true)
                             .addField(`Game map`, `${player_status_game_map}`, true)
+                            .addField(`Current channel`, `${player_channel}`, true)
 
 
                         message.channel.send(networkStats)
                     }
                 } else {
-                    if(args[1] == 'bw' || args[1] == 'bedwars') {
+                    if (args[1] == 'bw' || args[1] == 'bedwars') {
                         const overallBedwars = new Discord.MessageEmbed()
                             .setColor(`${player_rank_color}`)
                             .setTitle(`Overall Bedwars stats for ${player_rank}${player_display_name}`)
