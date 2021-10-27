@@ -20,7 +20,7 @@ module.exports = {
         //Code
         const test = new Discord.MessageEmbed()
             .setTitle('Title')
-            .stDescription('Description')
+            .setDescription('Description')
             .addField(`Field 1 title`, `Field 1 value, true`, true)
             .addField(`Field 2 title`, `Field 2 value, true`, true)
             .addField(`Field 3 title`, `Field 3 value, false`, false)
