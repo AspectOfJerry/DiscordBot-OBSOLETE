@@ -13,9 +13,9 @@ module.exports = {
     description: 'Usage: "%api-contact"',
     async execute(message, args, cmd, client, Discord) {
         const PLAYER_NAME = args[0]
-        const gameType = args[1]
-        const gameMode = args[2]
-        let PLAYER_UUID
+        let gameType
+        let gameMode
+        let player_uuid
         let mojang_response
         let player_is_null
         let player_rank_color
@@ -87,7 +87,7 @@ module.exports = {
                 .then(response => response.json())
                 .then(data => {
                     mojang_response = data
-                    PLAYER_UUID = mojang_response.id
+                    player_uuid = mojang_response.id
                 })
         } catch(error) {
             const errorCatch = new Discord.MessageEmbed()
@@ -101,7 +101,7 @@ module.exports = {
             return
         }
         //Fetching from api.hypixel.net
-        fetch(`https://api.hypixel.net/status?key=${API_KEY}&uuid=${PLAYER_UUID}`)
+        fetch(`https://api.hypixel.net/status?key=${API_KEY}&uuid=${player_uuid}`)
             .then(response => response.json())
             .then(data => {
                 if(data.player == null) {
@@ -167,7 +167,7 @@ module.exports = {
             })
             .catch(console.error)
 
-        fetch(`https://api.hypixel.net/player?key=${API_KEY}&uuid=${PLAYER_UUID}`)
+        fetch(`https://api.hypixel.net/player?key=${API_KEY}&uuid=${player_uuid}`)
             .then(response => response.json())
             .then(data => {
                 if(data.player == null) {
