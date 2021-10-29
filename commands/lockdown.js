@@ -3,6 +3,6 @@ module.exports = {
     aliases: ['lock', 'lock-down', 'lock_down'],
     description: 'Usage: "%lockdown"',
     execute(message, args, cmd, client, Discord) {
-        message.reply('This feature is planned for the next release!'); return
+        message.reply('This feature is not developed yet!'); return
     }
 }

@@ -10,7 +10,7 @@ const {toLocaleString} = require('mathjs')
 
 module.exports = {
     name: 'stats',
-    description: 'Usage: "%api-contact"',
+    description: 'Usage: "%stats"',
     async execute(message, args, cmd, client, Discord) {
         const PLAYER_NAME = args[0]
         let gameType
@@ -30,15 +30,14 @@ module.exports = {
         let player_rank
         let player_karma
         let player_achievement_points
-        let player_bedwars_experience
-
         let player_channel
         let player_status
         let player_status_game_type
         let player_status_game_mode
         let player_status_game_map
-        //player_bedwars
-        let player_bedwars_level
+		//player_bedwars
+		let player_bedwars_experience
+		let player_bedwars_level
         let player_ranks_given
         //player_bedwars_overall
         let player_bedwars_overall_kills
@@ -51,7 +50,10 @@ module.exports = {
         let player_bedwars_overall_final_kill_death_ratio
         let player_bedwars_overall_wins
         let player_bedwars_overall_losses
-        let player_bedwars_overall_win_loss_ratio
+		let player_bedwars_overall_win_loss_ratio
+		let player_bedwars_overall_bed_breaks
+		let player_bedwars_overall_bed_losses
+		let player_bedwars_overall_bed_break_loss_ratio
         //player_bedwars_eight_one
         let player_bedwars_eight_one_wins
         let player_bedwars_eight_one_losses
@@ -106,7 +108,8 @@ module.exports = {
             .then(data => {
                 if(data.player == null) {
                     const playerIsNull = new Discord.MessageEmbed()
-                        .setColor('#ff0000')
+						.setColor('#ff0000')
+						.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('The player is existing but they have never logged into Hypixel.')
 
@@ -172,9 +175,10 @@ module.exports = {
             .then(data => {
                 if(data.player == null) {
                     // const playerIsNull = new Discord.MessageEmbed()
-                    //     .setColor('#ff0000')
-                    //     .setTitle('Error')
-                    //     .setDescription('The player is existing but they have never logged into Hypixel.')
+					// 	.setColor('#ff0000')
+					// 	.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+					// 	.setTitle('Error')
+					// 	.setDescription('The player is existing but they have never logged into Hypixel.')
 
                     // message.channel.send(playerIsNull)
 
@@ -322,9 +326,10 @@ module.exports = {
         setTimeout(() => {
             if(player_is_null == true) {
                 // const playerIsNull = new Discord.MessageEmbed()
-                //     .setColor('#ff0000')
-                //     .setTitle('Error')
-                //     .setDescription('The player is existing but they have never logged into Hypixel.')
+				// 	.setColor('#ff0000')
+				// 	.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+				// 	.setTitle('Error')
+				// 	.setDescription('The player is existing but they have never logged into Hypixel.')
 
                 // message.channel.send(playerIsNull)
 
@@ -332,11 +337,38 @@ module.exports = {
                 return;
             } else {
                 if(!args[2]) {
+                    if(args[1] == 'bw' || args[1] == 'bedwars'){
+                        if(args[2].includes('one') || args[2].includes('solo') || args[2].includes('1')){
+
+                        } else if(args[2].includes('double') || args[2].includes('duo') || args[2].includes('2')){
+
+                        } else if(args[2].includes('three') || args[2].includes('trio') || args[2].includes('3')){
+
+                        } else if(args[2].includes('four') || args[2].includes('qua') || args[2].includes('4')){
+
+                        } else if(args[2].includes('rank') || args[2] == '4v4' || args[2] == 'two_four'){
+
+                        } else{
+                            const unknownMode = new Discord.MessageEmbed()
+							.setColor('#ff0000')
+							.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                            .setTitle('Error')
+                            .setDescription('Unknown game mode')
+                            .addField(`eight_one`, `Anything that includes: "one", "solo", or "1"`, false)
+                            .addField(`eight_two`, `Anything that includes: "double", "duo", or "2"`, false)
+                            .addField(`four_three`, `Anything that includes: "three", "trio", or "3"`, false)
+                            .addField(`four_four`, `Anything that includes: "four", "qua", or "4"`)
+                            .addField(`two_four`, `Anything that includes: "rank" or; "4v4", or "two_four"`)
+                        }
+                    } if(args[1] == 'sw' || args[1] == 'skywars'){
+
+                    }
                     if(!args[1]) {
                         if(!args[0]) {
                             const statsCommandArguments = new Discord.MessageEmbed()
-                                .setColor('7dc8cd')
-                                .setTitle('Stats command arguments')
+								.setColor('7dc8cd')
+								.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+								.setTitle('Stats command arguments')
                                 .setDescription('Command usage: `%stats <username> (<gameType> <gameMode>)`')
                                 .addField(`bedwars/bw`, `Bedwars stats`, true)
                                 .addField(`skywars/sw`, `Skywars stats`, true)
@@ -345,12 +377,14 @@ module.exports = {
                             message.channel.send(statsCommandArguments)
                         } else {
                             const networkStats = new Discord.MessageEmbed()
-                                .setColor(`${player_rank_color}`)
+								.setColor(`${player_rank_color}`)
+								.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                 .setTitle(`Hypixel network stats for ${player_rank}${player_display_name}`)
                                 .setDescription(`**${player_rank}${player_display_name}** is __${player_status}__. They first joined on __coming soon__ and is currently Hypixel __Netowrk level ${player_network_level.toFixed(2).toLocaleString()}__. They are currently __playing ${player_status_game_type}__ in ${player_status_game_mode}. `)
                                 .addField(`Network Level`, `${player_network_level.toFixed(2).toLocaleString()} (${player_network_experience.toLocaleString()} exp)`, true)
                                 .addField(`Karma`, `${player_karma.toLocaleString()}`, true)
-                                .addField(`Achievement points`, `${player_achievement_points.toLocaleString()}`, true)
+								.addField(`Achievement points`, `${player_achievement_points.toLocaleString()}`, true)
+								.addField(`Quests completed`, `Coming soon`, true)
                                 .addField(`First login`, `Coming soon`, true)
                                 .addField(`Last logout`, `Coming soon`, true)
                                 .addField(`Status`, `${player_status}`, true)
@@ -359,13 +393,13 @@ module.exports = {
                                 .addField(`Game map`, `${player_status_game_map}`, true)
                                 .addField(`Current channel`, `${player_channel}`, true)
 
-
                             message.channel.send(networkStats)
                         }
                     } else {
                         if(args[1] == 'bw' || args[1] == 'bedwars') {
                             const overallBedwars = new Discord.MessageEmbed()
-                                .setColor(`${player_rank_color}`)
+								.setColor(`${player_rank_color}`)
+								.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                 .setTitle(`Overall Bedwars stats for ${player_rank}${player_display_name}`)
                                 .setDescription(`**${player_rank}${player_display_name}** is currently __Bedwars level ${player_bedwars_level.toFixed(2).toLocaleString()}__; has __${player_bedwars_overall_final_kills.toLocaleString()} final kills__; and has an __FKDR of ${player_bedwars_overall_final_kill_death_ratio.toFixed(2).toLocaleString()}__`)
                                 .addField(`Bedwars Level`, `${player_bedwars_level.toFixed(2).toLocaleString()} (${player_bedwars_experience.toLocaleString()} exp)`, true)
@@ -379,9 +413,17 @@ module.exports = {
                                 .addField(`Bedwars FKDR`, `${player_bedwars_overall_final_kill_death_ratio.toFixed(2).toLocaleString()}`, true)
                                 .addField(`Bedwars wins`, `${player_bedwars_overall_wins.toLocaleString()}`, true)
                                 .addField(`Bedwars losses`, `Coming soon`, true)
-                                .addField(`Bedwars WLR`, `Coming soon`, true)
+								.addField(`Bedwars WLR`, `Coming soon`, true)
+								.addField(`Bed brakes`, `Coming soon`, true)
+								.addField(`Bed losses`, `Coming soon`, true)
+								.addField(`BBLR`, `Coming soon`, true)
 
                             message.channel.send(overallBedwars)
+                        } else if(args[1] == 'sw' || args[1] == 'skywars'){
+                            const overallSkywars = new Discord.MessageEmbed()
+							.setColor(`${player_rank_color}`)
+							.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                            .setTitle(`Overall Skywars stats for ${player_rank}${player_display_name}`)
                         }
                     }
                 }
