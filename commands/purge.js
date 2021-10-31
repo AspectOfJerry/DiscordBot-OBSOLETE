@@ -88,7 +88,7 @@ const cls = async (message, args, cmd, client, Discord) => {
             .setColor('#0c0c0c')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle("Jerry's Bot#0182/>")
-            .setDescription('>**_**')
+            .setDescription('Node.js v16.9.1 >_')
 
         message.channel.send(terminal)
     })

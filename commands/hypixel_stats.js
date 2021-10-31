@@ -146,7 +146,6 @@ module.exports = {
                                 return player_status_game_mode
                             }
 
-
                             function playerStatusGameMap() {
                                 if(data.session.map) {
                                     let player_status_game_map
