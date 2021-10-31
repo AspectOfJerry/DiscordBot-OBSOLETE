@@ -18,7 +18,8 @@ module.exports = {
             .setDescription(`Choose if you play Minecraft Java, Minecraft Bedrock, or play on the Hypixel network\n`
                 + `${MinecraftJavaEmoji} for Minecraft Java Edition\n`
                 + `${MinecraftBedrockEmoji} for Minecraft Bedrock Edition\n`
-                + `${HypixelEmoji} for the Hypixel Network`);
+                + `${HypixelEmoji} for the Hypixel Network`)
+            .setFooter('This message has to be resent every bot restart')
 
 
         await message.channel.messages.fetch({limit: 1}).then(messages => {
