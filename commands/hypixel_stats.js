@@ -35,9 +35,9 @@ module.exports = {
         let player_status_game_type
         let player_status_game_mode
         let player_status_game_map
-		//player_bedwars
-		let player_bedwars_experience
-		let player_bedwars_level
+        //player_bedwars
+        let player_bedwars_experience
+        let player_bedwars_level
         let player_ranks_given
         //player_bedwars_overall
         let player_bedwars_overall_kills
@@ -50,10 +50,10 @@ module.exports = {
         let player_bedwars_overall_final_kill_death_ratio
         let player_bedwars_overall_wins
         let player_bedwars_overall_losses
-		let player_bedwars_overall_win_loss_ratio
-		let player_bedwars_overall_bed_breaks
-		let player_bedwars_overall_bed_losses
-		let player_bedwars_overall_bed_break_loss_ratio
+        let player_bedwars_overall_win_loss_ratio
+        let player_bedwars_overall_bed_breaks
+        let player_bedwars_overall_bed_losses
+        let player_bedwars_overall_bed_break_loss_ratio
         //player_bedwars_eight_one
         let player_bedwars_eight_one_wins
         let player_bedwars_eight_one_losses
@@ -100,23 +100,25 @@ module.exports = {
                 .setFooter(`An error was caught at line 29:11\nmessage.content = ${message.content}`)
 
             message.channel.send(errorCatch)
-            return
+            return;
         }
         //Fetching from api.hypixel.net
         fetch(`https://api.hypixel.net/status?key=${API_KEY}&uuid=${player_uuid}`)
             .then(response => response.json())
             .then(data => {
-                if(data.player == null) {
-                    const playerIsNull = new Discord.MessageEmbed()
-						.setColor('#ff0000')
-						.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error')
-                        .setDescription('The player is existing but they have never logged into Hypixel.')
+                if(data.player) {
+                    if(data.player == null) {
+                        const playerIsNull = new Discord.MessageEmbed()
+                            .setColor('#ff0000')
+                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                            .setTitle('Error')
+                            .setDescription('The player is existing but they have never logged into Hypixel.')
 
-                    message.channel.send(playerIsNull)
+                        message.channel.send(playerIsNull)
 
-                    player_is_null = true
-                    return;
+                        player_is_null = true
+                        return;
+                    }
                 } else {
                     player_status = playerStatus()
 
@@ -173,17 +175,19 @@ module.exports = {
         fetch(`https://api.hypixel.net/player?key=${API_KEY}&uuid=${player_uuid}`)
             .then(response => response.json())
             .then(data => {
-                if(data.player == null) {
-                    // const playerIsNull = new Discord.MessageEmbed()
-					// 	.setColor('#ff0000')
-					// 	.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-					// 	.setTitle('Error')
-					// 	.setDescription('The player is existing but they have never logged into Hypixel.')
+                if(data.playe) {
+                    if(data.player == null) {
+                        // const playerIsNull = new Discord.MessageEmbed()
+                        //     .setColor('#ff0000')
+                        //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                        //     .setTitle('Error')
+                        //     .setDescription('The player is existing but they have never logged into Hypixel.')
 
-                    // message.channel.send(playerIsNull)
+                        // message.channel.send(playerIsNull)
 
-                    player_is_null = true
-                    return;
+                        player_is_null = true
+                        return;
+                    }
                 } else {
                     player_display_name = data.player.displayname
                     player_network_experience = data.player.networkExp
@@ -326,10 +330,10 @@ module.exports = {
         setTimeout(() => {
             if(player_is_null == true) {
                 // const playerIsNull = new Discord.MessageEmbed()
-				// 	.setColor('#ff0000')
-				// 	.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-				// 	.setTitle('Error')
-				// 	.setDescription('The player is existing but they have never logged into Hypixel.')
+                // 	.setColor('#ff0000')
+                // 	.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                // 	.setTitle('Error')
+                // 	.setDescription('The player is existing but they have never logged into Hypixel.')
 
                 // message.channel.send(playerIsNull)
 
@@ -337,55 +341,12 @@ module.exports = {
                 return;
             } else {
                 if(!args[2]) {
-                    if(args[1] == 'bw' || args[1] == 'bedwars'){
-                        if(args[2].includes('one') || args[2].includes('solo') || args[2].includes('1')){
-
-                        } else if(args[2].includes('double') || args[2].includes('duo') || args[2].includes('2')){
-
-                        } else if(args[2].includes('three') || args[2].includes('trio') || args[2].includes('3')){
-
-                        } else if(args[2].includes('four') || args[2].includes('qua') || args[2].includes('4')){
-
-                        } else if(args[2].includes('rank') || args[2] == '4v4' || args[2] == 'two_four'){
-
-                        } else{
-                            const unknownBedwarsMode = new Discord.MessageEmbed()
-							.setColor('#ff0000')
-							.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                            .setTitle('Error')
-                            .setDescription('Unknown game mode')
-                            .addField(`eight_one`, `Anything that includes: "one", "solo", or "1"`, false)
-                            .addField(`eight_two`, `Anything that includes: "double", "duo", or "2"`, false)
-                            .addField(`four_three`, `Anything that includes: "three", "trio", or "3"`, false)
-                            .addField(`four_four`, `Anything that includes: "four", "qua", or "4"`, false)
-                            .addField(`two_four`, `Anything that includes: "rank" or; "4v4", or "two_four"`, false)
-                        }
-                    } if(args[1] == 'sw' || args[1] == 'skywars'){
-                        if(args[2].includes('one') && args[2].includes('norm') || args[2].includes('solo') && args[2].includes('norm') || args[2].includes('1') && args[2].includes('norm')){
-
-                        } else if(args[2].includes('one') && args[2].includes('insa') || args[2].includes('solo') && args[2].includes('insa') || args[2].includes('1') && args[2].includes('insa')){
-
-                        } else if(args[2].includes('two') && args[2].includes('norm') || args[2].includes('duo') && args[2].includes('norm') || args[2].includes('2') && args[2].includes('norm')){
-
-                        } else if(args[2].includes('two') && args[2].includes('insa') || args[2].includes('duo') && args[2].includes('insa') || args[2].includes('2') && args[2].includes('insa')){
-
-                        } else{
-                            const unknownSkywarsMode = new Discord.MessageEmbed()
-                            .setColor('#ff0000')
-                            .setTitle('Error')
-                            .setDescription('Unknown game mode')
-                            .addField(`solo_normal`, ``, false)
-                            .addField(`solo_insane`, ``, false)
-                            .addField(`team_normal`, ``, false)
-                            .addField(`team_insane`, ``, false)
-                        }
-                    }
                     if(!args[1]) {
                         if(!args[0]) {
                             const statsCommandArguments = new Discord.MessageEmbed()
-								.setColor('7dc8cd')
-								.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-								.setTitle('Stats command arguments')
+                                .setColor('7dc8cd')
+                                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                                .setTitle('Stats command arguments')
                                 .setDescription('Command usage: `%stats <username> (<gameType> <gameMode>)`')
                                 .addField(`bedwars/bw`, `Bedwars stats`, true)
                                 .addField(`skywars/sw`, `Skywars stats`, true)
@@ -394,14 +355,14 @@ module.exports = {
                             message.channel.send(statsCommandArguments)
                         } else {
                             const networkStats = new Discord.MessageEmbed()
-								.setColor(`${player_rank_color}`)
-								.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                                .setColor(`${player_rank_color}`)
+                                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                 .setTitle(`Hypixel network stats for ${player_rank}${player_display_name}`)
                                 .setDescription(`**${player_rank}${player_display_name}** is __${player_status}__. They first joined on __coming soon__ and is currently Hypixel __Netowrk level ${player_network_level.toFixed(2).toLocaleString()}__. They are currently __playing ${player_status_game_type}__ in ${player_status_game_mode}. `)
                                 .addField(`Network Level`, `${player_network_level.toFixed(2).toLocaleString()} (${player_network_experience.toLocaleString()} exp)`, true)
                                 .addField(`Karma`, `${player_karma.toLocaleString()}`, true)
-								.addField(`Achievement points`, `${player_achievement_points.toLocaleString()}`, true)
-								.addField(`Quests completed`, `Coming soon`, true)
+                                .addField(`Achievement points`, `${player_achievement_points.toLocaleString()}`, true)
+                                .addField(`Quests completed`, `Coming soon`, true)
                                 .addField(`First login`, `Coming soon`, true)
                                 .addField(`Last logout`, `Coming soon`, true)
                                 .addField(`Status`, `${player_status}`, true)
@@ -415,8 +376,8 @@ module.exports = {
                     } else {
                         if(args[1] == 'bw' || args[1] == 'bedwars') {
                             const overallBedwars = new Discord.MessageEmbed()
-								.setColor(`${player_rank_color}`)
-								.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                                .setColor(`${player_rank_color}`)
+                                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                 .setTitle(`Overall Bedwars stats for ${player_rank}${player_display_name}`)
                                 .setDescription(`**${player_rank}${player_display_name}** is currently __Bedwars level ${player_bedwars_level.toFixed(2).toLocaleString()}__; has __${player_bedwars_overall_final_kills.toLocaleString()} final kills__; and has an __FKDR of ${player_bedwars_overall_final_kill_death_ratio.toFixed(2).toLocaleString()}__`)
                                 .addField(`Bedwars Level`, `${player_bedwars_level.toFixed(2).toLocaleString()} (${player_bedwars_experience.toLocaleString()} exp)`, true)
@@ -430,18 +391,89 @@ module.exports = {
                                 .addField(`Bedwars FKDR`, `${player_bedwars_overall_final_kill_death_ratio.toFixed(2).toLocaleString()}`, true)
                                 .addField(`Bedwars wins`, `${player_bedwars_overall_wins.toLocaleString()}`, true)
                                 .addField(`Bedwars losses`, `Coming soon`, true)
-								.addField(`Bedwars WLR`, `Coming soon`, true)
-								.addField(`Bed brakes`, `Coming soon`, true)
-								.addField(`Bed losses`, `Coming soon`, true)
-								.addField(`BBLR`, `Coming soon`, true)
+                                .addField(`Bedwars WLR`, `Coming soon`, true)
+                                .addField(`Bed brakes`, `Coming soon`, true)
+                                .addField(`Bed losses`, `Coming soon`, true)
+                                .addField(`BBLR`, `Coming soon`, true)
 
                             message.channel.send(overallBedwars)
-                        } else if(args[1] == 'sw' || args[1] == 'skywars'){
+                        } else if(args[1] == 'sw' || args[1] == 'skywars') {
                             const overallSkywars = new Discord.MessageEmbed()
-							.setColor(`${player_rank_color}`)
-							.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                            .setTitle(`Overall Skywars stats for ${player_rank}${player_display_name}`)
+                                .setColor(`${player_rank_color}`)
+                                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                                .setTitle(`Overall Skywars stats for ${player_rank}${player_display_name}`)
+
+                            message.channel.send(overallSkywars)
+                        } else {
+                            const unknownGame = new Discord.MessageEmbed()
+                                .setColor('#ff0000')
+                                .setTitle('Error')
+                                .setDescription('Unknown Hypixel game')
+                                .addField(`bedwars/bw`, `Bedwars stats`, false)
+                                .addField(`skywars/sw`, `Skywars stats`, false)
+                                .addField(`duels/duel/pvp`, `Duel stats`, false)
+
+                            message.channel.send(unknownGame)
                         }
+                    }
+                } else {
+                    if(args[1] == 'bw' || args[1] == 'bedwars') {
+                        if(args[2].includes('one') || args[2].includes('solo') || args[2].includes('1') || args[2] == 'eight_one') {
+                            message.channel.send('BEDWARS_EIGHT_ONE')
+                        } else if(args[2].includes('double') || args[2].includes('duo') || args[2].includes('2') || args[2] == 'eight_two') {
+                            message.channel.send('BEDWARS_EIGHT_TWO')
+                        } else if(args[2].includes('three') || args[2].includes('trio') || args[2].includes('3') || args[2] == 'four_three') {
+                            message.channel.send('BEDWARS_FOUR_THREE')
+                        } else if(args[2].includes('four') && args[2] !== 'two_four' || args[2].includes('qua') || args[2].includes('4') && args[2] !== '4v4' || args[2] == 'four_four') {
+                            message.channel.send('BEDWARS_FOUR_FOUR')
+                        } else if(args[2].includes('rank') || args[2] == '4v4' || args[2] == 'two_four') {
+                            message.channel.send('BEDWARS_TWO_FOUR')
+                        } else {
+                            const unknownBedwarsMode = new Discord.MessageEmbed()
+                                .setColor('#ff0000')
+                                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                                .setTitle('Error')
+                                .setDescription('Unknown game mode')
+                                .addField(`eight_one`, `Anything that includes: "one", "solo", or "1"; "eight_one"`, false)
+                                .addField(`eight_two`, `Anything that includes: "double", "duo", or "2"; "eight_two"`, false)
+                                .addField(`four_three`, `Anything that includes: "three", "trio", or "3"; or "four_three"`, false)
+                                .addField(`four_four`, `Anything that includes: "four", "qua", or "4"; or "four_four"`, false)
+                                .addField(`two_four`, `Anything that includes: "rank" or; "4v4"; "two_four"`, false)
+
+                            message.channel.send(unknownBedwarsMode)
+                        }
+                    } else if(args[1] == 'sw' || args[1] == 'skywars') {
+                        if(args.join(' ').includes('one') && args.join(' ').includes('nor') || args.join(' ').includes('solo') && args.join(' ').includes('nor') || args.join(' ').includes('1') && args.join(' ').includes('nor')) {
+                            message.channel.send('SKYWARS_SOLO_NORMAL')
+                        } else if(args.join(' ').includes('one') && args.join(' ').includes('ins') || args.join(' ').includes('solo') && args.join(' ').includes('ins') || args.join(' ').includes('1') && args.join(' ').includes('ins')) {
+                            message.channel.send('SKYWARS_SOLO_INSANE')
+                        } else if(args.join(' ').includes('team') && args.join(' ').includes('nor') || args.join(' ').includes('two') && args.join(' ').includes('nor') || args.join(' ').includes('duo') && args.join(' ').includes('nor') || args.join(' ').includes('2') && args.join(' ').includes('nor')) {
+                            message.channel.send('SKYWARS_TEAM_NORMAL')
+                        } else if(args.join(' ').includes('team') && args.join(' ').includes('ins') || args.join(' ').includes('two') && args.join(' ').includes('ins') || args.join(' ').includes('duo') && args.join(' ').includes('ins') || args.join(' ').includes('2') && args.join(' ').includes('ins')) {
+                            message.channel.send('SKYWARS_TEAM_INSANE')
+                        } else {
+                            const unknownSkywarsMode = new Discord.MessageEmbed()
+                                .setColor('#ff0000')
+                                .setTitle('Error')
+                                .setDescription('Unknown game mode')
+                                .addField(`solo_normal`, `Anything that includes: "one", "solo", or "1"; and "nor"`, false)
+                                .addField(`solo_insane`, `Anything that includes: "one", "solo", or "1"; and "ins"`, false)
+                                .addField(`team_normal`, `Anything that includes: "team", "two", "duo", or "2"; and "nor"`, false)
+                                .addField(`team_insane`, `Anything that includes: "team", "two", "duo", or "2"; and "ins"`, false)
+                                .setFooter(`Don't forget to precise "insane" or "normal"!`)
+
+                            message.channel.send(unknownSkywarsMode)
+                        }
+                    } else {
+                        const unknownGame = new Discord.MessageEmbed()
+                            .setColor('#ff0000')
+                            .setTitle('Error')
+                            .setDescription('Unknown Hypixel game')
+                            .addField(`bedwars/bw`, `Bedwars stats`, false)
+                            .addField(`skywars/sw`, `Skywars stats`, false)
+                            .addField(`duels/duel/pvp`, `Duel stats`, false)
+
+                        message.channel.send(unknownGame)
                     }
                 }
             }
