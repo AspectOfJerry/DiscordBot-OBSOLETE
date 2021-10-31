@@ -349,7 +349,7 @@ module.exports = {
                         } else if(args[2].includes('rank') || args[2] == '4v4' || args[2] == 'two_four'){
 
                         } else{
-                            const unknownMode = new Discord.MessageEmbed()
+                            const unknownBedwarsMode = new Discord.MessageEmbed()
 							.setColor('#ff0000')
 							.setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                             .setTitle('Error')
@@ -357,11 +357,28 @@ module.exports = {
                             .addField(`eight_one`, `Anything that includes: "one", "solo", or "1"`, false)
                             .addField(`eight_two`, `Anything that includes: "double", "duo", or "2"`, false)
                             .addField(`four_three`, `Anything that includes: "three", "trio", or "3"`, false)
-                            .addField(`four_four`, `Anything that includes: "four", "qua", or "4"`)
-                            .addField(`two_four`, `Anything that includes: "rank" or; "4v4", or "two_four"`)
+                            .addField(`four_four`, `Anything that includes: "four", "qua", or "4"`, false)
+                            .addField(`two_four`, `Anything that includes: "rank" or; "4v4", or "two_four"`, false)
                         }
                     } if(args[1] == 'sw' || args[1] == 'skywars'){
+                        if(args[2].includes('one') && args[2].includes('norm') || args[2].includes('solo') && args[2].includes('norm') || args[2].includes('1') && args[2].includes('norm')){
 
+                        } else if(args[2].includes('one') && args[2].includes('insa') || args[2].includes('solo') && args[2].includes('insa') || args[2].includes('1') && args[2].includes('insa')){
+
+                        } else if(args[2].includes('two') && args[2].includes('norm') || args[2].includes('duo') && args[2].includes('norm') || args[2].includes('2') && args[2].includes('norm')){
+
+                        } else if(args[2].includes('two') && args[2].includes('insa') || args[2].includes('duo') && args[2].includes('insa') || args[2].includes('2') && args[2].includes('insa')){
+
+                        } else{
+                            const unknownSkywarsMode = new Discord.MessageEmbed()
+                            .setColor('#ff0000')
+                            .setTitle('Error')
+                            .setDescription('Unknown game mode')
+                            .addField(`solo_normal`, ``, false)
+                            .addField(`solo_insane`, ``, false)
+                            .addField(`team_normal`, ``, false)
+                            .addField(`team_insane`, ``, false)
+                        }
                     }
                     if(!args[1]) {
                         if(!args[0]) {
