@@ -1,6 +1,6 @@
 const fetch = require('window-fetch')
 require('dotenv').config();
-const API_KEY = process.env.API_KEY
+const HYPIXEL_API_KEY = process.env.HYPIXEL_API_KEY
 
 
 const {round} = require('mathjs')
@@ -103,7 +103,7 @@ module.exports = {
             return;
         }
         //Fetching from api.hypixel.net
-        fetch(`https://api.hypixel.net/status?key=${API_KEY}&uuid=${player_uuid}`)
+        fetch(`https://api.hypixel.net/status?key=${HYPIXEL_API_KEY}&uuid=${player_uuid}`)
             .then(response => response.json())
             .then(data => {
                 if(data.player) {
@@ -171,7 +171,7 @@ module.exports = {
             })
             .catch(console.error)
 
-        fetch(`https://api.hypixel.net/player?key=${API_KEY}&uuid=${player_uuid}`)
+        fetch(`https://api.hypixel.net/player?key=${HYPIXEL_API_KEY}&uuid=${player_uuid}`)
             .then(response => response.json())
             .then(data => {
                 if(data.playe) {
