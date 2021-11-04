@@ -416,16 +416,16 @@ module.exports = {
                         }
                     }
                 } else {
-                    if(args[1] == 'bw' || args[1] == 'bedwars') {
-                        if(args[2].includes('one') || args[2].includes('solo') || args[2].includes('1') || args[2] == 'eight_one') {
+                    if(args.join(' ') == 'bw' || args.join(' ') == 'bedwars') {
+                        if(args.join(' ').includes('one') || args.join(' ').includes('solo') || args.join(' ').includes('1') || args[2] == 'eight_one') {
                             message.channel.send('BEDWARS_EIGHT_ONE')
-                        } else if(args[2].includes('double') || args[2].includes('duo') || args[2].includes('2') || args[2] == 'eight_two') {
+                        } else if(args.join(' ').includes('double') || args.join(' ').includes('duo') || args.join(' ').includes('2') || args[2] == 'eight_two') {
                             message.channel.send('BEDWARS_EIGHT_TWO')
-                        } else if(args[2].includes('three') || args[2].includes('trio') || args[2].includes('3') || args[2] == 'four_three') {
+                        } else if(args.join(' ').includes('three') || args.join(' ').includes('trio') || args.join(' ').includes('3') || args[2] == 'four_three') {
                             message.channel.send('BEDWARS_FOUR_THREE')
-                        } else if(args[2].includes('four') && args[2] !== 'two_four' || args[2].includes('qua') || args[2].includes('4') && args[2] !== '4v4' || args[2] == 'four_four') {
+                        } else if(args.join(' ').includes('four') && args[2] !== 'two_four' || args.join(' ').includes('qua') || args.join(' ').includes('4') && args[2] !== '4v4' || args[2] == 'four_four') {
                             message.channel.send('BEDWARS_FOUR_FOUR')
-                        } else if(args[2].includes('rank') || args[2] == '4v4' || args[2] == 'two_four') {
+                        } else if(args.join(' ').includes('rank') || args[2] == '4v4' || args[2] == 'two_four') {
                             message.channel.send('BEDWARS_TWO_FOUR')
                         } else {
                             const unknownBedwarsMode = new Discord.MessageEmbed()
