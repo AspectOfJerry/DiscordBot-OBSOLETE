@@ -406,6 +406,7 @@ module.exports = {
                         } else {
                             const unknownGame = new Discord.MessageEmbed()
                                 .setColor('#ff0000')
+                                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                 .setTitle('Error')
                                 .setDescription('Unknown Hypixel game')
                                 .addField(`bedwars/bw`, `Bedwars stats`, false)
@@ -453,6 +454,7 @@ module.exports = {
                         } else {
                             const unknownSkywarsMode = new Discord.MessageEmbed()
                                 .setColor('#ff0000')
+                                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                 .setTitle('Error')
                                 .setDescription('Unknown game mode')
                                 .addField(`solo_normal`, `Anything that includes: "one", "solo", or "1"; and "nor"`, false)
@@ -466,6 +468,7 @@ module.exports = {
                     } else {
                         const unknownGame = new Discord.MessageEmbed()
                             .setColor('#ff0000')
+                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                             .setTitle('Error')
                             .setDescription('Unknown Hypixel game')
                             .addField(`bedwars/bw`, `Bedwars stats`, false)
