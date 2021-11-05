@@ -12,10 +12,6 @@ module.exports = {
         let nasa_color_hex = "0b3d91"
         // let nasa_response
         // let nasa_response_error_code
-        // let nasa_apod_hdurl
-        // let nasa_apod_title
-        // let nasa_apod_date
-        // let nasa_apod_explanation
         // try {
         //     await fetch(`https://api.nasa.gov/planetary/apod?thumbs=true&api_key=${NASA_API_KEY}`)
         //         .then(response => response.json())
