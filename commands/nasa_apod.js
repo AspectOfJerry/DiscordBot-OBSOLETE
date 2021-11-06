@@ -46,7 +46,7 @@ module.exports = {
             return;
         }
 
-        const APOD = new Discord.MessageEmbed()
+        const NASAAPOD = new Discord.MessageEmbed()
             .setColor(`#${nasa_color_hex}`)
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Astronomy Picture of the Day (APOD) from NASA')
@@ -57,6 +57,6 @@ module.exports = {
             .setURL(`${nasa_apod_hdurl}`)
             .setFooter('Credit: NASA JPL')
 
-        message.channel.send(APOD)
+        message.channel.send(NASAAPOD)
     }
 }
