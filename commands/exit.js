@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['termial', 'term'],
     description: 'Usage: "%exit"',
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3
+        if(message.member.roles.cache.find(role => role.name == 'BotPL3')) {
             if(message.channel.name.includes("terminal")) {
                 exit(message, args, cmd, client, Discord)
             } else {
@@ -17,7 +17,7 @@ module.exports = {
             }
         }
     }
-}
+}   //module.exports    @1:1
 const exit = (message, args, cmd, client, Discord) => {
     message.guild.channels.create("📄terminal", "GUILD_TEXT")
         .then(channel => {

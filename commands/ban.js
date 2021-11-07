@@ -2,19 +2,19 @@ module.exports = {
     name: 'ban',
     description: "Usage: %ban <@user>",
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //If 'message.member' has the role 'BotPL1'
+        if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
             const target = message.mentions.users.first();
-            if(!args[0]) {  //If args[0]' is missing
+            if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('You must mention a member')
-                    .setFooter(`%ban <args[0]>\n              ^requireArgs0`)
+                    .setFooter(`%ban "<args[0]>"`)
 
                 message.channel.send(requireArgs0)
-            } else {    //if(args[0])
-                if(target) {     //If 'target' is valid
+            } else {
+                if(target) {
                     const memberTarget = message.guild.members.cache.get(target.id);
                     const userBannedBy = new Discord.MessageEmbed()
                         .setColor('#ff0000')
@@ -34,7 +34,7 @@ module.exports = {
                         .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
 
-                    if(memberTarget == message.member) { //If 'memberTarget' is equal to 'message.member'
+                    if(memberTarget == message.member) {
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#ff0000')
                             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -43,39 +43,39 @@ module.exports = {
 
                         message.channel.send(cannotUseOnSelf);
                     } else {
-                        if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {    //If 'message.member' has the role 'BotPL0'
-                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                        if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {   //message.member
+                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                 message.channel.send(targetImmune403);
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                 message.channel.send(targetHigherThanSender403)
                             } else {
-                                try {    //Try to ban 'memberTarget'
-                                    memberTarget.ban().catch(console.error);    //Ban 'memberTarget'
+                                try {
+                                    memberTarget.ban().catch(console.error);    //Ban
 
                                     message.channel.send(userBannedBy)
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
                                     message.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userBannedBy)
-                                } catch(error) { //Catch
+                                } catch(error) {    //try   @53:33
                                     const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#800080')
                                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                                         .setTitle('Error Catch')
                                         .setDescription(`An error occured while trying to ban <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 58:35\nmessage.content = ${message.content}`)
+                                        .setFooter(`An error was caught at line 58:33\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorCatch)
                                 }
                             }
-                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {   //If 'message.member' has the role 'BotPL1'
-                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {    //If 'memberTarget' has the role 'Bots'
+                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
+                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                 message.channel.send(targetImmune403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //If 'memberTarget' has the role 'BotPL0'
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                 message.channel.send(targetHigherThanSender403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) { //If 'memberTarget' has the role 'BotPL1'
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                 message.channel.send(targetHigherThanSender403)
                             } else {
                                 try {
-                                    memberTarget.ban().catch(console.error);    //Ban 'memberTarget'
+                                    memberTarget.ban().catch(console.error);    //Ban
 
                                     message.channel.send(userBannedBy)
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
@@ -93,7 +93,7 @@ module.exports = {
                             }
                         } else {
                             try {
-                                memberTarget.ban().catch(console.error);    //Ban 'memberTarget'
+                                memberTarget.ban().catch(console.error);    //Ban
 
                                 message.channel.send(userBannedBy)
                                 message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userBannedBy)
@@ -109,19 +109,19 @@ module.exports = {
                                 message.channel.send(errorCatch)
                             }
                         }
-                    }
-                } else {    //if(!target)
+                    }   //else  @45:23
+                } else {    //if(target)    @17:17
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('The targeted member is invalid')
-                        .setFooter(`%ban <args[0]>\n              ^targetError`)
+                        .setFooter(`%ban "<args[0]>"`)
 
                     message.channel.send(targetError)
                 }
-            }
-        } else {   //if(!message.member.roles.cache.find(role => role.name === 'BotPL1'))
+            }   //else  @16:15
+        } else {    //if(message.member.roles.cache.find(role => role.name === 'BotPL1'))   @5:9
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

@@ -7,6 +7,6 @@ module.exports = {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
             .setDescription('Boop!')
 
-        message.channel.send(beep);
+        message.channel.send(beep)
     }
 }

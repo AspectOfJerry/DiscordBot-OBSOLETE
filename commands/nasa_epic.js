@@ -54,6 +54,7 @@ module.exports = {
             message.channel.send(nasaResponseError)
             return;
         }
+        //Code
         const NASAEPIC = new Discord.MessageEmbed()
             .setColor(`#${nasa_color_hex}`)
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -63,7 +64,7 @@ module.exports = {
             .addField(`Date taken`, `${nasa_epic_full_date}`, true)
             .setImage(`${nasa_epic_full_image_link}`)
             .setURL(`${nasa_epic_full_image_link}`)
-            .setFooter('Credit: NASA JPL')
+            .setFooter('Credit: National Aeronautics and Space Administration Jet Propulsion Laboratory (NASA JPL)')
 
         message.channel.send(NASAEPIC)
     }

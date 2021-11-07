@@ -45,7 +45,7 @@ module.exports = {
             message.channel.send(nasaResponseError)
             return;
         }
-
+        //Code
         const NASAAPOD = new Discord.MessageEmbed()
             .setColor(`#${nasa_color_hex}`)
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -55,7 +55,7 @@ module.exports = {
             .addField(`Date taken`, `${nasa_apod_date}`, true)
             .setImage(`${nasa_apod_hdurl}`)
             .setURL(`${nasa_apod_hdurl}`)
-            .setFooter('Credit: NASA JPL')
+            .setFooter('Credit: National Aeronautics and Space Administration Jet Propulsion Laboratory (NASA JPL)')
 
         message.channel.send(NASAAPOD)
     }
