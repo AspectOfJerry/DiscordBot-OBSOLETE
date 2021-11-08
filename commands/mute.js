@@ -16,7 +16,7 @@ module.exports = {
 
                 message.channel.send(requireArgs0)
             } else {
-                if(target) { //If 'target' is valid
+                if(target) {
                     let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
                     let memberTarget = message.guild.members.cache.get(target.id);
                     const userMutedBy = new Discord.MessageEmbed()
@@ -68,10 +68,10 @@ module.exports = {
                         if(memberTarget.roles.cache.find(role => role.name == 'Muted')) {
                             message.channel.send(targetAlreadyMuted)
                         } else {
-                            if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {
+                            if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {   //message.member
+                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -80,7 +80,7 @@ module.exports = {
                                             message.channel.send(userMutedBy)
                                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
                                             return;
-                                        }   //If 'args[1]' is present
+                                        }
                                         memberTarget.roles.add(muteRole.id)
                                         message.channel.send(userMutedForBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy)
@@ -101,12 +101,12 @@ module.exports = {
                                         message.channel.send(errorCatch)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
+                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -115,7 +115,7 @@ module.exports = {
                                             message.channel.send(userMutedBy)
                                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
                                             return;
-                                        }   //If 'args[1]' is present
+                                        }
                                         memberTarget.roles.add(muteRole.id)
                                         message.channel.send(userMutedForBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy)
@@ -136,15 +136,15 @@ module.exports = {
                                         message.channel.send(errorCatch)
                                     }
                                 }
-                            }   //If the message sender does not have the "BotPL1" role
-                            else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {
+                            }
+                            else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {  //message.member
+                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
@@ -153,7 +153,7 @@ module.exports = {
                                             message.channel.send(userMutedBy)
                                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
                                             return;
-                                        }   //If 'args[1]' is present
+                                        }
                                         memberTarget.roles.add(muteRole.id)
                                         message.channel.send(userMutedForBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy)
@@ -174,16 +174,16 @@ module.exports = {
                                         message.channel.send(errorCatch)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
-                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //message.member
+                                if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')) {
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
@@ -192,7 +192,7 @@ module.exports = {
                                             message.channel.send(userMutedBy)
                                             message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
                                             return;
-                                        }   //If 'args[1]' is present
+                                        }
                                         memberTarget.roles.add(muteRole.id)
                                         message.channel.send(userMutedForBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy)
@@ -220,7 +220,7 @@ module.exports = {
                                         message.channel.send(userMutedBy)
                                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy)
                                         return;
-                                    }   //If 'args[1]' is present
+                                    }
                                     memberTarget.roles.add(muteRole.id)
                                     message.channel.send(userMutedForBy)
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy)
@@ -243,7 +243,7 @@ module.exports = {
                             }
                         }
                     }
-                } else {
+                } else {    //if(target)    @19:17
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

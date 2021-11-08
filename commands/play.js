@@ -39,13 +39,13 @@ module.exports = {
         const server_queue = queue.get(message.guild.id);
 
         if(cmd === 'play') {    //If 'cmd' equals to "play"
-            const requireArgs0 = new Discord.MessageEmbed()
+            const requireArgs = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription('You need to enter a YouTube link ot key words!')
-                .setFooter(`%play <args[0]>\n               ^requireArgs0`)
-            if(!args.length) return message.channel.send(requireArgs0);
+                .setFooter(`%play "<args>"`)
+            if(!args.length) return message.channel.send(requireArgs);
             let song = {};
 
             //If the first argument is a link. Set the song object to have two keys. Title and URl.
