@@ -11,7 +11,7 @@ module.exports = {
         let nasa_color_hex = "0b3d91"
         let nasa_response
         let nasa_response_error_code
-        let nasa_apod_hdurl
+        let nasa_apod_image
         let nasa_apod_title
         let nasa_apod_date
         let nasa_apod_explanation
@@ -26,7 +26,18 @@ module.exports = {
                     }
 
                     //Defining variables
-                    nasa_apod_hdurl = data.hdurl
+                    if(data.hdurl){
+                        nasa_apod_image = data.hdurl
+                    } else if(data.thumbnail_url){
+                        nasa_apod_image = data.thumbnail_url
+                    } else{
+                        const couldNotFetchImage = new Discord.MessageEmbed()
+                            .setColor('#ff0000')
+                            .setTitle('Error')
+                            .setDescription('An error occured while trying to get the image.')
+
+                        message.channel.send(couldNotFetchImage)
+                    }
                     nasa_apod_title = data.title
                     nasa_apod_date = data.date
                     nasa_apod_explanation = data.explanation
@@ -53,8 +64,8 @@ module.exports = {
             .setDescription(`${nasa_apod_explanation}`)
             .addField(`Title`, `${nasa_apod_title}`, true)
             .addField(`Date taken`, `${nasa_apod_date}`, true)
-            .setImage(`${nasa_apod_hdurl}`)
-            .setURL(`${nasa_apod_hdurl}`)
+            .setImage(`${nasa_apod_image}`)
+            .setURL(`${nasa_apod_image}`)
             .setFooter('Credit: National Aeronautics and Space Administration Jet Propulsion Laboratory (NASA JPL)')
 
         message.channel.send(NASAAPOD)
