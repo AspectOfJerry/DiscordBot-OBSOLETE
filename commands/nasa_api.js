@@ -36,7 +36,7 @@ module.exports = {
                         .setDescription(`A successful response has been received from the NASA-API`)
                         .setFooter('200')
 
-                        message.channel.send(nasaResponseSuccess)
+                    message.channel.send(nasaResponseSuccess)
                     //Defining variables
                     nasa_apod_hdurl = data.hdurl
                     nasa_apod_title = data.title

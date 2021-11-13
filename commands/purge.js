@@ -11,6 +11,7 @@ module.exports = {
                 } else {
                     const terminalOnly = new Discord.MessageEmbed()
                         .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('You can only use this command in #terminal')
 
