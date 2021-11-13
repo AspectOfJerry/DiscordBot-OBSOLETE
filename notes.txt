@@ -35,15 +35,16 @@ rooms                       891771269685592104
 
 Role Database Name          Role ID
 
-overlord goldfish           890075267517784116
-admin goldfish              890076599926521916
-moderator goldfish          890076942164983808
+Overlord Goldfish           890075267517784116
+Admin Goldfish              890076599926521916
+Moderator Goldfish          890076942164983808
+First Member                891752304498315276
 helper goldfish             890077443090706473
 big brain bot developer     892987961837228073
 cool bot                    891689731484680272
 best mod                    890078297436880927
 SPICY                       890127617951404102
-first member                891752304498315276
+First Member                891752304498315276
 bedwars sweat               891760978717470772
 bedwars master              891760883305422898
 jioy's step son             891662770616025118

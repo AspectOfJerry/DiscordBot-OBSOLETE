@@ -1,12 +1,12 @@
 const fetch = require('window-fetch')
 require('dotenv').config();
 
-const API_KEY = process.env.API_KEY
+const HYPIXEL_API_KEY = process.env.HYPIXEL_API_KEY
 const PLAYER_NAME = 'AspectOfJerry'
 
 module.exports = {
-    name: 'api-contact',
-    aliases: ['api', 'apicontact', 'api_contact', 'contact', 'cont', 'request', 'req', 'contact-api', 'contactapi', 'contact_api'],
+    name: 'hypixel-api',
+    aliases: ['hypixel', 'hypixelapi', 'hypixel_api'],
     description: 'Usage: ",api-contact"',
     async execute(message, args, cmd, client, Discord) {
         //Fetching from api.mojang.com
@@ -24,14 +24,14 @@ module.exports = {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Contacting Hypixel-API')
             .setDescription('Attempting to contact the Hypixel-API')
-            .addField('API_KEY owner', 'AspectOfJerry', true)
+            .addField('HYPIXEL_API_KEY owner', 'AspectOfJerry', true)
             .addField('Using', 'UUID *(8-4-4-4-12)*', true)
             .setFooter('fetching...')
 
         message.channel.send(contacting)
 
         //Fetching from api.hypixel.net
-        fetch(`https://api.hypixel.net/player?key=${API_KEY}&uuid=${PLAYER_UUID}`)
+        fetch(`https://api.hypixel.net/player?key=${HYPIXEL_API_KEY}&uuid=${PLAYER_UUID}`)
             .then(response => response.json())
             .then(data => {
                 let status = data.success
@@ -54,7 +54,7 @@ module.exports = {
                         .setDescription(`A response has been received from the Hypixel-API`)
                         .addField(`Success: `, `${status}`, true)
                         .addField(`Cause: `, `${cause}`, true)
-                        .setFooter('400, 403, 404, 422, 429, 503')
+                        .setFooter('400; 403; 404; 422; 429; 503')
 
                     message.channel.send(successFalse)
                 }
