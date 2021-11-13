@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['termial', 'term'],
     description: 'Usage: ",exit"',
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.has('908095045461225490')) {
+        if(message.member.roles.cache.has('908099650156892191') || message.member.roles.cache.has('908095045461225490')) {
             if(message.channel.name.includes("terminal")) {
                 exit(message, args, cmd, client, Discord)
             } else {
@@ -25,7 +25,7 @@ const exit = (message, args, cmd, client, Discord) => {
             channel.setParent('890070033575862303')
             setTimeout(() => {channel.setPosition(0)}, 500);
             setTimeout(() => {message.channel.delete('Reset terminal')}, 1000);
-            setTimeout(() => {channel.setPosition(3)}, 1500);
+            setTimeout(() => {channel.setPosition(2)}, 1500);
             const terminal = new Discord.MessageEmbed()
                 .setColor('#0c0c0c')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

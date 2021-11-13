@@ -1,32 +1,24 @@
 module.exports = {
     name: 'purge',
-    aliases: ['clear', 'delete', 'del', 'erase'],
+    aliases: ['clear', 'delete', 'del', 'erase', 'cls'],
     description: 'Usage: ",purge <value>"',
     async execute(message, args, cmd, client, Discord) {
-        const permissionsError = new Discord.MessageEmbed()
-            .setColor('#ff0000')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            .setTitle('Permissions error')
-            .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-        if(message.member.roles.cache.has('908099650156892191')) { //If 'message.member' has the role 'staff'
+
+        if(message.member.roles.cache.has('908099650156892191') || message.member.roles.cache.has('908095045461225490')) { //If 'message.member' has the role 'staff'
             if(cmd === 'cls') {
-                if(!message.member.roles.cache.has('908095045461225490') || !message.member.roles.cache.has('890077893739311154')) {
-                    message.channel.send(permissionsError)
+                if(message.channel.name.includes("terminal")) {
+                    cls(message, args, cmd, client, Discord)
+                    return;
                 } else {
-                    if(message.channel.name.includes("terminal")) {
-                        cls(message, args, cmd, client, Discord)
-                        return;
-                    } else {
-                        const terminalOnly = new Discord.MessageEmbed()
-                            .setColor('#ff0000')
-                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                            .setTitle('Error')
-                            .setDescription('You can only use this command in #terminal')
+                    const terminalOnly = new Discord.MessageEmbed()
+                        .setColor('#ff0000')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                        .setTitle('Error')
+                        .setDescription('You can only use this command in #terminal')
 
-                        message.channel.send(terminalOnly)
-                        return;
-                    }
+                    message.channel.send(terminalOnly)
+                    return;
                 }
             }
             const requireArgs0 = new Discord.MessageEmbed()
@@ -77,6 +69,12 @@ module.exports = {
                 }
             });
         } else {
+            const permissionsError = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                .setTitle('Permissions error')
+                .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
+
             message.channel.send(permissionsError)
         }
     }
@@ -90,6 +88,6 @@ const cls = async (message, args, cmd, client, Discord) => {
             .setTitle("goldfish bot#2895/>")
             .setDescription('Node.js v16.9.1 >_')
 
-        channel.send(terminal)
+        message.channel.send(terminal)
     })
 }
