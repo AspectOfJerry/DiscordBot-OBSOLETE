@@ -36,7 +36,7 @@ module.exports = {
 
                             message.channel.send(alreadyFriends)
                         } else {
-                            memberTarget.roles.add(friendRole.id).catch(console.error)  //Give add role
+                            memberTarget.roles.add(friendRole.id).catch(console.error)  //Add role
                             const addedFriend = new Discord.MessageEmbed()
                                 .setColor('#00ff00')
                                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
@@ -68,7 +68,7 @@ module.exports = {
                     message.channel.send(requireArgs1)
                 } else {
                     if(target) {
-                        if(!memberTarget.roles.cache.get('877984769793744896')) {    //If memberTarget does not have the 'Friends' role
+                        if(!memberTarget.roles.cache.get('877984769793744896')) {   //'Friend' role.id
                             const notFriends = new Discord.MessageEmbed()
                                 .setColor('#ff0000')
                                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
@@ -102,7 +102,7 @@ module.exports = {
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription("You must **add** or **remove** a user!")
-                    .setFooter(`%friend <args[0]> <args[1]>\n                  ^requireAddOrRemove`)
+                    .setFooter(`%friend "<args[0]>" <args[1]>`)
 
                 message.channel.send(requireAddOrRemove)
             }

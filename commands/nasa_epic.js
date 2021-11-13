@@ -14,7 +14,6 @@ module.exports = {
         let nasa_epic_identifier
         let nasa_epic_caption
         let nasa_epic_image_code
-        let nasa_epic_image
         let nasa_epic_formatted_image
         let nasa_epic_full_date
         let nasa_epic_date

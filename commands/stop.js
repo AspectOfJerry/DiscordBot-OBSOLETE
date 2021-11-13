@@ -46,7 +46,7 @@ module.exports = {
             .addField(`message.content =`, `${message.content}`, true)
             .setFooter(`[Operators only]\nTo restart the bot, go in the terminal and type in "node main.js" or "node .".`)
 
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //If 'message.member' has the role 'BotPL3'
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //message.member
             let filter = m => m.author.id === message.author.id
 
             message.channel.send(requireConfirm);
@@ -58,7 +58,7 @@ module.exports = {
             })
                 .then(message => {
                     message = message.first()
-                    if(message.content.toUpperCase() == 'YES') { //If 'message.content' to upper case is equal to "YES"
+                    if(message.content.toUpperCase() == 'YES') {    //message.content
                         let filter = m => m.author.id === message.author.id
 
                         message.channel.send(requireDoubleConfirm)
@@ -70,7 +70,7 @@ module.exports = {
                         })
                             .then(message => {
                                 message = message.first()
-                                if(message.content.toUpperCase() == 'YES') { //If 'message.content' to upper case is equal to "YES"
+                                if(message.content.toUpperCase() == 'YES') {    //message.content
                                     message.channel.send(terminatingProcess)
                                     message.channel.send(processExit)
                                     message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@611633988515266562>`)
@@ -79,14 +79,14 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-logs')).send(status)
                                     message.guild.channels.cache.find(channel => channel.name.includes('bot-team')).send(status)
                                         .then(() => process.exit(0));
-                                } else if(message.content.toUpperCase() == 'NO') { //If 'message.content' to upper case is equal to "NO"
+                                } else if(message.content.toUpperCase() == 'NO') {  //message.content
                                     message.channel.send(requestAborted);
                                 }
                             })
                             .catch(collected => {
                                 message.channel.send(requestTimeout)
                             });
-                    } else if(message.content.toUpperCase() == 'NO') { //If 'message.content' to upper case is equal to "NO"
+                    } else if(message.content.toUpperCase() == 'NO') {  //message.content
                         message.channel.send(requestAborted);
                     }
                 })

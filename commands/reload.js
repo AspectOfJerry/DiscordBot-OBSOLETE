@@ -2,21 +2,25 @@ module.exports = {
     name: 'reload',
     aliases: ['update', 'rel', 'r', 'u', 'rs'],
     description: 'Usage: "%reload"',
-    execute(message, args, cmd, client, Discord) {
+    async execute(message, args, cmd, client, Discord) {
 
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
+            const reloadingBot = new Discord.MessageEmbed()
+                .setColor('#ffff00')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                .setDescription('Reloading the bot...')
+                
             //Set the client user's activity
-            client.user.setActivity('Something', {type: 'STREAMING', url: "https://www.twitch.tv/jiooy"}).catch(console.error);
+            //client.user.setActivity('Something', {type: 'STREAMING', url: "https://www.twitch.tv/jiooy"}).catch(console.error);
             //client.user.setActivity('for "%"', { type: 'WATCHING' });
             //client.user.setActivity();
 
             const reloadedBot = new Discord.MessageEmbed()
                 .setColor('#00ff00')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('Reload')
-                .setDescription(`Reloaded the bot.`)
+                .setDescription(`Reloaded the bot!`)
 
-            message.channel.send(reloadedBot)
+            await message.channel.send(reloadedBot)
         } else {
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')

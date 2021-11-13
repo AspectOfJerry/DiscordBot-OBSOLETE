@@ -20,7 +20,7 @@ module.exports = {
         })
             .then(message => {
                 message = message.first()
-                if(message.content.toUpperCase() == 'ROCK') {    //If 'message.content' to upper case is equal to "ROCK"
+                if(message.content.toUpperCase() == 'ROCK') {   //message.content
                     const rock = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -29,7 +29,7 @@ module.exports = {
                         .setFooter(`Input: "${message}".`)
 
                     message.channel.send(rock)
-                } else if(message.content.toUpperCase() == 'PAPER') {  //If 'message.content' to upper case is equal to "PAPER"
+                } else if(message.content.toUpperCase() == 'PAPER') {   //message.content
                     const paper = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -38,7 +38,7 @@ module.exports = {
                         .setFooter(`Input: "${message}".`)
 
                     message.channel.send(paper)
-                } else if(message.content.toUpperCase() == 'SCISSORS') {   //If 'message.content' to upper case is equal to "SCISSORS"
+                } else if(message.content.toUpperCase() == 'SCISSORS') {    //message.content
                     const scissors = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

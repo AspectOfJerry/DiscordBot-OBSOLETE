@@ -4,19 +4,19 @@ module.exports = {
     description: 'Usage: "%report <@user>"',
     execute(message, args, cmd, client, Discord) {
         const target = message.mentions.users.first();
-        if(!args[0]) {    //If 'args[0]' is present
+        if(!args[0]) {
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#00ff00')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription('You must mention a member!')
-                .setFooter(`%report <args[0]> <args[1]>\n                   ^requireArgs0`)
+                .setFooter(`%report "<args[0]>" <args[1]>`)
 
             message.channel.send(requireArgs0)
         } else {
-            if(target) { //if 'target' is valid
+            if(target) {
                 const memberTarget = message.guild.members.cache.get(target.id);
-                if(args[1]) {    //If 'args[1]' is present
+                if(args[1]) {
                     const report = new Discord.MessageEmbed()
                         .setColor('00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -35,7 +35,7 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription('You must provide a reason')
-                        .setFooter(`%report <args[0]> <args[1]>\n                                       ^requireArgs1`)
+                        .setFooter(`%report <args[0]> "<args[1]>"`)
 
                     message.channel.send(requireArgs1)
                 }
@@ -45,7 +45,7 @@ module.exports = {
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Error')
                     .setDescription('The targeted member is invalid!')
-                    .setFooter(`%report <args[0]> <args[1]>\n                   ^targetError`)
+                    .setFooter(`%report "<args[0]"> <args[1]>`)
 
                 message.channel.send(targetError)
             }

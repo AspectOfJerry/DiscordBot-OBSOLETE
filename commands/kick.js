@@ -65,12 +65,12 @@ module.exports = {
                                     message.channel.send(errorCatch)
                                 }
                             }
-                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {
-                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {
+                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
+                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //membertarget
                                 message.channel.send(targetImmune403);
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403);
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403);
                             } else {
                                 try {
@@ -90,14 +90,14 @@ module.exports = {
                                     message.channel.send(errorCatch)
                                 }
                             }
-                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {
-                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {
+                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {    //Message.member
+                            if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //membertarget
                                 message.channel.send(targetImmune403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403)
                             } else {
                                 try {
@@ -135,8 +135,8 @@ module.exports = {
                                 message.channel.send(errorCatch)
                             }
                         }
-                    }
-                } else {
+                    }   //else  @44:23
+                } else {    //if(target)    @18:17
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
