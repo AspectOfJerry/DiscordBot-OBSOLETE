@@ -31,11 +31,11 @@ module.exports = {
                 .setTitle('Error')
                 .setDescription("The value must be a whole number between 1 and 25!")
                 .setFooter(`%purge "<args[0]>"`)
-            const requireArgs0Is1To25 = new Discord.MessageEmbed()
+            const requireArgs0Is1To32 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
-                .setDescription("You can only delete 1 to 25 messages at once")
+                .setDescription("You can only delete 1 to 32 messages at once")
                 .setFooter(`%purge "<args[0]>"`)
             const requireArgsGreater = new Discord.MessageEmbed()
                 .setColor('#ff0000')
@@ -46,7 +46,7 @@ module.exports = {
 
             if(!args[0]) return message.reply(requireArgs0);
             if(isNaN(args[0])) return message.reply(Args0IsNaN);
-            if(args[0] > 25) return message.reply(requireArgs0Is1To25);
+            if(args[0] > 32) return message.reply(requireArgs0Is1To32);
             if(args[0] < 1) return message.reply(requireArgsGreater);
 
             await message.channel.messages.fetch({limit: args[0]}).then(messages => {
