@@ -19,7 +19,7 @@ module.exports = {
             .setColor('#ffff00')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Contacting NASA-API')
-            .addField('NASA_API_KEY owner', 'Jerry', true)
+            .addField('NASA_API_KEY owner', 'Jerry#3756', true)
             .setFooter('fetching...')
 
         message.channel.send(contacting)

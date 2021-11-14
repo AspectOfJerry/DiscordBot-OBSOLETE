@@ -26,11 +26,11 @@ module.exports = {
                     }
 
                     //Defining variables
-                    if(data.hdurl){
+                    if(data.hdurl) {
                         nasa_apod_image = data.hdurl
-                    } else if(data.thumbnail_url){
+                    } else if(data.thumbnail_url) {
                         nasa_apod_image = data.thumbnail_url
-                    } else{
+                    } else {
                         const couldNotFetchImage = new Discord.MessageEmbed()
                             .setColor('#ff0000')
                             .setTitle('Error')

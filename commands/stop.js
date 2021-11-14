@@ -44,7 +44,7 @@ module.exports = {
             .addField(`Username:`, `<@${message.member.user.id}>`, true)
             .addField(`User ID:`, `${message.member.user.id}`, true)
             .addField(`message.content =`, `${message.content}`, true)
-            .setFooter(`[Operators only]\nTo restart the bot, go in the terminal and type in "node main.js" or "node .".`)
+            .setFooter(`[Operators] To restart the bot, go in the terminal and type "node main.js" or "node .".`)
 
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //message.member
             let filter = m => m.author.id === message.author.id
@@ -76,8 +76,15 @@ module.exports = {
                                     message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@611633988515266562>`)
                                     message.guild.channels.cache.find(channel => channel.name.includes('status')).send('<@&871382141886406707>')
                                     message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-logs')).send(status)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-team')).send(status)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@611633988515266562>`)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(status)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-command')).send(`<@611633988515266562>`)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-command')).send(status)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(`<@611633988515266562>`)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(status)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('general')).send(`<@611633988515266562>`)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(`<@611633988515266562>`)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(status)
                                         .then(() => process.exit(0));
                                 } else if(message.content.toUpperCase() == 'NO') {  //message.content
                                     message.channel.send(requestAborted);
