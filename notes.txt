@@ -1,71 +1,71 @@
-Main color HEX: #ff5eef
+//Main color HEX: #ff5eef
 
-Channel Database Name       Channel ID
+C//hannel/Parent Database Name  Channel/Parent ID
 
-welcome                     890067108287873094
+>
+welcome                         908110829617033266
 
-info                        890066669186191411
-announcements               890066866138120243
-rules                       890075062319865898
-twitch-yt-updates           890069155166957589
-suggestions                 890320312430891028
+>info                           890066669186191411
+announcements                   890066866138120243
+rules                           890075062319865898
+updates                         890069155166957589
+suggestions                     890320312430891028
+birthdays                       902653138048270396
+reaction-roles                  908108757257580614
 
-hangout                     890068418923999244
-general                     890069074745393162
-art                         890069087747731576
-flex                        890069105300881460
-media                       890069382032678932
-vent                        892120688167616562
-ez                          891578364949839893
+>hangout                        890068418923999244
+general                         908082971054067713
+art                             890069087747731576
+advertise                       893571446343868477
+flex                            890069105300881460
+leveling                        902653105441747064
+the-trash                       908106522637262869
 
-utility                     890070033575862303
-bot-commands                890069875295420496
-music                       890070084020748318
+>voice chat                     890070896130281513
+no-mic                          908084217404072026
+goldfish vc                     890071045762060308
+christmas goldfish vc           890071098622902313
+music goldfish vc               890071713411366953
+i am depressed                  891529981451198524
 
-voice chat                  890070896130281513
-no-mic                      890070972856680488
-goldfish vc                 890071045762060308
-music goldfish vc           890071713411366953
-i am depressed              891529981451198524
-
-rooms                       891771269685592104
-//Roms
-
+>utility                        890070033575862303
+music                           908084292461154304
+bot-commands                    908084326686662677
+terminal                        variable
 
 
-Role Database Name          Role ID
+//Role Database Name            Role ID
 
-Overlord Goldfish           890075267517784116
-Admin Goldfish              890076599926521916
-Moderator Goldfish          890076942164983808
-First Member                891752304498315276
-helper goldfish             890077443090706473
-big brain bot developer     892987961837228073
-cool bot                    891689731484680272
-best mod                    890078297436880927
-SPICY                       890127617951404102
-First Member                891752304498315276
-bedwars sweat               891760978717470772
-bedwars master              891760883305422898
-jioy's step son             891662770616025118
-cool                        891662119160938527
-milf                        891662512704081930
-twitch staff                890078028326109225
-vtuber                      891790597520777216
-sus steve                   891941224548818974
-green                       890324213234278421
-DJ                          891601564253454346
-goldfish                    890065114865238018
-sus                         891733299108659240
-bots                        890075775540281384
-Server Booster              891538271140737034
-room owner                  892684392353390632
-ProBot                      890063292977004605
-Hydra                       890063399084494880
-Statisfy (aka. Hystats)     890081888478322739
-Observer                    890082003263840298
-Tempo                       890671719667343451
-jioy bot                    891689731484680272
-Muted                       891751120882520083
-bedwars noob                891760643655471114
-staff                       890077893739311154
+Overlord Goldfish               890075267517784116
+Admin Goldfish                  890076599926521916
+Moderator Goldfish              890076942164983808
+First Member                    891752304498315276
+Trusted                         908088415168372746
+goldfish bot                    891689484092067863
+Youtube                         908095934272008253
+twitch                          908095980308660296
+SPICY                           890127617951404102
+milf                            908088951074607104
+dawg                            908089120172179486
+very cool                       908089251839750174
+cute                            908090051152466000
+hangout                         908090414144319510
+fit                             908090537859493888
+epic                            908090604767031337
+ooga booga                      908090746878459935
+kinda cool                      908090820677206026
+Goldfish                        890065114865238018
+DJ                              891601564253454346
+art                             908094012949418054
+digital art                     908112475344486411
+programming/coding              908095045461225490
+gamer                           908093982171598899
+minecraft                       908093914014175283
+bedwars                         908095197571866634
+music                           908095895931875389
+goldfish fighting               908489828604211230
+staff                           908099650156892191
+sus                             908087183523586098
+very sus                        908087335088955403
+Muted                           891751120882520083
+bots                            890075775540281384

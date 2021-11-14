@@ -31,6 +31,7 @@ const exit = (message, args, cmd, client, Discord) => {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle("goldfish bot#2895/>")
                 .setDescription('Node.js v16.9.1 >_')
+                .setFooter('",exit", ",cls"')
 
             channel.send(terminal)
         })
