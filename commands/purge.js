@@ -90,6 +90,7 @@ const cls = async (message, args, cmd, client, Discord) => {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle("Jerry's Bot#0182/>")
             .setDescription('Node.js v16.9.1 >_')
+            .setFooter('"%exit", "%cls"')
 
         message.channel.send(terminal)
     })
