@@ -73,8 +73,10 @@ module.exports = {
                                 if(message.content.toUpperCase() == 'YES') { //If 'message.content' to upper case is equal to "YES"
                                     message.channel.send(terminatingProcess)
                                     message.channel.send(processExit)
-                                    message.guild.channels.cache.get('890069074745393162').send(`<@611633988515266562>`)
-                                    message.guild.channels.cache.get('890069074745393162').send(status)
+                                    message.guild.channels.cache.get('908082971054067713').send(`<@611633988515266562>`)
+                                    message.guild.channels.cache.get('908082971054067713').send(status)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(`<@611633988515266562>`)
+                                    message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(status)
                                         .then(() => process.exit(0));
                                 } else if(message.content.toUpperCase() == 'NO') { //If 'message.content' to upper case is equal to "NO"
                                     message.channel.send(requestAborted);
