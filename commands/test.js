@@ -2,9 +2,11 @@ module.exports = {
     name: 'test',
     description: "Usage: ,test",
     execute(message, args, cmd, client, Discord) {
+        let memberTarget
+        let target
         try {
-            const target = message.mentions.users.first();
-            const memberTarget = message.guild.members.cache.get(target.id);
+            target = message.mentions.users.first();
+            memberTarget = message.guild.members.cache.get(target.id);
         } catch(error) {
             const noTargetNorMemberTarget = new Discord.MessageEmbed()
                 .setColor('#ffff00')
@@ -18,6 +20,5 @@ module.exports = {
         message.channel.send(testMessage)
         message.reply('There is currently nothing to test!');
         //Code
-
     }
 }

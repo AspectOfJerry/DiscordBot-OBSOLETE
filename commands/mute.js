@@ -4,7 +4,7 @@ module.exports = {
     description: 'Usage: ",mute <@user> (<duration s/m/y>)"',
     execute(message, args, cmd, client, Discord) {
         const ms = require(`ms`)
-        if(message.member.roles.cache.has('890077893739311154')) {    //If 'message.member' has the role 'staff'
+        if(message.member.roles.cache.has('908099650156892191')) {    //If 'message.member' has the role 'staff'
             const target = message.mentions.users.first();
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
