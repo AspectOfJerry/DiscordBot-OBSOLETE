@@ -3,6 +3,7 @@ module.exports = {
     aliases: ['commands', 'commandhelp', 'commandshelp'],
     description: 'Usage: ",list"',
     execute(message, args, cmd, client, Discord) {
+        message.channel.send('This command is currently being reworked')
         const list = new Discord.MessageEmbed()
             .setColor('#0000ff')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
