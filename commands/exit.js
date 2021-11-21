@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['termial', 'term'],
     description: 'Usage: ",exit"',
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.has('908099650156892191') || message.member.roles.cache.has('908095045461225490')) {
+        if(message.member.roles.cache.find(role => role.name.includes('staf')) || message.member.roles.cache.find(role => role.name.includes('prog'))) {
             if(message.channel.name.includes("terminal")) {
                 exit(message, args, cmd, client, Discord)
             } else {
@@ -16,6 +16,14 @@ module.exports = {
                 message.channel.send(terminalOnly)
                 return;
             }
+        } else {
+            const permissionsError = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                .setTitle('Permissions error')
+                .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
+
+            message.channel.send(permissionsError)
         }
     }
 }   //module.exports    @1:1
