@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['cls', 'clear', 'delete', 'del', 'erase'],
     description: 'Usage: "%purge <value>"',
     async execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3
+        if(message.member.roles.cache.find(role => role.name === 'BotPR3')) { //BotP R3
             if(cmd === 'cls') {
                 if(message.channel.name.includes("terminal")) {
                     cls(message, args, cmd, client, Discord)

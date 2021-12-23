@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['reaction1', 'rr1'],
     description: 'Usage: "%reactionrole1"',
     async execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
+        if(message.member.roles.cache.find(role => role.name === 'BotPR3')) {
             const channel = '801272037732646952'
             const MinecraftJavaRole = message.guild.roles.cache.find(role => role.name === 'Minecraft Java')
             const MinecraftBedrockRole = message.guild.roles.cache.find(role => role.name === 'Minecraft Bedrock')

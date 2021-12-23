@@ -4,7 +4,7 @@ module.exports = {
     description: 'Usage: "%reload"',
     async execute(message, args, cmd, client, Discord) {
 
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
+        if(message.member.roles.cache.find(role => role.name === 'BotPR3')) {
             const reloadingBot = new Discord.MessageEmbed()
                 .setColor('#ffff00')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

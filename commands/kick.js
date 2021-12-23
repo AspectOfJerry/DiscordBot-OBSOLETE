@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['cassetoi', 'casse-toi', 'casse_toi', 'wolacassetoi', 'wola-casse-toi', 'wola_casse_toi'],
     description: "Usage: %kick <@user>",
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {
+        if(message.member.roles.cache.find(role => role.name === 'BotPR2')) {
             const target = message.mentions.users.first()
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
@@ -42,10 +42,10 @@ module.exports = {
 
                         message.channel.send(cannotUseOnSelf)
                     } else {
-                        if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {
+                        if(message.member.roles.cache.find(role => role.name === 'BotPR0')) {
                             if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {
                                 message.channel.send(targetImmune403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {
                                 message.channel.send(targetHigherThanSender403)
                             } else {
                                 try {
@@ -65,12 +65,12 @@ module.exports = {
                                     message.channel.send(errorCatch)
                                 }
                             }
-                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
+                        } else if(message.member.roles.cache.find(role => role.name === 'BotPR1')) {    //message.member
                             if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //membertarget
                                 message.channel.send(targetImmune403);
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //membertarget
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403);
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //membertarget
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR1')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403);
                             } else {
                                 try {
@@ -90,14 +90,14 @@ module.exports = {
                                     message.channel.send(errorCatch)
                                 }
                             }
-                        } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {    //Message.member
+                        } else if(message.member.roles.cache.find(role => role.name === 'BotPR2')) {    //Message.member
                             if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //membertarget
                                 message.channel.send(targetImmune403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //membertarget
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //membertarget
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR1')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403)
-                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //membertarget
+                            } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR2')) {  //membertarget
                                 message.channel.send(targetHigherThanSender403)
                             } else {
                                 try {
