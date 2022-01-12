@@ -7,39 +7,25 @@ module.exports = {
             .setColor('#ff10f0')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Do you **really** want to stop the process?')
-            .setDescription(`**Important!**\nThis command **exits** the bot's program rendering the bot **unusable** until a bot operator manually restarts it via the terminal.\nUse the command **only** if needed!\nDo you understand and agree? You have 30 seconds to reply "yes" or "no".`)
-            .setFooter('Request pending [30s]')
-        const requireDoubleConfirm = new Discord.MessageEmbed()
-            .setColor('#ff10f0')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            .setTitle('Double confirm')
-            .setDescription(`Do you **really** want to stop the process? You have 3 seconds to reply "yes" or "no". This is the last step, make a wise decision.`)
-            .setFooter('Request pending [3s]')
+            .setDescription(`**Important!**\nThis command **exits** the bot's program rendering the bot **unusable** until a bot operator manually restarts it via the terminal.\nUse the command **only** if needed!\nDo you understand and agree? You have 15 seconds to reply "yes" or "no".`)
+            .setFooter('Request pending [15s]')
         const requestAborted = new Discord.MessageEmbed()
             .setColor('#00ff00')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Request Aborted')
-            .setDescription(`Request sender has aborted the request`)
+            .setDescription(`Request sender has cancelled the operation`)
         const requestTimeout = new Discord.MessageEmbed()
             .setColor('#800080')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            .setTitle('Timeout')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
             .setDescription("Request timeout")
-        const terminatingProcess = new Discord.MessageEmbed()
-            .setColor('#ff0000')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            .setTitle('Terminating Process')
-            .setDescription(`<@${message.member.user.id}> requested a bot shutdown. **Process will be killed after the next message!**`)
-            .setFooter('message.channel.send(processExit)\n.then(() => process.exit(0));')
         const processExit = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
             .setDescription(`Exiting process with code 0`)
-            .setFooter('.then(() => process.exit(0));')
         const status = new Discord.MessageEmbed()
             .setColor('ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            .setTitle('Bot shutdown 0x0(0)')
+            .setTitle('Bot shutdown')
             .setDescription('A user stopped the bot')
             .addField(`Username:`, `<@${message.member.user.id}>`, true)
             .addField(`User ID:`, `${message.member.user.id}`, true)
@@ -53,46 +39,27 @@ module.exports = {
 
             message.channel.awaitMessages(filter, {
                 max: 1,
-                time: 30000,
+                time: 15000,
                 errors: ['time']
             })
                 .then(message => {
                     message = message.first()
                     if(message.content.toUpperCase() == 'YES') {    //message.content
-                        let filter = m => m.author.id === message.author.id
-
-                        message.channel.send(requireDoubleConfirm)
-
-                        message.channel.awaitMessages(filter, {
-                            max: 1,
-                            time: 3000,
-                            errors: ['time']
-                        })
-                            .then(message => {
-                                message = message.first()
-                                if(message.content.toUpperCase() == 'YES') {    //message.content
-                                    message.channel.send(terminatingProcess)
-                                    message.channel.send(processExit)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@611633988515266562>`)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('status')).send('<@&871382141886406707>')
-                                    message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@611633988515266562>`)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(status)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-command')).send(`<@611633988515266562>`)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('bot-command')).send(status)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(`<@611633988515266562>`)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(status)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('general')).send(`<@611633988515266562>`)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(`<@611633988515266562>`)
-                                    message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(status)
-                                        .then(() => process.exit(0));
-                                } else if(message.content.toUpperCase() == 'NO') {  //message.content
-                                    message.channel.send(requestAborted);
-                                }
-                            })
-                            .catch(collected => {
-                                message.channel.send(requestTimeout)
-                            });
+                        message.channel.send(terminatingProcess)
+                        message.channel.send(processExit)
+                        message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@611633988515266562>`)
+                        message.guild.channels.cache.find(channel => channel.name.includes('status')).send('<@&871382141886406707>')
+                        message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
+                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@611633988515266562>`)
+                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(status)
+                        message.guild.channels.cache.find(channel => channel.name.includes('bot-command')).send(`<@611633988515266562>`)
+                        message.guild.channels.cache.find(channel => channel.name.includes('bot-command')).send(status)
+                        message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(`<@611633988515266562>`)
+                        message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(status)
+                        message.guild.channels.cache.find(channel => channel.name.includes('general')).send(`<@611633988515266562>`)
+                        message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(`<@611633988515266562>`)
+                        message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(status)
+                            .then(() => process.exit(0));
                     } else if(message.content.toUpperCase() == 'NO') {  //message.content
                         message.channel.send(requestAborted);
                     }

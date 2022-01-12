@@ -8,10 +8,8 @@ module.exports = {
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                    .setTitle('Error')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                     .setDescription('You must mention a member to unmute!')
-                    .setFooter(`%unmute "<args[0]>"`)
 
                 message.channel.send(requireArgs0)
             } else {
@@ -23,28 +21,23 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('User unmute')
                         .setDescription(`<@${memberTarget.user.id}> was unmuted by <@${message.member.user.id}>`)
-                        .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
                         .setFooter(`To mute a member, execute "%mute <@user> (<duration>)"`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Permissions error')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
                     const targetImmune403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Permissions error')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
                     const userNotMuted = new Discord.MessageEmbed()
                         .setColor('#800080')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> is not muted!`)
                     if(message.member == memberTarget) {
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#800080')
-                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                            .setTitle('Error')
+                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                             .setDescription('You cannot use this command on yourself!')
 
                         message.channel.send(cannotUseOnSelf)
@@ -174,10 +167,8 @@ module.exports = {
                 } else {
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription('The targeted member is invalid!')
-                        .setFooter(`%unmute "<args[0]>"`)
 
                     message.channel.send(targetError)
                 }

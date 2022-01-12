@@ -25,10 +25,7 @@ client.on('guildMemberAdd', guildMember => {
 
     const userJoinMessage = new Discord.MessageEmbed()
         .setColor('#006400')
-        .setTitle('User join')
         .setDescription(`<@${guildMember.user.id}> joined the server!`)
-        .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
-        .setFooter('Welcome!')
 
     guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userJoinMessage)
     guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userJoinMessage)
@@ -37,10 +34,7 @@ client.on('guildMemberAdd', guildMember => {
 client.on('guildMemberRemove', guildMember => {
     const userLeaveMessage = new Discord.MessageEmbed()
         .setColor('#8b0000')
-        .setTitle('User leave')
         .setDescription(`<@${guildMember.user.id}> left the server!`)
-        .setImage(`${guildMember.user.displayAvatarURL({dynamic: true, size: 128})}`)
-        .setFooter('Goodbye!')
 
     guildMember.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userLeaveMessage)
     guildMember.guild.channels.cache.find(channel => channel.name.includes('welcome')).send(userLeaveMessage)

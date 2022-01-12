@@ -7,10 +7,8 @@ module.exports = {
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                    .setTitle('Error')
-                    .setDescription('You must mention a member')
-                    .setFooter(`%ban "<args[0]>"`)
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                    .setDescription('You must mention a member to ban!')
 
                 message.channel.send(requireArgs0)
             } else {
@@ -21,24 +19,20 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('User ban')
                         .setDescription(`<@${memberTarget.user.id}> was banned from the guild by <@${message.member.user.id}>`)
-                        .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
                         .setFooter(`To unban a member, go to "Server Settings" > "Bans" > "Revoke Ban".`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Permissions error')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
                     const targetImmune403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Permissions error')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
 
                     if(memberTarget == message.member) {
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#ff0000')
-                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                            .setTitle('Error')
+                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                             .setDescription('You cannot use this command on yourself!')
 
                         message.channel.send(cannotUseOnSelf);
@@ -113,10 +107,8 @@ module.exports = {
                 } else {    //if(target)    @17:17
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error')
-                        .setDescription('The targeted member is invalid')
-                        .setFooter(`%ban "<args[0]>"`)
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                        .setDescription('The targeted member is invalid!')
 
                     message.channel.send(targetError)
                 }

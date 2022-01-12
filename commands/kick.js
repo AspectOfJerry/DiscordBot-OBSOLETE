@@ -8,10 +8,8 @@ module.exports = {
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                    .setTitle('Error')
-                    .setDescription('You must mention a member')
-                    .setFooter(`%kick "<args[0]>"`)
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                    .setDescription('You must mention a member to kick!')
 
                 message.channel.send(requireArgs0)
             } else {
@@ -22,22 +20,18 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('User kick')
                         .setDescription(`<@${memberTarget.user.id}> was kicked from the guild by <@${message.member.user.id}>`)
-                        .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 64})}`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Permissions error')
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
                     const targetImmune403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Permissions error')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
                     if(memberTarget == message.member) {
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#ff0000')
-                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                            .setTitle('Error')
+                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                             .setDescription('You cannot use this command on yourself!')
 
                         message.channel.send(cannotUseOnSelf)

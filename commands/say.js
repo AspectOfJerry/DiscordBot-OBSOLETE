@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'send',
-    description: 'Usage: "%send <#channel> <message>"',
+    name: 'say',
+    description: 'Usage: "%say <message>"',
     execute(message, args, cmd, client, Discord) {
         let targetChannel
         let messageSend
