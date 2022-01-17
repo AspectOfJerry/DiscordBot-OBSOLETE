@@ -3,7 +3,17 @@ module.exports = {
     aliases: ['un-mute', 'un_mute'],
     description: 'Usage: "%unmute <@user>"',
     execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPR3')) {   //message.member
+        //?
+        if(args[0] == '?') {
+            const commandHelp = new Discord.MessageEmbed()
+                .setColor('0000ff')
+                .setTitle('%unmute command help')
+                .setDescription('Usage: %unmute <@user>')
+
+            message.channel.send(commandHelp)
+        }
+        //code
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //message.member
             const target = message.mentions.users.first();
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
@@ -21,7 +31,7 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('User unmute')
                         .setDescription(`<@${memberTarget.user.id}> was unmuted by <@${message.member.user.id}>`)
-                        .setFooter(`To mute a member, execute "%mute <@user> (<duration>)"`)
+                        .setFooter(`To mute a member, use "%mute <@user> (<duration>)"`)
                     const targetHigherThanSender403 = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
@@ -45,10 +55,10 @@ module.exports = {
                         if(!memberTarget.roles.cache.find(role => role.name === 'Muted')) {
                             message.channel.send(userNotMuted)
                         } else {
-                            if(message.member.roles.cache.find(role => role.name === 'BotPR0')) {   //message.member
+                            if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {   //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -59,20 +69,18 @@ module.exports = {
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#800080')
-                                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                                            .setTitle('Error Catch')
-                                            .setDescription(`An error occured while trying to unmute <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 66:39\nmessage.content = ${message.content}`)
+                                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                                            .setDescription(`An error was caught at line 66:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorCatch)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPR1')) {    //message.member
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR1')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -83,22 +91,20 @@ module.exports = {
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#800080')
-                                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                                            .setTitle('Error Catch')
-                                            .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 90:39\nmessage.content = ${message.content}`)
+                                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                                            .setDescription(`An error was caught at line 90:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorCatch)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPR2')) {    //message.member
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) { //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR1')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR2')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
@@ -109,24 +115,22 @@ module.exports = {
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#800080')
-                                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                                            .setTitle('Error Catch')
-                                            .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 116:39\nmessage.content = ${message.content}`)
+                                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                                            .setDescription(`An error was caught at line 116:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorCatch)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPR3')) {    //message.member
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR1')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR2')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR3')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
@@ -137,10 +141,8 @@ module.exports = {
                                     } catch(error) {
                                         const errorCatch = new Discord.MessageEmbed()
                                             .setColor('#800080')
-                                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                                            .setTitle('Error Catch')
-                                            .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                            .setFooter(`An error was caught at line 144:39\nmessage.content = ${message.content}`)
+                                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                                            .setDescription(`An error was caught at line 144:39\nmessage.content = ${message.content}`)
 
                                         message.channel.send(errorCatch)
                                     }
@@ -154,10 +156,8 @@ module.exports = {
                                 } catch(error) {
                                     const errorCatch = new Discord.MessageEmbed()
                                         .setColor('#800080')
-                                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                                        .setTitle('Error')
-                                        .setDescription(`An error occured while trying to kick <@${memberTarget.user.id}>`)
-                                        .setFooter(`An error was caught at line 161:35\nmessage.content = ${message.content}`)
+                                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                                        .setDescription(`An error was caught at line 161:35\nmessage.content = ${message.content}`)
 
                                     message.channel.send(errorCatch)
                                 }
@@ -168,7 +168,7 @@ module.exports = {
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
-                        .setDescription('The targeted member is invalid!')
+                        .setDescription('Unknown user')
 
                     message.channel.send(targetError)
                 }

@@ -3,7 +3,17 @@ module.exports = {
     aliases: ['cls', 'clear', 'delete', 'del', 'erase'],
     description: 'Usage: "%purge <value>"',
     async execute(message, args, cmd, client, Discord) {
-        if(message.member.roles.cache.find(role => role.name === 'BotPR3')) { //BotP R3
+        //?
+        if(args[0] == '?') {
+            const commandHelp = new Discord.MessageEmbed()
+                .setColor('0000ff')
+                .setTitle('%purge command help')
+                .setDescription('Usage: %purge <value>')
+
+            message.channel.send(commandHelp)
+        }
+        //code
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3
             if(cmd === 'cls') {
                 if(message.channel.name.includes("terminal")) {
                     cls(message, args, cmd, client, Discord)
@@ -23,26 +33,22 @@ module.exports = {
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
-                .setDescription("You must enter a value!")
-                .setFooter(`%purge "<args[0]>"`)
+                .setDescription("You must enter the number of messages to purge!")
             const Args0IsNaN = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
-                .setDescription("The value must be a whole number between 1 and 25!")
-                .setFooter(`%purge "<args[0]>"`)
+                .setDescription("The value must be an integer between 1 and 32!")
             const requireArgs0Is1To32 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("You can only delete 1 to 32 messages at once")
-                .setFooter(`%purge "<args[0]>"`)
             const requireArgsGreater = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
-                .setDescription("You must delete at least one message!")
-                .setFooter(`%purge "<args[0]>"`)
+                .setDescription("You must delete at least 1 message!")
 
             if(!args[0]) return message.reply(requireArgs0);
             if(isNaN(args[0])) return message.reply(Args0IsNaN);
@@ -73,8 +79,7 @@ module.exports = {
         } else {
             const permissionsError = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('Permissions error')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
             message.channel.send(permissionsError)
@@ -90,7 +95,7 @@ const cls = async (message, args, cmd, client, Discord) => {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle("Jerry's Bot#0182/>")
             .setDescription('Node.js v16.9.1 >_')
-            .setFooter('"%exit", "%cls"')
+            .setFooter('%exit, %cls')
 
         message.channel.send(terminal)
     })

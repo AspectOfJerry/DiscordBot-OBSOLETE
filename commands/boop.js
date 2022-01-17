@@ -22,10 +22,8 @@ module.exports = {
             } else {
                 const targetError = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                    .setTitle('Error')
-                    .setDescription('The targeted member is invalid')
-                    .setFooter(`%boop "<args[0]>"`)
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                    .setDescription('Unknown user')
 
                 message.channel.send(targetError)
             }

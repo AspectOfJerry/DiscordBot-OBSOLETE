@@ -8,10 +8,8 @@ module.exports = {
             let friendRole = message.guild.roles.cache.get('877984769793744896');
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('Error')
-                .setDescription("You must **add** or **remove** a user")
-                .setFooter(`%friend "<args[0]>" <args[1]>`)
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                .setDescription("You must **add** or remove** a user")
 
             if(!args[0]) return message.reply(requireArgs0);
 
@@ -20,10 +18,8 @@ module.exports = {
                 if(!args[1]) {
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription("You must mention a user")
-                        .setFooter(`%friend <args[0]> "<args[1]>"`)
 
                     message.channel.send(requireArgs1)
                 } else {
@@ -47,10 +43,8 @@ module.exports = {
                     } else {
                         const targetError = new Discord.MessageEmbed()
                             .setColor('#ff0000')
-                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                            .setTitle('Error')
-                            .setDescription('The targeted member is invalid')
-                            .setFooter(`%friend <args[0]> "<args[1]>"`)
+                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                            .setDescription('Unknown member')
 
                         message.channel.send(targetError)
                     }
@@ -60,10 +54,8 @@ module.exports = {
                 if(!args[1]) {
                     const requireArgs1 = new Discord.MessageEmbed()
                         .setColor('#00ff00')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription("You must mention a user")
-                        .setFooter(`%friend <args[0]> "<args[1]>"`)
 
                     message.channel.send(requireArgs1)
                 } else {
@@ -88,10 +80,8 @@ module.exports = {
                     } else {
                         const targetError = new Discord.MessageEmbed()
                             .setColor('#ff0000')
-                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                            .setTitle('Error')
-                            .setDescription('The targeted member is invalid!')
-                            .setFooter(`%friend <args[0]> "<args[1]>"`)
+                            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                            .setDescription('Unknown member')
 
                         message.channel.send(targetError)
                     }
@@ -99,18 +89,15 @@ module.exports = {
             } else {    //else if(args[0].toUpperCase() == "REMOVE")    @58:15
                 const requireAddOrRemove = new Discord.MessageEmbed()
                     .setColor('#00ff00')
-                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                    .setTitle('Error')
+                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                     .setDescription("You must **add** or **remove** a user!")
-                    .setFooter(`%friend "<args[0]>" <args[1]>`)
 
                 message.channel.send(requireAddOrRemove)
             }
         } else {    //if(message.member.user.id == '611633988515266562')    @6:9
             const notImplementedForAll = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('Error')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription('The %friend command is only available to the server owner!')
 
             message.channel.send(notImplementedForAll)

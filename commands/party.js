@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['p'],
     description: 'Usage: "%party <@user>"',
     execute(message, args, cmd, client, Discord) {
-        message.channel.send('This command was put on hold')
+        message.channel.send('This command is temporarily disabled')
         // let target = message.mentions.users.first();
         // let inviter = message.member.user.id;
         // let partyList = [`${message.member}`]

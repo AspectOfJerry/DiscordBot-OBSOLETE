@@ -37,7 +37,7 @@ module.exports = {
                     const requireCamName = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setTitle('Error - Missing arguments')
-                        .setDescription('You need to enter a camera name (FHAZ for default)')
+                        .setDescription('You need to enter a camera name (use FHAZ for default)')
                         .addField('FHAZ', 'Front Hazard Avoidance Camera', true)
                         .addField('RHAZ', 'Rear Hazard Avoidance Camera', true)
                         .addField('MAST', 'Mast Camera', true)
@@ -60,7 +60,7 @@ module.exports = {
                         nasa_get_mrp_camera_name = 'chemcam'
                     } else if(args[1].toUpperCase() == 'MAHLI') {
                         nasa_get_mrp_camera_name = 'mahli'
-                    } else if(args[1].toUpperCase() == 'MARID') {
+                    } else if(args[1].toUpperCase() == 'MARDI') {
                         nasa_get_mrp_camera_name = 'mardi'
                     } else if(args[1].toUpperCase() == 'NAVCAM') {
                         nasa_get_mrp_camera_name = 'navcam'
@@ -72,7 +72,7 @@ module.exports = {
                         const requireValidCamName = new Discord.MessageEmbed()
                             .setColor('#ff0000')
                             .setTitle('Error - Invalid arguments')
-                            .setDescription('You need to enter a camera name (FHAZ for default)')
+                            .setDescription('You need to enter a camera name (use FHAZ for default)')
                             .addField('FHAZ', 'Front Hazard Avoidance Camera', true)
                             .addField('RHAZ', 'Rear Hazard Avoidance Camera', true)
                             .addField('MAST', 'Mast Camera', true)

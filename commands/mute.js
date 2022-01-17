@@ -3,14 +3,24 @@ module.exports = {
     aliases: ['tempmute', 'temp-mute', 'temp_mute'],
     description: 'Usage: "%mute <@user> (<duration s/m/y>)"',
     execute(message, args, cmd, client, Discord) {
+        //?
+        if(args[0] == '?') {
+            const commandHelp = new Discord.MessageEmbed()
+                .setColor('0000ff')
+                .setTitle('%mute command help')
+                .setDescription('Usage: "mute <@user> (<duration>)')
+
+            message.channel.send(commandHelp)
+        }
+        //code
         const ms = require(`ms`)
-        if(message.member.roles.cache.find(role => role.name === 'BotPR3')) {
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
             const target = message.mentions.users.first();
             if(!args[0]) {
                 const requireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
-                    .setDescription('You must mention a member to mute!')
+                    .setDescription('You must mention a user to mute!')
 
                 message.channel.send(requireArgs0)
             } else {
@@ -59,10 +69,10 @@ module.exports = {
                         if(memberTarget.roles.cache.find(role => role.name == 'Muted')) {
                             message.channel.send(targetAlreadyMuted)
                         } else {
-                            if(message.member.roles.cache.find(role => role.name === 'BotPR0')) {   //message.member
+                            if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {   //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -92,12 +102,12 @@ module.exports = {
                                         message.channel.send(errorCatch)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPR1')) {    //message.member
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR1')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
                                 } else {
                                     try {
@@ -128,14 +138,14 @@ module.exports = {
                                     }
                                 }
                             }
-                            else if(message.member.roles.cache.find(role => role.name === 'BotPR2')) {  //message.member
+                            else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {  //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR1')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403);
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR2')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
@@ -165,16 +175,16 @@ module.exports = {
                                         message.channel.send(errorCatch)
                                     }
                                 }
-                            } else if(message.member.roles.cache.find(role => role.name === 'BotPR3')) {    //message.member
+                            } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
                                     message.channel.send(targetImmune403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR0')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR1')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR2')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
-                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPR3')) {  //memberTarget
+                                } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')) {  //memberTarget
                                     message.channel.send(targetHigherThanSender403)
                                 } else {
                                     try {
@@ -238,7 +248,7 @@ module.exports = {
                     const targetError = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
-                        .setDescription('The targeted member is invalid.')
+                        .setDescription('Unknown user')
 
                     message.channel.send(targetError)
                 }

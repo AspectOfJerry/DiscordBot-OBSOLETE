@@ -11,9 +11,8 @@ module.exports = {
             .setFooter('Request pending [15s]')
         const requestAborted = new Discord.MessageEmbed()
             .setColor('#00ff00')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            .setTitle('Request Aborted')
-            .setDescription(`Request sender has cancelled the operation`)
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+            .setDescription(`Request aborted`)
         const requestTimeout = new Discord.MessageEmbed()
             .setColor('#800080')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
@@ -28,11 +27,11 @@ module.exports = {
             .setTitle('Bot shutdown')
             .setDescription('A user stopped the bot')
             .addField(`Username:`, `<@${message.member.user.id}>`, true)
+            .addField(`User Discriminator:`, `<@${message.member.user.id}>`, true)
             .addField(`User ID:`, `${message.member.user.id}`, true)
             .addField(`message.content =`, `${message.content}`, true)
-            .setFooter(`[Operators] To restart the bot, go in the terminal and type "node main.js" or "node .".`)
 
-        if(message.member.roles.cache.find(role => role.name === 'BotPR3')) {   //message.member
+        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //message.member
             let filter = m => m.author.id === message.author.id
 
             message.channel.send(requireConfirm);
