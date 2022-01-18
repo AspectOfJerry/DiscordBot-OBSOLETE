@@ -16,6 +16,13 @@ module.exports = {
                 message.channel.send(terminalOnly)
                 return;
             }
+        } else {
+            const permissionsError = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
+
+            message.channel.send(permissionsError)
         }
     }
 }   //module.exports    @1:1
@@ -25,14 +32,14 @@ const exit = (message, args, cmd, client, Discord) => {
             channel.setParent('631939549332897843')
             setTimeout(() => {channel.setPosition(0)}, 500);
             setTimeout(() => {message.channel.delete('Reset terminal')}, 1000);
-            setTimeout(() => {channel.setPosition(5)}, 1500);
+            setTimeout(() => {channel.setPosition(6)}, 1500);
             const terminal = new Discord.MessageEmbed()
                 .setColor('#0c0c0c')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle("Jerry's Bot#0182/>")
                 .setDescription('Node.js v16.9.1 >_')
-                .setFooter('"%exit", "%cls"')
+                .setFooter('%exit, %cls')
 
-            message.channel.send(terminal)
+            channel.send(terminal)
         })
 }
