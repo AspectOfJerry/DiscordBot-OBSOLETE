@@ -194,9 +194,8 @@ const stop_song = (message, server_queue, voice_channel, Discord) => {
         voice_channel.leave();
         const leave = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            .setTitle('Leave')
-            .setDescription('Left the voice channel!')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+            .setDescription('I left the voice channel!')
 
         message.channel.send(leave)
     } catch {
@@ -217,9 +216,8 @@ const join = (message, voice_channel, Discord) => {
         voice_channel.join()
         const join = new Discord.MessageEmbed()
             .setColor('#00ff00')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            .setTitle('Join')
-            .setDescription('Joined the voice channel!')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+            .setDescription('I joined the voice channel!')
 
         message.channel.send(join)
     } catch(error) {

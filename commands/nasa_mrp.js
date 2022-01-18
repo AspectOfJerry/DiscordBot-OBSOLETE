@@ -31,7 +31,7 @@ module.exports = {
 
             message.channel.send(requireValidRoverName)
         } else {
-            if(args[0].toLowerCase().contains('curio')) {
+            if(args[0].toLowerCase().includes('curio')) {
                 nasa_get_mrp_rover_name = 'curiosity'
                 if(!args[1]) {
                     const requireCamName = new Discord.MessageEmbed()
@@ -112,7 +112,7 @@ module.exports = {
 
                     message.channel.send(NASAMRP)
                 }
-            } else if(args[0].toLowerCase().contains('oppo')) {
+            } else if(args[0].toLowerCase().includes('oppo')) {
                 nasa_get_mrp_rover_name = 'opportunity'
                 if(!args[1]) {
                     const requireCamName = new Discord.MessageEmbed()
@@ -193,7 +193,7 @@ module.exports = {
 
                     message.channel.send(NASAMRP)
                 }
-            } else if(args[0].toLowerCase().contains('spir')) {
+            } else if(args[0].toLowerCase().includes('spir')) {
                 nasa_get_mrp_rover_name = 'spirit'
                 if(!args[1]) {
                     const requireCamName = new Discord.MessageEmbed()
@@ -247,7 +247,8 @@ module.exports = {
 
                         message.channel.send(requireValidCamName)
                     }
-
+                    message.channel.send('Interuption. This command incomplete/unstable, therefore the rest of the command is disabled.') 
+                    return;
                     fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${nasa_get_mrp_rover_name}/?api_key=${NASA_API_KEY}`)
                         .then(response => response.json())
                         .then(data => {

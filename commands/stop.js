@@ -27,7 +27,7 @@ module.exports = {
             .setTitle('Bot shutdown')
             .setDescription('A user stopped the bot')
             .addField(`Username:`, `<@${message.member.user.id}>`, true)
-            .addField(`User Discriminator:`, `<@${message.member.user.id}>`, true)
+            .addField(`User Discriminator:`, `#${message.member.user.discriminator}`, true)
             .addField(`User ID:`, `${message.member.user.id}`, true)
             .addField(`message.content =`, `${message.content}`, true)
 
@@ -44,10 +44,9 @@ module.exports = {
                 .then(message => {
                     message = message.first()
                     if(message.content.toUpperCase() == 'YES') {    //message.content
-                        message.channel.send(terminatingProcess)
                         message.channel.send(processExit)
                         message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@611633988515266562>`)
-                        message.guild.channels.cache.find(channel => channel.name.includes('status')).send('<@&871382141886406707>')
+                        //message.guild.channels.cache.find(channel => channel.name.includes('status')).send('<@&871382141886406707>')
                         message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@611633988515266562>`)
                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(status)
@@ -58,8 +57,12 @@ module.exports = {
                         message.guild.channels.cache.find(channel => channel.name.includes('general')).send(`<@611633988515266562>`)
                         message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(`<@611633988515266562>`)
                         message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(status)
+                        message.channel.send(`<@611633988515266562>`)
+                        message.channel.send(status)
                             .then(() => process.exit(0));
                     } else if(message.content.toUpperCase() == 'NO') {  //message.content
+                        message.channel.send(requestAborted);
+                    } else if(message.content.toUpperCase() !== 'YES' || message.content.toUpperCase() !== 'NO') {
                         message.channel.send(requestAborted);
                     }
                 })
