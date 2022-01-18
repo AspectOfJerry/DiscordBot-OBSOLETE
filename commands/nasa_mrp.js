@@ -85,7 +85,8 @@ module.exports = {
 
                         message.channel.send(requireValidCamName)
                     }
-
+                    message.channel.send('Interuption. This command incomplete/unstable, therefore the rest of the command is disabled.')
+                    return;
                     fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${nasa_get_mrp_rover_name}/?api_key=${NASA_API_KEY}`)
                         .then(response => response.json())
                         .then(data => {
@@ -166,7 +167,8 @@ module.exports = {
 
                         message.channel.send(requireValidCamName)
                     }
-
+                    message.channel.send('Interuption. This command incomplete/unstable, therefore the rest of the command is disabled.')
+                    return;
                     fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${nasa_get_mrp_rover_name}/?api_key=${NASA_API_KEY}`)
                         .then(response => response.json())
                         .then(data => {
