@@ -1,6 +1,5 @@
 module.exports = {
     name: 'kick',
-    aliases: ['cassetoi', 'casse-toi', 'casse_toi', 'wolacassetoi', 'wola-casse-toi', 'wola_casse_toi'],
     description: "Usage: %kick <@user>",
     execute(message, args, cmd, client, Discord) {
         //?
@@ -8,11 +7,15 @@ module.exports = {
             const commandHelp = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setTitle('%kick command help')
-                .setDescription('Usage: %kick <@user>')
+                .setDescription('This command kick the mentioned member form the guild.')
+                .addField(`Usage`, `%kick <@user>`, true)
+                .setFooter('This command is not case-sensitive.')
 
             message.channel.send(commandHelp)
+            return;
         }
         //code
+        
         if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {
             const target = message.mentions.users.first()
             if(!args[0]) {

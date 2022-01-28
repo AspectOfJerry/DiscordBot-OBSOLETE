@@ -1,6 +1,6 @@
 module.exports = {
     name: 'mute',
-    aliases: ['tempmute', 'temp-mute', 'temp_mute'],
+    aliases: ['tempmute', 'temp-mute', 'temp_mute', 'shutup', 'shut-up', 'shut_up'],
     description: 'Usage: "%mute <@user> (<duration s/m/y>)"',
     execute(message, args, cmd, client, Discord) {
         //?
@@ -8,11 +8,16 @@ module.exports = {
             const commandHelp = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setTitle('%mute command help')
-                .setDescription('Usage: "mute <@user> (<duration>)')
+                .setDescription('This command mutes the mentioned user permanently is a duration is not provided.')
+                .addField(`Usage`, `%mute <@user> (<duration>)`)
+                .addField(`Aliases`, "`tempmute`, `temp-mute`, `temp_mute`, `shutup`, `shut-up`, `shut_up`")
+                .setFooter('This command is case-sensitive. (to confirm. lol)')
 
             message.channel.send(commandHelp)
+            return;
         }
         //code
+
         const ms = require(`ms`)
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
             const target = message.mentions.users.first();

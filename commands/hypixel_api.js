@@ -7,8 +7,23 @@ const PLAYER_NAME = 'AspectOfJerry'
 module.exports = {
     name: 'hypixel-api',
     aliases: ['hypixel', 'hypixelapi', 'hypixel_api'],
-    description: 'Usage: "%api-contact"',
+    description: 'Usage: "%hypixel-api"',
     async execute(message, args, cmd, client, Discord) {
+        //?
+        if(args[0] == '?') {
+            const commandHelp = new Discord.MessageEmbed()
+                .setColor('0000ff')
+                .setTitle('%hypixel-api command help')
+                .setDescription('This comamnd contacts the Hypixel API and waits for a response.')
+                .addField(`Usage`, `%hypixel-api`, true)
+                .addField(`Aliases`, "`hypixel`, `hypixelapi`, `hypixel_api`", true)
+                .setFooter('This command is not case-sensitive.')
+
+            message.channel.send(commandHelp)
+            return;
+        }
+        //code
+        
         //Fetching from api.mojang.com
         let PLAYER_UUID
         let mojang_response
@@ -39,10 +54,9 @@ module.exports = {
                     const successTrue = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Reading response')
-                        .setDescription(`A response has been received from the Hypixel-API`)
+                        .setTitle('Response')
+                        .setDescription(`A response has been received from the Hypixel-API!`)
                         .addField(`Success: `, `${status}`, true)
-                        .setFooter('200')
 
                     message.channel.send(successTrue)
                 } else if(status == false) {
@@ -50,11 +64,10 @@ module.exports = {
                     const successFalse = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Reading response')
+                        .setTitle('Response')
                         .setDescription(`A response has been received from the Hypixel-API`)
                         .addField(`Success: `, `${status}`, true)
                         .addField(`Cause: `, `${cause}`, true)
-                        .setFooter('400; 403; 404; 422; 429; 503')
 
                     message.channel.send(successFalse)
                 }

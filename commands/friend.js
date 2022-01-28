@@ -12,6 +12,7 @@ module.exports = {
                 .setDescription("You must **add** or remove** a user")
 
             if(!args[0]) return message.reply(requireArgs0);
+            
 
             if(args[0].toUpperCase() == "ADD") {
                 const memberTarget = message.guild.members.cache.get(target.id);
@@ -98,7 +99,7 @@ module.exports = {
             const notImplementedForAll = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
-                .setDescription('The %friend command is only available to the server owner!')
+                .setDescription('This command is only available for the guild owner.')
 
             message.channel.send(notImplementedForAll)
         }

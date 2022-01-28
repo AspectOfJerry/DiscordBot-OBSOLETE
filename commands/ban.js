@@ -9,10 +9,12 @@ module.exports = {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%ban command help')
                 .setDescription('Usage: %ban <@user>')
+                .setFooter('This command is not case-sensitive.')
 
             message.channel.send(commandHelp)
             return;
         }
+        
         //code
         if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
             const target = message.mentions.users.first();

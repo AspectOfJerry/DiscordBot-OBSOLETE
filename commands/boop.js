@@ -2,6 +2,19 @@ module.exports = {
     name: 'boop',
     description: 'Usage: "%boop <@user>"',
     execute(message, args, cmd, client, Discord) {
+        //?
+        if(args[0] == '?') {
+            const comamndHelp = new Discord.MessageEmbed()
+                .setColor('0000ff')
+                .setTitle('%boop command help')
+                .setDescription('Usage: %boop (<@user>)')
+                .setFooter('This command is not case-sensitive.')
+                
+            message.channel.send(comamndHelp)
+            return;
+        }
+        //code
+
         const target = message.mentions.users.first();
         if(!args[0]) {
             const boopSelf = new Discord.MessageEmbed()

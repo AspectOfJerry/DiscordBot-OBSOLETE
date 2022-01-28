@@ -7,17 +7,31 @@ const queue = new Map();
 module.exports = {
     name: 'play',
     aliases: ['skip', 'leave', 'join'],
-    cooldown: 5,
     description: 'Usage: "%play <URL/keyWords>"',
     async execute(message, args, cmd, client, Discord) {
+        //?
+        if(args[0] == '?') {
+            const commandHelp = new Discord.MessageEmbed()
+                .setColor('0000ff')
+                .setTitle('%play command help')
+                .setDescription('This command finds and plays a sound only version of the specified URL or keywords.')
+                .addField(`Usage`, `%play <URL/keyWords>`)
+                .addField(`Related commands`, "`skip` (Skips to the next object in the queue), `join` (Joins the voice channel), `leave` (Leave the voice channel)")
+                .setFooter('This command uses ytdlCore and ytSearch.')
+
+            message.channel.send(commandHelp)
+            return;
+        }
+        //code
+
         const antiRickRoll = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('[Rick Roll Detection Module]')
-            .setDescription('Failed to execute command! Unauthorized Action.')
+            .setDescription('Failed to execute the command! Forbidden action.')
             .addField('Reason: ', 'Rick Roll', true)
             .addField('Action: ', `${message.content}`, true)
-            .setFooter(`An action was blocked by the [Rick Roll Detection Module]`)
+            .setFooter(`An action was intercepted and blocked by the Rick Roll Detection Module`)
         const permissionsError = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -41,10 +55,8 @@ module.exports = {
         if(cmd === 'play') {    //If 'cmd' equals to "play"
             const requireArgs = new Discord.MessageEmbed()
                 .setColor('#ff0000')
-                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('Error')
-                .setDescription('You need to enter a YouTube link ot key words!')
-                .setFooter(`%play "<args>"`)
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                .setDescription('You need to enter a YouTube link or key words for the search!')
             if(!args.length) return message.channel.send(requireArgs);
             let song = {};
 
