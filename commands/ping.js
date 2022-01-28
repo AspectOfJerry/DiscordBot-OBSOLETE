@@ -9,7 +9,7 @@ module.exports = {
                 .setColor('0000ff')
                 .setTitle('%ping command help')
                 .setDescription("This command displays the bot's latency and the websocket server latency in milliseconds.")
-                .addField(`Usage`, `%ping`, true)
+                .addField(`Usage`, "`%ping`", true)
                 .addField(`Aliases`, "`latency`", true)
                 .setFooter('This command is not case-sensitive.')
 
@@ -17,7 +17,6 @@ module.exports = {
             return;
         }
         //code
-
         let pong;
         const sendingPing = new Discord.MessageEmbed()
             .setColor('#ffff00')

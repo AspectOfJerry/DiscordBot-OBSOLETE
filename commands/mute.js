@@ -9,15 +9,14 @@ module.exports = {
                 .setColor('0000ff')
                 .setTitle('%mute command help')
                 .setDescription('This command mutes the mentioned user permanently is a duration is not provided.')
-                .addField(`Usage`, `%mute <@user> (<duration>)`)
-                .addField(`Aliases`, "`tempmute`, `temp-mute`, `temp_mute`, `shutup`, `shut-up`, `shut_up`")
+                .addField(`Usage`, "`%mute` `<@user>` (`<duration>`)", false)
+                .addField(`Aliases`, "`tempmute`, `temp-mute`, `temp_mute`, `shutup`, `shut-up`, `shut_up`", false)
                 .setFooter('This command is case-sensitive. (to confirm. lol)')
 
             message.channel.send(commandHelp)
             return;
         }
         //code
-
         const ms = require(`ms`)
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
             const target = message.mentions.users.first();

@@ -11,15 +11,11 @@ module.exports = {
         let nasa_color_hex = "0b3d91"
         let nasa_response
         let nasa_response_error_code
-        let nasa_apod_hdurl
-        let nasa_apod_title
-        let nasa_apod_date
-        let nasa_apod_explanation
         const contacting = new Discord.MessageEmbed()
             .setColor('#ffff00')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Contacting NASA-API')
-            .addField('NASA_API_KEY owner', 'Jerry#3756', true)
+            .addField('NASA_API_KEY owner', '<@611633988515266562>', true)
             .setFooter('fetching...')
 
         message.channel.send(contacting)
@@ -32,16 +28,10 @@ module.exports = {
                     const nasaResponseSuccess = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Reading response')
+                        .setTitle('Response')
                         .setDescription(`A successful response has been received from the NASA-API`)
-                        .setFooter('200')
 
                     message.channel.send(nasaResponseSuccess)
-                    //Defining variables
-                    nasa_apod_hdurl = data.hdurl
-                    nasa_apod_title = data.title
-                    nasa_apod_date = data.date
-                    nasa_apod_explanation = data.explanation
                 } else {
                     nasa_response_error_code = data.error.code
                     const nasaResponseError = new Discord.MessageEmbed()
@@ -50,7 +40,6 @@ module.exports = {
                         .setTitle('Error')
                         .setDescription("An error occured while fetching information from `api.nasa.gov`")
                         .addField('Code:', `${nasa_response_error_code}`)
-                        .setFooter('4xx')
 
                     message.channel.send(nasaResponseError)
                     return;

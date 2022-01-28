@@ -8,14 +8,14 @@ module.exports = {
             const commandHelp = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setTitle('%exit command help')
-                .setDescription('Usage: %exit')
+                .setDescription('This command resets the terminal (can only be used in the terminal channel).')
+                .addField(`Usage`, "`%exit`", true)
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(commandHelp)
             return;
         }
         //code
-
         if(message.member.roles.cache.find(role => role.name == 'BotPL3')) {
             if(message.channel.name.includes("terminal")) {
                 exit(message, args, cmd, client, Discord)

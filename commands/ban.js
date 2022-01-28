@@ -8,13 +8,13 @@ module.exports = {
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%ban command help')
-                .setDescription('Usage: %ban <@user>')
+                .setDescription('This command bans the mentionned user from the guild.')
+                .addField(`Usage`, "`%ban` `<@user>`", true)
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(commandHelp)
             return;
         }
-        
         //code
         if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
             const target = message.mentions.users.first();

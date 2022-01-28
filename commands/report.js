@@ -1,6 +1,6 @@
 module.exports = {
     name: 'report',
-    aliases: ['wdr', 'wdreport', 'watchdogreport', 'chatreport', 'flag'],
+    aliases: ['wdr', 'wdreport', 'watchdogreport', 'chatreport', 'ct'],
     description: 'Usage: "%report <@user> <reason>"',
     execute(message, args, cmd, client, Discord) {
         //?
@@ -8,9 +8,12 @@ module.exports = {
             const commandHelp = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setTitle('%report command help')
-                .setDescription('Usage: %report <@user> <reason>')
+                .setDescription('This command reports the mentioned user to staff (must include the reason).')
+                .addField(`Usage`, "`%report` `<@user>` `<reason>`", false)
+                .addField(`Aliases`, "`wdr`, `wdreport`, `watchdogreport`, `chatreport`, `ct`")
 
             message.channel.send(commandHelp)
+            return;
         }
         //code
         const target = message.mentions.users.first();
@@ -25,6 +28,12 @@ module.exports = {
             if(target) {
                 const memberTarget = message.guild.members.cache.get(target.id);
                 if(args[1]) {
+                    const reportSubmitted = new Discord.MessageEmbed()
+                        .setColor('00ff00')
+                        .setDescription(`<@${message.member.user.id}> reported <@${memberTarget.user.id}>`)
+                        .setFooter('Thanks for your report. We understand your concerns and it will be reviewed as soon as possible.')
+
+                        message.channel.send(reportSubmitted)
                     const report = new Discord.MessageEmbed()
                         .setColor('00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -33,8 +42,8 @@ module.exports = {
                         .addField(`Reason:`, `${args.join(" ")}`, false)
                         .setFooter('Thanks for your report. We understand your concerns and it will be reviewed as soon as possible.')
 
-                    message.channel.send(report)
-                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@&697914535863910561>, <@&642107004076163103>`)
+                    message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(`<@&697914535863910561>`)
+                    message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(report)
                     message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(report)
                 } else {
                     const requireArgs1 = new Discord.MessageEmbed()

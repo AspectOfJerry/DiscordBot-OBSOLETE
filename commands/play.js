@@ -15,7 +15,7 @@ module.exports = {
                 .setColor('0000ff')
                 .setTitle('%play command help')
                 .setDescription('This command finds and plays a sound only version of the specified URL or keywords.')
-                .addField(`Usage`, `%play <URL/keyWords>`)
+                .addField(`Usage`, "`%play` `<URL/keyWords>`")
                 .addField(`Related commands`, "`skip` (Skips to the next object in the queue), `join` (Joins the voice channel), `leave` (Leave the voice channel)")
                 .setFooter('This command uses ytdlCore and ytSearch.')
 
@@ -23,7 +23,6 @@ module.exports = {
             return;
         }
         //code
-
         const antiRickRoll = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

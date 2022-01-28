@@ -14,7 +14,6 @@ module.exports = {
             return;
         }
         //code
-
         const target = message.mentions.users.first();
         if(!args[0]) {
             const boopSelf = new Discord.MessageEmbed()

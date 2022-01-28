@@ -8,9 +8,14 @@ module.exports = {
             const commandHelp = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setTitle('%purge command help')
-                .setDescription('Usage: %purge <value>')
+                .setDescription('This comand purges a certain amout of messages (1 to 32).')
+                .addField(`Usage`, "`%purge` `<int>`", true)
+                .addField(`Aliases`, "`clear`, `delete`, `del`, `erase`", true)
+                .addField(`Realted commands`, "`cls` (Clear the terminal and can onlyt be used in the terminal channel)", false)
+                .setFooter('This command is not case-sensitive.')
 
             message.channel.send(commandHelp)
+            return;
         }
         //code
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) { //BotP R3

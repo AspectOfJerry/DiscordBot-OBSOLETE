@@ -15,7 +15,7 @@ module.exports = {
                 .setColor('0000ff')
                 .setTitle('%hypixel-api command help')
                 .setDescription('This comamnd contacts the Hypixel API and waits for a response.')
-                .addField(`Usage`, `%hypixel-api`, true)
+                .addField(`Usage`, "`%hypixel-api`", true)
                 .addField(`Aliases`, "`hypixel`, `hypixelapi`, `hypixel_api`", true)
                 .setFooter('This command is not case-sensitive.')
 
@@ -23,7 +23,7 @@ module.exports = {
             return;
         }
         //code
-        
+    
         //Fetching from api.mojang.com
         let PLAYER_UUID
         let mojang_response
@@ -39,7 +39,7 @@ module.exports = {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Contacting Hypixel-API')
             .setDescription('Attempting to contact the Hypixel-API')
-            .addField('HYPIXEL_API_KEY owner', 'AspectOfJerry', true)
+            .addField('HYPIXEL_API_KEY owner', '<@611633988515266562> (AspectOfJerry)', true)
             .addField('Using', 'UUID *(8-4-4-4-12)*', true)
             .setFooter('fetching...')
 

@@ -1,8 +1,21 @@
 module.exports = {
     name: 'stop',
-    aliases: ['altf4', 'alt-f4', 'alt_f4', 'terminate', 'shutdown', 'shut-down', 'shut_down', 'term'],
+    aliases: ['altf4', 'alt-f4', 'alt_f4', 'terminate', 'shutdown', 'shut-down', 'shut_down'],
     description: 'Usage: "%stop"',
     execute(message, args, cmd, client, Discord) {
+        if(args[0] == '?') {
+            const commandHelp = new Discord.MessageEmbed()
+                .setColor('0000ff')
+                .setTitle('%stop command help')
+                .setDescription('This command stops the bot.')
+                .addField(`Usage`, "`%stop`", false)
+                .addField(`Aliases`, "`altf4`, `alt-f4`, `alt_f4`, `terminate`, `shutdown`, `shut-down`, `shut_down`", false)
+                .addField('This command is not case-sensitive')
+
+            message.channel.send(commandHelp)
+            return;
+        }
+        //code
         const requireConfirm = new Discord.MessageEmbed()
             .setColor('#ff10f0')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)

@@ -8,9 +8,13 @@ module.exports = {
             const commandHelp = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setTitle('%unmute command help')
-                .setDescription('Usage: %unmute <@user>')
+                .setDescription('This command unmutes a muted member.')
+                .addField(`Usage`, "`%unmute` `<@user>`", true)
+                .addField(`Aliases`, "`un-mute`, `un_mute`", true)
+                .setFooter('This command is not case-sensitive.')
 
             message.channel.send(commandHelp)
+            return;
         }
         //code
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //message.member
