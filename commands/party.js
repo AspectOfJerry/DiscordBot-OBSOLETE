@@ -5,22 +5,61 @@ module.exports = {
     execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const commandHelp = new Discord.MessageEmbed()
-                .setColor('0000ff')
-                .setTitle('%party command help')
-                .setdescription('%party <action> <@user>')
-                .addField('invite', 'Invited a played in the party')
-                .setFooter('This command is not case-sensitive.')
+            const helpCommand = new Discord.MessageEmbed()
+            //     .setColor('0000ff')
+            //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+            //     .setTitle('')
+            //     .setFooter('')
 
-            message.channel.send(commandHelp)
+            // message.channel.send(helpCommand)
+            message.reply('The help feature is under development for this command.')
             return;
         }
-        //code
+        //Declairing variables
+        const errorSenderNotInVC = new Discord.MessageEmbed()
+            .setColor('ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+            .setDescription('You must be in a voice channel to perform this command.')
+        const errorTargetNotInVC = new Discord.MessageEmbed()
+            .setColor('ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+            .setDescription('The targeted member must be in a voice channel.')
+        const sendPartyInvite = new Discord.MessageEmbed()
+            .setColor('00fff00')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+            .setDescription('')
+        const sendAddedInParty = new Discord.MessageEmbed()
+            .setColor('ff0000')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+            .setDescription('')
 
-        message.channel.send('This command is currently under development.'); return;
+
+        //Code
+        message.reply('This command is currently under development.'); return;
         let target = message.mentions.users.first();
         let inviter = message.member.user.id;
 
+        if(!target){
+            const targetError = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                .setDescription('Unknown member')
 
+            message.channel.send(targetError)
+            return;
+        }
+        if(!args[0]) {
+            message.channel.send('You must specify an action to perform.')
+            return;
+        }
+
+        if(args[1].toUpperCase() == 'ADD') {
+            if(!inviter.voiceChannel) {
+                message.channel.send(errorJoinVoiceChannel)
+            }
+        }
+        
+
+        const memberTarget = message.guild.members.cache.get(target.id);
     }
 }

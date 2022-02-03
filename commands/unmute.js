@@ -7,6 +7,7 @@ module.exports = {
         if(args[0] == '?') {
             const commandHelp = new Discord.MessageEmbed()
                 .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%unmute command help')
                 .setDescription('This command unmutes a muted member.')
                 .addField(`Usage`, "`%unmute` `<@user>`", true)
@@ -16,7 +17,6 @@ module.exports = {
             message.channel.send(commandHelp)
             return;
         }
-        //code
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //message.member
             const target = message.mentions.users.first();
             if(!args[0]) {
@@ -28,6 +28,7 @@ module.exports = {
                 message.channel.send(requireArgs0)
             } else {
                 if(target) {
+                    //Declaring variables
                     let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
                     let memberTarget = message.guild.members.cache.get(target.id);
                     const userUnmutedBy = new Discord.MessageEmbed()
@@ -36,11 +37,11 @@ module.exports = {
                         .setTitle('User unmute')
                         .setDescription(`<@${memberTarget.user.id}> was unmuted by <@${message.member.user.id}>`)
                         .setFooter(`To mute a member, use "%mute <@user> (<duration>)"`)
-                    const targetHigherThanSender403 = new Discord.MessageEmbed()
+                    const errorPermissionsTooLow = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
-                    const targetImmune403 = new Discord.MessageEmbed()
+                    const errorTargetImmune = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
@@ -48,6 +49,7 @@ module.exports = {
                         .setColor('#800080')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> is not muted!`)
+                    //Checklist
                     if(message.member == memberTarget) {
                         const cannotUseOnSelf = new Discord.MessageEmbed()
                             .setColor('#800080')
@@ -56,14 +58,15 @@ module.exports = {
 
                         message.channel.send(cannotUseOnSelf)
                     } else {
+                        //Code
                         if(!memberTarget.roles.cache.find(role => role.name === 'Muted')) {
                             message.channel.send(userNotMuted)
                         } else {
                             if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {   //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
-                                    message.channel.send(targetImmune403);
+                                    message.channel.send(errorTargetImmune);
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403);
+                                    message.channel.send(errorPermissionsTooLow);
                                 } else {
                                     try {
                                         memberTarget.roles.remove(muteRole.id)
@@ -81,11 +84,11 @@ module.exports = {
                                 }
                             } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
-                                    message.channel.send(targetImmune403);
+                                    message.channel.send(errorTargetImmune);
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403);
+                                    message.channel.send(errorPermissionsTooLow);
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403);
+                                    message.channel.send(errorPermissionsTooLow);
                                 } else {
                                     try {
                                         memberTarget.roles.remove(muteRole.id)
@@ -103,13 +106,13 @@ module.exports = {
                                 }
                             } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
-                                    message.channel.send(targetImmune403)
+                                    message.channel.send(errorTargetImmune)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) { //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else {
                                     try {
                                         memberTarget.roles.remove(muteRole.id)
@@ -127,15 +130,15 @@ module.exports = {
                                 }
                             } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
-                                    message.channel.send(targetImmune403)
+                                    message.channel.send(errorTargetImmune)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else {
                                     try {
                                         memberTarget.roles.remove(muteRole.id)
@@ -169,21 +172,21 @@ module.exports = {
                         }
                     }
                 } else {
-                    const targetError = new Discord.MessageEmbed()
+                    const errorTarget = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription('Unknown user')
 
-                    message.channel.send(targetError)
+                    message.channel.send(errorTarget)
                 }
             }
         } else {
-            const permissionsError = new Discord.MessageEmbed()
+            const errorNoPermissions = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-            message.channel.send(permissionsError)
+            message.channel.send(errorNoPermissions)
         }
     }
 }

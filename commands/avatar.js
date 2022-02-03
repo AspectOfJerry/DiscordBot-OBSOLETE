@@ -4,7 +4,7 @@ module.exports = {
     description: 'Usage: "%avatar <@user>"',
     execute(message, args, cmd, client, Discord) {
         if(!args[0]) {
-            const avatarSelf = new Discord.MessageEmbed()
+            const sendAvatarSelf = new Discord.MessageEmbed()
                 .setColor('#7dc8cd')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Avatar')
@@ -12,11 +12,11 @@ module.exports = {
                 .setImage(`${message.author.displayAvatarURL({dynamic: true, size: 1024})}`)
                 .setURL(`${message.author.displayAvatarURL({dynamic: true, size: 2048})}`)
 
-            message.channel.send(avatarSelf)
+            message.channel.send(sendAvatarSelf)
         } else {
             const target = message.mentions.users.first();
             const memberTarget = message.guild.members.cache.get(target.id);
-            const avatar = new Discord.MessageEmbed()
+            const sendAvatar = new Discord.MessageEmbed()
                 .setColor('#7dc8cd')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Avatar')
@@ -24,7 +24,7 @@ module.exports = {
                 .setImage(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 1024})}`)
                 .setURL(`${memberTarget.user.displayAvatarURL({dynamic: true, size: 2048})}`)
 
-            message.channel.send(avatar)
+            message.channel.send(sendAvatar)
         }
     }
 }

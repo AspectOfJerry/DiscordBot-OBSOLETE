@@ -17,10 +17,8 @@ module.exports = {
             .setColor('#ffff00')
             .setDescription('Testing...')
         message.channel.send(testMessage)
-        //message.reply('There is currently nothing to test!');
+        message.reply('There is currently nothing to test!');
         //Code
-
-
 
 
 

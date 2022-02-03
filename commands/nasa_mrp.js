@@ -8,6 +8,19 @@ module.exports = {
     aliases: ['mrp', 'mars', 'mars_mrp'],
     description: 'Usage: "%api-contact"',
     async execute(message, args, cmd, client, Discord) {
+        //?
+        if(args[0] == '?') {
+            const helpCommand = new Discord.MessageEmbed()
+            //     .setColor('0000ff')
+            //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+            //     .setTitle('')
+            //     .setFooter('')
+
+            // message.channel.send(helpCommand)
+            message.reply('The help feature is under development for this command.')
+            return;
+        }
+        //Declaring variables
         let nasa_color_hex = "0b3d91"
         let nasa_mrp_max_date
         let nasa_mrp_name
@@ -19,7 +32,7 @@ module.exports = {
         let nasa_mrp_camera_name
         let nasa_mrp_camera_full_name
         let nasa_mrp_earth_date
-
+        //Code
         if(!args[0]) {
             const requireValidRoverName = new Discord.MessageEmbed()
                 .setColor('#ff0000')

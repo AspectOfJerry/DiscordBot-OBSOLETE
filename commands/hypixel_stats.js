@@ -38,7 +38,6 @@ module.exports = {
         //player_bedwars
         let player_bedwars_experience
         let player_bedwars_level
-        let player_ranks_given
         //player_bedwars_overall
         let player_bedwars_overall_kills
         let player_bedwars_overall_deaths

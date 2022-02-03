@@ -8,6 +8,19 @@ module.exports = {
     aliases: ['epic', 'nasaepic', 'nasa_epic'],
     description: 'Usage: "%api-contact"',
     async execute(message, args, cmd, client, Discord) {
+        //?
+        if(args[0] == '?') {
+            const helpCommand = new Discord.MessageEmbed()
+            //     .setColor('0000ff')
+            //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+            //     .setTitle('')
+            //     .setFooter('')
+
+            // message.channel.send(helpCommand)
+            message.reply('The help feature is under development for this command.')
+            return;
+        }
+        //Declaring variables
         let nasa_color_hex = "0b3d91"
         let nasa_response
         let nasa_response_error_code
@@ -19,7 +32,7 @@ module.exports = {
         let nasa_epic_date
         let nasa_epic_formatted_date
         let nasa_epic_full_image_link
-
+        //Code
         try {
             await fetch(`https://api.nasa.gov/EPIC/api/natural?api_key=${NASA_API_KEY}`)
                 .then(response => response.json())
@@ -41,20 +54,17 @@ module.exports = {
                     nasa_epic_full_image_link = `https://api.nasa.gov/EPIC/archive/natural/${nasa_epic_formatted_date}/png/${nasa_epic_formatted_image}?api_key=${NASA_API_KEY}`
                 })
         } catch(error) {
-            const nasaResponseError = new Discord.MessageEmbed()
+            const errorNASAResponse = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Error')
                 .setDescription("An error occured while fetching information from `api.nasa.gov`")
-                .setFooter(`A response has been received from the NASA-API`)
                 .addField('Code:', `${nasa_response_error_code}`)
-                .setFooter('4xx')
 
-            message.channel.send(nasaResponseError)
+            message.channel.send(errorNASAResponse)
             return;
         }
-        //Code
-        const NASAEPIC = new Discord.MessageEmbed()
+        const sendNASAEPIC = new Discord.MessageEmbed()
             .setColor(`#${nasa_color_hex}`)
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Earth Polychromatic Imaging Camera (EPIC) image from NASA')
@@ -65,6 +75,6 @@ module.exports = {
             .setURL(`${nasa_epic_full_image_link}`)
             .setFooter('Credit: National Aeronautics and Space Administration Jet Propulsion Laboratory (NASA JPL)')
 
-        message.channel.send(NASAEPIC)
+        message.channel.send(sendNASAEPIC)
     }
 }

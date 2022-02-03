@@ -5,17 +5,18 @@ module.exports = {
     execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const commandHelp = new Discord.MessageEmbed()
+            const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%exit command help')
                 .setDescription('This command resets the terminal (can only be used in the terminal channel).')
                 .addField(`Usage`, "`%exit`", true)
                 .setFooter('This command is not case-sensitive.')
 
-            message.channel.send(commandHelp)
+            message.channel.send(helpCommand)
             return;
         }
-        //code
+        //Code
         if(message.member.roles.cache.find(role => role.name == 'BotPL3')) {
             if(message.channel.name.includes("terminal")) {
                 exit(message, args, cmd, client, Discord)
@@ -30,12 +31,12 @@ module.exports = {
                 return;
             }
         } else {
-            const permissionsError = new Discord.MessageEmbed()
+            const errorNoPermissions = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-            message.channel.send(permissionsError)
+            message.channel.send(errorNoPermissions)
         }
     }
 }   //module.exports    @1:1

@@ -4,7 +4,7 @@ module.exports = {
     description: 'Usage: "%stop"',
     execute(message, args, cmd, client, Discord) {
         if(args[0] == '?') {
-            const commandHelp = new Discord.MessageEmbed()
+            const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setTitle('%stop command help')
                 .setDescription('This command stops the bot.')
@@ -12,10 +12,10 @@ module.exports = {
                 .addField(`Aliases`, "`altf4`, `alt-f4`, `alt_f4`, `terminate`, `shutdown`, `shut-down`, `shut_down`", false)
                 .addField('This command is not case-sensitive')
 
-            message.channel.send(commandHelp)
+            message.channel.send(helpCommand)
             return;
         }
-        //code
+        //Declaring variables
         const requireConfirm = new Discord.MessageEmbed()
             .setColor('#ff10f0')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -38,12 +38,12 @@ module.exports = {
             .setColor('ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Bot shutdown')
-            .setDescription('A user stopped the bot')
+            .setDescription('The bot was stopped by a user')
             .addField(`Username:`, `<@${message.member.user.id}>`, true)
             .addField(`User Discriminator:`, `#${message.member.user.discriminator}`, true)
             .addField(`User ID:`, `${message.member.user.id}`, true)
             .addField(`message.content =`, `${message.content}`, true)
-
+        //Code
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //message.member
             let filter = m => m.author.id === message.author.id
 
@@ -63,13 +63,8 @@ module.exports = {
                         message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@611633988515266562>`)
                         message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(status)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-command')).send(`<@611633988515266562>`)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-command')).send(status)
                         message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(`<@611633988515266562>`)
                         message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(status)
-                        message.guild.channels.cache.find(channel => channel.name.includes('general')).send(`<@611633988515266562>`)
-                        message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(`<@611633988515266562>`)
-                        message.guild.channels.cache.find(channel => channel.name.includes('staff-chat')).send(status)
                         message.channel.send(`<@611633988515266562>`)
                         message.channel.send(status)
                             .then(() => process.exit(0));
@@ -83,13 +78,13 @@ module.exports = {
                     message.channel.send(requestTimeout)
                 });
         } else {
-            const permissionsError = new Discord.MessageEmbed()
+            const errorNoPermissions = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-            message.channel.send(permissionsError)
+            message.channel.send(errorNoPermissions)
         }
     }
 }

@@ -25,23 +25,23 @@ module.exports = {
             .then(data => {
                 nasa_response = data
                 if(!data.error) {
-                    const nasaResponseSuccess = new Discord.MessageEmbed()
+                    const successNASAResponse = new Discord.MessageEmbed()
                         .setColor('#00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Response')
+                        .setTitle('Success')
                         .setDescription(`A successful response has been received from the NASA-API`)
 
-                    message.channel.send(nasaResponseSuccess)
+                    message.channel.send(successNASAResponse)
                 } else {
                     nasa_response_error_code = data.error.code
-                    const nasaResponseError = new Discord.MessageEmbed()
+                    const errorNASAResponse = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Error')
                         .setDescription("An error occured while fetching information from `api.nasa.gov`")
                         .addField('Code:', `${nasa_response_error_code}`)
 
-                    message.channel.send(nasaResponseError)
+                    message.channel.send(errorNASAResponse)
                     return;
                 }
             })

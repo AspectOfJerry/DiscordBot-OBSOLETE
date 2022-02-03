@@ -8,7 +8,20 @@ module.exports = {
     aliases: ['insight', 'nasainsight', 'nasa_insight', 'marsweather', 'mars_weather', 'mars-weather', 'mars'],
     description: 'Usage: "%api-contact"',
     async execute(message, args, cmd, client, Discord) {
-        message.channel.send('This command is currently under developement')
+        //?
+        if(args[0] == '?') {
+            const helpCommand = new Discord.MessageEmbed()
+            //     .setColor('0000ff')
+            //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+            //     .setTitle('')
+            //     .setFooter('')
+
+            // message.channel.send(helpCommand)
+            message.reply('The help feature is under development for this command.')
+            return;
+        }
+        //Code
+        message.channel.send('This command is currently under developement'); return;
         let nasa_color_hex = "0b3d91"
         // let nasa_response
         // let nasa_response_error_code

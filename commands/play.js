@@ -11,18 +11,19 @@ module.exports = {
     async execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const commandHelp = new Discord.MessageEmbed()
+            const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%play command help')
                 .setDescription('This command finds and plays a sound only version of the specified URL or keywords.')
                 .addField(`Usage`, "`%play` `<URL/keyWords>`")
                 .addField(`Related commands`, "`skip` (Skips to the next object in the queue), `join` (Joins the voice channel), `leave` (Leave the voice channel)")
                 .setFooter('This command uses ytdlCore and ytSearch.')
 
-            message.channel.send(commandHelp)
+            message.channel.send(helpCommand)
             return;
         }
-        //code
+        //Declaring variables
         const antiRickRoll = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -31,7 +32,7 @@ module.exports = {
             .addField('Reason: ', 'Rick Roll', true)
             .addField('Action: ', `${message.content}`, true)
             .setFooter(`An action was intercepted and blocked by the Rick Roll Detection Module`)
-        const permissionsError = new Discord.MessageEmbed()
+        const errorNoPermissions = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Permissions error')
@@ -41,13 +42,13 @@ module.exports = {
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('Error')
             .setDescription('You need to be in a voice channel to execute this command!')
-
+        //Code
         //Checking for the voicechannel and permissions.
         const voice_channel = message.member.voice.channel;
         if(!voice_channel) return message.channel.send(requireUserBeInVC);
         const permissions = voice_channel.permissionsFor(message.client.user);
-        if(!permissions.has('CONNECT')) return message.channel.send(permissionsError);
-        if(!permissions.has('SPEAK')) return message.channel.send(permissionsError);
+        if(!permissions.has('CONNECT')) return message.channel.send(errorNoPermissions);
+        if(!permissions.has('SPEAK')) return message.channel.send(errorNoPermissions);
 
         const server_queue = queue.get(message.guild.id);
 

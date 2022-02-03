@@ -11,18 +11,19 @@ module.exports = {
     async execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const commandHelp = new Discord.MessageEmbed()
+            const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%hypixel-api command help')
                 .setDescription('This comamnd contacts the Hypixel API and waits for a response.')
                 .addField(`Usage`, "`%hypixel-api`", true)
                 .addField(`Aliases`, "`hypixel`, `hypixelapi`, `hypixel_api`", true)
                 .setFooter('This command is not case-sensitive.')
 
-            message.channel.send(commandHelp)
+            message.channel.send(helpCommand)
             return;
         }
-        //code
+        //Code
     
         //Fetching from api.mojang.com
         let PLAYER_UUID

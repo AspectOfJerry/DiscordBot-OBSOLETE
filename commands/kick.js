@@ -4,27 +4,28 @@ module.exports = {
     execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const commandHelp = new Discord.MessageEmbed()
+            const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%kick command help')
                 .setDescription('This command kick the mentioned member form the guild.')
                 .addField(`Usage`, "`%kick` `<@user>`", true)
                 .setFooter('This command is not case-sensitive.')
 
-            message.channel.send(commandHelp)
+            message.channel.send(helpCommand)
             return;
         }
-        //code
+        //Code
     
         if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {
             const target = message.mentions.users.first()
             if(!args[0]) {
-                const requireArgs0 = new Discord.MessageEmbed()
+                const errorRequireArgs0 = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                     .setDescription('You must mention a member to kick!')
 
-                message.channel.send(requireArgs0)
+                message.channel.send(errorRequireArgs0)
             } else {
                 if(target) {
                     const memberTarget = message.guild.members.cache.get(target.id);
@@ -33,11 +34,11 @@ module.exports = {
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('User kick')
                         .setDescription(`<@${memberTarget.user.id}> was kicked from the guild by <@${message.member.user.id}>`)
-                    const targetHigherThanSender403 = new Discord.MessageEmbed()
+                    const errorPermissionsTooLow = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
-                    const targetImmune403 = new Discord.MessageEmbed()
+                    const errorTargetImmune = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
@@ -51,9 +52,9 @@ module.exports = {
                     } else {
                         if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {
                             if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {
-                                message.channel.send(targetImmune403)
+                                message.channel.send(errorTargetImmune)
                             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {
-                                message.channel.send(targetHigherThanSender403)
+                                message.channel.send(errorPermissionsTooLow)
                             } else {
                                 try {
                                     memberTarget.kick().catch(console.error)
@@ -74,11 +75,11 @@ module.exports = {
                             }
                         } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
                             if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //membertarget
-                                message.channel.send(targetImmune403);
+                                message.channel.send(errorTargetImmune);
                             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //membertarget
-                                message.channel.send(targetHigherThanSender403);
+                                message.channel.send(errorPermissionsTooLow);
                             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //membertarget
-                                message.channel.send(targetHigherThanSender403);
+                                message.channel.send(errorPermissionsTooLow);
                             } else {
                                 try {
                                     memberTarget.kick().catch(console.error)
@@ -99,13 +100,13 @@ module.exports = {
                             }
                         } else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {    //Message.member
                             if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //membertarget
-                                message.channel.send(targetImmune403)
+                                message.channel.send(errorTargetImmune)
                             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //membertarget
-                                message.channel.send(targetHigherThanSender403)
+                                message.channel.send(errorPermissionsTooLow)
                             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //membertarget
-                                message.channel.send(targetHigherThanSender403)
+                                message.channel.send(errorPermissionsTooLow)
                             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //membertarget
-                                message.channel.send(targetHigherThanSender403)
+                                message.channel.send(errorPermissionsTooLow)
                             } else {
                                 try {
                                     memberTarget.kick().catch(console.error)
@@ -144,21 +145,21 @@ module.exports = {
                         }
                     }   //else  @44:23
                 } else {    //if(target)    @18:17
-                    const targetError = new Discord.MessageEmbed()
+                    const errorTarget = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription('Unknown member')
 
-                    message.channel.send(targetError)
+                    message.channel.send(errorTarget)
                 }
             }
         } else {
-            const permissionsError = new Discord.MessageEmbed()
+            const errorNoPermissions = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-            message.channel.send(permissionsError)
+            message.channel.send(errorNoPermissions)
         }
     }
 }

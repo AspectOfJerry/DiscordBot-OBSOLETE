@@ -5,18 +5,19 @@ module.exports = {
     execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const commandHelp = new Discord.MessageEmbed()
+            const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%mute command help')
                 .setDescription('This command mutes the mentioned user permanently is a duration is not provided.')
                 .addField(`Usage`, "`%mute` `<@user>` (`<duration>`)", false)
                 .addField(`Aliases`, "`tempmute`, `temp-mute`, `temp_mute`, `shutup`, `shut-up`, `shut_up`", false)
                 .setFooter('This command is case-sensitive. (to confirm. lol)')
 
-            message.channel.send(commandHelp)
+            message.channel.send(helpCommand)
             return;
         }
-        //code
+        //Code
         const ms = require(`ms`)
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
             const target = message.mentions.users.first();
@@ -49,11 +50,11 @@ module.exports = {
                         .setTitle('User unmuted from timed mute')
                         .setDescription(`<@${memberTarget.user.id}> was unmuted from the ` + args[1] + ` timed mute by <@${message.member.user.id}>`)
                         .setFooter(`To mute a member, execute "%mute <@user> (<duration>)".`)
-                    const targetHigherThanSender403 = new Discord.MessageEmbed()
+                    const errorPermissionsTooLow = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> has an equal or higher role than <@${message.member.user.id}>`)
-                    const targetImmune403 = new Discord.MessageEmbed()
+                    const errorTargetImmune = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription(`<@${memberTarget.user.id}> is immune to this command!`)
@@ -75,9 +76,9 @@ module.exports = {
                         } else {
                             if(message.member.roles.cache.find(role => role.name === 'BotPL0')) {   //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
-                                    message.channel.send(targetImmune403);
+                                    message.channel.send(errorTargetImmune);
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403);
+                                    message.channel.send(errorPermissionsTooLow);
                                 } else {
                                     try {
                                         if(!args[1]) {
@@ -108,11 +109,11 @@ module.exports = {
                                 }
                             } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
-                                    message.channel.send(targetImmune403);
+                                    message.channel.send(errorTargetImmune);
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403);
+                                    message.channel.send(errorPermissionsTooLow);
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403);
+                                    message.channel.send(errorPermissionsTooLow);
                                 } else {
                                     try {
                                         if(!args[1]) {
@@ -144,13 +145,13 @@ module.exports = {
                             }
                             else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {  //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
-                                    message.channel.send(targetImmune403);
+                                    message.channel.send(errorTargetImmune);
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403);
+                                    message.channel.send(errorPermissionsTooLow);
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403);
+                                    message.channel.send(errorPermissionsTooLow);
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else {
                                     try {
                                         if(!args[1]) {
@@ -181,15 +182,15 @@ module.exports = {
                                 }
                             } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //message.member
                                 if(memberTarget.roles.cache.find(role => role.name === 'Bots')) {   //memberTarget
-                                    message.channel.send(targetImmune403)
+                                    message.channel.send(errorTargetImmune)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')) {  //memberTarget
-                                    message.channel.send(targetHigherThanSender403)
+                                    message.channel.send(errorPermissionsTooLow)
                                 } else {
                                     try {
                                         if(!args[1]) {
@@ -249,21 +250,21 @@ module.exports = {
                         }
                     }
                 } else {    //if(target)    @19:17
-                    const targetError = new Discord.MessageEmbed()
+                    const errorTarget = new Discord.MessageEmbed()
                         .setColor('#ff0000')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                         .setDescription('Unknown user')
 
-                    message.channel.send(targetError)
+                    message.channel.send(errorTarget)
                 }
             }
         } else {
-            const permissionsError = new Discord.MessageEmbed()
+            const errorNoPermissions = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-            message.channel.send(permissionsError)
+            message.channel.send(errorNoPermissions)
         }
     }
 }
