@@ -1,6 +1,7 @@
 module.exports = {
     name: 'return',
     description: 'Usage: "%return (<0, 1, 2>)"',
+    aliases: ['ret', 'r'],
     execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
@@ -9,6 +10,7 @@ module.exports = {
                 .setTitle('%return command help')
                 .setDescription('This command moves you to one of the Public voice channels (default is 0)')
                 .addField('Usage', "%return (`<0, 1, 2>`) (`<@user, all>`)")
+                .addField('Aliases', "`ret`, `r`")
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)
