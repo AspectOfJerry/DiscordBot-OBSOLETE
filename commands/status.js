@@ -42,14 +42,14 @@ module.exports = {
             if(args[0].toUpperCase() == 'PLAYING') {
                 statusType = "PLAYING";
                 if(!args[1]) {
-                    message.chanel.send(errorRequireArgs1)
+                    message.channel.send(errorRequireArgs1)
                     return;
                 }
                 args.shift();
                 statusContent = args.join(" ")
                 client.user.setActivity(`${statusContent}`, {type: statusType}).catch(console.error)
                 const successSetStatusPlaying = new Discord.MessageEmbed()
-                    .setColor('#ffff00')
+                    .setColor('#00ff00')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Discord Rich Presence status update')
                     .setDescription(`<@${message.member.user.id}> updated the bot's status to "Playing **${statusContent}**"`)
@@ -58,14 +58,14 @@ module.exports = {
             } else if(args[0].toUpperCase() == 'LISTENING') {
                 statusType = "LISTENING";
                 if(!args[1]) {
-                    message.chanel.send(errorRequireArgs1)
+                    message.chanmel.send(errorRequireArgs1)
                     return;
                 }
                 args.shift();
                 statusContent = args.join(" ")
                 client.user.setActivity(`${statusContent}`, {type: statusType}).catch(console.error)
                 const successSetStatusListeningTo = new Discord.MessageEmbed()
-                    .setColor('#ffff00')
+                    .setColor('#00ff00')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Discord Rich Presence status update')
                     .setDescription(`<@${message.member.user.id}> updated the bot's status to "Listening to **${statusContent}**"`)
@@ -74,14 +74,14 @@ module.exports = {
             } else if(args[0].toUpperCase() == 'WATCHING') {
                 statusType = "WATCHING";
                 if(!args[1]) {
-                    message.chanel.send(errorRequireArgs1)
+                    message.channel.send(errorRequireArgs1)
                     return;
                 }
                 args.shift();
                 statusContent = args.join(" ")
                 client.user.setActivity(`${statusContent}`, {type: statusType}).catch(console.error)
                 const successSetStatusWatching = new Discord.MessageEmbed()
-                    .setColor('#ffff00')
+                    .setColor('#00ff00')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                     .setTitle('Discord Rich Presence status update')
                     .setDescription(`<@${message.member.user.id}> updated the bot's status to "Watching **${statusContent}**"`)
@@ -108,7 +108,7 @@ module.exports = {
                     statusContent = args.join(" ")
                     client.user.setActivity(`${statusContent}`, {type: statusType, url: streamURL}).catch(console.error)
                     const successSetStatusStreaming = new Discord.MessageEmbed()
-                        .setColor('#ffff00')
+                        .setColor('#00ff00')
                         .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                         .setTitle('Discord Rich Presence status update')
                         .setDescription(`<@${message.member.user.id}> updated the bot's status to "Streaming **${statusContent}**"`)
@@ -117,7 +117,7 @@ module.exports = {
                     message.channel.send(successSetStatusStreaming)
                 }
             } else {
-                message.channe.send(errorArgs0)
+                message.channel.send(errorArgs0)
                 return;
             }
         } else {
