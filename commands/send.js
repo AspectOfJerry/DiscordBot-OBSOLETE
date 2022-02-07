@@ -2,9 +2,24 @@ module.exports = {
     name: 'send',
     description: 'Usage: "%send <#channel> <message>"',
     execute(message, args, cmd, client, Discord) {
+        //?
+        if(args[0] == '?') {
+            const helpCommand = new Discord.MessageEmbed()
+                .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                .setTitle('%send command help')
+                .setDescription('This command sends a message to a specific channel.')
+                .addField('Usage', '`%send` `<#channel>` `<message>', false)
+                .addField('Related commands', '`%say`', false)
+                .setFooter('This command is not case-sensitive.')
+
+            message.channel.send(helpCommand)
+            return;
+        }
+        //Declaring variables
         let targetChannel
         let messageSend
-
+        //Code
         if(!args[0]) {
             const requireArgs0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
