@@ -4,15 +4,14 @@ module.exports = {
     description: 'Usage: "%reload"',
     async execute(message, args, cmd, client, Discord) {
         if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {
-            const ms = require(`ms`)
             //Declaring variables
             let statusType
             let streamURL
             let statusContent
-            const error = new Discord.MessageEmbed()
-                .setColor('ff0000')
-                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
-                .setDescription("error: An error occurred while updating the bot's status.")
+            // const error = new Discord.MessageEmbed()
+            //     .setColor('ff0000')
+            //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+            //     .setDescription("error: An error occurred while updating the bot's status.")
             const errorRequireArgs0 = new Discord.MessageEmbed()
                 .setColor('ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
@@ -113,7 +112,7 @@ module.exports = {
                         .setTitle('Discord Rich Presence status update')
                         .setDescription(`<@${message.member.user.id}> updated the bot's status to "Streaming **${statusContent}**"`)
                         .addField('Channel link', `${streamURL}`, false)
-                    
+
                     message.channel.send(successSetStatusStreaming)
                 }
             } else {
