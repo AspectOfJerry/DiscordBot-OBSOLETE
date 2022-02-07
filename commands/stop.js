@@ -6,11 +6,12 @@ module.exports = {
         if(args[0] == '?') {
             const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%stop command help')
                 .setDescription('This command stops the bot.')
                 .addField(`Usage`, "`%stop`", false)
                 .addField(`Aliases`, "`altf4`, `alt-f4`, `alt_f4`, `terminate`, `shutdown`, `shut-down`, `shut_down`", false)
-                .addField('This command is not case-sensitive')
+                .addField('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)
             return;
@@ -44,40 +45,7 @@ module.exports = {
             .addField(`User ID:`, `${message.member.user.id}`, true)
             .addField(`message.content =`, `${message.content}`, true)
         //Code
-        if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {   //message.member
-            let filter = m => m.author.id === message.author.id
-
-            message.channel.send(requireConfirm);
-
-            message.channel.awaitMessages(filter, {
-                max: 1,
-                time: 15000,
-                errors: ['time']
-            })
-                .then(message => {
-                    message = message.first()
-                    if(message.content.toUpperCase() == 'YES') {    //message.content
-                        message.channel.send(processExit)
-                        message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@611633988515266562>`)
-                        //message.guild.channels.cache.find(channel => channel.name.includes('status')).send('<@&871382141886406707>')
-                        message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@611633988515266562>`)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(status)
-                        message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(`<@611633988515266562>`)
-                        message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(status)
-                        message.channel.send(`<@611633988515266562>`)
-                        message.channel.send(status)
-                            .then(() => process.exit(0));
-                    } else if(message.content.toUpperCase() == 'NO') {  //message.content
-                        message.channel.send(requestAborted);
-                    } else if(message.content.toUpperCase() !== 'YES' || message.content.toUpperCase() !== 'NO') {
-                        message.channel.send(requestAborted);
-                    }
-                })
-                .catch(collected => {
-                    message.channel.send(requestTimeout)
-                });
-        } else {
+        if(!message.member.roles.cache.find(role => role.name === 'BotPL3')) {
             const errorNoPermissions = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
@@ -86,5 +54,37 @@ module.exports = {
 
             message.channel.send(errorNoPermissions)
         }
+        let filter = m => m.author.id === message.author.id
+
+        message.channel.send(requireConfirm);
+
+        message.channel.awaitMessages(filter, {
+            max: 1,
+            time: 15000,
+            errors: ['time']
+        })
+            .then(message => {
+                message = message.first()
+                if(message.content.toUpperCase() == 'YES') {    //message.content
+                    message.channel.send(processExit)
+                    message.guild.channels.cache.find(channel => channel.name.includes('status')).send(`<@611633988515266562>`)
+                    //message.guild.channels.cache.find(channel => channel.name.includes('status')).send('<@&871382141886406707>')
+                    message.guild.channels.cache.find(channel => channel.name.includes('status')).send(status)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(`<@611633988515266562>`)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(status)
+                    message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(`<@611633988515266562>`)
+                    message.guild.channels.cache.find(channel => channel.name.includes('terminal')).send(status)
+                    message.channel.send(`<@611633988515266562>`)
+                    message.channel.send(status)
+                        .then(() => process.exit(0));
+                } else if(message.content.toUpperCase() == 'NO') {  //message.content
+                    message.channel.send(requestAborted);
+                } else {
+                    message.channel.send(requestAborted);
+                }
+            })
+            .catch(collected => {
+                message.channel.send(requestTimeout)
+            });
     }
 }
