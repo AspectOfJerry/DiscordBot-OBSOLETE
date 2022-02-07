@@ -17,7 +17,7 @@ module.exports = {
                 .setTitle('%play command help')
                 .setDescription('This command finds and plays a sound only version of the specified URL or keywords.')
                 .addField(`Usage`, "`%play` `<URL/keyWords>`")
-                .addField(`Related commands`, "`skip` (Skips to the next object in the queue), `join` (Joins the voice channel), `leave` (Leave the voice channel)")
+                .addField(`Related commands`, "`%skip`, `%join`, `%leave`")
                 .setFooter('This command uses ytdlCore and ytSearch.')
 
             message.channel.send(helpCommand)
