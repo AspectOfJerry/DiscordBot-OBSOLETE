@@ -14,7 +14,7 @@ module.exports = {
             .addField('Commands requiring BotPL1', "`ban`", false)
             .addField('Commands requiring BotPL0', "none", false)
             .addField('Commands for the server owner', "`friend`", false)
-            .setFooter('This bot is coded using JavaScript (discord.js) and uses Node.js.')
+            .setFooter('There are currently 37 command files.')
 
         message.channel.send(sendList)
     }
