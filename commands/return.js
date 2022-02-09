@@ -11,6 +11,7 @@ module.exports = {
                 .setDescription('This command moves you to one of the Public voice channels (default is 0)')
                 .addField('Usage', "%return (`<0, 1, 2>`) (`<@user, all>`)")
                 .addField('Aliases', "`ret`, `r`")
+                .addField("Stats for nerds", "Lines: 114; File size: ~4.95 KB", false)
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)

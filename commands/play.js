@@ -18,6 +18,7 @@ module.exports = {
                 .setDescription('This command finds and plays a sound only version of the specified URL or keywords.')
                 .addField(`Usage`, "`%play` `<URL/keyWords>`")
                 .addField(`Related commands`, "`%skip`, `%join`, `%leave`")
+                .addField("Stats for nerds", "Lines: 247; File size: ~12 KB", false)
                 .setFooter('This command uses ytdlCore and ytSearch.')
 
             message.channel.send(helpCommand)

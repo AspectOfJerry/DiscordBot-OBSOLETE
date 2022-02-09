@@ -12,6 +12,7 @@ module.exports = {
                 .setDescription("This command displays the bot's latency and the websocket server latency in milliseconds.")
                 .addField(`Usage`, "`%ping`", true)
                 .addField(`Aliases`, "`latency`", true)
+                .addField("Stats for nerds", "Lines: 40; File size: ~1.75 KB", false)
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)

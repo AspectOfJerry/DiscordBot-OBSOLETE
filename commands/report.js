@@ -12,6 +12,8 @@ module.exports = {
                 .setDescription('This command reports the mentioned user to staff (must include the reason).')
                 .addField(`Usage`, "`%report` `<@user>` `<reason>`", false)
                 .addField(`Aliases`, "`wdr`, `wdreport`, `watchdogreport`, `chatreport`, `ct`")
+                .addField("Stats for nerds", "Lines: 69; File size: ~3.8 KB", false)
+                .setFooter('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)
             return;

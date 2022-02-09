@@ -11,6 +11,7 @@ module.exports = {
                 .setTitle('%exit command help')
                 .setDescription('This command resets the terminal (can only be used in the terminal channel).')
                 .addField(`Usage`, "`%exit`", true)
+                .addField("Stats for nerds", "Lines: 61; File size: ~2.75 KB", false)
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)

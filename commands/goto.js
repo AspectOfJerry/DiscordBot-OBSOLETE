@@ -6,14 +6,14 @@ module.exports = {
         //?
         if(args[0] == '?') {
             const helpCommand = new Discord.MessageEmbed()
-                .setColor('0000ff')
-                .setTitle('%return command help')
-                .setDescription('This command moves you to one of the Public voice channels (default is 0)')
-                .addField('Usage', "%return (`<0, 1, 2>`) (`<@user, all>`)")
-                .addField('Aliases', "`ret`, `r`")
-                .setFooter('This command is not case-sensitive.')
+            //     .setColor('0000ff')
+            //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+            //     .setTitle('%goto command help')
+            //     .addField("Stats for nerds", "Lines: ; File size: ~ KB", false)
+            //     .setFooter('This command is not case-sensitive.')
 
-            message.channel.send(helpCommand)
+            // message.channel.send(helpCommand)
+            message.reply('The help feature is under development for this command.')
             return;
         }
         //Declaring variables

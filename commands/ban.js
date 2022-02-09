@@ -10,6 +10,7 @@ module.exports = {
                 .setTitle('%ban command help')
                 .setDescription('This command bans the mentionned user from the guild.')
                 .addField(`Usage`, "`%ban` `<@user>`", true)
+                .addField("Stats for nerds", "Lines: 146; File size: ~7.85 KB", false)
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)

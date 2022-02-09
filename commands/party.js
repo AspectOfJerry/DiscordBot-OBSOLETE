@@ -8,7 +8,8 @@ module.exports = {
             const helpCommand = new Discord.MessageEmbed()
             //     .setColor('0000ff')
             //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            //     .setTitle('')
+            //     .setTitle('%pârty command help')
+            //     .addField("Stats for nerds", "Lines: ; File size: ~ KB", false)
             //     .setFooter('')
 
             // message.channel.send(helpCommand)

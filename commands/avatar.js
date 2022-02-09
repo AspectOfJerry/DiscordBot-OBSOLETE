@@ -3,6 +3,20 @@ module.exports = {
     aliases: ['av', 'a'],
     description: 'Usage: "%avatar <@user>"',
     execute(message, args, cmd, client, Discord) {
+        //?
+        if(args[0] == '?') {
+            const helpCommand = new Discord.MessageEmbed()
+            //     .setColor('0000ff')
+            //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+            //     .setTitle('%avatar command help')
+            //     .addField("Stats for nerds", "Lines: ; File size: ~ KB", false)
+            //     .setFooter('This command is not case-sensitive.')
+
+            // message.channel.send(helpCommand)
+            message.reply('The help feature is under development for this command.')
+            return;
+        }
+        //Code
         if(!args[0]) {
             const sendAvatarSelf = new Discord.MessageEmbed()
                 .setColor('#7dc8cd')

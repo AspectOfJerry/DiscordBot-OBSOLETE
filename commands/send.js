@@ -11,6 +11,7 @@ module.exports = {
                 .setDescription('This command sends a message to a specific channel.')
                 .addField('Usage', '`%send` `<#channel>` `<message>', false)
                 .addField('Related commands', '`%say`', false)
+                .addField("Stats for nerds", "Lines: 50; File size: ~2.05 KB", false)
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)

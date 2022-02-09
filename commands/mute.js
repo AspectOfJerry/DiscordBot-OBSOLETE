@@ -11,8 +11,9 @@ module.exports = {
                 .setTitle('%mute command help')
                 .setDescription('This command mutes the mentioned user permanently is a duration is not provided.')
                 .addField(`Usage`, "`%mute` `<@user>` (`<duration>`)", false)
-                .addField(`Aliases`, "`tempmute`, `temp-mute`, `temp_mute`, `shutup`, `shut-up`, `shut_up`", false)
-                .setFooter('This command is case-sensitive. (to confirm. lol)')
+                .addField(`Aliases`, "`tempmute`, `temp_mute`, `temp-mute`, `shutup`, `shut_up`, `shut-up`", false)
+                .addField("Stats for nerds", "Lines: 272; File size: ~19.3 KB", false)
+                .setFooter("This command is case-sensitive. (I don't actually know if it is case-sensitive or not. I'm gonna have to test it lol)")
 
             message.channel.send(helpCommand)
             return;

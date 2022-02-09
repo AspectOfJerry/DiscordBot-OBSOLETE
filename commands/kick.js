@@ -10,6 +10,7 @@ module.exports = {
                 .setTitle('%kick command help')
                 .setDescription('This command kick the mentioned member form the guild.')
                 .addField(`Usage`, "`%kick` `<@user>`", true)
+                .addField("Stats for nerds", "Lines: 167; File size: ~10.7 KB", false)
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)

@@ -13,6 +13,7 @@ module.exports = {
                 .addField(`Usage`, "`%purge` `<int>`", true)
                 .addField(`Aliases`, "`clear`, `delete`, `del`, `erase`", true)
                 .addField(`Realted commands`, "`cls` (Clear the terminal and can onlyt be used in the terminal channel)", false)
+                .addField("Stats for nerds", "Lines: 111; File size: ~5.73 KB", false)
                 .setFooter('This command is not case-sensitive.')
 
             message.channel.send(helpCommand)
