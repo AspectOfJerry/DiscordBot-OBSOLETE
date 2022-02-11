@@ -45,17 +45,42 @@ module.exports = {
         const successMoveToPublic2 = new Discord.MessageEmbed()
             .setColor('00ff00')
             .setDescription(`Moved <@${message.member.user.id}> to <#933168680085360690>.`)
+
         //Code
         if(args[1] == 'all') {
             if(args[0] == '0') {
-                //move memberTarget to public 0
+                //move all to public 0
+                message.member.voice.channel.members.forEach((member) => {
+                    const successMoveToPublic0 = new Discord.MessageEmbed()
+                        .setColor('00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                        .setDescription(`Moved ${member} to <#778356209534631946>.`)
 
+                    member.voice.setChannel('778356209534631946')
+                    message.channel.send(successMoveToPublic0)
+                })
             } else if(args[0] == '1') {
-                //move memberTarget to public 1
+                //move all to public 1
+                message.member.voice.channel.members.forEach((member) => {
+                    const successMoveToPublic1 = new Discord.MessageEmbed()
+                        .setColor('00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                        .setDescription(`Moved ${member} to <#778356257534377984>.`)
 
+                    member.voice.setChannel('778356257534377984')
+                    message.channel.send(successMoveToPublic1)
+                })
             } else if(args[0] == '2') {
-                //move memberTarget to public 2
+                //move all to public 2
+                message.member.voice.channel.members.forEach((member) => {
+                    const successMoveToPublic0 = new Discord.MessageEmbed()
+                        .setColor('00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                        .setDescription(`Moved ${member} to <#933168680085360690>.`)
 
+                    member.voice.setChannel('933168680085360690')
+                    message.channel.send(successMoveToPublic0)
+                })
             } else {
                 message.channel.send(errorArgs0)
 

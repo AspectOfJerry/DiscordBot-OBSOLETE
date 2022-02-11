@@ -45,9 +45,9 @@ module.exports = {
             .setDescription('You need to be in a voice channel to execute this command!')
         //Code
         //Checking for the voicechannel and permissions.
-        const voice_channel = message.member.voice.channel;
+        const voice_channel = message.member.voice.channel
         if(!voice_channel) return message.channel.send(requireUserBeInVC);
-        const permissions = voice_channel.permissionsFor(message.client.user);
+        const permissions = voice_channel.permissionsFor(message.client.user)
         if(!permissions.has('CONNECT')) return message.channel.send(errorNoPermissions);
         if(!permissions.has('SPEAK')) return message.channel.send(errorNoPermissions);
 
