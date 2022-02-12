@@ -13,7 +13,7 @@ module.exports = {
                 .addField('Usage', "`%goto` `<#channel>` (`<@user, all`)", true)
                 .addField('Aliases', "`go`, `move`, `switch`", true)
                 .addField('Related commands', "`return`, `disconnect`", false)
-                .addField("Stats for nerds", "Lines: `127`; File size: `~6.05` KB", false)
+                .addField("Stats for nerds", "Lines: `126`; File size: `~6.05` KB", false)
                 .setFooter('This command is case-insensitive.')
 
             message.channel.send(helpCommand)
@@ -121,6 +121,5 @@ module.exports = {
                 message.channel.send(successMoveTo)
             }
         }
-
     }
 }
