@@ -18,7 +18,7 @@ module.exports = {
             return;
         }
         //Declaring variables
-        let targetChannel
+        let targetChannelID
         let messageSend
         //Code
         if(!args[0]) {
@@ -36,9 +36,7 @@ module.exports = {
 
             message.channel.send(requireArgs1)
         } else {
-            targetChannel = args[0]
-            targetChannelID = targetChannel.replace('<#', "")
-            targetChannelID = targetChannelID.replace('>', "")
+            targetChannelID = args[0].replace(/<|#|>/gi, "")
             messageSend = args.shift()
             messageSend = args.join(" ")
 

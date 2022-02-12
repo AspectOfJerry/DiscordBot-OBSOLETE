@@ -17,7 +17,7 @@ module.exports = {
             return;
         }
         //Declaring variables
-        let targetChannelID
+        let voiceChannelID
         let memberTarget
         const errorArgs0 = new Discord.MessageEmbed()
             .setColor('ff0000')
@@ -51,32 +51,46 @@ module.exports = {
                 message.channel.send(errorRequireTargetChannel)
                 return;
             }
-            targetChannelID = args[0]
-            if(!message.guild.channels.cache.get(targetChannelID)) {
+            voiceChannelID = args[0].replace(/<|#|>/gi, "")
+            message.channel.send(voiceChannelID)
+            if(!message.guild.channels.cache.get(voiceChannelID)) {
                 message.channel.send(errorInvalidVoiceChannel)
                 return;
             }
             const successMoveTo = new Discord.MessageEmbed()
                 .setColor('00ff00')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
-                .setDescription(`Moved <@${message.member.user.id}> to <#${targetChannelID}>.`)
-            
-            message.member.voice.setChannel(targetChannelID)
+                .setDescription(`Moved <@${message.member.user.id}> to <#${voiceChannelID}>.`)
+
+            message.member.voice.setChannel(voiceChannelID)
             message.channel.send(successMoveTo)
         } else {
 
             if(args[1] == 'all') {
+                voiceChannelID = args[0].replace(/<|#|>/gi, "")
+                if(!message.guild.channels.cache.get(voiceChannelID)) {
+                    message.channel.send(errorInvalidVoiceChannel)
+                    return;
+                }
+                message.member.voice.channel.members.forEach((member) => {
+                    const successMoveTo = new Discord.MessageEmbed()
+                        .setColor('00ff00')
+                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                        .setDescription(`Moved ${member} to <#${voiceChannelID}>.`)
 
+                    member.voice.setChannel(voiceChannelID)
+                    message.channel.send(successMoveTo)
+                })
             } else {
                 //Variables
-                targetChannelID = args[0]
+                voiceChannelID = args[0].replace(/<|#|>/gi, "")
                 const target = message.mentions.users.first();
                 //Checks
                 if(!target) {
                     message.channel.send(errorTarget)
                     return;
                 }
-                if(!message.guild.channels.cache.get(targetChannelID)) {
+                if(!message.guild.channels.cache.get(voiceChannelID)) {
                     message.channel.send(errorInvalidVoiceChannel)
                     return;
                 }
@@ -94,9 +108,9 @@ module.exports = {
                 const successMoveTo = new Discord.MessageEmbed()
                     .setColor('00ff00')
                     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
-                    .setDescription(`Moved <@${memberTarget.user.id}> to <#${targetChannelID}>.`)
+                    .setDescription(`Moved <@${memberTarget.user.id}> to <#${voiceChannelID}>.`)
 
-                memberTarget.voice.setChannel(targetChannelID)
+                memberTarget.voice.setChannel(voiceChannelID)
                 message.channel.send(successMoveTo)
             }
         }
