@@ -8,12 +8,12 @@ module.exports = {
             const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('%status command help')
+                .setTitle('%status command help (BotPL3)')
                 .setDescription("This command updates the bot's activity status to the inputed String. Note that there is a maximum of words for the status.")
                 .addField('Usage', "`%status` `<type>` `<content>`", true)
-                .addField('Aliases', "`activity`, `presence`, `rich_presence`, `rich-presence`", false)
-                .addField("Stats for nerds", "Lines: 144; File size: ~7 KB", false)
-                .setFooter('This command is not case-sensitive. Requires BotPL3')
+                .addField('Aliases', "`activity`, `presence`, `rich_presence`, `rich-presence`", true)
+                .addField("Stats for nerds", "Lines: `144`; File size: `~7` KB", false)
+                .setFooter('Take in consideration that there is a word limit for the status message.')
 
             message.channel.send(helpCommand)
             return;

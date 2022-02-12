@@ -9,10 +9,10 @@ module.exports = {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%stop command help')
                 .setDescription('This command stops the bot.')
-                .addField(`Usage`, "`%stop`", false)
+                .addField(`Usage`, "`%stop`", true)
                 .addField(`Aliases`, "`altf4`, `alt-f4`, `alt_f4`, `terminate`, `shutdown`, `shut-down`, `shut_down`", false)
-                .addField("Stats for nerds", "Lines: 92; File size: ~5.25 KB", false)
-                .addField('This command is not case-sensitive.')
+                .addField("Stats for nerds", "Lines: `92`; File size: `~5.25` KB", false)
+                .setDescription('This command is case-insensitive.')
 
             message.channel.send(helpCommand)
             return;

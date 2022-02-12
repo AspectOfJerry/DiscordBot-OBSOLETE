@@ -13,12 +13,12 @@ module.exports = {
             const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('%nasa_api command help')
+                .setTitle('%nasa_api command help (BotPL3)')
                 .setDescription('This comamnd contacts the NASA API and waits for a response.')
                 .addField(`Usage`, "`%nasa_api`", true)
                 .addField(`Aliases`, "`nasa`, `nasaapi`, `nasa-api`", true)
-                .addField("Stats for nerds", "Lines: 77; File size: ~3.45 KB", false)
-                .setFooter('This command is not case-sensitive.')
+                .addField("Stats for nerds", "Lines: `77`; File size: `~3.45` KB", false)
+                .setFooter('This command is case-insensitive.')
 
             message.channel.send(helpCommand)
             return;
@@ -28,7 +28,7 @@ module.exports = {
         let nasa_response
         let nasa_response_error_code
         //Checklist
-        if(!message.member.roles.cache.has(role => role.name === 'BotPl3')) {
+        if(!message.member.roles.cache.has(role => role.name === 'BotPL3')) {
             const errorNoPermissions = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)

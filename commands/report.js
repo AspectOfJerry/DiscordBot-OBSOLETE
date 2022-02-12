@@ -10,10 +10,10 @@ module.exports = {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%report command help')
                 .setDescription('This command reports the mentioned user to staff (must include the reason).')
-                .addField(`Usage`, "`%report` `<@user>` `<reason>`", false)
-                .addField(`Aliases`, "`wdr`, `wdreport`, `watchdogreport`, `chatreport`, `ct`")
-                .addField("Stats for nerds", "Lines: 69; File size: ~3.8 KB", false)
-                .setFooter('This command is not case-sensitive.')
+                .addField(`Usage`, "`%report` `<@user>` `<reason>`", true)
+                .addField(`Aliases`, "`wdr`, `wdreport`, `watchdogreport`, `chatreport`, `ct`", true)
+                .addField("Stats for nerds", "Lines: `70`; File size: `~3.8` KB", false)
+                .setFooter("This command was inspired from Hypixel's reporting system.")
 
             message.channel.send(helpCommand)
             return;

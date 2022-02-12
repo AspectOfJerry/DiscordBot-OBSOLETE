@@ -1,6 +1,6 @@
 module.exports = {
     name: 'exit',
-    aliases: ['terminal', 'term'],
+    aliases: ['terminal'],
     description: 'Usage: "%exit"',
     execute(message, args, cmd, client, Discord) {
         //?
@@ -8,11 +8,13 @@ module.exports = {
             const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('%exit command help')
-                .setDescription('This command resets the terminal (can only be used in the terminal channel).')
+                .setTitle('%exit command help (BotPL3)')
+                .setDescription('This command resets the terminal.')
                 .addField(`Usage`, "`%exit`", true)
-                .addField("Stats for nerds", "Lines: 61; File size: ~2.75 KB", false)
-                .setFooter('This command is not case-sensitive.')
+                .addField('Aliases', "`terminal`", true)
+                .addField('Related commands', "`cls (purge)`", false)
+                .addField("Stats for nerds", "Lines: `63`; File size: ~`2.85` KB", false)
+                .setFooter('This command is case-insensitive.')
 
             message.channel.send(helpCommand)
             return;

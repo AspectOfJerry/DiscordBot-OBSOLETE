@@ -6,23 +6,22 @@ module.exports = {
         //?
         if(args[0] == '?') {
             const helpCommand = new Discord.MessageEmbed()
-            //     .setColor('0000ff')
-            //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            //     .setTitle('%goto command help')
-            //     .addField("Stats for nerds", "Lines: ; File size: ~ KB", false)
-            //     .setFooter('This command is not case-sensitive.')
+                .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                .setTitle('%goto command help (BotPL3)')
+                .setDescription('This command moves you, a user or all the users to a specific channel.')
+                .addField('Usage', "`%goto` `<#channel>` (`<@user, all`)", true)
+                .addField('Aliases', "`go`, `move`, `switch`", true)
+                .addField('Related commands', "`return`, `disconnect`", false)
+                .addField("Stats for nerds", "Lines: `127`; File size: `~6.05` KB", false)
+                .setFooter('This command is case-insensitive.')
 
-            // message.channel.send(helpCommand)
-            message.reply('The help feature is under development for this command.')
+            message.channel.send(helpCommand)
             return;
         }
         //Declaring variables
         let voiceChannelID
         let memberTarget
-        const errorArgs0 = new Discord.MessageEmbed()
-            .setColor('ff0000')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
-            .setDescription('error: You must enter a valid Public channel number: `0`, `1`, `2`.')
         const errorMustBeInVC = new Discord.MessageEmbed()
             .setColor('ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
@@ -39,8 +38,17 @@ module.exports = {
             .setColor('ff0000')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
             .setDescription('error: The targeted voice channel is invalid.')
-        //Code
+        //Checks
+        if(!message.member.roles.cache.find(role => role.name === 'BotPL3')) {
+            const errorNoPermissions = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
+                .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
+            message.channel.send(errorNoPermissions)
+            return;
+        }
+        //Code
         if(!message.member.voice.channel) {
             message.channel.send(errorMustBeInVC)
             return;
@@ -52,7 +60,6 @@ module.exports = {
                 return;
             }
             voiceChannelID = args[0].replace(/<|#|>/gi, "")
-            message.channel.send(voiceChannelID)
             if(!message.guild.channels.cache.get(voiceChannelID)) {
                 message.channel.send(errorInvalidVoiceChannel)
                 return;

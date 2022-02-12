@@ -7,17 +7,16 @@ module.exports = {
             const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('%kick command help')
+                .setTitle('%kick command help (BotPL2)')
                 .setDescription('This command kick the mentioned member form the guild.')
                 .addField(`Usage`, "`%kick` `<@user>`", true)
-                .addField("Stats for nerds", "Lines: 167; File size: ~10.7 KB", false)
-                .setFooter('This command is not case-sensitive.')
+                .addField("Stats for nerds", "Lines: `166`; File size: `~10.7` KB", false)
+                .setFooter('This command is case-insensitive.')
 
             message.channel.send(helpCommand)
             return;
         }
         //Code
-    
         if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {
             const target = message.mentions.users.first()
             if(!args[0]) {

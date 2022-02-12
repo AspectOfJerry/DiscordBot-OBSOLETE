@@ -12,8 +12,8 @@ module.exports = {
                 .setDescription('This command unmutes a muted member.')
                 .addField(`Usage`, "`%unmute` `<@user>`", true)
                 .addField(`Aliases`, "`un_mute`, `un-mute`", true)
-                .addField("Stats for nerds", "Lines: 198; File size: ~10.5 KB", false)
-                .setFooter('This command is not case-sensitive.')
+                .addField("Stats for nerds", "Lines: `198`; File size: `~10.5` KB", false)
+                .setFooter('This command is case-insensitive.')
 
             message.channel.send(commandHelp)
             return;

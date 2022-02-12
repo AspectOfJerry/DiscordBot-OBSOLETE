@@ -8,13 +8,13 @@ module.exports = {
             const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('%purge command help')
+                .setTitle('%purge command help (BotPL3)')
                 .setDescription('This comand purges a certain amout of messages (1 to 32).')
                 .addField(`Usage`, "`%purge` `<int>`", true)
                 .addField(`Aliases`, "`clear`, `delete`, `del`, `erase`", true)
-                .addField(`Realted commands`, "`cls` (Clear the terminal and can onlyt be used in the terminal channel)", false)
-                .addField("Stats for nerds", "Lines: 111; File size: ~5.73 KB", false)
-                .setFooter('This command is not case-sensitive.')
+                .addField(`Realted commands`, "`cls`, `exit`", false)
+                .addField("Stats for nerds", "Lines: `111`; File size: `~5.7` KB", false)
+                .setFooter('This command is case-insensitive.')
 
             message.channel.send(helpCommand)
             return;

@@ -14,18 +14,18 @@ module.exports = {
             const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('%hypixel_api command help')
+                .setTitle('%hypixel_api command help (BotPL3)')
                 .setDescription('This comamnd contacts the Hypixel API and waits for a response.')
                 .addField(`Usage`, "`%hypixel_api`", true)
                 .addField(`Aliases`, "`hypixel`, `hypixelapi`, `hypixel-api`", true)
-                .addField("Stats for nerds", "Lines: 88; File size: ~4 KB", false)
-                .setFooter('This command is not case-sensitive.')
+                .addField("Stats for nerds", "Lines: `88`; File size: `~4` KB", false)
+                .setFooter('This command is case-insensitive.')
 
             message.channel.send(helpCommand)
             return;
         }
         //Code
-        if(!message.member.roles.cache.has(role => role.name === 'BotPl3')) {
+        if(!message.member.roles.cache.has(role => role.name === 'BotPL3')) {
             const errorNoPermissions = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)

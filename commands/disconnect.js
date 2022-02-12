@@ -10,10 +10,11 @@ module.exports = {
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%disconnect command help (BotPL3)')
                 .setDescription('This command disconnects yourself, the targeted member if specified, or all members if specified.')
-                .addField('Usage', "`%disconnect` (`<@user, all>`)")
+                .addField('Usage', "`%disconnect` (`<@user, all>`)", true)
                 .addField('Aliases', "`dc`", true)
-                .addField("Stats for nerds", "Lines: 93; File size: ~4.45 KB", false)
-                .setFooter('This command is not case-sensitive.')
+                .addField('Related commands', "`goto`, `return`", false)
+                .addField("Stats for nerds", "Lines: `94`; File size: `~4.5` KB", false)
+                .setFooter('This command is case-insensitive.')
 
             message.channel.send(helpCommand)
             return;

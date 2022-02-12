@@ -7,11 +7,12 @@ module.exports = {
             const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('%ban command help')
+                .setTitle('%ban command help (BotPL1)')
                 .setDescription('This command bans the mentionned user from the guild.')
-                .addField(`Usage`, "`%ban` `<@user>`", true)
-                .addField("Stats for nerds", "Lines: 146; File size: ~7.85 KB", false)
-                .setFooter('This command is not case-sensitive.')
+                .addField(`Usage`, "`%ban` `<@user>`", false)
+                .addField('Related commands', "`kick`", false)
+                .addField("Stats for nerds", "Lines: `147`; File size: `~7.9` KB", false)
+                .setFooter('This command is case-insensitive.')
 
             message.channel.send(helpCommand)
             return;

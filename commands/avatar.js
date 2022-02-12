@@ -6,14 +6,16 @@ module.exports = {
         //?
         if(args[0] == '?') {
             const helpCommand = new Discord.MessageEmbed()
-            //     .setColor('0000ff')
-            //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            //     .setTitle('%avatar command help')
-            //     .addField("Stats for nerds", "Lines: ; File size: ~ KB", false)
-            //     .setFooter('This command is not case-sensitive.')
+                .setColor('0000ff')
+                .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
+                .setTitle('%avatar command help')
+                .setDescription("This command sends your avatar or a user's avatar.")
+                .addField('Usage', "`%avatar` (`<@user>`)", true)
+                .addField('Aliases', '`a`, `av`', true)
+                .addField("Stats for nerds", "Lines: `47`; File size: `~2.1` KB", false)
+                .setFooter('This command is case-insensitive.')
 
-            // message.channel.send(helpCommand)
-            message.reply('The help feature is under development for this command.')
+            message.channel.send(helpCommand)
             return;
         }
         //Code

@@ -8,12 +8,12 @@ module.exports = {
             const helpCommand = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                .setTitle('%mute command help')
-                .setDescription('This command mutes the mentioned user permanently is a duration is not provided.')
-                .addField(`Usage`, "`%mute` `<@user>` (`<duration>`)", false)
+                .setTitle('%mute command help (BotPL3)')
+                .setDescription('This command mutes the mentioned user permanently if a duration is not provided.')
+                .addField(`Usage`, "`%mute` `<@user>` (`<duration>`)", true)
                 .addField(`Aliases`, "`tempmute`, `temp_mute`, `temp-mute`, `shutup`, `shut_up`, `shut-up`", false)
-                .addField("Stats for nerds", "Lines: 272; File size: ~19.3 KB", false)
-                .setFooter("This command is case-sensitive. (I don't actually know if it is case-sensitive or not. I'm gonna have to test it lol)")
+                .addField("Stats for nerds", "Lines: `272`; File size: `~19.3` KB", false)
+                .setFooter("This command is case-insensitive.")
 
             message.channel.send(helpCommand)
             return;
