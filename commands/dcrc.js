@@ -3,12 +3,12 @@ module.exports = {
     description: 'Usage: "%dcrc"',
     execute(message, args, cmd, client, Discord) {
         if(message.member.user.id !== '611633988515266562') {
-            const errorNoPermissions = new Discord.MessageEmbed()
+            const ERROR_NO_PERMISSIONS = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-            message.channel.send(errorNoPermissions)
+            message.channel.send(ERROR_NO_PERMISSIONS)
             return;
         }
         if(!message.member.voice.channel) {

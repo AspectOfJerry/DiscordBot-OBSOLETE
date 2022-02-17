@@ -4,7 +4,7 @@ module.exports = {
     execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const helpCommand = new Discord.MessageEmbed()
+            const HELP_COMMAND = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%send command help')
@@ -14,7 +14,7 @@ module.exports = {
                 .addField("Stats for nerds", "Lines: `48`; File size: `~1.95` KB", false)
                 .setFooter('This command is case-insensitive.')
 
-            message.channel.send(helpCommand)
+            message.channel.send(HELP_COMMAND)
             return;
         }
         //Declaring variables
@@ -22,19 +22,19 @@ module.exports = {
         let messageSend
         //Code
         if(!args[0]) {
-            const requireArgs0 = new Discord.MessageEmbed()
+            const ERROR_REQUIRE_ARGS_0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription('You must tag a channel')
 
-            message.channel.send(requireArgs0)
+            message.channel.send(ERROR_REQUIRE_ARGS_0)
         } else if(!args[1]) {
-            const requireArgs1 = new Discord.MessageEmbed()
+            const ERROR_REQUIRE_ARGS_1 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription('You must enter a message to send')
 
-            message.channel.send(requireArgs1)
+            message.channel.send(ERROR_REQUIRE_ARGS_1)
         } else {
             targetChannelID = args[0].replace(/<|#|>/gi, "")
             messageSend = args.shift()

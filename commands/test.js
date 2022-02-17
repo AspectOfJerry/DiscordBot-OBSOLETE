@@ -15,9 +15,9 @@ module.exports = {
         }
         const testMessage = new Discord.MessageEmbed()
             .setColor('#ffff00')
-            .setDescription('Testing...')
+            .setDescription('Test')
         message.channel.send(testMessage)
-        message.reply('There is currently nothing to test!');
         //Code
+        
     }
 }

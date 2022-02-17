@@ -5,7 +5,7 @@ module.exports = {
     execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const helpCommand = new Discord.MessageEmbed()
+            const HELP_COMMAND = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setTitle('%return command help (BotPL3)')
                 .setDescription('This command moves you, a user or all users to one of the Public voice channels (default is 0)')
@@ -15,7 +15,7 @@ module.exports = {
                 .addField("Stats for nerds", "Lines: `170`; File size: `~8.65` KB", false)
                 .setFooter('This command is case-insensitive.')
 
-            message.channel.send(helpCommand)
+            message.channel.send(HELP_COMMAND)
             return;
         }
         //Declaring variables
@@ -45,12 +45,12 @@ module.exports = {
             .setDescription(`Moved <@${message.member.user.id}> to <#933168680085360690>.`)
         //Checks
         if(!message.member.roles.cache.find(role => role.name === 'BotPL3')) {
-            const errorNoPermissions = new Discord.MessageEmbed()
+            const ERROR_NO_PERMISSIONS = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-            message.channel.send(errorNoPermissions)
+            message.channel.send(ERROR_NO_PERMISSIONS)
             return;
         }
         //Code

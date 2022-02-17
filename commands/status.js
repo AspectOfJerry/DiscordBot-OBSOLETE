@@ -5,7 +5,7 @@ module.exports = {
     async execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const helpCommand = new Discord.MessageEmbed()
+            const HELP_COMMAND = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%status command help (BotPL3)')
@@ -15,7 +15,7 @@ module.exports = {
                 .addField("Stats for nerds", "Lines: `144`; File size: `~7` KB", false)
                 .setFooter('Take in consideration that there is a word limit for the status message.')
 
-            message.channel.send(helpCommand)
+            message.channel.send(HELP_COMMAND)
             return;
         }
         //Checklist

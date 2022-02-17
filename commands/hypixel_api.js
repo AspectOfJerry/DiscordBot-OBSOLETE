@@ -11,7 +11,7 @@ module.exports = {
     async execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const helpCommand = new Discord.MessageEmbed()
+            const HELP_COMMAND = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%hypixel_api command help (BotPL3)')
@@ -21,17 +21,17 @@ module.exports = {
                 .addField("Stats for nerds", "Lines: `88`; File size: `~4` KB", false)
                 .setFooter('This command is case-insensitive.')
 
-            message.channel.send(helpCommand)
+            message.channel.send(HELP_COMMAND)
             return;
         }
         //Code
         if(!message.member.roles.cache.has(role => role.name === 'BotPL3')) {
-            const errorNoPermissions = new Discord.MessageEmbed()
+            const ERROR_NO_PERMISSIONS = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-            message.channel.send(errorNoPermissions)
+            message.channel.send(ERROR_NO_PERMISSIONS)
             return;
         }
         //Fetching from api.mojang.com
@@ -81,7 +81,6 @@ module.exports = {
 
                     message.channel.send(successFalse)
                 }
-            })
-            .catch(console.error())
+            }).catch(console.error())
     }
 }

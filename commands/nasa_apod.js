@@ -10,14 +10,14 @@ module.exports = {
     async execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const helpCommand = new Discord.MessageEmbed()
+            const HELP_COMMAND = new Discord.MessageEmbed()
             //     .setColor('0000ff')
             //     .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             //     .setTitle('%nasa_apod command help')
             //     .addField("Stats for nerds", "Lines: ; File size: ~ KB", false)
             //     .setFooter('')
 
-            // message.channel.send(helpCommand)
+            // message.channel.send(HELP_COMMAND)
             message.reply('The help feature is under development for this command.')
             return;
         }

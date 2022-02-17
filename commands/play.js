@@ -11,7 +11,7 @@ module.exports = {
     async execute(message, args, cmd, client, Discord) {
         //?
         if(args[0] == '?') {
-            const helpCommand = new Discord.MessageEmbed()
+            const HELP_COMMAND = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%play command help')
@@ -21,7 +21,7 @@ module.exports = {
                 .addField("Stats for nerds", "Lines: `247`; File size: `~12` KB", false)
                 .setFooter('This command uses ytdlCore and ytSearch.')
 
-            message.channel.send(helpCommand)
+            message.channel.send(HELP_COMMAND)
             return;
         }
         //Declaring variables
@@ -33,10 +33,9 @@ module.exports = {
             .addField('Reason: ', 'Rick Roll', true)
             .addField('Action: ', `${message.content}`, true)
             .setFooter(`An action was intercepted and blocked by the Rick Roll Detection Module`)
-        const errorNoPermissions = new Discord.MessageEmbed()
+        const ERROR_NO_PERMISSIONS = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-            .setTitle('Permissions error')
+            .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
             .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
         const requireUserBeInVC = new Discord.MessageEmbed()
             .setColor('ff0000')
@@ -48,8 +47,8 @@ module.exports = {
         const voice_channel = message.member.voice.channel
         if(!voice_channel) return message.channel.send(requireUserBeInVC);
         const permissions = voice_channel.permissionsFor(message.client.user)
-        if(!permissions.has('CONNECT')) return message.channel.send(errorNoPermissions);
-        if(!permissions.has('SPEAK')) return message.channel.send(errorNoPermissions);
+        if(!permissions.has('CONNECT')) return message.channel.send(ERROR_NO_PERMISSIONS);
+        if(!permissions.has('SPEAK')) return message.channel.send(ERROR_NO_PERMISSIONS);
 
         const server_queue = queue.get(message.guild.id);
 

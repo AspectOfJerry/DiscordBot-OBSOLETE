@@ -4,7 +4,7 @@ module.exports = {
     description: 'Usage: "%stop"',
     execute(message, args, cmd, client, Discord) {
         if(args[0] == '?') {
-            const helpCommand = new Discord.MessageEmbed()
+            const HELP_COMMAND = new Discord.MessageEmbed()
                 .setColor('0000ff')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('%stop command help')
@@ -14,7 +14,7 @@ module.exports = {
                 .addField("Stats for nerds", "Lines: `92`; File size: `~5.25` KB", false)
                 .setDescription('This command is case-insensitive.')
 
-            message.channel.send(helpCommand)
+            message.channel.send(HELP_COMMAND)
             return;
         }
         //Declaring variables
@@ -24,11 +24,11 @@ module.exports = {
             .setTitle('Do you **really** want to stop the process?')
             .setDescription(`**Important!**\nThis command **exits** the bot's program rendering the bot **unusable** until a bot operator manually restarts it via the terminal.\nUse the command **only** if needed!\nDo you understand and agree? You have 15 seconds to reply "yes" or "no".`)
             .setFooter('Request pending [15s]')
-        const requestAborted = new Discord.MessageEmbed()
+        const REQUEST_ABORTED = new Discord.MessageEmbed()
             .setColor('#00ff00')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
             .setDescription(`Request aborted`)
-        const requestTimeout = new Discord.MessageEmbed()
+        const REQUEST_TIMEOUT = new Discord.MessageEmbed()
             .setColor('#800080')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
             .setDescription("Request timeout")
@@ -47,13 +47,13 @@ module.exports = {
             .addField(`message.content =`, `${message.content}`, true)
         //Code
         if(!message.member.roles.cache.find(role => role.name === 'BotPL3')) {
-            const errorNoPermissions = new Discord.MessageEmbed()
+            const ERROR_NO_PERMISSIONS = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
                 .setTitle('Permissions error')
                 .setDescription("I'm sorry but you do not have the permissions to perform this command. Please contact the server administrators if you believe that this is an error.")
 
-            message.channel.send(errorNoPermissions)
+            message.channel.send(ERROR_NO_PERMISSIONS)
         }
         let filter = m => m.author.id === message.author.id
 
@@ -79,13 +79,13 @@ module.exports = {
                     message.channel.send(status)
                         .then(() => process.exit(0));
                 } else if(message.content.toUpperCase() == 'NO') {  //message.content
-                    message.channel.send(requestAborted);
+                    message.channel.send(REQUEST_ABORTED);
                 } else {
-                    message.channel.send(requestAborted);
+                    message.channel.send(REQUEST_ABORTED);
                 }
             })
             .catch(collected => {
-                message.channel.send(requestTimeout)
+                message.channel.send(REQUEST_TIMEOUT)
             });
     }
 }
