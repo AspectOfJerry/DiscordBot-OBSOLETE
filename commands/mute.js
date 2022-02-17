@@ -29,22 +29,22 @@ module.exports = {
             return;
         }
         if(!args[0]) {
-            const requireArgs0 = new Discord.MessageEmbed()
+            const ERROR_REQUIRE_ARGS_0 = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription('You must mention a user to mute!')
 
-            message.channel.send(requireArgs0)
+            message.channel.send(ERROR_REQUIRE_ARGS_0)
             return;
         }
-        const target = message.mentions.users.first();
-        if(target) {
-            const errorTarget = new Discord.MessageEmbed()
+        const TARGET = message.mentions.users.first();
+        if(TARGET) {
+            const ERROR_TARGET = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription('Unknown user')
 
-            message.channel.send(errorTarget)
+            message.channel.send(ERROR_TARGET)
             return;
         }
         let memberTarget = message.guild.members.cache.get(target.id);
@@ -58,31 +58,31 @@ module.exports = {
             return;
         }
         if(memberTarget.roles.cache.find(role => role.name == 'Muted')) {
-            const targetAlreadyMuted = new Discord.MessageEmbed()
+            const ERROR_TARGET_ALREADY_MUTED = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
                 .setDescription(`<@${memberTarget.user.id}> is already muted!`)
 
-            message.channel.send(targetAlreadyMuted)
+            message.channel.send(ERROR_TARGET_ALREADY_MUTED)
             return;
         }
         //Declaring variables
         let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
         const ms = require(`ms`)
-        const userMutedBy = new Discord.MessageEmbed()
+        const USER_MUTE = new Discord.MessageEmbed()
             .setColor('#ffff00')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('User mute')
             .setDescription(`<@${memberTarget.user.id}> was muted by <@${message.member.user.id}>`)
             .setFooter(`To unmute a member, execute "%unmute <@user>".`)
-        const userMutedForBy = new Discord.MessageEmbed()
+        const USER_TIMED_MUTE = new Discord.MessageEmbed()
             .setColor('#ffff00')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('User mute')
             .setDescription(`<@${memberTarget.user.id}> was muted for ` + args[1] + ` by <@${message.member.user.id}>`)
             .setFooter(`To unmute a member, execute "%unmute <@user>".`)
-        const userUnmutedFromTimedMuteBy = new Discord.MessageEmbed()
+        const USER_UNMUTE_TIMED = new Discord.MessageEmbed()
             .setColor('#00ff00')
             .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
             .setTitle('User unmuted from timed mute')
@@ -104,35 +104,24 @@ module.exports = {
             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL0')) {  //memberTarget
                 message.channel.send(ERROR_PERMISSIONS_TOO_LOW);
             } else {
-                try {
-                    if(!args[1]) {
-                        memberTarget.roles.add(muteRole.id);
-
-                        message.channel.send(userMutedBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy);
-                        return;
-                    }
+                if(!args[1]) {
                     memberTarget.roles.add(muteRole.id);
 
-                    message.channel.send(userMutedForBy)
-                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy);
-
-                    setTimeout(function () {
-                        memberTarget.roles.remove(muteRole.id);
-
-                        message.channel.send(userUnmutedFromTimedMuteBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy);
-                    }, ms(args[1]));
-                } catch(error) {
-                    const errorCatch = new Discord.MessageEmbed()
-                        .setColor('#800080')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error Catch')
-                        .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                        .setFooter(`An error was caught at line 94:39\nmessage.content = ${message.content}`)
-
-                    message.channel.send(errorCatch)
+                    message.channel.send(USER_MUTE)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_MUTE);
+                    return;
                 }
+                memberTarget.roles.add(muteRole.id);
+
+                message.channel.send(USER_TIMED_MUTE)
+                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_TIMED_MUTE);
+
+                setTimeout(function () {
+                    memberTarget.roles.remove(muteRole.id);
+
+                    message.channel.send(USER_UNMUTE_TIMED)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_UNMUTE_TIMED);
+                }, ms(args[1]));
             }
         } else if(message.member.roles.cache.find(role => role.name === 'BotPL1')) {    //message.member
 
@@ -143,35 +132,24 @@ module.exports = {
             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL1')) {  //memberTarget
                 message.channel.send(ERROR_PERMISSIONS_TOO_LOW);
             } else {
-                try {
-                    if(!args[1]) {
-                        memberTarget.roles.add(muteRole.id);
-
-                        message.channel.send(userMutedBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy);
-                        return;
-                    }
+                if(!args[1]) {
                     memberTarget.roles.add(muteRole.id);
 
-                    message.channel.send(userMutedForBy)
-                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy);
-
-                    setTimeout(function () {
-                        memberTarget.roles.remove(muteRole.id);
-
-                        message.channel.send(userUnmutedFromTimedMuteBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy);
-                    }, ms(args[1]));
-                } catch(error) {
-                    const errorCatch = new Discord.MessageEmbed()
-                        .setColor('#800080')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error Catch')
-                        .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                        .setFooter(`An error was caught on line 129:39\nmessage.content = ${message.content}`)
-
-                    message.channel.send(errorCatch)
+                    message.channel.send(USER_MUTE)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_MUTE);
+                    return;
                 }
+                memberTarget.roles.add(muteRole.id);
+
+                message.channel.send(USER_TIMED_MUTE)
+                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_TIMED_MUTE);
+
+                setTimeout(function () {
+                    memberTarget.roles.remove(muteRole.id);
+
+                    message.channel.send(USER_UNMUTE_TIMED)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_UNMUTE_TIMED);
+                }, ms(args[1]));
             }
         }
         else if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {  //message.member
@@ -185,35 +163,24 @@ module.exports = {
             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL2')) {  //memberTarget
                 message.channel.send(ERROR_PERMISSIONS_TOO_LOW);
             } else {
-                try {
-                    if(!args[1]) {
-                        memberTarget.roles.add(muteRole.id);
-
-                        message.channel.send(userMutedBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy);
-                        return;
-                    }
+                if(!args[1]) {
                     memberTarget.roles.add(muteRole.id);
 
-                    message.channel.send(userMutedForBy)
-                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy);
-
-                    setTimeout(function () {
-                        memberTarget.roles.remove(muteRole.id);
-
-                        message.channel.send(userUnmutedFromTimedMuteBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy);
-                    }, ms(args[1]));
-                } catch(error) {
-                    const errorCatch = new Discord.MessageEmbed()
-                        .setColor('#800080')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error Catch')
-                        .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                        .setFooter(`An error was caught on line 167:39\nmessage.content = ${message.content}`)
-
-                    message.channel.send(errorCatch)
+                    message.channel.send(USER_MUTE)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_MUTE);
+                    return;
                 }
+                memberTarget.roles.add(muteRole.id);
+
+                message.channel.send(USER_TIMED_MUTE)
+                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_TIMED_MUTE);
+
+                setTimeout(function () {
+                    memberTarget.roles.remove(muteRole.id);
+
+                    message.channel.send(USER_UNMUTE_TIMED)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_UNMUTE_TIMED);
+                }, ms(args[1]));
             }
         } else if(message.member.roles.cache.find(role => role.name === 'BotPL3')) {    //message.member
 
@@ -228,66 +195,44 @@ module.exports = {
             } else if(memberTarget.roles.cache.find(role => role.name === 'BotPL3')) {  //memberTarget
                 message.channel.send(ERROR_PERMISSIONS_TOO_LOW);
             } else {
-                try {
-                    if(!args[1]) {
-                        memberTarget.roles.add(muteRole.id);
-
-                        message.channel.send(userMutedBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy);
-                        return;
-                    }
-                    memberTarget.roles.add(muteRole.id);
-
-                    message.channel.send(userMutedForBy)
-                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy);
-
-                    setTimeout(function () {
-                        memberTarget.roles.remove(muteRole.id);
-
-                        message.channel.send(userUnmutedFromTimedMuteBy)
-                        message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy);
-                    }, ms(args[1]));
-                } catch(error) {
-                    const errorCatch = new Discord.MessageEmbed()
-                        .setColor('#800080')
-                        .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                        .setTitle('Error Catch')
-                        .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                        .setFooter(`An error was caught on line 206:39\nmessage.content = ${message.content}`)
-
-                    message.channel.send(errorCatch);
-                }
-            }
-        } else {
-            try {
                 if(!args[1]) {
                     memberTarget.roles.add(muteRole.id);
 
-                    message.channel.send(userMutedBy)
-                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedBy);
+                    message.channel.send(USER_MUTE)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_MUTE);
                     return;
                 }
                 memberTarget.roles.add(muteRole.id);
 
-                message.channel.send(userMutedForBy)
-                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userMutedForBy);
+                message.channel.send(USER_TIMED_MUTE)
+                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_TIMED_MUTE);
 
                 setTimeout(function () {
                     memberTarget.roles.remove(muteRole.id);
 
-                    message.channel.send(userUnmutedFromTimedMuteBy)
-                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(userUnmutedFromTimedMuteBy);
+                    message.channel.send(USER_UNMUTE_TIMED)
+                    message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_UNMUTE_TIMED);
                 }, ms(args[1]));
-            } catch(error) {
-                const errorCatch = new Discord.MessageEmbed()
-                    .setColor('#800080')
-                    .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 32})}`)
-                    .setTitle('Error Catch')
-                    .setDescription(`An error occured while trying to mute <@${memberTarget.user.id}>`)
-                    .setFooter(`An error was caught on line 234:35\nmessage.content = ${message.content}`)
-
-                message.channel.send(errorCatch);
             }
+        } else {
+            if(!args[1]) {
+                memberTarget.roles.add(muteRole.id);
+
+                message.channel.send(USER_MUTE)
+                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_MUTE);
+                return;
+            }
+            memberTarget.roles.add(muteRole.id);
+
+            message.channel.send(USER_TIMED_MUTE)
+            message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_TIMED_MUTE);
+
+            setTimeout(function () {
+                memberTarget.roles.remove(muteRole.id);
+
+                message.channel.send(USER_UNMUTE_TIMED)
+                message.guild.channels.cache.find(channel => channel.name.includes('bot-log')).send(USER_UNMUTE_TIMED);
+            }, ms(args[1]));
         }
     }
 }
