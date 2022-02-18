@@ -17,7 +17,7 @@ module.exports = {
             return;
         }
         //Checks
-        if(message.member.roles.cache.find(role => role.name === 'BotPL2')) {
+        if(!message.member.roles.cache.find(role => role.name === 'BotPL2')) {
             const ERROR_NO_PERMISSIONS = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setThumbnail(`${message.author.displayAvatarURL({dynamic: true, size: 16})}`)
