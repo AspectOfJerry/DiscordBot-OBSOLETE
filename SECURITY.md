@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The most recent version will always have the most updated packages. Older versions' security vulnerabilities WILL NOT get pacthed.
+The most recent version will always have the most up to date packages. Older versions' security vulnerabilities will not get pacthed.
 
 ## Reporting a Vulnerability
 
