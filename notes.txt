@@ -1,15 +1,16 @@
 ---Discord guild info---
 
-Main color HEX: #7dc8cd
+[DELETED]
 
-Guild ID: 631939549332897842
+[DELETED]
 
 Channel Databse Name        Channel ID
 
-
+[DELETED]
 
 Role Databse Name           Channel ID
 
+[DELETED]
 
 -----HTTP return codes-----
 Code                                            Meaning
